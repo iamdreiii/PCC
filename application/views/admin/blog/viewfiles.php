@@ -34,10 +34,31 @@
           margin-top: 45px;
         }
       }
+      .navbar{
+        background-color: rgb(82, 65, 50);
+        color: #fff;
+      }
+      .navbar .container-fluid .collapse ul li .nav-link{
+        color: #fff;
+      }
+      /* .navbar .container-fluid .collapse ul li a:link {
+        color: red;
+      } */
+
+      /* visited link */
+      .navbar .container-fluid .collapse ul li a:visited {
+        color: #fff;
+      }
+
+      /* mouse over link */
+      .navbar .container-fluid .collapse ul li a:hover {
+        color: rgb(201, 201, 201);
+        text-decoration: underline;
+      }
     </style>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
       <div class="container-fluid">
         <!-- Navbar brand -->
         <a class="navbar-brand" target="_blank" href="https://mdbootstrap.com/docs/standard/">
@@ -92,7 +113,7 @@
     <!-- Navbar -->
 
     <!-- Jumbotron -->
-    <div id="intro" class="p-5 text-center bg-light">
+    <div id="intro" class="p-5 text-center" style="background-color: rgb(218, 208, 199);">
       <h1 class="mb-3 h2">P C C   &emsp; B L O G</h1>
       <p class="mb-3">Innovative Nationalistic Affective</p>
       <div id="prefetch" style="width:200px; margin:auto; display:flex;">
@@ -104,8 +125,8 @@
   <!--Main Navigation-->
 
   <!--Main layout-->
-  <main class="my-5">
-    <div class="container">
+  <main class="my-5" >
+    <div class="container" >
       <!--Section: Content-->
       <section class="text-center">
         <h4 class="mb-5"><strong>Latest posts</strong></h4>
@@ -174,7 +195,7 @@
     </div>
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="text-center p-3" style="background-color: rgba(144, 115, 88);">
       © 2023 Copyright:
       <a class="text-dark" href="https://mdbootstrap.com/">pcc.edu.com</a>
     </div>
@@ -219,7 +240,7 @@
                             $('<div class="col-lg-4 col-md-12 mb-4" id="post-' + video.id + '">'+
                                 '<div class="card">'+
                                 '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">'+
-                                    '<video class="img-fluid" autoplay controls></video>'+
+                                    '<video class="img-fluid" controls></video>'+
                                 '</div>'+
                                 '<div class="card-body">'+
                                     '<a href="#'+video.id+'"><h5 class="card-title">'+  video.title.toUpperCase() +'</h5></a>'+
