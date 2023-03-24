@@ -196,7 +196,7 @@
     </div>
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(144, 115, 88); ">
+    <div class="text-center p-3" style="background-color: rgba(144, 115, 88); position: fixed;left: 0;bottom: 0; width: 100%">
       © 2023 Copyright:
       <a class="text-dark" href="https://mdbootstrap.com/">pcc.edu.com</a>
     </div>
