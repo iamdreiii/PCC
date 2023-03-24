@@ -1,0 +1,226 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+}
+
+header {
+    background-color:  rgba(0, 147, 221, 0.767);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+
+}
+header a{
+    color: #fff;
+    text-decoration: none;
+}
+header a:hover {
+    text-decoration: underline;
+    color: lightblue;
+}
+
+.container {
+    max-width: 800px;
+    margin: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+}
+
+.post-card {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+    
+}
+
+.post-card .post {
+    display: block;
+    margin: 10px;
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+}
+
+.post-card .post:hover {
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5); /* increased box-shadow on hover */
+}
+
+.post-card img {
+    width: 100%;
+    height: auto;
+}
+
+.post-card h2 {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #333; /* increased contrast */
+}
+
+.post-card p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555; /* increased contrast */
+}
+
+.post-card span {
+    font-size: 12px;
+    color: #aaa;
+    margin-right: 10px;
+}
+
+.post-card small {
+    font-size: 12px;
+    color: #333;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    color: #333;
+    border-radius: 5px;
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #333;
+    color: #fff;
+}
+#show-more {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#show-more:hover {
+  background-color: #c0c0c0;
+}
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.post-actions {
+    display: flex;
+}
+
+.post-actions button {
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.post-actions button:hover {
+    background-color: #333;
+    color: #fff;
+}
+/* VIDEO CARD */
+
+.post-card .post .video-card{
+    min-width: 100px;
+    max-width: 780px;
+}
+/* LEFT */
+.left-column {
+        margin: 10px;
+        float: left;
+        width: 23%;
+        flex-wrap: wrap;
+    }
+.left-column ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .left-column li {
+        margin-bottom: 10px;
+    }
+    
+    .left-column li a {
+        display: block;
+        padding: 5px 10px;
+        background-color: #ffffff;
+        color: #333;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    
+    .left-column li a:hover {
+        background-color: #ddd;
+    }
+    /* Small screens */
+@media only screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+    .left-column {
+        float: none;
+        width: 100%;
+    }
+    .post-card .post {
+        width: 100%;
+    }
+}
+
+/* Medium screens */
+@media only screen and (min-width: 600px) and (max-width: 960px) {
+    .container {
+        flex-wrap: wrap;
+    }
+    .left-column {
+        float: none;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .post-card{
+        width: calc(50% - 20px);
+    }
+    
+    
+}
+
+/* Large screens */
+@media only screen and (min-width: 960px) {
+    .container {
+        flex-wrap: wrap;
+    }
+    .left-column {
+        float: left;
+        width: 23%;
+        margin-right: 20px;
+    }
+    .post-card{
+        width: calc(33.33% - 20px);
+    }
+}

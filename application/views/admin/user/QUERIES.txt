@@ -1,0 +1,6 @@
+USER AND USER_SUBJECTS 
+
+SELECT U.id as USER_ID, U.school_id as SCHOOL_ID, U.email as EMAIL, L.subject_id as SUBJECT, L.teacher_id as TEACHER  FROM tbl_user U LEFT JOIN tbl_student_loads L ON L.student_id = U.id
+
+TEACHER AND SUBJECT LOADS
+SELECT TL.id, TL.teacher_id as TEACHER, S.subject_code as CODE, S.subject_name as SUBJECT, S.subject_units as UNITS FROM tbl_teacher_loads TL LEFT JOIN tbl_subjects S ON TL.subject_id = S.id

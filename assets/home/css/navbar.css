@@ -1,0 +1,90 @@
+.navbar {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.navbar-brand img{
+  height: 100%;
+  width: auto;
+}
+
+.top_navs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.top_navs li {
+  display: inline-block;
+  margin: 0 10px;
+  position: relative;
+}
+
+.top_navs li a {
+  color: #696969;
+  font-size: 18px;
+  font-weight: 5;
+  text-transform: capitalize;
+  display: block;
+  text-decoration: none;
+  height: 100%;
+  padding: 10px 10px 5px 10px;
+  z-index: 2;
+  font-weight: 600;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  transition: all 0.3s ease;
+  width: max-content;
+  border-radius: 0;
+}
+
+.dropdown-hover:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    display: none;
+   
+  }
+  .navbar{
+    width: 100%;
+  }
+  .col ul li {
+    display: none;
+  }
+  .navbar .navbar-toggler{
+   float: right;
+  }
+}
+
+ul li:hover > ul {
+  display: block;
+}
+
+ul ul li {
+  display: block;
+}
+
+.top_navs li a:hover,
+.login_wrap li a:hover {
+  text-decoration: underline;
+}
+
+.top_navs {
+  /* float: left; */
+  display: inline-block;
+}

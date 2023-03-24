@@ -1,0 +1,66 @@
+<!-- <body>
+	<header>
+		<h2>My Blog</h2>
+	</header>
+    <div class="container" id="video-card">
+    <div class="post-card" id="post-card">
+    </div>
+</div>
+
+<script>
+    updateVideoContainer();
+    $(document).ready(function() {
+        // Call the function to update the video container every 5 seconds
+        setInterval(updateVideoContainer, 5000);
+    });
+
+    // Function to update the video container using AJAX
+    function updateVideoContainer() {
+        $.ajax({
+            url: '<?php echo base_url('Blog/viewfiles_ajax'); ?>',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                // Loop through the returned videos and append new ones to the video container
+                $.each(data, function(index, video) {
+                    let objectDate = new Date(video.created_at);
+                    let day = objectDate.getDate();
+                    let month = objectDate.toLocaleString('default', { month: 'long' });
+                    let year = objectDate.getFullYear();
+                    if ($('#video-card').find('.video-card source[src="' + video.path + '.mp4"]').length == 0) {
+                        var $video = $('<div class="post">' +
+                                            '<div >'+
+                                            '<video class="video-card" height="300px" width="800px" autoplay controls style="margin-right: 10px"></video>'+
+                                            '</div>'+
+                                            '<h2>'+  video.title.toUpperCase() +'</h2>'+
+                                            '<p>'+  video.description +'</p>'+
+                                            '<span>Posted on <small>'+ month +' '+ day +', '+ year +'</small></span>'+
+                                        '</div>');
+                        var $source = $('<source></source>&emsp;').attr('src', video.path + '.mp4').attr('type', 'video/mp4');
+                        $video.find('.video-card').append($source);
+                        $('#video-card .post-card').append($video);
+                    }
+                });
+
+                // Remove videos that no longer exist in the database
+                $('#video-card .post-card .post').each(function() {
+                    var src = $(this).find('source').attr('src');
+                    
+                    var exists = false; // set to false by default
+                    $.each(data, function(index, video) {
+                        if (video.path + '.mp4' == src) {
+                            exists = true;
+                            return false;
+                        }
+                    });
+                    if (!exists) {
+                        $(this).remove();
+                    }
+                });
+            }
+        });
+    }
+</script>
+
+</body>
+</html> -->
