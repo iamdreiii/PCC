@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
+    <title>PCC | Blog</title>
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url()?>assets/home/images/PCC.png" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
     <!-- Google Fonts Roboto -->
@@ -195,7 +196,7 @@
     </div>
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(144, 115, 88);">
+    <div class="text-center p-3" style="background-color: rgba(144, 115, 88); ">
       © 2023 Copyright:
       <a class="text-dark" href="https://mdbootstrap.com/">pcc.edu.com</a>
     </div>

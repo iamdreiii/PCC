@@ -39,7 +39,7 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li class="header">Manage Staffs</li>
+        <li class="header">Manage</li>
         <li>
           <a href="<?php echo base_url()?>blog-admin">
             <i class="fa fa-users"></i> <span>Announcements</span>
