@@ -26,8 +26,8 @@
     <!-- Intro settings -->
     <style>
       body{
-  margin: 0;
-}
+        margin: 0;
+      }
       #intro {
         /* Margin to fix overlapping fixed navbar */
         margin-top: 58px;
@@ -45,10 +45,6 @@
       .navbar .container-fluid .collapse ul li .nav-link{
         color: #fff;
       }
-      /* .navbar .container-fluid .collapse ul li a:link {
-        color: red;
-      } */
-
       /* visited link */
       .navbar .container-fluid .collapse ul li a:visited {
         color: #fff;
