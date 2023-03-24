@@ -78,10 +78,10 @@
 	text-align:center;
 	padding:10px;
 	margin-top:70px;
-	position: relative;
+	position: fixed;
 	left: 0;
 	bottom: 0;
-	width: 100%;">2023 © copyright Pola Sorcerer's Community</footer>
+	width: 100%; background-color: rgba(144, 115, 88);" class="text-dark">2023 © copyright pcc.edu.com</footer>
 
 <script src="<?php echo base_url()?>assets/home/js/home.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

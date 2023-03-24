@@ -2,8 +2,7 @@
 <div class="container-fluid d-flex justify-content-center col-20" style="background-color: #F8F9FA;">
     <div class="d-flex align-items-center">
       <a class="navbar-brand" href="#">
-        <!-- <img src="logo.png" alt="Logo"> -->
-        <h3>LOGO</h3>
+        <img src="<?php echo base_url()?>assets/home/images/PCC.png" style="height:80px;" alt="">
       </a>
     </div>
     

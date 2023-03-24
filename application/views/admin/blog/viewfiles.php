@@ -61,8 +61,8 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
       <div class="container-fluid">
         <!-- Navbar brand -->
-        <a class="navbar-brand" target="_blank" href="https://mdbootstrap.com/docs/standard/">
-          <img src="<?=base_url()?>assets/home/blog/img/pcc-logo.png" height="16" alt="" loading="lazy"
+        <a class="navbar-brand" target="_blank" href="<?php echo base_url()?>">
+          <img src="<?php echo base_url()?>assets/home/images/PCC.png" height="50" alt="" loading="lazy"
             style="margin-top: -3px;" />
         </a>
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
@@ -114,7 +114,7 @@
 
     <!-- Jumbotron -->
     <div id="intro" class="p-5 text-center" style="background-color: rgb(218, 208, 199);">
-      <h1 class="mb-3 h2">P C C   &emsp; B L O G</h1>
+      <h1 class="mb-3 h1">P C C   &emsp; B L O G</h1>
       <p class="mb-3">Innovative Nationalistic Affective</p>
       <div id="prefetch" style="width:200px; margin:auto; display:flex;">
         <input type="text" name="search_box" id="search_box" class="form-control input-lg typeahead" placeholder="Search Here" />
