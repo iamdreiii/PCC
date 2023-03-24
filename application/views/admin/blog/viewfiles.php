@@ -25,6 +25,9 @@
       <header>
     <!-- Intro settings -->
     <style>
+      body{
+  margin: 0;
+}
       #intro {
         /* Margin to fix overlapping fixed navbar */
         margin-top: 58px;
@@ -55,6 +58,16 @@
       .navbar .container-fluid .collapse ul li a:hover {
         color: rgb(201, 201, 201);
         text-decoration: underline;
+      }
+      .blog-footer{
+        background-color: rgba(144, 115, 88); 
+        position: relative; 
+        width: 100%;
+        overflow: hidden;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 9999;
       }
     </style>
 
@@ -116,7 +129,7 @@
     <!-- Jumbotron -->
     <div id="intro" class="p-5 text-center" style="background-color: rgb(218, 208, 199);">
       <h1 class="mb-3 h1">P C C   &emsp; B L O G</h1>
-      <p class="mb-3">Innovative Nationalistic Affective</p>
+      <p class="mb-3"><strong>I</strong>nnovative • <strong>N</strong>ationalistic • <strong>A</strong>ffective</p>
       <div id="prefetch" style="width:200px; margin:auto; display:flex;">
         <input type="text" name="search_box" id="search_box" class="form-control input-lg typeahead" placeholder="Search Here" />
       </div>
@@ -196,7 +209,7 @@
     </div>
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(144, 115, 88); position: fixed;left: 0;bottom: 0; width: 100%">
+    <div class="blog-footer text-center p-3">
       © 2023 Copyright:
       <a class="text-dark" href="https://mdbootstrap.com/">pcc.edu.com</a>
     </div>
