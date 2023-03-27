@@ -69,3 +69,5 @@ $route['school-year'] = 'School_year/index';
 $route['blog-admin'] = 'Blog/index';
 $route['blog-view'] = 'Blog/viewfiles';
 $route['get_latest_video_urls/(:any)'] = 'Blog/get_latest_video_urls/$1';
+// Subject
+$route['Subject'] = 'Subject/index';

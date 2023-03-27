@@ -94,8 +94,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Subjects List</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li><a href="<?php echo base_url()?>Subject"><i class="fa fa-circle-o"></i> Subjects List</a></li>
+            <li><a href="<?php echo base_url()?>Subject_Preq"><i class="fa fa-circle-o"></i> Manage Prerequisites</a></li>
             <li class="treeview">
               <a href="#"><i class="fa fa-circle-o"></i> Manage Teachers Subjects
                 <span class="pull-right-container">
