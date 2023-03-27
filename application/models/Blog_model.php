@@ -61,7 +61,7 @@ class Blog_model extends CI_Model
     $this->db->from('tbl_announcements');
     if (!empty($search)) {
         $this->db->like('title', $search);
-        $this->db->like('description', $search);
+        $this->db->or_like('description', $search);
     }
     $query = $this->db->get();
     return $query->result();

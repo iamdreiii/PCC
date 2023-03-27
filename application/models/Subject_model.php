@@ -47,11 +47,13 @@ class Subject_model extends CI_Model
     {
     $this->db->select('*');
     $this->db->from('tbl_subject');
+    $this->db->order_by('year_level');
+    $this->db->order_by('semester');
     if (!empty($search)) {
         $this->db->like('subcode', $search);
-        $this->db->like('description', $search);
-        $this->db->like('year_level', $search);
-        $this->db->like('semester', $search);
+        $this->db->or_like('description', $search);
+        $this->db->or_like('year_level', $search);
+        $this->db->or_like('semester', $search);
     }
     $query = $this->db->get();
     return $query->result();

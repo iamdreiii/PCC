@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 24, 2023 at 06:46 AM
+-- Host: 127.0.0.1:3307
+-- Generation Time: Mar 27, 2023 at 10:52 AM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -111,6 +111,27 @@ INSERT INTO `tbl_course` (`id`, `course`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_program`
+--
+
+CREATE TABLE `tbl_program` (
+  `id` int(11) NOT NULL,
+  `program` varchar(255) NOT NULL,
+  `date_created` date NOT NULL DEFAULT current_timestamp(),
+  `date_updated` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_program`
+--
+
+INSERT INTO `tbl_program` (`id`, `program`, `date_created`, `date_updated`) VALUES
+(1, 'Bachelor of Science in Entrepreneurship', '0000-00-00', '0000-00-00'),
+(2, 'Bachelor of Public Administration', '0000-00-00', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_school_year`
 --
 
@@ -129,7 +150,7 @@ CREATE TABLE `tbl_school_year` (
 INSERT INTO `tbl_school_year` (`id`, `school_year`, `status`, `created_at`, `updated_at`) VALUES
 (1, '2022-2023', 'active', '2023-02-27 08:35:14', '2023-02-27 02:11:07'),
 (6, '2023-2024', 'inactive', '2023-02-28 11:31:52', '2023-02-28 18:31:52'),
-(7, '2022-2023sdadasdsdas', 'inactive', '2023-03-23 01:18:42', '2023-03-23 08:18:42');
+(7, '2022-2023', 'inactive', '2023-03-23 01:18:42', '2023-03-23 08:18:42');
 
 -- --------------------------------------------------------
 
@@ -151,9 +172,65 @@ CREATE TABLE `tbl_staff` (
 --
 
 INSERT INTO `tbl_staff` (`id`, `username`, `password`, `type`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '2023-02-26 12:41:44', '2023-02-26 12:41:44'),
-(2, 'teacher', 'teacher', 'teacher', '2023-02-26 12:41:44', '2023-02-26 12:41:44'),
-(3, 'registrar', 'registrar', 'registrar', '2023-02-26 12:41:44', '2023-02-26 12:41:44');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '2023-03-24 15:44:31', '2023-03-24 15:44:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_student`
+--
+
+CREATE TABLE `tbl_student` (
+  `id` int(11) NOT NULL,
+  `lname` varchar(255) DEFAULT NULL,
+  `fname` varchar(255) DEFAULT NULL,
+  `mname` varchar(255) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `sex` varchar(6) DEFAULT NULL,
+  `height` varchar(45) DEFAULT NULL,
+  `weight` varchar(45) DEFAULT NULL,
+  `birthplace` varchar(255) DEFAULT NULL,
+  `citizenship` varchar(100) DEFAULT NULL,
+  `religion` varchar(100) DEFAULT NULL,
+  `civil_status` varchar(45) DEFAULT NULL,
+  `mobile_no` varchar(11) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `facebook` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city_municipality` varchar(255) DEFAULT NULL,
+  `province` varchar(255) DEFAULT NULL,
+  `zip_code` varchar(45) DEFAULT NULL,
+  `father` varchar(255) DEFAULT NULL,
+  `mother` varchar(255) DEFAULT NULL,
+  `guardian` varchar(255) DEFAULT NULL,
+  `parent_address` varchar(255) DEFAULT NULL,
+  `guardian_address` varchar(255) DEFAULT NULL,
+  `ws_company` varchar(255) DEFAULT NULL,
+  `ws_position` varchar(255) DEFAULT NULL,
+  `ws_date_started` date DEFAULT NULL,
+  `ws_employer` varchar(255) DEFAULT NULL,
+  `ws_employer_contact` varchar(11) DEFAULT NULL,
+  `ws_company_address` varchar(255) DEFAULT NULL,
+  `program` varchar(255) DEFAULT NULL,
+  `year_level` varchar(100) DEFAULT NULL,
+  `sem` varchar(45) DEFAULT NULL,
+  `tertiary_school_last_attended` varchar(255) DEFAULT NULL,
+  `tertiary_school_address` varchar(255) DEFAULT NULL,
+  `tertiary_school_year_last_attended` date DEFAULT NULL,
+  `secondary_school_last_attended` varchar(255) DEFAULT NULL,
+  `secondary_school_address` varchar(255) DEFAULT NULL,
+  `secondary_school_year_last_attended` date DEFAULT NULL,
+  `secondary_junior_school_last_attended` varchar(255) DEFAULT NULL,
+  `secondary_junior_school_year_last_attended` date DEFAULT NULL,
+  `secondary_junior_school_address` varchar(255) DEFAULT NULL,
+  `primary_school_last_attended` varchar(255) DEFAULT NULL,
+  `primary_school_year_last_attended` date DEFAULT NULL,
+  `primary_school_address` varchar(255) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  `date_created` date DEFAULT current_timestamp(),
+  `date_updated` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -180,6 +257,93 @@ INSERT INTO `tbl_student_loads` (`id`, `student_id`, `subject_id`, `teacher_id`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_student_subject`
+--
+
+CREATE TABLE `tbl_student_subject` (
+  `id` int(11) NOT NULL,
+  `subject_id` int(11) DEFAULT NULL,
+  `subject_code` varchar(45) DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  `date_created` date DEFAULT current_timestamp(),
+  `date_updated` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_subject`
+--
+
+CREATE TABLE `tbl_subject` (
+  `id` int(11) NOT NULL,
+  `subcode` varchar(45) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `units` int(11) DEFAULT NULL,
+  `year_level` int(11) NOT NULL,
+  `semester` int(11) NOT NULL,
+  `program_id` int(11) DEFAULT NULL,
+  `date_created` datetime DEFAULT current_timestamp(),
+  `date_updated` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_subject`
+--
+
+INSERT INTO `tbl_subject` (`id`, `subcode`, `description`, `units`, `year_level`, `semester`, `program_id`, `date_created`, `date_updated`) VALUES
+(1, 'GENE01', 'Purposive Communication ', 3, 1, 1, 1, NULL, '2023-03-27 09:21:15'),
+(2, 'GENE02', 'Mathematics in the Modern World', 3, 1, 1, 1, NULL, NULL),
+(3, 'GENE03', 'Art Apreciation', 3, 1, 1, 1, NULL, NULL),
+(4, 'GENE04', 'Understanding the Self', 3, 1, 1, 1, NULL, NULL),
+(5, 'GENE05', 'Readings in the Philippine History', 3, 1, 1, 1, NULL, NULL),
+(6, 'GENE06', 'Ethics', 3, 1, 1, 1, NULL, NULL),
+(7, 'PHED1', 'Self-Testing Acivities', 2, 1, 1, 1, NULL, NULL),
+(8, 'NSTP1', 'Civic Welfare Training Service 1', 3, 1, 1, 1, NULL, NULL),
+(9, 'GENE07', 'The Contemporary World', 3, 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(10, 'GENE08', 'Science, Technology and Society', 3, 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(11, 'GENE09', 'People and the Earth\'s Ecosystem', 3, 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(15, 'GENE10', 'Gender and Society', 3, 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(16, 'GENE11', 'Information Technology (IT) in the New Era', 3, 1, 2, 1, '2023-03-24 00:00:00', '2023-03-24 00:00:00'),
+(17, 'PHED02', 'Rhythmic Activities', 3, 1, 2, 1, '2023-03-24 11:58:37', '2023-03-24 11:58:37'),
+(19, 'NSTP02', 'Civic Welfare Training Service 2', 3, 1, 2, 1, '2023-03-27 13:46:28', '2023-03-27 13:46:28'),
+(20, 'RIZA01', 'Rizal\'s Life and Works', 3, 2, 1, 1, '2023-03-27 13:49:04', '2023-03-27 13:49:04'),
+(21, 'ENCO01', 'Entrepreneurial Behavior and Mindset', 3, 2, 1, 1, '2023-03-27 09:01:43', '2023-03-27 09:21:32'),
+(22, 'ENCO02', 'Microeconomics', 3, 2, 1, 1, '2023-03-27 09:18:22', '2023-03-27 09:21:36'),
+(23, 'ENCO03', 'Opportunity Seeking', 3, 2, 1, 1, '2023-03-27 09:23:38', '2023-03-27 15:23:38'),
+(24, 'ECO04', 'Market Research and Consumer Behavior', 3, 2, 1, 1, '2023-03-27 09:24:11', '2023-03-27 15:24:11'),
+(25, 'BACC01', 'Fundamentals of Accounting', 6, 2, 1, 1, '2023-03-27 09:24:56', '2023-03-27 15:24:56'),
+(26, 'PHED03', 'Fundamentals of Games and Sports', 2, 2, 1, 1, '2023-03-27 09:26:23', '2023-03-27 15:26:23'),
+(27, 'ENCO05', 'Innovation Management', 3, 2, 2, 1, '2023-03-27 09:43:42', '2023-03-27 15:43:42'),
+(28, 'ENCO06', 'Pricing and Costing', 3, 2, 2, 1, '2023-03-27 09:44:17', '2023-03-27 15:44:17'),
+(29, 'ENCO07', 'Human Resource Management', 3, 2, 2, 1, '2023-03-27 09:45:04', '2023-03-27 15:45:04'),
+(30, 'ENTR02', 'Human Behavior inOrganization', 3, 2, 2, 1, '2023-03-27 10:16:31', '2023-03-27 16:16:31'),
+(31, 'TECEN01', 'Fundamentals of Technopreneurship', 3, 2, 2, 1, '2023-03-27 10:17:13', '2023-03-27 16:17:13'),
+(32, 'FBAN01', 'Fundmentals of Business Analytics', 3, 2, 2, 1, '2023-03-27 10:18:24', '2023-03-27 16:18:24'),
+(33, 'PHED04', 'Recreational Activities for College Students', 2, 2, 2, 1, '2023-03-27 10:19:01', '2023-03-27 10:20:03'),
+(34, 'ENCO08', 'Financial Management', 3, 3, 1, 1, '2023-03-27 10:20:36', '2023-03-27 16:20:36'),
+(35, 'ENCO09', 'Business Plan Preparation', 3, 3, 1, 1, '2023-03-27 10:21:26', '2023-03-27 16:21:26'),
+(36, 'CBME01', 'Production and Operations Management (TQM)', 3, 3, 1, 1, '2023-03-27 10:22:23', '2023-03-27 16:22:23'),
+(37, 'SPET01', 'Hospitality Management', 3, 3, 1, 1, '2023-03-27 10:22:48', '2023-03-27 16:22:48'),
+(38, 'ELEC01', 'Entrepreneurial Leadership in Organization', 3, 3, 1, 1, '2023-03-27 10:23:28', '2023-03-27 16:23:28'),
+(39, 'ELEC02', 'Entrepreneurial Marketing  Strategies', 3, 3, 1, 1, '2023-03-27 10:24:08', '2023-03-27 16:24:08'),
+(40, 'ENTR03', 'Principles in Crop Production', 3, 3, 1, 1, '2023-03-27 10:25:00', '2023-03-27 16:25:00'),
+(41, 'SPET02', 'Convention and Meeting Management', 3, 3, 2, 1, '2023-03-27 10:37:51', '2023-03-27 16:37:51'),
+(42, 'ELEC03', 'E-Commerce', 3, 3, 2, 1, '2023-03-27 10:38:29', '2023-03-27 16:38:29'),
+(43, 'ELEC04', 'Agribusiness', 3, 3, 2, 1, '2023-03-27 10:39:03', '2023-03-27 16:39:03'),
+(44, 'ENCO10', 'International Business and Trade', 3, 3, 2, 1, '2023-03-27 10:39:39', '2023-03-27 16:39:39'),
+(45, 'ENCO11', 'Business Law and Taxation', 3, 3, 2, 1, '2023-03-27 10:40:24', '2023-03-27 16:40:24'),
+(46, 'CBME02', 'Strategic Management', 3, 3, 2, 1, '2023-03-27 10:41:22', '2023-03-27 16:41:22'),
+(47, 'ENCO12', 'Business Plan Implementation I', 5, 4, 1, 1, '2023-03-27 10:42:10', '2023-03-27 16:42:10'),
+(48, 'ENCO13', 'Social Entrepreneurship', 3, 4, 1, 1, '2023-03-27 10:42:41', '2023-03-27 16:42:41'),
+(49, 'SPET03', 'Events Management', 3, 4, 1, 1, '2023-03-27 10:43:21', '2023-03-27 16:43:21'),
+(50, 'ENCO14', 'Business Plan Implementation 2', 5, 4, 2, 1, '2023-03-27 10:44:08', '2023-03-27 16:44:08'),
+(51, 'ENCO15', 'Programs Policies on Enterprise Development', 3, 4, 2, 1, '2023-03-27 10:44:44', '2023-03-27 16:44:44'),
+(52, 'SPET04', 'Wholesale and Retail Management', 3, 4, 2, 1, '2023-03-27 10:45:12', '2023-03-27 16:45:12');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_subjects`
 --
 
@@ -198,6 +362,20 @@ CREATE TABLE `tbl_subjects` (
 
 INSERT INTO `tbl_subjects` (`id`, `subject_code`, `subject_name`, `subject_units`, `created_at`, `updated_at`) VALUES
 (1, 'subject-111', 'Subject 1', 3, '2023-02-25 12:44:29', '2023-02-25 12:44:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_subject_prereq`
+--
+
+CREATE TABLE `tbl_subject_prereq` (
+  `id` int(11) NOT NULL,
+  `subject_id` int(11) DEFAULT NULL,
+  `prereq_subject_id` int(11) NOT NULL,
+  `date_created` datetime DEFAULT current_timestamp(),
+  `date_updated` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -322,6 +500,12 @@ ALTER TABLE `tbl_course`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_program`
+--
+ALTER TABLE `tbl_program`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_school_year`
 --
 ALTER TABLE `tbl_school_year`
@@ -334,6 +518,12 @@ ALTER TABLE `tbl_staff`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_student`
+--
+ALTER TABLE `tbl_student`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_student_loads`
 --
 ALTER TABLE `tbl_student_loads`
@@ -343,10 +533,32 @@ ALTER TABLE `tbl_student_loads`
   ADD KEY `tbl_student_loads_ibfk_2` (`teacher_id`);
 
 --
+-- Indexes for table `tbl_student_subject`
+--
+ALTER TABLE `tbl_student_subject`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `subject_id` (`subject_id`),
+  ADD KEY `student_id` (`student_id`);
+
+--
+-- Indexes for table `tbl_subject`
+--
+ALTER TABLE `tbl_subject`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `program_id` (`program_id`);
+
+--
 -- Indexes for table `tbl_subjects`
 --
 ALTER TABLE `tbl_subjects`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_subject_prereq`
+--
+ALTER TABLE `tbl_subject_prereq`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `prereq_subject_id` (`prereq_subject_id`);
 
 --
 -- Indexes for table `tbl_teachers`
@@ -385,7 +597,7 @@ ALTER TABLE `tbl_year_level`
 -- AUTO_INCREMENT for table `tbl_announcements`
 --
 ALTER TABLE `tbl_announcements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT for table `tbl_class`
@@ -406,6 +618,12 @@ ALTER TABLE `tbl_course`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `tbl_program`
+--
+ALTER TABLE `tbl_program`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tbl_school_year`
 --
 ALTER TABLE `tbl_school_year`
@@ -415,7 +633,7 @@ ALTER TABLE `tbl_school_year`
 -- AUTO_INCREMENT for table `tbl_staff`
 --
 ALTER TABLE `tbl_staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_student_loads`
@@ -424,10 +642,22 @@ ALTER TABLE `tbl_student_loads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `tbl_subject`
+--
+ALTER TABLE `tbl_subject`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
 -- AUTO_INCREMENT for table `tbl_subjects`
 --
 ALTER TABLE `tbl_subjects`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_subject_prereq`
+--
+ALTER TABLE `tbl_subject_prereq`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_teachers`
@@ -436,46 +666,20 @@ ALTER TABLE `tbl_teachers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tbl_teacher_loads`
---
-ALTER TABLE `tbl_teacher_loads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbl_user`
---
-ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
-
---
--- AUTO_INCREMENT for table `tbl_year_level`
---
-ALTER TABLE `tbl_year_level`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `tbl_student_loads`
+-- Constraints for table `tbl_subject`
 --
-ALTER TABLE `tbl_student_loads`
-  ADD CONSTRAINT `tbl_student_loads_ibfk_1` FOREIGN KEY (`subject_id`) REFERENCES `tbl_subjects` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tbl_student_loads_ibfk_2` FOREIGN KEY (`teacher_id`) REFERENCES `tbl_teachers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `tbl_subject`
+  ADD CONSTRAINT `tbl_subject_ibfk_1` FOREIGN KEY (`program_id`) REFERENCES `tbl_program` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_teacher_loads`
+-- Constraints for table `tbl_subject_prereq`
 --
-ALTER TABLE `tbl_teacher_loads`
-  ADD CONSTRAINT `tbl_teacher_loads_ibfk_1` FOREIGN KEY (`teacher_id`) REFERENCES `tbl_teachers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tbl_teacher_loads_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `tbl_subjects` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `tbl_user`
---
-ALTER TABLE `tbl_user`
-  ADD CONSTRAINT `tbl_user_ibfk_1` FOREIGN KEY (`class_id`) REFERENCES `tbl_class` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `tbl_subject_prereq`
+  ADD CONSTRAINT `tbl_subject_prereq_ibfk_1` FOREIGN KEY (`prereq_subject_id`) REFERENCES `tbl_subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

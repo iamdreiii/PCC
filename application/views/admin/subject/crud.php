@@ -70,7 +70,7 @@
             $('.form-group').removeClass('has-error'); // clear error class
             $('.help-block').empty(); // clear error string
             $('#modal_form').modal('show'); // show bootstrap modal
-            $('.modal-title').text('Add Student'); // Set Title to Bootstrap modal title
+            $('.modal-title').text('Add Subject'); // Set Title to Bootstrap modal title
         }
 
         function add_subject2()
@@ -105,7 +105,7 @@
                     $('[name="semester"]').val(data.semester);
                     $('[name="program_id"]').val(data.program_id);
                     $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-                    $('.modal-title').text('Edit Student'); // Set title to Bootstrap modal title
+                    $('.modal-title').text('Edit Subject'); // Set title to Bootstrap modal title
                     
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -197,32 +197,6 @@
                 }
             });
         }
-        //LOAD COURSES 
-        $.ajax({
-            url: '<?php echo base_url("Subject/get_courses"); ?>',
-            dataType: 'json',
-            success: function(courses) {
-                // Populate the dropdown list with the courses
-                var options = '';
-                $.each(courses, function(index, course) {
-                    options += '<option value="' + course.course + '">' + course.course + '</option>';
-                });
-                $('#course').html(options);
-            }
-        });
-        //LOAD Year Level 
-        $.ajax({
-            url: '<?php echo base_url("Subject/get_year_level"); ?>',
-            dataType: 'json',
-            success: function(year_level) {
-                // Populate the dropdown list with the courses
-                var options = '';
-                $.each(year_level, function(index, year_level) {
-                    options += '<option value="' + year_level.year + '">' + year_level.year + '</option>';
-                });
-                $('#year_level').html(options);
-            }
-        });
         function delete_subject(id) {
             var modal = deletemodal(function(result) {
                 if (result) {
