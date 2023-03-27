@@ -166,6 +166,7 @@
   padding-top: 30px !important;
 }
 </style>
+<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
   <!-- Admission Form Modal -->
   <div class="modal fade" id="modal_form2" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -400,6 +401,133 @@
                                         <span class="help-block"></span>
                                     </div>
                                 </div>
+                            </div><br>
+
+                            <!-- EDUCATIOn -->
+                            <h4>Educational Information</h4>
+                            <div class="panel panel-primary">
+                                <div class="row panel-body">
+                                <h4 class="text-on-pannel text-primary">Tertiary</h4>
+                                    <div class="col-xs-8">
+                                        <label for="">School Last Attended</label>
+                                        <input name="tertiary_school_last_attended" placeholder="School Last Attended" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">Year Last Attended</label>
+                                        <select id="tertiary_year_last_attended" class="form-control" onchange="onChangeYearAndMonth(this)"></select>
+                                        <span class="help-block"></span>
+                                    </div>
+
+                                    <div class="col-xs-4">
+                                        <label for="">School Address</label>
+                                        <input name="tertiary_school_address" placeholder="School Address" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">City/Municipality</label>
+                                        <input name="tertiary_city" placeholder="City/Municipality" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">Province</label>
+                                        <input name="tertiary_province" placeholder="Province" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-primary">
+                                <div class="row panel-body">
+                                <h4 class="text-on-pannel text-primary">Secondary Senior High School</h4>
+                                    <div class="col-xs-8">
+                                        <label for="">School Last Attended</label>
+                                        <input name="secondary_senior_school_last_attended" placeholder="School Last Attended" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">Year Last Attended</label>
+                                        <select id="secondary_senior_year_last_attended" class="form-control" onchange="onChangeYearAndMonth(this)"></select>
+                                        <span class="help-block"></span>
+                                    </div>
+
+                                    <div class="col-xs-4">
+                                        <label for="">School Address</label>
+                                        <input name="secondary_senior_school_address" placeholder="School Address" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">City/Municipality</label>
+                                        <input name="secondary_senior_city" placeholder="City/Municipality" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">Province</label>
+                                        <input name="secondary_senior_province" placeholder="Province" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-primary">
+                                <div class="row panel-body">
+                                <h4 class="text-on-pannel text-primary">Secondary - Junior High School</h4>
+                                    <div class="col-xs-8">
+                                        <label for="">School Last Attended</label>
+                                        <input name="secondary_junior_school_last_attended" placeholder="School Last Attended" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">Year Last Attended</label>
+                                        <select id="secondary_junior_year_last_atended" class="form-control" onchange="onChangeYearAndMonth(this)"></select>
+                                        <span class="help-block"></span>
+                                    </div>
+
+                                    <div class="col-xs-4">
+                                        <label for="">School Address</label>
+                                        <input name="secondary_junior_school_address" placeholder="School Address" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">City/Municipality</label>
+                                        <input name="secondary_junior_city" placeholder="City/Municipality" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">Province</label>
+                                        <input name="secondary_junior_province" placeholder="Province" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-primary">
+                                <div class="row panel-body">
+                                <h4 class="text-on-pannel text-primary">Primary</h4>
+                                    <div class="col-xs-8">
+                                        <label for="">School Last Attended</label>
+                                        <input name="primary_school_last_attended" placeholder="School Last Attended" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">Year Last Attended</label>
+                                        <select id="primary_year_last_attended" class="form-control" onchange="onChangeYearAndMonth(this)"></select>
+                                        <span class="help-block"></span>
+                                    </div>
+
+                                    <div class="col-xs-4">
+                                        <label for="">School Address</label>
+                                        <input name="primary_school_address" placeholder="School Address" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">City/Municipality</label>
+                                        <input name="primary_city" placeholder="City/Municipality" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4">
+                                    <label for="">Province</label>
+                                        <input name="primary_province" placeholder="Province" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="panel panel-primary">
                                 <div class="row panel-body">
@@ -429,3 +557,97 @@
             </div>
         </div>
   </div>
+  <script type="text/javascript">
+    const yearDropdownField = $("#yearDropdownField");
+    const yearDropdownField1 = $("#yearDropdownField1");
+    const yearDropdownField2 = $("#yearDropdownField2");
+    const yearDropdownField3 = $("#yearDropdownField3");
+
+    window.onload = function () {
+
+      populateYearDropdown();
+      populateYearDropdown1();
+      populateYearDropdown2();
+      populateYearDropdown3();
+
+      // Initially, we make hidden Date Dropdown Div.
+      $("#dateDropdownDiv").toggle();
+
+      // Add click event on selectedDateField and called toggle method on dateDropdownDiv
+      $("#selectedDateField").click(function () {
+        $("#dateDropdownDiv").toggle();
+      });
+    };
+
+    function populateYearDropdown() {
+      const currentYear = new Date().getFullYear();
+      for (let i = currentYear; i >= 1950; i--) {
+        const option = document.createElement("OPTION");
+        option.innerHTML = i;
+        option.value = i;
+        yearDropdownField.append(option);
+      }
+    }
+    function populateYearDropdown1() {
+      const currentYear = new Date().getFullYear();
+      for (let i = currentYear; i >= 1950; i--) {
+        const option = document.createElement("OPTION");
+        option.innerHTML = i;
+        option.value = i;
+        yearDropdownField1.append(option);
+      }
+    }
+    function populateYearDropdown2() {
+      const currentYear = new Date().getFullYear();
+      for (let i = currentYear; i >= 1950; i--) {
+        const option = document.createElement("OPTION");
+        option.innerHTML = i;
+        option.value = i;
+        yearDropdownField2.append(option);
+      }
+    }
+    function populateYearDropdown3() {
+      const currentYear = new Date().getFullYear();
+      for (let i = currentYear; i >= 1950; i--) {
+        const option = document.createElement("OPTION");
+        option.innerHTML = i;
+        option.value = i;
+        yearDropdownField3.append(option);
+      }
+    }
+
+    
+    function onChangeYearAndMonth($event) {
+      this.populateDateDropdown();
+    }
+
+    function onOkClick() {
+      const y = yearDropdownField.val();
+      const m = monthDropdownField.val();
+      const d = dateDropdownField.val();
+
+      // make date object by passing year, month and date value
+      const date = new Date(y, m, d);
+
+      // set date object into readonly input field
+      selectedDateField.val(date.toLocaleDateString());
+
+      // after set date, hide date dropdown div
+      $("#dateDropdownDiv").hide();
+    }
+
+    function onNowClick() {
+      const date = new Date(); // get date object
+
+      // set values
+      yearDropdownField.val(date.getFullYear());
+      monthDropdownField.val(date.getMonth());
+      dateDropdownField.val(date.getDate());
+
+      // set date value into input field
+      selectedDateField.val(date.toLocaleDateString());
+      
+      // hide date dropdown div
+      $("#dateDropdownDiv").hide();
+    }
+</script>
