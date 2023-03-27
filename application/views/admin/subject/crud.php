@@ -4,8 +4,8 @@
         
         $(document).ready(function() {
 
-            table = $('#table').DataTable({
-                "stateSave": true,
+            table = $('#example1').DataTable({
+                
                 "searching": true,
                 "processing": true,
                 "serverSide" : true,

@@ -27,7 +27,7 @@
             <button class="btn btn-success" onclick="add_subject()"><i class="glyphicon glyphicon-plus"></i> Subject</button>
             </div>
             <div class="box-body">
-              <table id="table" class="table table-bordered table-striped" style="width:100%">
+              <table id="example1" class="table table-bordered table-striped" style="width:100%">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -72,7 +72,8 @@
 <?php $this->load->view('admin/dashboard/layout/control_sidebar');?>
 </div>
 <?php $this->load->view('admin/subject/modals');?>
-<?php $this->load->view('admin/subject/crud');?>
 <?php $this->load->view('admin/user/scripts/footer');?>
+<?php $this->load->view('admin/subject/crud');?>
+
 </body>
 </html>
