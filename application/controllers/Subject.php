@@ -66,14 +66,26 @@ class Subject extends CI_Controller {
             'units' => $this->input->post('units'),
             'year_level' => $this->input->post('year_level'),
             'semester' => $this->input->post('semester'),
-            'proram_id' => $this->input->post('program_id'),
-            'created_at' => date('Y-m-d H:i:s'),
-            // 'updated_at' => date('Y-m-d H:i:s'),
+            'program_id' => $this->input->post('program_id'),
+            'date_created' => date('Y-m-d H:i:s')
         );
         $insert = $this->Subject_model->add_subject($data);
         echo json_encode(array("status" => TRUE));
     }
-
+    public function subject_update()
+    {
+        $data = array(
+            'subcode' => $this->input->post('subcode'),
+            'description' => $this->input->post('description'),
+            'units' => $this->input->post('units'),
+            'year_level' => $this->input->post('year_level'),
+            'semester' => $this->input->post('semester'),
+            'program_id' => $this->input->post('program_id'),
+            'date_updated' => date('Y-m-d H:i:s')
+        );
+        $this->Subject_model->update_subject($this->input->post('id'), $data);
+        echo json_encode(array("status" => TRUE));
+    }
     public function subject_edit($id)
     {
         $data = $this->Subject_model->get_subject($id);

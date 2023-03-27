@@ -5,6 +5,7 @@
         $(document).ready(function() {
 
             table = $('#table').DataTable({
+                "stateSave": true,
                 "searching": true,
                 "processing": true,
                 "serverSide" : true,
@@ -17,22 +18,21 @@
                 },
                 "columnDefs": [
                 { 
-                    "targets": [ -1 ], 
+                    "targets": [ 0 ], 
                     "orderable": false, 
                 },
                 ],
                 'language': {
-                'lengthMenu': 'Show _MENU_ entries',
-                'search': 'Search',
-                'zeroRecords': 'No matching records found',
-                'info': 'Showing _START_ to _END_ of _TOTAL_ entries',
-                'infoEmpty': 'Showing 0 to 0 of 0 entries',
-                'infoFiltered': '(filtered from _MAX_ total entries)',
-                'processing': '<i class="fa fa-spinner fa-spin fa-fw"></i> Loading Subjects...'
-            }
+                                'lengthMenu': 'Show _MENU_ entries',
+                                'search': 'Search',
+                                'zeroRecords': 'No matching records found',
+                                'info': 'Showing _START_ to _END_ of _TOTAL_ entries',
+                                'infoEmpty': 'Showing 0 to 0 of 0 entries',
+                                'infoFiltered': '(filtered from _MAX_ total entries)',
+                                'processing': '<i class="fa fa-spinner fa-spin fa-fw"></i> Loading Students...'
+                            }
             });
 
-            //set input/textarea/select event when change value, remove class error and remove text help block 
             $("input").change(function(){
                 $(this).parent().parent().removeClass('has-error');
                 $(this).next().empty();
@@ -52,9 +52,16 @@
                     table.search(value).draw();
                 }
             });
+            $('#select-all').click(function() {
+        // Get all checkboxes in the DataTable
+        var checkboxes = table.column(0).nodes().to$().find(':checkbox');
+        // Set the state of all checkboxes to the state of the "select all" checkbox
+        checkboxes.prop('checked', this.checked);
+        // Trigger change event on all checkboxes to update their state in DataTable's internal data model
+        checkboxes.trigger('change');
+    });
         });
-
-
+        
        
         function add_subject()
         {
@@ -62,8 +69,18 @@
             $('#form')[0].reset(); // reset form on modals
             $('.form-group').removeClass('has-error'); // clear error class
             $('.help-block').empty(); // clear error string
-            $('#subject_modal_form').modal('show'); // show bootstrap modal
-            $('.modal-title').text('Add Subject'); // Set Title to Bootstrap modal title
+            $('#modal_form').modal('show'); // show bootstrap modal
+            $('.modal-title').text('Add Student'); // Set Title to Bootstrap modal title
+        }
+
+        function add_subject2()
+        {
+            save_method = 'add';
+            $('#form')[0].reset(); // reset form on modals
+            $('.form-group').removeClass('has-error'); // clear error class
+            $('.help-block').empty(); // clear error string
+            $('#modal_form2').modal('show'); // show bootstrap modal
+            $('.modal-title').text(' Admission Form'); // Set Title to Bootstrap modal title
         }
 
         function edit_subject(id)
@@ -75,7 +92,7 @@
 
             //Ajax Load data from ajax
             $.ajax({
-                url : "<?php echo site_url('Subject/subject_edit/')?>/" + id,
+                url : "<?php echo site_url('subject/subject_edit/')?>/" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data)
@@ -87,8 +104,8 @@
                     $('[name="year_level"]').val(data.year_level);
                     $('[name="semester"]').val(data.semester);
                     $('[name="program_id"]').val(data.program_id);
-                    $('#subject_modal_form').modal('show'); 
-                    $('.modal-title').text('Edit Subject'); 
+                    $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
+                    $('.modal-title').text('Edit Student'); // Set title to Bootstrap modal title
                     
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -101,7 +118,7 @@
 
         function reload_table()
         {
-            table.ajax.reload(null,false); 
+            table.ajax.reload(null,false); //reload datatable ajax 
         }
 
         function save()
@@ -112,7 +129,7 @@
 
             if(save_method == 'add') {
             // Check for empty inputs
-            var requiredFields = ['subcode','description', 'units', 'year_level', 'semester', 'program_id'];
+            var requiredFields = ['subcode', 'description', 'units', 'year_level', 'semester', 'program_id'];
             var isValid = true;
             $.each(requiredFields, function(index, field) {
                 if (!$.trim($('[name="' + field + '"]').val())) {
@@ -121,25 +138,6 @@
                     isValid = false;
                 }
             });
-
-            if (!isValid) {
-                return false;
-            }
-            }else{
-                var requiredFields = ['subcode','description', 'units', 'year_level', 'semester', 'program_id'];
-                var isValid = true;
-                $.each(requiredFields, function(index, field) {
-                    if (!$.trim($('[name="' + field + '"]').val())) {
-                        $('[name="' + field + '"]').parent().parent().addClass('has-error');
-                        $('[name="' + field + '"]').next().text('This field is required.');
-                        isValid = false;
-                    }
-                });
-
-                if (!isValid) {
-                    return false;
-                }
-            
             }
             $('#btnSave').text('saving...'); //change button text
             $('#btnSave').attr('disabled',true); //set button disable 
@@ -152,8 +150,6 @@
             }
 
             // ajax adding data to database
-            // var formData = new FormData( $('#form')[0]);
-            // $('#form').serialize()
             $.ajax({
                 url : url,
                 type: "POST",
@@ -161,19 +157,20 @@
                 dataType: "JSON",
                 success: function(data)
                 {
+                    console.log(data);
                     if(data.status) //if success close modal and reload ajax table
                     {
                         // if adding data
                         if(save_method == 'add'){
-                            $('#subject_modal_form').modal('hide');
+                            $('#modal_form').modal('hide');
                             reload_table();
-                            var stat = 'Subject Added';
+                            var stat = 'subject Added';
                             success(stat);
                         // if updating data
                         }else{
-                            $('#subject_modal_form').modal('hide');
+                            $('#modal_form').modal('hide');
                             reload_table();
-                            var stat = 'Subject Updated';
+                            var stat = 'subject Updated';
                             success(stat);
                         }
                     }
@@ -184,13 +181,6 @@
                             $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                             
                         }
-                        // if (data.inputerror && data.inputerror.length) {
-                        //     for (var i = 0; i < data.inputerror.length; i++) {
-                        //         $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error');
-                        //         $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]);
-                        //     }
-                        //     }
-
                     }
                     $('#btnSave').text('save'); //change button text
                     $('#btnSave').attr('disabled',false); //set button enable 
@@ -207,8 +197,33 @@
                 }
             });
         }
+        //LOAD COURSES 
+        $.ajax({
+            url: '<?php echo base_url("Subject/get_courses"); ?>',
+            dataType: 'json',
+            success: function(courses) {
+                // Populate the dropdown list with the courses
+                var options = '';
+                $.each(courses, function(index, course) {
+                    options += '<option value="' + course.course + '">' + course.course + '</option>';
+                });
+                $('#course').html(options);
+            }
+        });
+        //LOAD Year Level 
+        $.ajax({
+            url: '<?php echo base_url("Subject/get_year_level"); ?>',
+            dataType: 'json',
+            success: function(year_level) {
+                // Populate the dropdown list with the courses
+                var options = '';
+                $.each(year_level, function(index, year_level) {
+                    options += '<option value="' + year_level.year + '">' + year_level.year + '</option>';
+                });
+                $('#year_level').html(options);
+            }
+        });
         function delete_subject(id) {
-            // console.log(id);
             var modal = deletemodal(function(result) {
                 if (result) {
                     // ajax delete data from database
@@ -217,9 +232,9 @@
                         type: "POST",
                         dataType: "JSON",
                         success: function(data) {
-                            $('#subject_modal_form').modal('hide');
+                            $('#modal_form').modal('hide');
                             reload_table();
-                            var stat = 'Subject Deleted';
+                            var stat = 'subject Deleted';
                             success(stat);
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
@@ -231,6 +246,83 @@
             });
         }
 
+
+
+
+        $('#delete-selected').click(function() {
+            var selected = $('input[name="selected[]"]:checked'); // get all checked checkboxes
+            var ids = selected.map(function() {
+                return this.value;
+            }).get(); // extract the value (ID) of each checked checkbox
+            if (ids.length === 0) {
+                // show an error message if no checkboxes are selected
+                alert('Please select at least one subject to delete.');
+                return false;
+            }
+            var modal = deletemodal(function(result) {
+                if (result) {
+                    // send the selected IDs to the delete controller method via AJAX
+                    $.ajax({
+                        url: '<?php echo site_url("subject/delete_multiple"); ?>',
+                        type: 'POST',
+                        data: {ids: ids},
+                        success: function(response) {
+                            // handle the response from the server (e.g. reload the DataTable)
+                            $('#modal_form').modal('hide');
+                            reload_table();
+                            var stat = 'subjects Deleted';
+                            success(stat);
+                        },
+                        error: function(xhr) {
+                            // handle any errors that occur
+                            var stat = 'Delete Failed';
+                            error(stat);
+                        }
+                    });
+                }
+            });
+        });
+
+        $(document).ready(function() {
+        $('#update_btn').click(function() {
+            var selectedsubjects = $('input[name="selected[]"]:checked');
+            if (selectedsubjects.length === 0) {
+            alert('Please select at least one subject.');
+            } else {
+            $('#class_modal').modal('show');
+            }
+        });
+
+        $('#save_class_btn').click(function() {
+            var class_id = $('#class_id').val();
+            var subject_ids = $('input[name="selected[]"]:checked').map(function() {
+            return this.value;
+            }).get();
+
+            if (subject_ids.length === 0) {
+            alert('Please select at least one subject.');
+            return;
+            }
+
+            $.ajax({
+            type: "POST",
+            url: "<?php echo site_url('subject/update_class_id'); ?>",
+            data: {class_id: class_id, subject_ids: subject_ids},
+            success: function(response) {
+                reload_table();
+                var stat = response;
+                success(stat);
+            }
+            });
+
+            $('#class_modal').modal('hide');
+        });
+        });
+
+
+
+
+        
         // TOASTR
         function success(stat){
             toastr.options = {
@@ -319,13 +411,13 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Delete Announcement</h5>
+                            <h5 class="modal-title">Delete subject/s</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Are you sure you want to delete this announcement?</p>
+                            <p>Are you sure you want to delete this subject/s?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -363,7 +455,6 @@
         // Return the modal element
         return $('#delete_modal');
     }
-
 
     </script>
 

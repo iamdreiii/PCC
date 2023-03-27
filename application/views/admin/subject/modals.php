@@ -1,4 +1,4 @@
-<div class="modal fade" id="subject_modal_form" role="dialog" tabindex="-1">
+<div class="modal fade" id="modal_form" role="dialog" tabindex="-1">
     <div class="modal-dialog " role="document" style="width:500px;">
         <div class="modal-content">
             <div class="modal-header">
@@ -27,8 +27,8 @@
                                     <span class="help-block"></span>
                                 </div>
                                 <div class="col-xs-6">
-                                    <select name="yeal_level" class="form-control">
-                                        <option value="">Select Year Level</option>
+                                    <select name="year_level" class="form-control">
+                                        <option>Select Year Level</option>
                                         <option value="1">First Year</option>
                                         <option value="2">Second Year</option>
                                         <option value="3">Third Year</option>
@@ -40,7 +40,7 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <select name="semester" class="form-control">
-                                        <option value="">Select Semester</option>
+                                        <option>Select Semester</option>
                                         <option value="1">First Semester</option>
                                         <option value="2">Second Semester</option>
                                     </select>
@@ -48,9 +48,9 @@
                                 </div>
                                 <div class="col-xs-6">
                                     <select name="program_id" class="form-control" id="">
-                                        <option value="">Select Program</option>
-                                        <option value="1">BPA</option>
-                                        <option value="2">BSE</option>
+                                        <option>Select Program</option>
+                                        <option value="1">BSE</option>
+                                        <option value="2">BPA</option>
                                     </select>
                                     <span class="help-block"></span>
                                 </div>

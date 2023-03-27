@@ -22,7 +22,7 @@ class Subject_model extends CI_Model
         return $this->db->insert_id();
     }
 
-    public function update_update($id, $data)
+    public function update_subject($id, $data)
     {
         $this->db->where('id', $id);
         return $this->db->update('tbl_subject', $data);
