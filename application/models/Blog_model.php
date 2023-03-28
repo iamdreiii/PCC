@@ -55,7 +55,7 @@ class Blog_model extends CI_Model
         $this->db->delete('tbl_announcements');
         return $this->db->affected_rows();
     }
-    public function get_all_blog_search($search)
+    public function get_all_blog_search($search, $start, $length)
     {
     $this->db->select('*');
     $this->db->from('tbl_announcements');
@@ -63,6 +63,7 @@ class Blog_model extends CI_Model
         $this->db->like('title', $search);
         $this->db->or_like('description', $search);
     }
+    $this->db->limit($length, $start);
     $query = $this->db->get();
     return $query->result();
     }

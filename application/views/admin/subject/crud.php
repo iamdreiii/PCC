@@ -4,34 +4,29 @@
         
         $(document).ready(function() {
 
-            table = $('#example1').DataTable({
-                
-                "searching": true,
+            var table = $('#subjectlisttable').DataTable({
+               
                 "processing": true,
-                "serverSide" : true,
-                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-                "pageLength": 10,
+                "serverSide": true,
                 "order": [],
                 "ajax": {
                     "url": "<?php echo site_url('Subject/subject_list')?>",
                     "type": "POST"
                 },
                 "columnDefs": [
-                { 
-                    "targets": [ 0 ], 
-                    "orderable": false, 
-                },
+                    { 
+                        "targets": [ 0 ], 
+                        "orderable": false 
+                    }
                 ],
-                'language': {
-                                'lengthMenu': 'Show _MENU_ entries',
-                                'search': 'Search',
-                                'zeroRecords': 'No matching records found',
-                                'info': 'Showing _START_ to _END_ of _TOTAL_ entries',
-                                'infoEmpty': 'Showing 0 to 0 of 0 entries',
-                                'infoFiltered': '(filtered from _MAX_ total entries)',
-                                'processing': '<i class="fa fa-spinner fa-spin fa-fw"></i> Loading Students...'
-                            }
-            });
+                "pagingType": "full_numbers",
+                "pageLength": 10,
+                "lengthChange": true,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                    });
+
+           
+
 
             $("input").change(function(){
                 $(this).parent().parent().removeClass('has-error');
@@ -52,14 +47,6 @@
                     table.search(value).draw();
                 }
             });
-            $('#select-all').click(function() {
-        // Get all checkboxes in the DataTable
-        var checkboxes = table.column(0).nodes().to$().find(':checkbox');
-        // Set the state of all checkboxes to the state of the "select all" checkbox
-        checkboxes.prop('checked', this.checked);
-        // Trigger change event on all checkboxes to update their state in DataTable's internal data model
-        checkboxes.trigger('change');
-    });
         });
         
        
@@ -92,7 +79,7 @@
 
             //Ajax Load data from ajax
             $.ajax({
-                url : "<?php echo site_url('subject/subject_edit/')?>/" + id,
+                url : "<?php echo site_url('Subject/subject_edit/')?>/" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data)
@@ -157,7 +144,7 @@
                 dataType: "JSON",
                 success: function(data)
                 {
-                    console.log(data);
+                    //console.log(data);
                     if(data.status) //if success close modal and reload ajax table
                     {
                         // if adding data

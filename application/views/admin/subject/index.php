@@ -27,7 +27,7 @@
             <button class="btn btn-success" onclick="add_subject()"><i class="glyphicon glyphicon-plus"></i> Subject</button>
             </div>
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped" style="width:100%">
+              <table id="subjectlisttable" class="table table-bordered table-striped" style="width:100%">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -40,8 +40,9 @@
                     <th width="14%">Action</th>
                 </tr>
                 </thead>
-                <tbody>
-                </tbody>
+                  <tbody>
+
+                  </tbody>
                 <tfoot>
                 <tr>
                     <th>#</th>

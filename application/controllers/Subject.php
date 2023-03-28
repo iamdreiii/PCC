@@ -29,21 +29,35 @@ class Subject extends CI_Controller {
     {
         
         $search = $this->input->post("search")['value'];
-        $list = $this->Subject_model->get_all_subject_search($search);
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Subject_model->get_all_subject_search($search,$start, $length);
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $subject) {
             $no++;
             $row = array();
-            $row[] = $subject->id;
+            $row[] = $subject->subjectid;
             $row[] = $subject->subcode;
             $row[] = $subject->description;
             $row[] = $subject->units;
-            $row[] = $subject->year_level;
-            $row[] = $subject->semester;
-            $row[] = $subject->program_id;
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_subject('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_subject('."'".$subject->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            if($subject->year_level == 1){
+                $row[] = '1st Year';
+            }elseif($subject->year_level == 2){
+                $row[] = '2nd Year';
+            }elseif($subject->year_level == 3){
+                $row[] = '3rd Year';
+            }elseif($subject->year_level == 4){
+                $row[] = '4th Year';
+            }
+            if($subject->semester == 1){
+                $row[] = '1st Semester';
+            }else{
+                $row[] = '2nd Semester';
+            }
+            $row[] = $subject->program;
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_subject('."'".$subject->subjectid."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_subject('."'".$subject->subjectid."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
             $data[] = $row;
         }
         $filteredCount = $this->Subject_model->count_filtered();
@@ -96,5 +110,7 @@ class Subject extends CI_Controller {
         $this->Subject_model->delete_subject($id);
         echo json_encode(array("status" => TRUE));
     }
+    // SUBEJCT PRE REQ
+    
 
 }

@@ -45,7 +45,9 @@ class Blog extends CI_Controller {
     {
         
         $search = $this->input->post("search")['value'];
-        $list = $this->Blog_model->get_all_blog_search($search);
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Blog_model->get_all_blog_search($search, $start, $length);
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $blog) {

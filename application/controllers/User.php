@@ -26,7 +26,9 @@ class User extends CI_Controller {
         // $filter_year_level = $this->input->post("filter_year_level");
         // $filter_gender = $this->input->post("filter_gender");
         // , $filter_class, $filter_year_level, $filter_gender
-        $list = $this->Users_model->get_all_users_search($search);
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Users_model->get_all_users_search($search, $start, $length);
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $user) {

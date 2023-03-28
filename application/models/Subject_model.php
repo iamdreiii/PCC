@@ -43,10 +43,11 @@ class Subject_model extends CI_Model
         $this->db->delete('tbl_subject');
         return $this->db->affected_rows();
     }
-    public function get_all_subject_search($search)
+    public function get_all_subject_search($search, $start, $length)
     {
-    $this->db->select('*');
+    $this->db->select('*, tbl_subject.id as subjectid');
     $this->db->from('tbl_subject');
+    $this->db->join('tbl_program', 'tbl_subject.program_id = tbl_program.id');
     $this->db->order_by('year_level');
     $this->db->order_by('semester');
     if (!empty($search)) {
@@ -55,6 +56,7 @@ class Subject_model extends CI_Model
         $this->db->or_like('year_level', $search);
         $this->db->or_like('semester', $search);
     }
+    $this->db->limit($length, $start);
     $query = $this->db->get();
     return $query->result();
     }

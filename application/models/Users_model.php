@@ -63,7 +63,7 @@ class Users_model extends CI_Model
         return ($query->num_rows() > 0) ? true : false;
     }
     // , $filter_class, $filter_year_level, $filter_gender
-    public function get_all_users_search($search)
+    public function get_all_users_search($search, $start, $length)
     {
     $this->db->select('*');
     $this->db->from('tbl_user');
@@ -80,6 +80,7 @@ class Users_model extends CI_Model
         $this->db->or_like('address', $search);
         $this->db->or_like('enrollment_status', $search);
     }
+    $this->db->limit($length, $start);
     $query = $this->db->get();
     return $query->result();
     }
