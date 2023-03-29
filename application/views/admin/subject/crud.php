@@ -19,10 +19,10 @@
                         "orderable": false 
                     }
                 ],
-                "pagingType": "full_numbers",
-                "pageLength": 10,
-                "lengthChange": true,
-                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                // "pagingType": "full_numbers",
+                // "pageLength": 10,
+                // "lengthChange": true,
+                // "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                     });
 
            
@@ -105,7 +105,7 @@
 
         function reload_table()
         {
-            table.ajax.reload(null,false); //reload datatable ajax 
+            table.ajax.reload(null,false); 
         }
 
         function save()
@@ -151,13 +151,13 @@
                         if(save_method == 'add'){
                             $('#modal_form').modal('hide');
                             reload_table();
-                            var stat = 'subject Added';
+                            var stat = 'Subject Added';
                             success(stat);
                         // if updating data
                         }else{
                             $('#modal_form').modal('hide');
                             reload_table();
-                            var stat = 'subject Updated';
+                            var stat = 'Subject Updated';
                             success(stat);
                         }
                     }

@@ -16,17 +16,11 @@ class Prereq_model extends CI_Model
         return $query->result();
     }
 
-    public function add_prereq($data)
-    {
-        $this->db->insert('tbl_subject_prereq', $data);
-        return $this->db->insert_id();
-    }
-
     public function update_prereq($id, $data)
     {
         $this->db->where('id', $id);
-        return $this->db->update('tbl_subject_prereq', $data);
-    }
+        return $this->db->update('tbl_subject', $data);
+    }   
     public function get_subject($id)
     {
         
@@ -45,91 +39,83 @@ class Prereq_model extends CI_Model
     }
     public function get_sub1()
     {
-    $this->db->select('*, tbl_subject.id as subid, tbl_subject_prereq.prereq_subject_id as subcodeid');
+    $this->db->select('*');
     $this->db->from('tbl_subject');
-    $this->db->join('tbl_subject_prereq', 'tbl_subject_prereq.prereq_subject_id = tbl_subject.id', 'left');
     $this->db->where('year_level', 1);
     $this->db->where('semester', 1);
-    $this->db->order_by('tbl_subject.id');
+    $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
     }
 
     public function get_sub2()
     {
-    $this->db->select('*, tbl_subject.id as subid, tbl_subject_prereq.prereq_subject_id as subcodeid');
+    $this->db->select('*');
     $this->db->from('tbl_subject');
-    $this->db->join('tbl_subject_prereq', 'tbl_subject_prereq.subject_id  = tbl_subject.id', 'left');
     $this->db->where('year_level', 1);
     $this->db->where('semester', 2);
-    $this->db->order_by('tbl_subject.id');
+    $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
     }
     public function get_sub3()
     {
-    $this->db->select('*, tbl_subject.id as subid, tbl_subject_prereq.prereq_subject_id as subcodeid');
+    $this->db->select('*');
     $this->db->from('tbl_subject');
-    $this->db->join('tbl_subject_prereq', 'tbl_subject_prereq.subject_id  = tbl_subject.id', 'left');
     $this->db->where('year_level', 2);
     $this->db->where('semester', 1);
-    $this->db->order_by('tbl_subject.id');
+    $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
     }
     public function get_sub4()
     {
-    $this->db->select('*, tbl_subject.id as subid,tbl_subject_prereq.prereq_subject_id as subcodeid');
+    $this->db->select('*');
     $this->db->from('tbl_subject');
-    $this->db->join('tbl_subject_prereq', 'tbl_subject_prereq.subject_id  = tbl_subject.id', 'left');
     $this->db->where('year_level', 2);
     $this->db->where('semester', 2);
-    $this->db->order_by('tbl_subject.id');
+    $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
     }
     public function get_sub5()
     {
-    $this->db->select('*, tbl_subject.id as subid,tbl_subject_prereq.prereq_subject_id as subcodeid');
+    $this->db->select('*');
     $this->db->from('tbl_subject');
-    $this->db->join('tbl_subject_prereq', 'tbl_subject_prereq.subject_id  = tbl_subject.id', 'left');
     $this->db->where('year_level', 3);
     $this->db->where('semester', 1);
-    $this->db->order_by('tbl_subject.id');
+    $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
     }
     public function get_sub6()
     {
-    $this->db->select('*, tbl_subject.id as subid,tbl_subject_prereq.prereq_subject_id as subcodeid');
+    $this->db->select('*');
     $this->db->from('tbl_subject');
-    $this->db->join('tbl_subject_prereq', 'tbl_subject_prereq.subject_id  = tbl_subject.id', 'left');
     $this->db->where('year_level', 3);
     $this->db->where('semester', 2);
-    $this->db->order_by('tbl_subject.id');
+    $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
     }
 
     public function get_sub7()
     {
-    $this->db->select('*, tbl_subject.id as subid,tbl_subject_prereq.prereq_subject_id as subcodeid');
+    $this->db->select('*');
     $this->db->from('tbl_subject');
-    $this->db->join('tbl_subject_prereq', 'tbl_subject_prereq.subject_id  = tbl_subject.id', 'left');
     $this->db->where('year_level', 4);
     $this->db->where('semester', 1);
-    $this->db->order_by('tbl_subject.id');
+    $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
     }
     public function get_sub8()
     {
-    $this->db->select('*, tbl_subject.id as subid,tbl_subject_prereq.prereq_subject_id as subcodeid');
+    $this->db->select('*');
     $this->db->from('tbl_subject');
-    $this->db->join('tbl_subject_prereq', 'tbl_subject_prereq.subject_id  = tbl_subject.id', 'left');
     $this->db->where('year_level', 4);
     $this->db->where('semester', 2);
-    $this->db->order_by('tbl_subject.id');
+    $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
     }
@@ -174,7 +160,7 @@ class Prereq_model extends CI_Model
     return $query->result();
     }
 
-    public function fetch_subject($id)
+    public function prereq_edit1($id)
     {
         $this->db->select('*');
         $this->db->from('tbl_subject');

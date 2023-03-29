@@ -208,23 +208,22 @@ table8 = $('#table8').DataTable({
 function edit_prereq(id)
 {
     save_method = 'update';
-    $('#form')[0].reset(); // reset form on modals
+    $('#form1')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
 
     //Ajax Load data from ajax
     $.ajax({
-        url : "<?php echo site_url('Prereq/prereq_edit')?>/" + id,
+        url : "<?php echo site_url('Prereq/prereq_edit1')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
+            //console.log(data);
             $('[name="id"]').val(data.id);
-            $('[name="subcode"]').val(data.subcode);
-            $('[name="description"]').val(data.description);
-            $('[name="units"]').val(data.units);
-            $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Subject Prerequisite'); // Set title to Bootstrap modal title
+            $('[name="subjects1"]').val(data.subcode);
+            $('#modal_form1').modal('show'); // show bootstrap modal when complete loaded
+            $('.modal-title').text('Update Subject Prerequisite'); // Set title to Bootstrap modal title
             
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -237,7 +236,7 @@ function edit_prereq(id)
 
 function reload_table()
 {
-    table1.ajax.reload(null,false); //reload datatable ajax 
+    table1.ajax.reload(null,false); 
     table2.ajax.reload(null,false);
     table3.ajax.reload(null,false);
     table4.ajax.reload(null,false);
@@ -246,53 +245,13 @@ function reload_table()
     table7.ajax.reload(null,false);
     table8.ajax.reload(null,false);
 }
-function add_prereq(id)
-        {
-            save_method = 'add';
-            $('#form')[0].reset(); // reset form on modals
-            $('.form-group').removeClass('has-error'); // clear error class
-            $('.help-block').empty(); // clear error string
-            //Ajax Load data from ajax
-        $.ajax({
-            url : "<?php echo site_url('Prereq/prereq_edit')?>/" + id,
-            type: "GET",
-            dataType: "JSON",
-            success: function(data)
-            {
-                $('[name="subcode"]').val(data.subcode);
-                $('[name="description"]').val(data.description);
-                $('[name="units"]').val(data.units);
-                $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-                $('.modal-title').text('Add Subject Prerequisite'); // Set title to Bootstrap modal title
-                
-            },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                var stat = 'Error Loading Data';
-                error(stat);
-            }
-        });
-        }
 function save()
         {
-            // Reset error messages
             $('.form-group').removeClass('has-error');
             $('.help-block').empty();
 
-            if(save_method == 'add') {
-            // Check for empty inputs
-            var requiredFields = ['subcode', 'description', 'units', 'subjects'];
-            var isValid = true;
-            $.each(requiredFields, function(index, field) {
-                if (!$.trim($('[name="' + field + '"]').val())) {
-                    $('[name="' + field + '"]').parent().parent().addClass('has-error');
-                    $('[name="' + field + '"]').next().text('This field is required.');
-                    isValid = false;
-                }
-            });
-            }
-            $('#btnSave').text('saving...'); //change button text
-            $('#btnSave').attr('disabled',true); //set button disable 
+            $('#btnSave').text('saving...'); 
+            $('#btnSave').attr('disabled',true); 
             var url;
 
             if(save_method == 'add') {
@@ -300,27 +259,28 @@ function save()
             } else {
                 url = "<?php echo site_url('Prereq/prereq_update')?>";
             }
-
+            //console.log($('#form').serialize());
             // ajax adding data to database
             $.ajax({
                 url : url,
                 type: "POST",
-                data: $('#form').serialize(),
+                data: $('#form1').serialize(),
+                
                 dataType: "JSON",
                 success: function(data)
                 {
-                    console.log(data);
-                    if(data.status) //if success close modal and reload ajax table
+                    
+                    if(data.status)
                     {
                         // if adding data
                         if(save_method == 'add'){
-                            $('#modal_form').modal('hide');
+                            $('#modal_form1').modal('hide');
                             reload_table();
                             var stat = 'Subject Added';
                             success(stat);
                         // if updating data
                         }else{
-                            $('#modal_form').modal('hide');
+                            $('#modal_form1').modal('hide');
                             reload_table();
                             var stat = 'Subject Prerequisite Updated';
                             success(stat);
@@ -329,13 +289,13 @@ function save()
                     else
                     {
                         for (var i = 0; i < data.inputerror.length; i++) {
-                            $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
-                            $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+                            $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); 
+                            $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); 
                             
                         }
                     }
-                    $('#btnSave').text('save'); //change button text
-                    $('#btnSave').attr('disabled',false); //set button enable 
+                    $('#btnSave').text('save');
+                    $('#btnSave').attr('disabled',false);
 
 
                 },
@@ -343,27 +303,42 @@ function save()
                 {
                     var stat = 'Add/Update Failed';
                     error(stat);
-                    $('#btnSave').text('save'); //change button text
-                    $('#btnSave').attr('disabled',false); //set button enable 
+                    $('#btnSave').text('save'); 
+                    $('#btnSave').attr('disabled',false); 
 
                 }
             });
         }
 
-// LOAD Subjects
-$.ajax({
-    url: '<?php echo base_url("Prereq/get_subjects"); ?>',
-    dataType: 'json',
-    success: function(subject) {
-        // Populate the dropdown list with the courses
-        var options = '';
-        $.each(subject, function(index, subject) {
-            options += '<option value="' + subject.id + '">' + subject.subcode + ' - ' + subject.description + '</option>';
-        });
-        $('#subjects').html(options);
-    }
-});
-// TOASTR
+    // LOAD Subjects
+    $.ajax({
+        url: '<?php echo base_url("Prereq/get_subjects"); ?>',
+        dataType: 'json',
+        success: function(subject) {
+            // Populate the dropdown list with the courses
+            var options = '';
+            $.each(subject, function(index, subject) {
+                options += '<option>Select Subject</option></option>/';
+                options += '<option value="' + subject.id + '">' + subject.subcode + ' - ' + subject.description + '</option>';
+            });
+            $('#subjects').html(options);
+        }
+    });
+    $.ajax({
+        url: '<?php echo base_url("Prereq/get_subjects"); ?>',
+        dataType: 'json',
+        success: function(subject) {
+            // Populate the dropdown list with the courses
+            var options = '';
+            options += '<option value"none">NONE</option>';
+            $.each(subject, function(index, subject) {
+                
+                options += '<option value="' + subject.subcode + '">' + subject.subcode + ' - ' + subject.description + '</option>';
+            });
+            $('#subjects1').html(options);
+        }
+    });
+    // TOASTR
 function success(stat){
     toastr.options = {
                         "closeButton": true,

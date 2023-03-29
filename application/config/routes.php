@@ -71,4 +71,5 @@ $route['blog-view'] = 'Blog/viewfiles';
 $route['get_latest_video_urls/(:any)'] = 'Blog/get_latest_video_urls/$1';
 // Subject
 $route['Subject'] = 'Subject/index';
-$route['Subject_Prereq'] = 'Prereq/index';
+$route['Subject_Prereq_BSE'] = 'Prereq/bseindex';
+$route['Subject_Prereq_BPA'] = 'Prereq/bpaindex';

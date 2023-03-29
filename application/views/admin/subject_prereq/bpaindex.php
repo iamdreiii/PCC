@@ -33,7 +33,7 @@
                         <th>Description</th>
                         <th style="width:5%">Units</th>
                         <th style="width:10%">PRE-REQ</th>
-                        <th style="width:20%">Action</th>
+                        <th style="width:10%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,7 +55,7 @@
                         <th>Description</th>
                         <th style="width:5%">Units</th>
                         <th style="width:10%">PRE-REQ</th>
-                        <th style="width:20%">Action</th>
+                        <th style="width:10%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,7 +81,7 @@
                         <th>Description</th>
                         <th style="width:5%">Units</th>
                         <th style="width:10%">PRE-REQ</th>
-                        <th style="width:20%">Action</th>
+                        <th style="width:10%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -103,7 +103,7 @@
                         <th>Description</th>
                         <th style="width:5%">Units</th>
                         <th style="width:10%">PRE-REQ</th>
-                        <th style="width:20%">Action</th>
+                        <th style="width:10%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -129,7 +129,7 @@
                         <th>Description</th>
                         <th style="width:5%">Units</th>
                         <th style="width:10%">PRE-REQ</th>
-                        <th style="width:20%">Action</th>
+                        <th style="width:10%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -151,7 +151,7 @@
                         <th>Description</th>
                         <th style="width:5%">Units</th>
                         <th style="width:10%">PRE-REQ</th>
-                        <th style="width:20%">Action</th>
+                        <th style="width:10%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -177,7 +177,7 @@
                         <th>Description</th>
                         <th style="width:5%">Units</th>
                         <th style="width:10%">PRE-REQ</th>
-                        <th style="width:20%">Action</th>
+                        <th style="width:10%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -199,7 +199,7 @@
                         <th>Description</th>
                         <th style="width:5%">Units</th>
                         <th style="width:10%">PRE-REQ</th>
-                        <th style="width:20%">Action</th>
+                        <th style="width:10%">Action</th>
                     </tr>
                 </thead>
                 <tbody>

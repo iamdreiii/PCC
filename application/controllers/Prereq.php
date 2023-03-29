@@ -9,12 +9,12 @@ class Prereq extends CI_Controller {
       $this->load->helper('url', 'form');
       $this->load->library('session');
     }
-	public function index()
+	public function bseindex()
 	{
         
         if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
         {
-            $page = 'index';
+            $page = 'bseindex';
             if(!file_exists(APPPATH.'views/admin/subject_prereq/'.$page.'.php')){
                 show_404();
             }
@@ -35,9 +35,12 @@ class Prereq extends CI_Controller {
             $row[] = $subject->subcode;
             $row[] = $subject->description;
             $row[] = $subject->units;
-            $row[] = 'none';
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."$subject->subid".')"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-sm btn-success" href="javascript:void(0)" title="Add" onclick="add_prereq('."$subject->subid".')"><i class="glyphicon glyphicon-plus"></i></a>';
+            if(empty($subject->prereq)){
+                $row[] = 'none';
+            }else{
+                $row[] = $subject->prereq;
+            }
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."$subject->id".')"><i class="glyphicon glyphicon-pencil"></i></a>';
             $data[] = $row;
         }
         $filteredCount = $this->Subject_model->count_filtered();
@@ -61,13 +64,12 @@ class Prereq extends CI_Controller {
             $row[] = $subject->subcode;
             $row[] = $subject->description;
             $row[] = $subject->units;
-            if(empty($subject->subcodeid)){
+            if(empty($subject->prereq)){
                 $row[] = 'none';
             }else{
-                $row[] = $subject->prereq_subcode;
+                $row[] = $subject->prereq;
             }
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->subid."'".')"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-sm btn-success" href="javascript:void(0)" title="Add" onclick="add_prereq('."$subject->subid".')"><i class="glyphicon glyphicon-plus"></i></a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
             $data[] = $row;
         }
         $filteredCount = $this->Subject_model->count_filtered();
@@ -91,13 +93,12 @@ class Prereq extends CI_Controller {
             $row[] = $subject->subcode;
             $row[] = $subject->description;
             $row[] = $subject->units;
-            if(empty($subject->subcodeid)){
+            if(empty($subject->prereq)){
                 $row[] = 'none';
             }else{
-                $row[] = $subject->prereq_subcode;
+                $row[] = $subject->prereq;
             }
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->subid."'".')"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-sm btn-success" href="javascript:void(0)" title="Add" onclick="add_prereq('."$subject->subid".')"><i class="glyphicon glyphicon-plus"></i></a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
             $data[] = $row;
         }
         $filteredCount = $this->Subject_model->count_filtered();
@@ -121,13 +122,12 @@ class Prereq extends CI_Controller {
             $row[] = $subject->subcode;
             $row[] = $subject->description;
             $row[] = $subject->units;
-            if(empty($subject->subcodeid)){
+            if(empty($subject->prereq)){
                 $row[] = 'none';
             }else{
-                $row[] = $subject->prereq_subcode;
+                $row[] = $subject->prereq;
             }
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('.$subject->subid.')"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-sm btn-success" href="javascript:void(0)" title="Add" onclick="add_prereq('."$subject->subid".')"><i class="glyphicon glyphicon-plus"></i></a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('.$subject->id.')"><i class="glyphicon glyphicon-pencil"></i></a>';
             $data[] = $row;
         }
         $filteredCount = $this->Subject_model->count_filtered();
@@ -151,13 +151,12 @@ class Prereq extends CI_Controller {
             $row[] = $subject->subcode;
             $row[] = $subject->description;
             $row[] = $subject->units;
-            if(empty($subject->subcodeid)){
+            if(empty($subject->prereq)){
                 $row[] = 'none';
             }else{
-                $row[] = $subject->prereq_subcode;
+                $row[] = $subject->prereq;
             }
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->subid."'".')"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-sm btn-success" href="javascript:void(0)" title="Add" onclick="add_prereq('."$subject->subid".')"><i class="glyphicon glyphicon-plus"></i></a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
             $data[] = $row;
         }
         $filteredCount = $this->Subject_model->count_filtered();
@@ -181,13 +180,12 @@ class Prereq extends CI_Controller {
             $row[] = $subject->subcode;
             $row[] = $subject->description;
             $row[] = $subject->units;
-            if(empty($subject->subcodeid)){
+            if(empty($subject->prereq)){
                 $row[] = 'none';
             }else{
-                $row[] = $subject->prereq_subcode;
+                $row[] = $subject->prereq;
             }
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->subid."'".')"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-sm btn-success" href="javascript:void(0)" title="Add" onclick="add_prereq('."$subject->subid".')"><i class="glyphicon glyphicon-plus"></i></a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
             $data[] = $row;
         }
         $filteredCount = $this->Subject_model->count_filtered();
@@ -211,13 +209,12 @@ class Prereq extends CI_Controller {
             $row[] = $subject->subcode;
             $row[] = $subject->description;
             $row[] = $subject->units;
-            if(empty($subject->subcodeid)){
+            if(empty($subject->prereq)){
                 $row[] = 'none';
             }else{
-                $row[] = $subject->prereq_subcode;
+                $row[] = $subject->prereq;
             }
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->subid."'".')"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-sm btn-success" href="javascript:void(0)" title="Add" onclick="add_prereq('."$subject->subid".')"><i class="glyphicon glyphicon-plus"></i></a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
             $data[] = $row;
         }
         $filteredCount = $this->Subject_model->count_filtered();
@@ -241,13 +238,12 @@ class Prereq extends CI_Controller {
             $row[] = $subject->subcode;
             $row[] = $subject->description;
             $row[] = $subject->units;
-            if(empty($subject->subcodeid)){
+            if(empty($subject->prereq)){
                 $row[] = 'none';
             }else{
-                $row[] = $subject->prereq_subcode;
+                $row[] = $subject->prereq;
             }
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->subid."'".')"><i class="glyphicon glyphicon-pencil"></i></a>
-                        <a class="btn btn-sm btn-success" href="javascript:void(0)" title="Add" onclick="add_prereq('."$subject->subid".')"><i class="glyphicon glyphicon-plus"></i></a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
             $data[] = $row;
         }
         $filteredCount = $this->Subject_model->count_filtered();
@@ -261,24 +257,10 @@ class Prereq extends CI_Controller {
         );
         echo json_encode($output);
     }
-    
-    public function prereq_add()
-    {
-        $data = array(
-            'subject_id' => $this->input->post('id'),
-            'prereq_subcode' => $this->input->post('subcode'),
-            'prereq_subject_id' => $this->input->post('subjects'),
-            'date_created' => date('Y-m-d H:i:s')
-        );
-        $insert = $this->Prereq_model->add_prereq($data);
-        echo json_encode(array("status" => TRUE));
-    }
     public function prereq_update()
     {
         $data = array(
-            'subject_id' => $this->input->post('subjects'),
-            'prereq_subcode' => $this->input->post('subcode'),
-            'prereq_subject_id' => $this->input->post('subjects'),
+            'prereq' => $this->input->post('subjects1'),
             'date_updated' => date('Y-m-d H:i:s')
         );
         $this->Prereq_model->update_prereq($this->input->post('id'), $data);
@@ -299,10 +281,9 @@ class Prereq extends CI_Controller {
         $subject = $this->Prereq_model->get_subjects();
         echo json_encode($subject);
     }
-    
-    public function prereq_edit($id)
+    public function prereq_edit1($id)
     {
-        $data = $this->Prereq_model->fetch_subject($id);
+        $data = $this->Prereq_model->prereq_edit1($id);
         echo json_encode($data);
     }
 
