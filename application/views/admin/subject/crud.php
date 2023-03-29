@@ -4,7 +4,7 @@
         
         $(document).ready(function() {
 
-            var table = $('#subjectlisttable').DataTable({
+            table = $('#example').DataTable({
                
                 "processing": true,
                 "serverSide": true,
@@ -19,10 +19,10 @@
                         "orderable": false 
                     }
                 ],
-                // "pagingType": "full_numbers",
-                // "pageLength": 10,
-                // "lengthChange": true,
-                // "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "pagingType": "full_numbers",
+                "pageLength": 10,
+                "lengthChange": true,
+                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
                     });
 
            
@@ -48,7 +48,11 @@
                 }
             });
         });
-        
+        function reload_table()
+        {
+            table.ajax.reload(null,false); 
+        }
+
        
         function add_subject()
         {
@@ -103,11 +107,7 @@
             });
         }
 
-        function reload_table()
-        {
-            table.ajax.reload(null,false); 
-        }
-
+        
         function save()
         {
             // Reset error messages

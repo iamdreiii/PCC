@@ -146,7 +146,7 @@
   </div>
 
 <style>
-    .text-on-pannel {
+.text-on-pannel {
   background: #fff none repeat scroll 0 0;
   height: auto;
   margin-left: 20px;
@@ -165,6 +165,82 @@
 .panel-body {
   padding-top: 30px !important;
 }
+
+/* #dropzone {
+  position: relative;
+  border: 2px dotted #444;
+  border-radius: 20px;
+  color: #444;
+  height: 100px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100px;
+}
+
+#dropzone.hover {
+  border: 2px solid green;
+  color: #FE5;
+}
+
+#dropzone.dropped {
+  background: #fff;
+  border: 5px solid #444;
+}
+
+#dropzone div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; 
+} */
+#dropzone {
+  position: relative;
+  border: 2px dotted #444;
+  color: #444;
+  height: 100px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100px;
+}
+
+#dropzone.hover {
+  border: 2px solid green;
+  color: green;
+}
+
+#dropzone.dropped {
+  background: #fff;
+  border: 5px solid #444;
+}
+
+#dropzone div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* #dropzone img {
+  border-radius: 10px;
+  vertical-align: middle;
+  max-width: 100%;
+  max-height: 100%;
+} */
+#dropzone.dropped img {
+  padding: 20px auto;
+  max-width: 90px;
+  max-height: 90px;
+}
+#dropzone [type="file"] {
+  cursor: pointer;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 </style>
 <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
   <!-- Admission Form Modal -->
@@ -179,7 +255,15 @@
                 <form action="#" id="form2">
                         <input type="hidden" value="" name="id"/>
                         <div class="form-body">
-                            
+                                    
+                            <div class="panel panel-primary">
+                                <div class="row panel-body">
+                                <div id="dropzone">
+                                        <div><i class="glyphicon glyphicon-plus"></i> Upload</div>
+                                        <input type="file" accept="image/png,image/jpeg, application/pdf" />
+                                    </div>
+                                </div>
+                            </div>
                             <div class="panel panel-primary">
                                 <div class="row panel-body">
                                 <h4 class="text-on-pannel text-primary">Personal Information</h4>
@@ -650,4 +734,46 @@
       // hide date dropdown div
       $("#dateDropdownDiv").hide();
     }
+</script>
+<script>
+    $(function() {
+  
+  $('#dropzone').on('dragover', function() {
+    $(this).addClass('hover');
+  });
+  
+  $('#dropzone').on('dragleave', function() {
+    $(this).removeClass('hover');
+  });
+  
+  $('#dropzone input').on('change', function(e) {
+    var file = this.files[0];
+
+    $('#dropzone').removeClass('hover');
+    
+    if (this.accept && $.inArray(file.type, this.accept.split(/, ?/)) == -1) {
+      return alert('File type not allowed.');
+    }
+    
+    $('#dropzone').addClass('dropped');
+    $('#dropzone img').remove();
+    
+    if ((/^image\/(gif|png|jpeg)$/i).test(file.type)) {
+      var reader = new FileReader(file);
+
+      reader.readAsDataURL(file);
+      
+      reader.onload = function(e) {
+        var data = e.target.result,
+            $img = $('<img />').attr('src', data).fadeIn();
+        
+        $('#dropzone div').html($img);
+      };
+    } else {
+      var ext = file.name.split('.').pop();
+      
+      $('#dropzone div').html(ext);
+    }
+  });
+});
 </script>

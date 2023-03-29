@@ -24,7 +24,22 @@ class Prereq extends CI_Controller {
             redirect('staff');
         }	
 	}
-
+    public function bpaindex()
+	{
+        
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+            $page = 'bpaindex';
+            if(!file_exists(APPPATH.'views/admin/subject_prereq/'.$page.'.php')){
+                show_404();
+            }
+            $data['title'] = "Manage Subjects Prerequisites";
+            $this->load->view('admin/subject_prereq/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }	
+	}
+    // BSE
     public function sub1_list()
     {
         $list = $this->Prereq_model->get_sub1();
@@ -231,6 +246,240 @@ class Prereq extends CI_Controller {
     public function sub8_list()
     {
         $list = $this->Prereq_model->get_sub8();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $subject) {
+            $row = array();
+            $row[] = $subject->subcode;
+            $row[] = $subject->description;
+            $row[] = $subject->units;
+            if(empty($subject->prereq)){
+                $row[] = 'none';
+            }else{
+                $row[] = $subject->prereq;
+            }
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Subject_model->count_filtered();
+        $totalCount = $this->Subject_model->count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+
+    // BPA
+    public function bpa_sub1_list()
+    {
+        $list = $this->Prereq_model->bpa_get_sub1();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $subject) {
+            $row = array();
+            $row[] = $subject->subcode;
+            $row[] = $subject->description;
+            $row[] = $subject->units;
+            if(empty($subject->prereq)){
+                $row[] = 'none';
+            }else{
+                $row[] = $subject->prereq;
+            }
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."$subject->id".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Subject_model->count_filtered();
+        $totalCount = $this->Subject_model->count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_sub2_list()
+    {
+        $list = $this->Prereq_model->bpa_get_sub2();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $subject) {
+            $row = array();
+            $row[] = $subject->subcode;
+            $row[] = $subject->description;
+            $row[] = $subject->units;
+            if(empty($subject->prereq)){
+                $row[] = 'none';
+            }else{
+                $row[] = $subject->prereq;
+            }
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Subject_model->count_filtered();
+        $totalCount = $this->Subject_model->count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_sub3_list()
+    {
+        $list = $this->Prereq_model->bpa_get_sub3();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $subject) {
+            $row = array();
+            $row[] = $subject->subcode;
+            $row[] = $subject->description;
+            $row[] = $subject->units;
+            if(empty($subject->prereq)){
+                $row[] = 'none';
+            }else{
+                $row[] = $subject->prereq;
+            }
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Subject_model->count_filtered();
+        $totalCount = $this->Subject_model->count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_sub4_list()
+    {
+        $list = $this->Prereq_model->bpa_get_sub4();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $subject) {
+            $row = array();
+            $row[] = $subject->subcode;
+            $row[] = $subject->description;
+            $row[] = $subject->units;
+            if(empty($subject->prereq)){
+                $row[] = 'none';
+            }else{
+                $row[] = $subject->prereq;
+            }
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('.$subject->id.')"><i class="glyphicon glyphicon-pencil"></i></a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Subject_model->count_filtered();
+        $totalCount = $this->Subject_model->count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_sub5_list()
+    {
+        $list = $this->Prereq_model->bpa_get_sub5();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $subject) {
+            $row = array();
+            $row[] = $subject->subcode;
+            $row[] = $subject->description;
+            $row[] = $subject->units;
+            if(empty($subject->prereq)){
+                $row[] = 'none';
+            }else{
+                $row[] = $subject->prereq;
+            }
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Subject_model->count_filtered();
+        $totalCount = $this->Subject_model->count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_sub6_list()
+    {
+        $list = $this->Prereq_model->bpa_get_sub6();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $subject) {
+            $row = array();
+            $row[] = $subject->subcode;
+            $row[] = $subject->description;
+            $row[] = $subject->units;
+            if(empty($subject->prereq)){
+                $row[] = 'none';
+            }else{
+                $row[] = $subject->prereq;
+            }
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Subject_model->count_filtered();
+        $totalCount = $this->Subject_model->count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_sub7_list()
+    {
+        $list = $this->Prereq_model->bpa_get_sub7();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $subject) {
+            $row = array();
+            $row[] = $subject->subcode;
+            $row[] = $subject->description;
+            $row[] = $subject->units;
+            if(empty($subject->prereq)){
+                $row[] = 'none';
+            }else{
+                $row[] = $subject->prereq;
+            }
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_prereq('."'".$subject->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Subject_model->count_filtered();
+        $totalCount = $this->Subject_model->count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_sub8_list()
+    {
+        $list = $this->Prereq_model->bpa_get_sub8();
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $subject) {

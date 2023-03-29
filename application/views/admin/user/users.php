@@ -65,7 +65,7 @@
                     <th>Class</th>
                     <th>Year Lvl</th>
                     <th>Status</th>
-                    <th width="14%">Action</th>
+                    <th width="10%">Action</th>
                 </tr>
                 </thead>
                 <tbody>

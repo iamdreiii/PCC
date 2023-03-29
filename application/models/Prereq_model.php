@@ -37,12 +37,15 @@ class Prereq_model extends CI_Model
         $this->db->delete('tbl_subject');
         return $this->db->affected_rows();
     }
+
+    // BSE
     public function get_sub1()
     {
     $this->db->select('*');
     $this->db->from('tbl_subject');
     $this->db->where('year_level', 1);
     $this->db->where('semester', 1);
+    $this->db->where('program_id', 1);
     $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
@@ -54,6 +57,7 @@ class Prereq_model extends CI_Model
     $this->db->from('tbl_subject');
     $this->db->where('year_level', 1);
     $this->db->where('semester', 2);
+    $this->db->where('program_id', 1);
     $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
@@ -64,6 +68,7 @@ class Prereq_model extends CI_Model
     $this->db->from('tbl_subject');
     $this->db->where('year_level', 2);
     $this->db->where('semester', 1);
+    $this->db->where('program_id', 1);
     $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
@@ -74,6 +79,7 @@ class Prereq_model extends CI_Model
     $this->db->from('tbl_subject');
     $this->db->where('year_level', 2);
     $this->db->where('semester', 2);
+    $this->db->where('program_id', 1);
     $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
@@ -84,6 +90,7 @@ class Prereq_model extends CI_Model
     $this->db->from('tbl_subject');
     $this->db->where('year_level', 3);
     $this->db->where('semester', 1);
+    $this->db->where('program_id', 1);
     $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
@@ -94,6 +101,7 @@ class Prereq_model extends CI_Model
     $this->db->from('tbl_subject');
     $this->db->where('year_level', 3);
     $this->db->where('semester', 2);
+    $this->db->where('program_id', 1);
     $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
@@ -105,6 +113,7 @@ class Prereq_model extends CI_Model
     $this->db->from('tbl_subject');
     $this->db->where('year_level', 4);
     $this->db->where('semester', 1);
+    $this->db->where('program_id', 1);
     $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();
@@ -115,6 +124,99 @@ class Prereq_model extends CI_Model
     $this->db->from('tbl_subject');
     $this->db->where('year_level', 4);
     $this->db->where('semester', 2);
+    $this->db->where('program_id', 1);
+    $this->db->order_by('id');
+    $query = $this->db->get();
+    return $query->result();
+    }
+
+    // BPA
+    public function bpa_get_sub1()
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_subject');
+    $this->db->where('year_level', 1);
+    $this->db->where('semester', 1);
+    $this->db->where('program_id', 2);
+    $this->db->order_by('id');
+    $query = $this->db->get();
+    return $query->result();
+    }
+
+    public function bpa_get_sub2()
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_subject');
+    $this->db->where('year_level', 1);
+    $this->db->where('semester', 2);
+    $this->db->where('program_id', 2);
+    $this->db->order_by('id');
+    $query = $this->db->get();
+    return $query->result();
+    }
+    public function bpa_get_sub3()
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_subject');
+    $this->db->where('year_level', 2);
+    $this->db->where('semester', 1);
+    $this->db->where('program_id', 2);
+    $this->db->order_by('id');
+    $query = $this->db->get();
+    return $query->result();
+    }
+    public function bpa_get_sub4()
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_subject');
+    $this->db->where('year_level', 2);
+    $this->db->where('semester', 2);
+    $this->db->where('program_id', 2);
+    $this->db->order_by('id');
+    $query = $this->db->get();
+    return $query->result();
+    }
+    public function bpa_get_sub5()
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_subject');
+    $this->db->where('year_level', 3);
+    $this->db->where('semester', 1);
+    $this->db->where('program_id', 2);
+    $this->db->order_by('id');
+    $query = $this->db->get();
+    return $query->result();
+    }
+    public function bpa_get_sub6()
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_subject');
+    $this->db->where('year_level', 3);
+    $this->db->where('semester', 2);
+    $this->db->where('program_id', 2);
+    $this->db->order_by('id');
+    $query = $this->db->get();
+    return $query->result();
+    }
+
+    public function bpa_get_sub7()
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_subject');
+    $this->db->where('year_level', 4);
+    $this->db->where('semester', 1);
+    $this->db->where('program_id', 2);
+    $this->db->order_by('id');
+    $query = $this->db->get();
+    return $query->result();
+    }
+    public function bpa_get_sub8()
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_subject');
+    $this->db->where('year_level', 4);
+    $this->db->where('semester', 2);
+    $this->db->where('program_id', 2);
     $this->db->order_by('id');
     $query = $this->db->get();
     return $query->result();

@@ -110,7 +110,63 @@
             
           </ul>
         </li>
-        <!-- END MANAGE SUBJECTS -->
+        <!-- END MANAGE Grades -->
+        <!-- START MANAGE SUBJECTS -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i> <span>Manage Grades</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Subjects List</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> BSE Prerequisites</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> BPA Prerequisites</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Manage BSE
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i> Manage BPA
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="#"><i class="fa fa-circle-o"></i> Tentative Evaluation</a></li>
+                    </ul>
+                  </li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Tentative Evaluation</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Manage BPA
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li class="treeview">
+                  <a href="#"><i class="fa fa-circle-o"></i> Manage BPA
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Tentative Evaluation</a></li>
+                  </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Tentative Evaluation</a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </li>
+        <!-- END MANAGE Grades -->
        <!-- START MANAGE SUBJECTS -->
         <li class="treeview">
           <a href="#">

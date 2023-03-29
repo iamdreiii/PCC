@@ -23,7 +23,7 @@ $(document).ready(function() {
         "serverSide" : true,
         "order": [],
         "ajax": {
-            "url": "<?php echo site_url('Prereq/sub1_list')?>",
+            "url": "<?php echo site_url('Prereq/bpa_sub1_list')?>",
             "type": "POST"
         },
         "columnDefs": [
@@ -48,7 +48,7 @@ table2 = $('#table2').DataTable({
     "serverSide" : true,
     "order": [],
     "ajax": {
-        "url": "<?php echo site_url('Prereq/sub2_list')?>",
+        "url": "<?php echo site_url('Prereq/bpa_sub2_list')?>",
         "type": "POST"
     },
     "columnDefs": [
@@ -73,7 +73,7 @@ table3 = $('#table3').DataTable({
     "serverSide" : true,
     "order": [],
     "ajax": {
-        "url": "<?php echo site_url('Prereq/sub3_list')?>",
+        "url": "<?php echo site_url('Prereq/bpa_sub3_list')?>",
         "type": "POST"
     },
     "columnDefs": [
@@ -97,7 +97,7 @@ table4 = $('#table4').DataTable({
     "serverSide" : true,
     "order": [],
     "ajax": {
-        "url": "<?php echo site_url('Prereq/sub4_list')?>",
+        "url": "<?php echo site_url('Prereq/bpa_sub4_list')?>",
         "type": "POST"
     },
     "columnDefs": [
@@ -121,7 +121,7 @@ table5 = $('#table5').DataTable({
     "serverSide" : true,
     "order": [],
     "ajax": {
-        "url": "<?php echo site_url('Prereq/sub5_list')?>",
+        "url": "<?php echo site_url('Prereq/bpa_sub5_list')?>",
         "type": "POST"
     },
     "columnDefs": [
@@ -145,7 +145,7 @@ table6 = $('#table6').DataTable({
     "serverSide" : true,
     "order": [],
     "ajax": {
-        "url": "<?php echo site_url('Prereq/sub6_list')?>",
+        "url": "<?php echo site_url('Prereq/bpa_sub6_list')?>",
         "type": "POST"
     },
     "columnDefs": [
@@ -169,7 +169,7 @@ table7 = $('#table7').DataTable({
     "serverSide" : true,
     "order": [],
     "ajax": {
-        "url": "<?php echo site_url('Prereq/sub7_list')?>",
+        "url": "<?php echo site_url('Prereq/bpa_sub7_list')?>",
         "type": "POST"
     },
     "columnDefs": [
@@ -193,7 +193,7 @@ table8 = $('#table8').DataTable({
     "serverSide" : true,
     "order": [],
     "ajax": {
-        "url": "<?php echo site_url('Prereq/sub8_list')?>",
+        "url": "<?php echo site_url('Prereq/bpa_sub8_list')?>",
         "type": "POST"
     },
     "columnDefs": [
@@ -330,7 +330,7 @@ function save()
         success: function(subject) {
             // Populate the dropdown list with the courses
             var options = '';
-            options += '<option value"none">NONE</option>';
+            options += '<option value"none">none</option>';
             $.each(subject, function(index, subject) {
                 
                 options += '<option value="' + subject.subcode + '">' + subject.subcode + ' - ' + subject.description + '</option>';

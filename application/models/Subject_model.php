@@ -48,8 +48,10 @@ class Subject_model extends CI_Model
     $this->db->select('*, tbl_subject.id as subjectid');
     $this->db->from('tbl_subject');
     $this->db->join('tbl_program', 'tbl_subject.program_id = tbl_program.id');
-    $this->db->order_by('year_level');
-    $this->db->order_by('semester');
+    $this->db->order_by('tbl_subject.id', 'asc');
+    $this->db->order_by('program_id', 'asc');
+    $this->db->order_by('year_level', 'asc');
+    $this->db->order_by('semester', 'asc');
     if (!empty($search)) {
         $this->db->like('subcode', $search);
         $this->db->or_like('description', $search);

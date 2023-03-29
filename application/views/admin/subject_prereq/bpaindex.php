@@ -9,7 +9,7 @@
     <section class="content-header">
       <h1>
       <?php echo $title ?>
-        <small>Subjects list</small>
+        <small><strong>Bachelor of Public Administration</strong></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -221,9 +221,9 @@
 
 <?php $this->load->view('admin/dashboard/layout/control_sidebar');?>
 </div>
-<?php $this->load->view('admin/subject_prereq/modals');?>
+<?php $this->load->view('admin/subject_prereq/bpamodals');?>
 <?php $this->load->view('admin/user/scripts/footer');?>
-<?php $this->load->view('admin/subject_prereq/table');?>
+<?php $this->load->view('admin/subject_prereq/bpatable');?>
 
 </body>
 </html>
