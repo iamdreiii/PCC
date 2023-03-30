@@ -68,7 +68,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Students Class</a></li>
+            <li><a href="<?php echo base_url()?>Class"><i class="fa fa-circle-o"></i> List of Class</a></li>
             <li class="treeview">
               <a href="#"><i class="fa fa-circle-o"></i> Manage Teachers
                 <span class="pull-right-container">

@@ -24,19 +24,17 @@
 
           <div class="box">
             <div class="btn float-right">
-            <button class="btn btn-success" onclick="add_subject()"><i class="glyphicon glyphicon-plus"></i> Subject</button>
+            <button class="btn btn-success" onclick="add_class()"><i class="glyphicon glyphicon-plus"></i> Subject</button>
             </div>
             <div class="box-body">
               <table id="example" class="table table-bordered table-striped" style="width:100%">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>CODE</th>
-                    <th>DESCRIPTION</th>
-                    <th>UNITS</th>
-                    <th>YEAR LEVEL</th> 
-                    <th>SEM</th>
-                    <th style="width:16%">PROGRAM</th>
+                    <th>Class Name</th>
+                    <th>Year Level</th>
+                    <th>Created_at</th>
+                    <th>Updated_at</th>
                     <th style="width:10%">Action</th>
                 </tr>
                 </thead>
@@ -46,12 +44,10 @@
                 <tfoot>
                 <tr>
                     <th>#</th>
-                    <th>CODE</th>
-                    <th>DESCRIPTION</th>
-                    <th>UNITS</th>
-                    <th>YEAR LEVEL</th> 
-                    <th>SEM</th>
-                    <th style="width:16%">PROGRAM</th>
+                    <th>Class Name</th>
+                    <th>Year Level</th>
+                    <th>Created_at</th>
+                    <th>Updated_at</th>
                     <th style="width:10%">Action</th>
                 </tr>
                 </tfoot>
@@ -72,9 +68,9 @@
 
 <?php $this->load->view('admin/dashboard/layout/control_sidebar');?>
 </div>
-<?php $this->load->view('admin/subject/modals');?>
+<?php $this->load->view('admin/class/modals');?>
 <?php $this->load->view('admin/user/scripts/footer');?>
-<?php $this->load->view('admin/subject/crud');?>
+<?php $this->load->view('admin/class/crud');?>
 
 </body>
 </html>

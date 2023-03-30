@@ -325,7 +325,7 @@ function save()
         }
     });
     $.ajax({
-        url: '<?php echo base_url("Prereq/get_subjects"); ?>',
+        url: '<?php echo base_url("Prereq/bpa_get_subjects"); ?>',
         dataType: 'json',
         success: function(subject) {
             // Populate the dropdown list with the courses

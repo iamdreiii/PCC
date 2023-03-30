@@ -530,6 +530,11 @@ class Prereq extends CI_Controller {
         $subject = $this->Prereq_model->get_subjects();
         echo json_encode($subject);
     }
+    public function bpa_get_subjects()
+    {
+        $subject = $this->Prereq_model->bpa_get_subjects();
+        echo json_encode($subject);
+    }
     public function prereq_edit1($id)
     {
         $data = $this->Prereq_model->prereq_edit1($id);

@@ -12,7 +12,7 @@ class Users_model extends CI_Model
     public function get_all_users()
     {
         $this->db->select('*');
-        $this->db->from('tbl_user');
+        $this->db->from('tbl_student');
         $query = $this->db->get();
         return $query->result();
     }
@@ -20,7 +20,7 @@ class Users_model extends CI_Model
     public function get_user($id)
     {
         $this->db->select('*');
-        $this->db->from('tbl_user');
+        $this->db->from('tbl_student');
         $this->db->where('id', $id);
         $query = $this->db->get();
         return $query->row_array();
@@ -28,48 +28,46 @@ class Users_model extends CI_Model
 
     public function add_user($data)
     {
-        $this->db->insert('tbl_user', $data);
+        $this->db->insert('tbl_student', $data);
         return $this->db->insert_id();
     }
 
-    public function update_user($id, $data)
+    public function update_user($id, $userdata)
     {
         $this->db->where('id', $id);
-        $this->db->update('tbl_user', $data);
+        $this->db->update('tbl_student', $userdata);
         return $this->db->affected_rows();
     }
 
     public function delete_user($id)
     {
         $this->db->where('id', $id);
-        $this->db->delete('tbl_user');
+        $this->db->delete('tbl_student');
         return $this->db->affected_rows();
     }
     
-    // in your model file
     public function delete_multiple($ids) {
         $this->db->where_in('id', $ids);
-        $this->db->delete('tbl_user');
+        $this->db->delete('tbl_student');
     }
 
     public function update_class_id_multiple($ids, $class_id) {
         $this->db->where_in('id', $ids);
-        $this->db->update('tbl_user', array('class_id' => $class_id));
+        $this->db->update('tbl_student', array('class_id' => $class_id));
     }
 
     public function validate_email($email)
     {
-        $query = $this->db->get_where('tbl_user', array('email' => $email));
+        $query = $this->db->get_where('tbl_student', array('email' => $email));
         return ($query->num_rows() > 0) ? true : false;
     }
-    // , $filter_class, $filter_year_level, $filter_gender
     public function get_all_users_search($search, $start, $length)
     {
     $this->db->select('*');
-    $this->db->from('tbl_user');
+    $this->db->from('tbl_student');
     if (!empty($search)) {
-        $this->db->like('school_id', $search);
-        $this->db->or_like('fname', $search);
+        //$this->db->like('school_id', $search);
+        $this->db->like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
         $this->db->or_like('email', $search);
@@ -78,7 +76,8 @@ class Users_model extends CI_Model
         $this->db->or_like('gender', $search);
         $this->db->or_like('course', $search);
         $this->db->or_like('address', $search);
-        $this->db->or_like('enrollment_status', $search);
+        $this->db->or_like('city_municipality', $search);
+        $this->db->or_like('zip_code', $search);
     }
     $this->db->limit($length, $start);
     $query = $this->db->get();
@@ -99,7 +98,7 @@ class Users_model extends CI_Model
     {
         $data = array('class_id' => $class_id);
         $this->db->where_in('id', $user_ids);
-        $result = $this->db->update('tbl_user', $data);
+        $result = $this->db->update('tbl_student', $data);
         return $result;
     }
     public function get_year_level()
@@ -110,21 +109,17 @@ class Users_model extends CI_Model
 
     public function count_all()
     {
-        return $this->db->count_all('tbl_user');
+        return $this->db->count_all('tbl_student');
     }
-    // $filter_class = null, $filter_year_level = null, $filter_gender = null
     public function count_filtered($search = null)
     {
         $this->db->select('*');
-        $this->db->from('tbl_user');
+        $this->db->from('tbl_student');
         if (!empty($search)) {
             $this->db->like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
-            // $this->db->or_like('class_id', $filter_class);
-            // $this->db->or_like('year_level', $filter_year_level);
-            // $this->db->or_like('gender', $filter_gender);
         }
         $query = $this->db->get();
         return $query->num_rows();
@@ -152,7 +147,7 @@ class Users_model extends CI_Model
     // DASH DATA
     public function count_all_student()
     {
-        return $this->db->count_all('tbl_user');
+        return $this->db->count_all('tbl_student');
     }
 
     public function count_all_staff()

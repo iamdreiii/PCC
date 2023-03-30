@@ -1,4 +1,4 @@
-<!-- Bootstrap modal -->
+<!-- 
 <div class="modal fade" id="modal_form" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -110,11 +110,11 @@
                     <button type="button" id="btnSave" onclick="save()" class="btn btn-primary"><i class="glyphicon glyphicon-save"></i> Save</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            </div>
+        </div>
+    </div> -->
 
-    <!-- jQuery -->
+   
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- ADD/UPDATE CLASS MODAL -->
@@ -166,34 +166,6 @@
   padding-top: 30px !important;
 }
 
-/* #dropzone {
-  position: relative;
-  border: 2px dotted #444;
-  border-radius: 20px;
-  color: #444;
-  height: 100px;
-  margin: 0 auto;
-  text-align: center;
-  width: 100px;
-}
-
-#dropzone.hover {
-  border: 2px solid green;
-  color: #FE5;
-}
-
-#dropzone.dropped {
-  background: #fff;
-  border: 5px solid #444;
-}
-
-#dropzone div {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0; 
-} */
 #dropzone {
   position: relative;
   border: 2px dotted #444;
@@ -221,12 +193,6 @@
   transform: translate(-50%, -50%);
 }
 
-/* #dropzone img {
-  border-radius: 10px;
-  vertical-align: middle;
-  max-width: 100%;
-  max-height: 100%;
-} */
 #dropzone.dropped img {
   padding: 20px auto;
   max-width: 90px;
@@ -252,7 +218,7 @@
                     <h3><i class="glyphicon glyphicon-user"></i> <span class="modal-title"></span></h3>
                 </div>
                 <div class="modal-body">
-                <form action="#" id="form2">
+                <form action="#" id="form2" enctype='multipart/form-data'>
                         <input type="hidden" value="" name="id"/>
                         <div class="form-body">
                                     
@@ -260,7 +226,9 @@
                                 <div class="row panel-body">
                                 <div id="dropzone">
                                         <div><i class="glyphicon glyphicon-plus"></i> Upload</div>
-                                        <input type="file" accept="image/png,image/jpeg, application/pdf" />
+                                        <div id="image-preview"></div>
+
+                                        <input id="imgfile" name="imgfile" value="" size='20' type="file" accept="image/png,image/jpeg, application/pdf" />
                                     </div>
                                 </div>
                             </div>
@@ -292,26 +260,31 @@
                             <div class="panel panel-primary">
                                 <div class="row panel-body">
                                     <div class="col-xs-3">
+                                        <label for="birthdate">Birthdate</label>
                                         <input name="birthdate" class="form-control" type="date">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-2">
+                                    <label for="age">Age</label>
                                         <input name="age" placeholder="Age" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-3">
+                                        <label for="sex">Gender</label>
                                         <select name="sex" class="form-control"  id="">
                                             <option value="">Gender</option>
-                                            <option value="">Male</option>
-                                            <option value="">Female</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
                                         </select>
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-2">
+                                        <label for="height">Height</label>
                                         <input name="height" placeholder="Height" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-2">
+                                        <label for="weight">Weight</label>
                                         <input name="weight" placeholder="Weight (kg)" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
@@ -321,11 +294,11 @@
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-3">
-                                        <select name="citizenship"  class="form-control" id="">
+                                        <select name="citizenship"  class="form-control">
                                             <option value="">Citizenship</option>
-                                            <option value="">Filipino</option>
-                                            <option value="">American</option>
-                                            <option value="">others</option>
+                                            <option value="Filipino">Filipino</option>
+                                            <option value="American">American</option>
+                                            <option value="others">others</option>
                                         </select>
                                         <span class="help-block"></span>
                                     </div>
@@ -335,23 +308,23 @@
                                     </div>
                                 
                                     <div class="col-xs-2">
-                                        <select name="civilstatus"  class="form-control" id="">
+                                        <select name="civil_status"  class="form-control">
                                             <option value="">Civil Status</option>
-                                            <option value="">Single</option>
-                                            <option value="">Married</option>
-                                            <option value="">Divorced</option>
-                                            <option value="">Separated</option>
-                                            <option value="">Widowed</option>
+                                            <option value="Single">Single</option>
+                                            <option value="Married">Married</option>
+                                            <option value="Divorced">Divorced</option>
+                                            <option value="Separated">Separated</option>
+                                            <option value="Widowed">Widowed</option>
                                         </select>
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-2">
-                                        <input name="mobileno" placeholder="Mobile No. " class="form-control" type="text" pattern="09123456789">
+                                        <input name="mobile_no" placeholder="Mobile No. " class="form-control" type="text" pattern="09123456789">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-4">
-                                        <input name="email" placeholder="Email " class="form-control" type="text">
-                                        <span class="help-block"></span>
+                                        <input name="email" placeholder="Email " class="form-control" type="email">
+                                        <span id="email-error" class="help-block"></span>
                                     </div>
                                     <div class="col-xs-4">
                                         <input name="facebook" placeholder="Facebook " class="form-control" type="text">
@@ -367,7 +340,7 @@
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-3">
-                                        <input name="city" placeholder="City Municipality" class="form-control" type="text">
+                                        <input name="city_municipality" placeholder="City Municipality" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-3">
@@ -375,7 +348,7 @@
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-2">
-                                        <input name="zip" placeholder="Zip Code" class="form-control" type="text">
+                                        <input name="zip_code" placeholder="Zip Code" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                 </div>
@@ -392,17 +365,17 @@
                                     </div>
                                     <div class="col-xs-3">
                                         <label for="">Occupation</label>
-                                        <input name="foccupation" placeholder="Occupation" class="form-control" type="text">
+                                        <input name="f_occupation" placeholder="Occupation" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-2">
                                         <label for="">Contact</label>
-                                        <input name="fcontact" placeholder="Contact #" class="form-control" type="text">
+                                        <input name="f_contact" placeholder="Contact #" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-3">
                                         <label for="">Birthday</label>
-                                        <input name="fbirthday" placeholder="Birthday" class="form-control" type="date">
+                                        <input name="f_birthdate" placeholder="Birthday" class="form-control" type="date">
                                         <span class="help-block"></span>
                                     </div>  
                                 <!-- Mother -->
@@ -411,15 +384,15 @@
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-3">
-                                        <input name="moccupation" placeholder="Occupation" class="form-control" type="text">
+                                        <input name="m_occupation" placeholder="Occupation" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-2">
-                                        <input name="mcontact" placeholder="Contact #" class="form-control" type="text">
+                                        <input name="m_contact" placeholder="Contact #" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-3">
-                                        <input name="mbirthday" placeholder="Birthday" class="form-control" type="date">
+                                        <input name="m_birthdate" placeholder="Birthday" class="form-control" type="date">
                                         <span class="help-block"></span>
                                     </div>  
                                 <!-- Guardian -->
@@ -428,24 +401,24 @@
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-3">
-                                        <input name="goccupation" placeholder="Occupation" class="form-control" type="text">
+                                        <input name="g_relationship" placeholder="Relationship" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-2">
-                                        <input name="gcontact" placeholder="Contact #" class="form-control" type="text">
+                                        <input name="g_contact" placeholder="Contact #" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-3">
-                                        <input name="gbirthday" placeholder="Birthday" class="form-control" type="date">
+                                        <input name="g_birthdate" placeholder="Birthday" class="form-control" type="date">
                                         <span class="help-block"></span>
                                     </div>  
                                 <!-- addres -->
                                     <div class="col-xs-6">
-                                        <input name="paddress" placeholder="Parent's Address" class="form-control" type="text">
+                                        <input name="parent_address" placeholder="Parent's Address" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-6">
-                                        <input name="mname" placeholder="Guardian Address" class="form-control" type="text">
+                                        <input name="guardian_address" placeholder="Guardian Address" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div> 
                                 </div>
@@ -455,33 +428,33 @@
                                 <h4 class="text-on-pannel text-primary">For Working Students</h4>
                                     <div class="col-xs-4">
                                         <label for="">Name of the Company</label>
-                                        <input name="fname" placeholder="Name of the Company" class="form-control" type="text">
+                                        <input name="ws_company" placeholder="Name of the Company" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-4">
                                     <label for="">Position</label>
-                                        <input name="mname" placeholder="Position" class="form-control" type="text">
+                                        <input name="ws_position" placeholder="Position" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-4">
                                     <label for="">Date Started</label>
-                                        <input name="mname" placeholder="Province" class="form-control" type="date">
+                                        <input name="ws_date_started" placeholder="Province" class="form-control" type="date">
                                         <span class="help-block"></span>
                                     </div>
 
                                     <div class="col-xs-4">
                                         <label for="">Name of Employer</label>
-                                        <input name="fname" placeholder="Name of Employer" class="form-control" type="text">
+                                        <input name="ws_employer" placeholder="Name of Employer" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-4">
                                     <label for="">Contact</label>
-                                        <input name="mname" placeholder="City Municipality" class="form-control" type="text">
+                                        <input name="ws_employer_contact" placeholder="Contact" class="form-control" type="text" pattern="09123456789">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-4">
                                     <label for="">Office Address</label>
-                                        <input name="mname" placeholder="Address" class="form-control" type="text">
+                                        <input name="ws_company_address" placeholder="Address" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                 </div>
@@ -499,7 +472,7 @@
                                     </div>
                                     <div class="col-xs-4">
                                     <label for="">Year Last Attended</label>
-                                        <select id="tertiary_year_last_attended" class="form-control" onchange="onChangeYearAndMonth(this)"></select>
+                                        <select id="tertiary_year_last_attended" name="tertiary_year_last_attended" class="form-control" ></select>
                                         <span class="help-block"></span>
                                     </div>
 
@@ -525,28 +498,28 @@
                                 <h4 class="text-on-pannel text-primary">Secondary Senior High School</h4>
                                     <div class="col-xs-8">
                                         <label for="">School Last Attended</label>
-                                        <input name="secondary_senior_school_last_attended" placeholder="School Last Attended" class="form-control" type="text">
+                                        <input name="secondary_school_last_attended" placeholder="School Last Attended" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-4">
                                     <label for="">Year Last Attended</label>
-                                        <select id="secondary_senior_year_last_attended" class="form-control" onchange="onChangeYearAndMonth(this)"></select>
+                                        <select id="secondary_year_last_attended" name="secondary_year_last_attended" class="form-control" ></select>
                                         <span class="help-block"></span>
                                     </div>
 
                                     <div class="col-xs-4">
                                         <label for="">School Address</label>
-                                        <input name="secondary_senior_school_address" placeholder="School Address" class="form-control" type="text">
+                                        <input name="secondary_school_address" placeholder="School Address" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-4">
                                     <label for="">City/Municipality</label>
-                                        <input name="secondary_senior_city" placeholder="City/Municipality" class="form-control" type="text">
+                                        <input name="secondary_city" placeholder="City/Municipality" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="col-xs-4">
                                     <label for="">Province</label>
-                                        <input name="secondary_senior_province" placeholder="Province" class="form-control" type="text">
+                                        <input name="secondary_province" placeholder="Province" class="form-control" type="text">
                                         <span class="help-block"></span>
                                     </div>
                                 </div>
@@ -561,7 +534,7 @@
                                     </div>
                                     <div class="col-xs-4">
                                     <label for="">Year Last Attended</label>
-                                        <select id="secondary_junior_year_last_atended" class="form-control" onchange="onChangeYearAndMonth(this)"></select>
+                                        <select id="secondary_junior_year_last_attended" name="secondary_junior_year_last_attended" class="form-control" ></select>
                                         <span class="help-block"></span>
                                     </div>
 
@@ -592,7 +565,7 @@
                                     </div>
                                     <div class="col-xs-4">
                                     <label for="">Year Last Attended</label>
-                                        <select id="primary_year_last_attended" class="form-control" onchange="onChangeYearAndMonth(this)"></select>
+                                        <select id="primary_year_last_attended" name="primary_year_last_attended" class="form-control" ></select>
                                         <span class="help-block"></span>
                                     </div>
 
@@ -617,24 +590,27 @@
                                 <div class="row panel-body">
                                 <h4 class="text-on-pannel text-primary">Program</h4>
                                 <!-- father -->
-                                    <div class="col-xs-4">
-                                    </div>
-                                    <div class="col-xs-4">
-                                        <label for="">Programdddd</label>
-                                        <select name="fname"  class="form-control">
-                                            <option value="">BPA</option>
-                                            <option value="">BSE</option>
+                                    <div class="col-xs-6">
+                                        <label for="year_level">Year Level</label>
+                                        <select name="year_levels" id="year_levels" class="form-control">
+                                            <option value="">Select Year Level</option>
                                         </select>
                                         <span class="help-block"></span>
                                     </div>
-                                    <div class="col-xs-4">
+                                    <div class="col-xs-6">
+                                        <label for="program">Course/Program <b style="color:red;">*</b></label>
+                                        <select name="program" id="program" class="form-control">
+                                            <option value="">Select a course</option>
+                                        </select>
+                                        <span class="help-block"></span>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
                 </form>
                 <div class="modal-footer">
-                    <button type="button" id="btnSave" onclick="save()" class="btn btn-primary"><i class="glyphicon glyphicon-save"></i> Save</button>
+                    <button type="button" id="btnSave" onclick="save_student()" class="btn btn-primary"><i class="glyphicon glyphicon-save"></i> Save</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
                 </div>
                 </div>
@@ -642,10 +618,10 @@
         </div>
   </div>
   <script type="text/javascript">
-    const yearDropdownField = $("#yearDropdownField");
-    const yearDropdownField1 = $("#yearDropdownField1");
-    const yearDropdownField2 = $("#yearDropdownField2");
-    const yearDropdownField3 = $("#yearDropdownField3");
+    const yearDropdownField = $("#tertiary_year_last_attended");
+    const yearDropdownField1 = $("#secondary_year_last_attended");
+    const yearDropdownField2 = $("#secondary_junior_year_last_attended");
+    const yearDropdownField3 = $("#primary_year_last_attended");
 
     window.onload = function () {
 
@@ -700,40 +676,6 @@
       }
     }
 
-    
-    function onChangeYearAndMonth($event) {
-      this.populateDateDropdown();
-    }
-
-    function onOkClick() {
-      const y = yearDropdownField.val();
-      const m = monthDropdownField.val();
-      const d = dateDropdownField.val();
-
-      // make date object by passing year, month and date value
-      const date = new Date(y, m, d);
-
-      // set date object into readonly input field
-      selectedDateField.val(date.toLocaleDateString());
-
-      // after set date, hide date dropdown div
-      $("#dateDropdownDiv").hide();
-    }
-
-    function onNowClick() {
-      const date = new Date(); // get date object
-
-      // set values
-      yearDropdownField.val(date.getFullYear());
-      monthDropdownField.val(date.getMonth());
-      dateDropdownField.val(date.getDate());
-
-      // set date value into input field
-      selectedDateField.val(date.toLocaleDateString());
-      
-      // hide date dropdown div
-      $("#dateDropdownDiv").hide();
-    }
 </script>
 <script>
     $(function() {

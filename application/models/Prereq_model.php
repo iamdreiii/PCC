@@ -259,6 +259,13 @@ class Prereq_model extends CI_Model
     public function get_subjects()
     {
     $query = $this->db->get('tbl_subject');
+    $this->db->where('program_id', 1);
+    return $query->result();
+    }
+    public function bpa_get_subjects()
+    {
+    $query = $this->db->get('tbl_subject');
+    $this->db->where('program_id', 2);
     return $query->result();
     }
 

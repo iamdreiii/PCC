@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Mar 27, 2023 at 10:52 AM
+-- Generation Time: Mar 29, 2023 at 10:43 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -117,8 +117,8 @@ INSERT INTO `tbl_course` (`id`, `course`, `created_at`, `updated_at`) VALUES
 CREATE TABLE `tbl_program` (
   `id` int(11) NOT NULL,
   `program` varchar(255) NOT NULL,
-  `date_created` date NOT NULL DEFAULT current_timestamp(),
-  `date_updated` date NOT NULL
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -126,8 +126,8 @@ CREATE TABLE `tbl_program` (
 --
 
 INSERT INTO `tbl_program` (`id`, `program`, `date_created`, `date_updated`) VALUES
-(1, 'Bachelor of Science in Entrepreneurship', '0000-00-00', '0000-00-00'),
-(2, 'Bachelor of Public Administration', '0000-00-00', '0000-00-00');
+(1, 'Bachelor of Science in Entrepreneurship', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Bachelor of Public Administration', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -280,6 +280,7 @@ CREATE TABLE `tbl_subject` (
   `subcode` varchar(45) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `units` int(11) DEFAULT NULL,
+  `prereq` varchar(100) DEFAULT NULL,
   `year_level` int(11) NOT NULL,
   `semester` int(11) NOT NULL,
   `program_id` int(11) DEFAULT NULL,
@@ -291,55 +292,104 @@ CREATE TABLE `tbl_subject` (
 -- Dumping data for table `tbl_subject`
 --
 
-INSERT INTO `tbl_subject` (`id`, `subcode`, `description`, `units`, `year_level`, `semester`, `program_id`, `date_created`, `date_updated`) VALUES
-(1, 'GENE01', 'Purposive Communication ', 3, 1, 1, 1, NULL, '2023-03-27 09:21:15'),
-(2, 'GENE02', 'Mathematics in the Modern World', 3, 1, 1, 1, NULL, NULL),
-(3, 'GENE03', 'Art Apreciation', 3, 1, 1, 1, NULL, NULL),
-(4, 'GENE04', 'Understanding the Self', 3, 1, 1, 1, NULL, NULL),
-(5, 'GENE05', 'Readings in the Philippine History', 3, 1, 1, 1, NULL, NULL),
-(6, 'GENE06', 'Ethics', 3, 1, 1, 1, NULL, NULL),
-(7, 'PHED1', 'Self-Testing Acivities', 2, 1, 1, 1, NULL, NULL),
-(8, 'NSTP1', 'Civic Welfare Training Service 1', 3, 1, 1, 1, NULL, NULL),
-(9, 'GENE07', 'The Contemporary World', 3, 1, 2, 1, '2023-03-24 00:00:00', NULL),
-(10, 'GENE08', 'Science, Technology and Society', 3, 1, 2, 1, '2023-03-24 00:00:00', NULL),
-(11, 'GENE09', 'People and the Earth\'s Ecosystem', 3, 1, 2, 1, '2023-03-24 00:00:00', NULL),
-(15, 'GENE10', 'Gender and Society', 3, 1, 2, 1, '2023-03-24 00:00:00', NULL),
-(16, 'GENE11', 'Information Technology (IT) in the New Era', 3, 1, 2, 1, '2023-03-24 00:00:00', '2023-03-24 00:00:00'),
-(17, 'PHED02', 'Rhythmic Activities', 3, 1, 2, 1, '2023-03-24 11:58:37', '2023-03-24 11:58:37'),
-(19, 'NSTP02', 'Civic Welfare Training Service 2', 3, 1, 2, 1, '2023-03-27 13:46:28', '2023-03-27 13:46:28'),
-(20, 'RIZA01', 'Rizal\'s Life and Works', 3, 2, 1, 1, '2023-03-27 13:49:04', '2023-03-27 13:49:04'),
-(21, 'ENCO01', 'Entrepreneurial Behavior and Mindset', 3, 2, 1, 1, '2023-03-27 09:01:43', '2023-03-27 09:21:32'),
-(22, 'ENCO02', 'Microeconomics', 3, 2, 1, 1, '2023-03-27 09:18:22', '2023-03-27 09:21:36'),
-(23, 'ENCO03', 'Opportunity Seeking', 3, 2, 1, 1, '2023-03-27 09:23:38', '2023-03-27 15:23:38'),
-(24, 'ECO04', 'Market Research and Consumer Behavior', 3, 2, 1, 1, '2023-03-27 09:24:11', '2023-03-27 15:24:11'),
-(25, 'BACC01', 'Fundamentals of Accounting', 6, 2, 1, 1, '2023-03-27 09:24:56', '2023-03-27 15:24:56'),
-(26, 'PHED03', 'Fundamentals of Games and Sports', 2, 2, 1, 1, '2023-03-27 09:26:23', '2023-03-27 15:26:23'),
-(27, 'ENCO05', 'Innovation Management', 3, 2, 2, 1, '2023-03-27 09:43:42', '2023-03-27 15:43:42'),
-(28, 'ENCO06', 'Pricing and Costing', 3, 2, 2, 1, '2023-03-27 09:44:17', '2023-03-27 15:44:17'),
-(29, 'ENCO07', 'Human Resource Management', 3, 2, 2, 1, '2023-03-27 09:45:04', '2023-03-27 15:45:04'),
-(30, 'ENTR02', 'Human Behavior inOrganization', 3, 2, 2, 1, '2023-03-27 10:16:31', '2023-03-27 16:16:31'),
-(31, 'TECEN01', 'Fundamentals of Technopreneurship', 3, 2, 2, 1, '2023-03-27 10:17:13', '2023-03-27 16:17:13'),
-(32, 'FBAN01', 'Fundmentals of Business Analytics', 3, 2, 2, 1, '2023-03-27 10:18:24', '2023-03-27 16:18:24'),
-(33, 'PHED04', 'Recreational Activities for College Students', 2, 2, 2, 1, '2023-03-27 10:19:01', '2023-03-27 10:20:03'),
-(34, 'ENCO08', 'Financial Management', 3, 3, 1, 1, '2023-03-27 10:20:36', '2023-03-27 16:20:36'),
-(35, 'ENCO09', 'Business Plan Preparation', 3, 3, 1, 1, '2023-03-27 10:21:26', '2023-03-27 16:21:26'),
-(36, 'CBME01', 'Production and Operations Management (TQM)', 3, 3, 1, 1, '2023-03-27 10:22:23', '2023-03-27 16:22:23'),
-(37, 'SPET01', 'Hospitality Management', 3, 3, 1, 1, '2023-03-27 10:22:48', '2023-03-27 16:22:48'),
-(38, 'ELEC01', 'Entrepreneurial Leadership in Organization', 3, 3, 1, 1, '2023-03-27 10:23:28', '2023-03-27 16:23:28'),
-(39, 'ELEC02', 'Entrepreneurial Marketing  Strategies', 3, 3, 1, 1, '2023-03-27 10:24:08', '2023-03-27 16:24:08'),
-(40, 'ENTR03', 'Principles in Crop Production', 3, 3, 1, 1, '2023-03-27 10:25:00', '2023-03-27 16:25:00'),
-(41, 'SPET02', 'Convention and Meeting Management', 3, 3, 2, 1, '2023-03-27 10:37:51', '2023-03-27 16:37:51'),
-(42, 'ELEC03', 'E-Commerce', 3, 3, 2, 1, '2023-03-27 10:38:29', '2023-03-27 16:38:29'),
-(43, 'ELEC04', 'Agribusiness', 3, 3, 2, 1, '2023-03-27 10:39:03', '2023-03-27 16:39:03'),
-(44, 'ENCO10', 'International Business and Trade', 3, 3, 2, 1, '2023-03-27 10:39:39', '2023-03-27 16:39:39'),
-(45, 'ENCO11', 'Business Law and Taxation', 3, 3, 2, 1, '2023-03-27 10:40:24', '2023-03-27 16:40:24'),
-(46, 'CBME02', 'Strategic Management', 3, 3, 2, 1, '2023-03-27 10:41:22', '2023-03-27 16:41:22'),
-(47, 'ENCO12', 'Business Plan Implementation I', 5, 4, 1, 1, '2023-03-27 10:42:10', '2023-03-27 16:42:10'),
-(48, 'ENCO13', 'Social Entrepreneurship', 3, 4, 1, 1, '2023-03-27 10:42:41', '2023-03-27 16:42:41'),
-(49, 'SPET03', 'Events Management', 3, 4, 1, 1, '2023-03-27 10:43:21', '2023-03-27 16:43:21'),
-(50, 'ENCO14', 'Business Plan Implementation 2', 5, 4, 2, 1, '2023-03-27 10:44:08', '2023-03-27 16:44:08'),
-(51, 'ENCO15', 'Programs Policies on Enterprise Development', 3, 4, 2, 1, '2023-03-27 10:44:44', '2023-03-27 16:44:44'),
-(52, 'SPET04', 'Wholesale and Retail Management', 3, 4, 2, 1, '2023-03-27 10:45:12', '2023-03-27 16:45:12');
+INSERT INTO `tbl_subject` (`id`, `subcode`, `description`, `units`, `prereq`, `year_level`, `semester`, `program_id`, `date_created`, `date_updated`) VALUES
+(1, 'GENE01', 'Purposive Communication ', 3, '', 1, 1, 1, NULL, '2023-03-27 09:21:15'),
+(2, 'GENE02', 'Mathematics in the Modern World', 3, '', 1, 1, 1, NULL, NULL),
+(3, 'GENE03', 'Art Apreciation', 3, '', 1, 1, 1, NULL, '2023-03-29 04:45:43'),
+(4, 'GENE04', 'Understanding the Self', 3, '', 1, 1, 1, NULL, NULL),
+(5, 'GENE05', 'Readings in the Philippine History', 3, '', 1, 1, 1, NULL, NULL),
+(6, 'GENE06', 'Ethics', 3, '', 1, 1, 1, NULL, '2023-03-29 07:35:22'),
+(7, 'PHED01', 'Self-Testing Acivities', 2, '', 1, 1, 1, NULL, '2023-03-28 09:10:39'),
+(8, 'NSTP1', 'Civic Welfare Training Service 1', 3, '', 1, 1, 1, NULL, NULL),
+(9, 'GENE07', 'The Contemporary World', 3, '', 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(10, 'GENE08', 'Science, Technology and Society', 3, '', 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(11, 'GENE09', 'People and the Earth\'s Ecosystem', 3, '', 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(15, 'GENE10', 'Gender and Society', 3, '', 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(16, 'GENE11', 'Information Technology (IT) in the New Era', 3, '', 1, 2, 1, '2023-03-24 00:00:00', '2023-03-24 00:00:00'),
+(17, 'PHED02', 'Rhythmic Activities', 3, 'PHED01', 1, 2, 1, '2023-03-24 11:58:37', '2023-03-29 02:50:25'),
+(19, 'NSTP02', 'Civic Welfare Training Service 2', 3, 'NSTP1', 1, 2, 1, '2023-03-27 13:46:28', '2023-03-29 02:49:56'),
+(20, 'RIZA01', 'Rizal\'s Life and Works', 3, '', 2, 1, 1, '2023-03-27 13:49:04', '2023-03-27 13:49:04'),
+(21, 'ENCO01', 'Entrepreneurial Behavior and Mindset', 3, '', 2, 1, 1, '2023-03-27 09:01:43', '2023-03-27 09:21:32'),
+(22, 'ENCO02', 'Microeconomics', 3, '', 2, 1, 1, '2023-03-27 09:18:22', '2023-03-27 09:21:36'),
+(23, 'ENCO03', 'Opportunity Seeking', 3, 'ENCO01', 2, 1, 1, '2023-03-27 09:23:38', '2023-03-29 02:51:34'),
+(24, 'ENCO04', 'Market Research and Consumer Behavior', 3, 'ENCO01', 2, 1, 1, '2023-03-27 09:24:11', '2023-03-29 04:18:52'),
+(25, 'BACC01', 'Fundamentals of Accounting', 6, '', 2, 1, 1, '2023-03-27 09:24:56', '2023-03-27 15:24:56'),
+(26, 'PHED03', 'Fundamentals of Games and Sports', 2, 'PHED02', 2, 1, 1, '2023-03-27 09:26:23', '2023-03-29 02:50:48'),
+(27, 'ENCO05', 'Innovation Management', 3, 'ENCO01', 2, 2, 1, '2023-03-27 09:43:42', '2023-03-29 02:51:47'),
+(28, 'ENCO06', 'Pricing and Costing', 3, 'BACC01', 2, 2, 1, '2023-03-27 09:44:17', '2023-03-29 02:52:12'),
+(29, 'ENCO07', 'Human Resource Management', 3, 'ENCO01', 2, 2, 1, '2023-03-27 09:45:04', '2023-03-29 05:48:24'),
+(30, 'ENTR01', 'Human Behavior inOrganization', 3, '', 2, 2, 1, '2023-03-27 10:16:31', '2023-03-29 03:57:43'),
+(31, 'TECEN01', 'Fundamentals of Technopreneurship', 3, 'ENCO03', 2, 2, 1, '2023-03-27 10:17:13', '2023-03-29 02:53:12'),
+(32, 'FBAN01', 'Fundmentals of Business Analytics', 3, 'none', 2, 2, 1, '2023-03-27 10:18:24', '2023-03-29 05:49:20'),
+(33, 'PHED04', 'Recreational Activities for College Students', 2, 'PHED03', 2, 2, 1, '2023-03-27 10:19:01', '2023-03-29 04:04:00'),
+(34, 'ENCO08', 'Financial Management', 3, 'BACC01', 3, 1, 1, '2023-03-27 10:20:36', '2023-03-29 04:04:37'),
+(35, 'ENCO09', 'Business Plan Preparation', 3, 'ENCO03', 3, 1, 1, '2023-03-27 10:21:26', '2023-03-29 04:04:49'),
+(36, 'CBME01', 'Production and Operations Management (TQM)', 3, 'TECEN01', 3, 1, 1, '2023-03-27 10:22:23', '2023-03-29 04:05:03'),
+(37, 'SPET01', 'Hospitality Management', 3, 'ENCO03', 3, 1, 1, '2023-03-27 10:22:48', '2023-03-29 04:05:28'),
+(38, 'ELEC01', 'Entrepreneurial Leadership in Organization', 3, 'ENTR01', 3, 1, 1, '2023-03-27 10:23:28', '2023-03-29 10:02:54'),
+(39, 'ELEC02', 'Entrepreneurial Marketing  Strategies', 3, 'ENCO03', 3, 1, 1, '2023-03-27 10:24:08', '2023-03-29 04:05:48'),
+(40, 'ENTR02', 'Principles in Crop Production', 3, '', 3, 1, 1, '2023-03-27 10:25:00', '2023-03-29 03:58:04'),
+(41, 'SPET02', 'Convention and Meeting Management', 3, 'ENCO03', 3, 2, 1, '2023-03-27 10:37:51', '2023-03-29 04:17:57'),
+(42, 'ELEC03', 'E-Commerce', 3, 'TECEN01', 3, 2, 1, '2023-03-27 10:38:29', '2023-03-29 04:18:06'),
+(43, 'ELEC04', 'Agribusiness', 3, 'ENCO03', 3, 2, 1, '2023-03-27 10:39:03', '2023-03-29 04:18:19'),
+(44, 'ENCO10', 'International Business and Trade', 3, 'ENCO04', 3, 2, 1, '2023-03-27 10:39:39', '2023-03-29 04:20:39'),
+(45, 'ENCO11', 'Business Law and Taxation', 3, 'ENCO08', 3, 2, 1, '2023-03-27 10:40:24', '2023-03-29 04:20:49'),
+(46, 'CBME02', 'Strategic Management', 3, 'CBME01', 3, 2, 1, '2023-03-27 10:41:22', '2023-03-29 04:21:04'),
+(47, 'ENCO12', 'Business Plan Implementation I', 5, 'ENCO09', 4, 1, 1, '2023-03-27 10:42:10', '2023-03-29 04:21:16'),
+(48, 'ENCO13', 'Social Entrepreneurship', 3, 'GENE07', 4, 1, 1, '2023-03-27 10:42:41', '2023-03-29 04:21:37'),
+(49, 'SPET03', 'Events Management', 3, 'ENCO03', 4, 1, 1, '2023-03-27 10:43:21', '2023-03-29 04:21:44'),
+(50, 'ENCO14', 'Business Plan Implementation 2', 5, 'ENCO12', 4, 2, 1, '2023-03-27 10:44:08', '2023-03-29 04:21:51'),
+(51, 'ENCO15', 'Programs Policies on Enterprise Development', 3, 'ENCO09', 4, 2, 1, '2023-03-27 10:44:44', '2023-03-29 04:22:00'),
+(52, 'SPET04', 'Wholesale and Retail Management', 3, 'ENCO03', 4, 2, 1, '2023-03-27 10:45:12', '2023-03-29 04:22:07'),
+(53, 'GENE01', 'Purposive Communication ', 3, NULL, 1, 1, 2, '2023-03-29 05:02:34', '2023-03-29 11:02:34'),
+(54, 'GENE02', 'Mathematics in the Modern World', 3, 'none', 1, 1, 2, '2023-03-29 05:03:34', '2023-03-29 05:05:42'),
+(55, 'GENE03', 'Arts Appreciation', 3, NULL, 1, 1, 2, '2023-03-29 05:19:03', '2023-03-29 11:19:03'),
+(56, 'GENE04', 'Understanding the Self', 3, NULL, 1, 1, 2, '2023-03-29 05:20:03', '2023-03-29 11:20:03'),
+(57, 'GENE05', 'Readings in Philippine History', 3, NULL, 1, 1, 2, '2023-03-29 05:21:27', '2023-03-29 11:21:27'),
+(58, 'GENE06', 'Ethics', 3, NULL, 1, 1, 2, '2023-03-29 05:22:46', '2023-03-29 11:22:46'),
+(59, 'PHED01', 'Self Testing Activities', 2, NULL, 1, 1, 2, '2023-03-29 05:23:47', '2023-03-29 11:23:47'),
+(60, 'NSTP01', 'CWS/MS 11', 3, NULL, 1, 1, 2, '2023-03-29 05:24:55', '2023-03-29 11:24:55'),
+(61, 'GENE07', 'The Contemporary World', 3, NULL, 1, 2, 2, '2023-03-29 05:26:36', '2023-03-29 11:26:36'),
+(62, 'GENE08', 'Science, Technology and Society', 3, NULL, 1, 2, 2, '2023-03-29 05:27:34', '2023-03-29 11:27:34'),
+(63, 'GENE09', 'Philippine Government and Constitution ', 3, NULL, 1, 2, 2, '2023-03-29 05:28:48', '2023-03-29 11:28:48'),
+(64, 'GENE10', 'Gender and Society', 3, NULL, 1, 2, 2, '2023-03-29 05:29:32', '2023-03-29 11:29:32'),
+(65, 'GENE11', 'Information Technology(IT) in the New Era', 3, NULL, 1, 2, 2, '2023-03-29 05:30:28', '2023-03-29 11:30:28'),
+(66, 'PHED02', 'Rhythmic Activities', 2, 'PHED01', 1, 2, 2, '2023-03-29 05:31:37', '2023-03-29 10:29:49'),
+(67, 'NSTP02', 'CWS/MS 12', 3, 'NSTP1', 1, 2, 2, '2023-03-29 05:32:11', '2023-03-29 10:29:54'),
+(68, 'BPAM01', 'Introduction to Public Administration', 3, NULL, 2, 1, 2, '2023-03-29 05:34:04', '2023-03-29 11:34:04'),
+(69, 'GENE12', 'Entrepreneurial Behavior and Mindset', 3, NULL, 2, 1, 2, '2023-03-29 05:34:47', '2023-03-29 11:34:47'),
+(70, 'BPAM02', 'Philippine Administrative Thought and Institutions', 3, 'BPAM01', 2, 1, 2, '2023-03-29 05:35:53', '2023-03-29 10:30:08'),
+(71, 'BPAC01', 'Basic Accounting', 3, 'BPAC01', 2, 1, 2, '2023-03-29 05:37:24', '2023-03-29 10:31:02'),
+(72, 'BPAC02', 'Elementary Statistics', 3, 'BPAC01', 2, 1, 2, '2023-03-29 05:37:59', '2023-03-29 10:30:46'),
+(73, 'RIZA01', 'Rizal\'s Life and Works', 3, NULL, 2, 1, 2, '2023-03-29 05:38:55', '2023-03-29 11:38:55'),
+(74, 'PHED03', 'Fundamental of Games and Sports', 3, 'PHED02', 2, 1, 2, '2023-03-29 05:39:40', '2023-03-29 10:31:12'),
+(75, 'BPAC03', 'Good Governance and and Social Responsibility', 3, 'BPAC01', 2, 2, 2, '2023-03-29 05:40:47', '2023-03-29 10:31:22'),
+(76, 'BPAC04', 'Sociology', 3, 'BPAC01', 2, 2, 2, '2023-03-29 05:41:14', '2023-03-29 10:31:26'),
+(77, 'BPAM03', 'Ethics and Accountability in the Public Service', 3, 'BPAM01', 2, 2, 2, '2023-03-29 05:42:37', '2023-03-29 10:32:24'),
+(78, 'BPAM04', 'Governance and Development', 3, 'BPAM01', 2, 2, 2, '2023-03-29 05:43:29', '2023-03-29 10:32:28'),
+(79, 'BPAM05', 'Office and Systems Management', 3, 'BPAM01', 2, 2, 2, '2023-03-29 05:44:40', '2023-03-29 10:32:35'),
+(80, 'BPAM06', 'Knowledge Management and ICT for PA', 3, 'BPAM01', 2, 2, 2, '2023-03-29 05:45:36', '2023-03-29 10:32:19'),
+(81, 'PHED04', 'Recreational Activities for College Students', 2, 'PHED03', 2, 2, 2, '2023-03-29 05:46:50', '2023-03-29 10:32:07'),
+(82, 'BPAM07', 'Public Accounting and Budgeting', 3, 'BPAM01', 3, 1, 2, '2023-03-29 10:07:59', '2023-03-29 10:33:07'),
+(83, 'BPAM08', 'Local and Regional Governance', 3, 'BPAM01', 3, 1, 2, '2023-03-29 10:09:16', '2023-03-29 10:33:16'),
+(84, 'BPAM09', 'Public Personnel Administration', 3, 'BPAM01', 3, 1, 2, '2023-03-29 10:10:08', '2023-03-29 10:33:22'),
+(85, 'BPAE01', 'Policy Analysis', 3, 'BPAM01', 3, 1, 2, '2023-03-29 10:10:50', '2023-03-29 10:33:27'),
+(86, 'BPAE03', 'Records and Property Management', 3, 'BPAM01', 3, 1, 2, '2023-03-29 10:12:01', '2023-03-29 10:33:35'),
+(87, 'BPAE05', 'Government Auditing ', 3, 'BPAM01', 3, 1, 2, '2023-03-29 10:12:50', '2023-03-29 10:33:43'),
+(88, 'BPAM10', 'Human Behavior and Organization', 3, 'BPAM01', 3, 2, 2, '2023-03-29 10:15:17', '2023-03-29 10:34:01'),
+(89, 'BPAM11', 'Organization and Management', 3, 'BPAM01', 3, 2, 2, '2023-03-29 10:16:16', '2023-03-29 10:34:28'),
+(90, 'BPAM12', 'Public Fiscal Administration', 3, 'BPAM01', 3, 2, 2, '2023-03-29 10:17:03', '2023-03-29 10:34:45'),
+(91, 'BPAM13', 'Administrative Law', 3, 'BPAM01', 3, 2, 2, '2023-03-29 10:17:33', '2023-03-29 10:35:08'),
+(92, 'BPAE04', 'Program Administration (implementation)', 3, 'BPAM01', 3, 2, 2, '2023-03-29 10:18:15', '2023-03-29 10:35:23'),
+(93, 'BPAE06', 'Environmental Management', 3, NULL, 3, 2, 2, '2023-03-29 10:18:59', '2023-03-29 16:18:59'),
+(94, 'BPAM14', 'Research Method in PA 1', 3, 'BPAM01', 4, 1, 2, '2023-03-29 10:20:56', '2023-03-29 10:35:37'),
+(97, 'BPAM15', 'Public Policy and Program Administration', 3, 'BPAM01', 4, 1, 2, '2023-03-29 10:22:31', '2023-03-29 10:35:45'),
+(98, 'BPAM16', 'Politics and Administration', 3, 'BPAM01', 4, 1, 2, '2023-03-29 10:23:23', '2023-03-29 10:35:54'),
+(99, 'BPAM17', 'Special Topics/ Problem for PA', 3, 'BPAM01', 4, 1, 2, '2023-03-29 10:23:58', '2023-03-29 10:36:00'),
+(100, 'BPAE05', 'Globalization & Public Administration', 3, 'BPAM01', 4, 1, 2, '2023-03-29 10:24:59', '2023-03-29 10:36:05'),
+(101, 'BPAM18', 'Leadership and Decision Making', 3, 'BPAM01', 4, 2, 2, '2023-03-29 10:25:40', '2023-03-29 10:36:11'),
+(102, 'BPAM19', 'Research Methods in PA 2', 3, 'BPAM01', 4, 2, 2, '2023-03-29 10:26:17', '2023-03-29 10:36:17'),
+(103, 'BPAM20', 'PA Practicum', 6, NULL, 4, 2, 2, '2023-03-29 10:26:43', '2023-03-29 16:26:43');
 
 -- --------------------------------------------------------
 
@@ -376,6 +426,17 @@ CREATE TABLE `tbl_subject_prereq` (
   `date_created` datetime DEFAULT current_timestamp(),
   `date_updated` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_subject_prereq`
+--
+
+INSERT INTO `tbl_subject_prereq` (`id`, `subject_id`, `prereq_subject_id`, `date_created`, `date_updated`) VALUES
+(4, 19, 8, '2023-03-28 11:32:23', NULL),
+(6, 17, 7, '2023-03-28 09:20:12', NULL),
+(14, 26, 0, '2023-03-28 09:52:05', '2023-03-28 10:46:20'),
+(15, 23, 21, '2023-03-28 10:15:29', NULL),
+(17, 26, 17, '2023-03-29 01:59:32', NULL);
 
 -- --------------------------------------------------------
 
@@ -558,7 +619,8 @@ ALTER TABLE `tbl_subjects`
 --
 ALTER TABLE `tbl_subject_prereq`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `prereq_subject_id` (`prereq_subject_id`);
+  ADD KEY `prereq_subject_id` (`prereq_subject_id`),
+  ADD KEY `subject_id` (`subject_id`);
 
 --
 -- Indexes for table `tbl_teachers`
@@ -636,6 +698,12 @@ ALTER TABLE `tbl_staff`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `tbl_student`
+--
+ALTER TABLE `tbl_student`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_student_loads`
 --
 ALTER TABLE `tbl_student_loads`
@@ -645,7 +713,7 @@ ALTER TABLE `tbl_student_loads`
 -- AUTO_INCREMENT for table `tbl_subject`
 --
 ALTER TABLE `tbl_subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `tbl_subjects`
@@ -657,13 +725,19 @@ ALTER TABLE `tbl_subjects`
 -- AUTO_INCREMENT for table `tbl_subject_prereq`
 --
 ALTER TABLE `tbl_subject_prereq`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_teachers`
 --
 ALTER TABLE `tbl_teachers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
@@ -674,12 +748,6 @@ ALTER TABLE `tbl_teachers`
 --
 ALTER TABLE `tbl_subject`
   ADD CONSTRAINT `tbl_subject_ibfk_1` FOREIGN KEY (`program_id`) REFERENCES `tbl_program` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `tbl_subject_prereq`
---
-ALTER TABLE `tbl_subject_prereq`
-  ADD CONSTRAINT `tbl_subject_prereq_ibfk_1` FOREIGN KEY (`prereq_subject_id`) REFERENCES `tbl_subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

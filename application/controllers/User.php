@@ -2,12 +2,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
-
+    public function __construct() 
+    {
+      parent::__construct();
+      $this->load->helper('url', 'form');
+    }
 	public function index()
 	{
         if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
         {
-        $page = 'users';
+        $page = 'index';
            if(!file_exists(APPPATH.'views/admin/user/'.$page.'.php')){
                 show_404();
             }
@@ -18,14 +22,46 @@ class User extends CI_Controller {
         }
 		
 	}
+    // public function user_list()
+    // {
+        
+    //     $search = $this->input->post("search")['value'];
+    //     $start = $this->input->post('start');
+    //     $length = $this->input->post('length');
+    //     $list = $this->Users_model->get_all_users_search($search, $start, $length);
+    //     $data = array();
+    //     $no = $_POST['start'];
+    //     foreach ($list as $user) {
+    //         $no++;
+    //         $row = array();
+    //         $row[] = ' <td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+    //         $row[] = $user->school_id;
+    //         $row[] = $user->fname .' '. $user->mname .' '. $user->lname .' '. $user->extensions;
+    //         $row[] = $user->email;
+    //         $row[] = $user->gender;
+    //         $row[] = $user->course;
+    //         $row[] = $user->class_id;
+    //         $row[] = $user->year_level;
+    //         $row[] = $user->enrollment_status;
+    //         $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+    //               <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+    //         $data[] = $row;
+    //     }
+    //     $filteredCount = $this->Users_model->count_filtered();
+    //     $totalCount = $this->Users_model->count_all();
+
+    //     $output = array(
+    //         "draw" => $_POST['draw'],
+    //         "recordsTotal" => $totalCount,
+    //         "recordsFiltered" => $filteredCount,
+    //         "data" => $data,
+    //     );
+    //     echo json_encode($output);
+    // }
     public function user_list()
     {
         
         $search = $this->input->post("search")['value'];
-        // $filter_class = $this->input->post("filter_class");
-        // $filter_year_level = $this->input->post("filter_year_level");
-        // $filter_gender = $this->input->post("filter_gender");
-        // , $filter_class, $filter_year_level, $filter_gender
         $start = $this->input->post('start');
         $length = $this->input->post('length');
         $list = $this->Users_model->get_all_users_search($search, $start, $length);
@@ -35,14 +71,12 @@ class User extends CI_Controller {
             $no++;
             $row = array();
             $row[] = ' <td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
-            $row[] = $user->school_id;
-            $row[] = $user->fname .' '. $user->mname .' '. $user->lname .' '. $user->extensions;
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
-            $row[] = $user->gender;
-            $row[] = $user->course;
+            $row[] = $user->sex;
+            $row[] = $user->program;
             $row[] = $user->class_id;
             $row[] = $user->year_level;
-            $row[] = $user->enrollment_status;
             $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
                   <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
             $data[] = $row;
@@ -62,26 +96,82 @@ class User extends CI_Controller {
     
     public function user_add()
     {
-        $school_id = 'PCC'.date('y').'-'.rand(0,10000);
+        // $school_id = 'PCC'.date('y').'-'.rand(0,10000);
         $data = array(
-            'school_id' => $school_id,
+            // PERSONAL INFO
             'fname' => $this->input->post('fname'),
             'mname' => $this->input->post('mname'),
             'lname' => $this->input->post('lname'),
-            'date_of_birth' => $this->input->post('date_of_birth'),
-            'gender' => $this->input->post('gender'),
-            'extensions' => $this->input->post('extensions'),
+            'birthdate' => $this->input->post('birthdate'),
+            'age' => $this->input->post('age'),
+            'sex' => $this->input->post('sex'),
+            'height' => $this->input->post('height'),
+            'weight' => $this->input->post('weight'),
+            'birthplace' => $this->input->post('birthplace'),
+            'citizenship' => $this->input->post('citizenship'),
+            'religion' => $this->input->post('religion'),
+            'civil_status' => $this->input->post('civil_status'),
+            'mobile_no' => $this->input->post('mobile_no'),
             'email' => $this->input->post('email'),
-            'phone_number' => $this->input->post('phone_number'),
+            'facebook' => $this->input->post('facebook'),
             'address' => $this->input->post('address'),
-            'password' => md5($this->input->post('password')),
-            'enrollment_status' => $this->input->post('enrollment_status'),
-            'course' => $this->input->post('course'),
-            'year_level' => $this->input->post('year_level'),
-            'created_at' => date('Y-m-d H:i:s'),
+            'city_municipality' => $this->input->post('city_municipality'),
+            'province' => $this->input->post('province'),
+            'zip_code' => $this->input->post('zip_code'),
+            // FAMILY BACKGROUND
+            'father' => $this->input->post('father'),
+            'mother' => $this->input->post('mother'),
+            'guardian' => $this->input->post('guardian'),
+            'f_occupation' => $this->input->post('f_occupation'),
+            'm_occupation' => $this->input->post('m_occupation'),
+            'g_relationship' => $this->input->post('g_relationship'),
+            'f_contact' => $this->input->post('f_contact'),
+            'm_contact' => $this->input->post('m_contact'),
+            'g_contact' => $this->input->post('g_contact'),
+            'f_birthdate' => $this->input->post('f_birthdate'),
+            'm_birthdate' => $this->input->post('m_birthdate'),
+            'g_birthdate' => $this->input->post('g_birthdate'),
+            'parent_address' => $this->input->post('parent_address'),
+            'guardian_address' => $this->input->post('guardian_address'),
+            // FOR WORKING STUDENT
+            'ws_company' => $this->input->post('ws_company'),
+            'ws_position' => $this->input->post('ws_position'),
+            'ws_date_started' => $this->input->post('ws_date_started'),
+            'ws_employer' => $this->input->post('ws_employer'),
+            'ws_employer_contact' => $this->input->post('ws_employer_contact'),
+            'ws_company_address' => $this->input->post('ws_company_address'),
+            // EDUCATIONAL INFORMATION
+            // TERTIARY
+            'tertiary_school_last_attended' => $this->input->post('tertiary_school_last_attended'),
+            'tertiary_school_year_last_attended' => $this->input->post('tertiary_year_last_attended'),
+            'tertiary_school_address' => $this->input->post('tertiary_school_address'),
+            'tertiary_city' => $this->input->post('tertiary_city'),
+            'tertiary_province' => $this->input->post('tertiary_province'),
+            // SECONDARY SENIOR
+            'secondary_school_last_attended' => $this->input->post('secondary_school_last_attended'),
+            'secondary_school_year_last_attended' => $this->input->post('secondary_year_last_attended'),
+            'secondary_school_address' => $this->input->post('secondary_school_address'),
+            'secondary_city' => $this->input->post('secondary_city'),
+            'secondary_province' => $this->input->post('secondary_province'),
+            // SECONDARY JUNIOR
+            'secondary_junior_school_last_attended' => $this->input->post('secondary_junior_school_last_attended'),
+            'secondary_junior_school_year_last_attended' => $this->input->post('secondary_junior_year_last_attended'),
+            'secondary_junior_school_address' => $this->input->post('secondary_junior_school_address'),
+            'secondary_junior_city' => $this->input->post('secondary_junior_city'),
+            'secondary_junior_province' => $this->input->post('secondary_junior_province'),
+            // PRIMARY
+            'primary_school_last_attended' => $this->input->post('primary_school_last_attended'),
+            'primary_school_year_last_attended' => $this->input->post('primary_year_last_attended'),
+            'primary_school_address' => $this->input->post('primary_school_address'),
+            'primary_city' => $this->input->post('primary_city'),
+            'primary_province' => $this->input->post('primary_province'),
+
+            'program' => $this->input->post('program'),
+            'year_level' => $this->input->post('year_levels'),
+            'date_created' => date('Y-m-d H:i:s'),
             // 'updated_at' => date('Y-m-d H:i:s'),
         );
-        $insert = $this->Users_model->add_user($data);
+        $this->Users_model->add_user($data);
         echo json_encode(array("status" => TRUE));
     }
 
@@ -93,24 +183,110 @@ class User extends CI_Controller {
 
     public function user_update()
     {
+        $config['upload_path'] = 'uploads/useruploads/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['max_size'] = 5242880;
+        $config['max_width'] = 5242880;
+        $config['max_height'] = 5242880;
+        $this->load->library('upload', $config);
+                
+        $user_id = $this->input->post('id');
+        $data['userimg'] = '';
+
+        if ($this->upload->do_upload('imgfile')) {
+            $upload_data = $this->upload->data();
+            $data['userimg'] = $upload_data['file_name'];
+
+            // Unlink the old image from the folder that belongs to the selected user
+            $old_image_path = $config['upload_path'] . $this->db->select('img')->where('id', $user_id)->get('tbl_student')->row('img');
+            if (file_exists($old_image_path)) {
+                unlink($old_image_path);
+            }
+        } else {
+            // Error uploading image
+            $error = array('error' => $this->upload->display_errors());
+            echo json_encode(array("status" => FALSE, "error" => $error['error']));
+            return;
+        }
+
+        $data['userimg'] = $data['userimg'];
+
         $data = array(
+            'img' => $data['userimg'],
             'fname' => $this->input->post('fname'),
             'mname' => $this->input->post('mname'),
             'lname' => $this->input->post('lname'),
-            'date_of_birth' => $this->input->post('date_of_birth'),
-            'gender' => $this->input->post('gender'),
-            'extensions' => $this->input->post('extensions'),
+            'birthdate' => $this->input->post('birthdate'),
+            'age' => $this->input->post('age'),
+            'sex' => $this->input->post('sex'),
+            'height' => $this->input->post('height'),
+            'weight' => $this->input->post('weight'),
+            'birthplace' => $this->input->post('birthplace'),
+            'citizenship' => $this->input->post('citizenship'),
+            'religion' => $this->input->post('religion'),
+            'civil_status' => $this->input->post('civil_status'),
+            'mobile_no' => $this->input->post('mobile_no'),
             'email' => $this->input->post('email'),
-            'phone_number' => $this->input->post('phone_number'),
+            'facebook' => $this->input->post('facebook'),
             'address' => $this->input->post('address'),
-            'password' => md5($this->input->post('password')),
-            'course' => $this->input->post('course'),
-            'year_level' => $this->input->post('year_level'),
-            'enrollment_status' => $this->input->post('enrollment_status'),
-            // 'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
+            'city_municipality' => $this->input->post('city_municipality'),
+            'province' => $this->input->post('province'),
+            'zip_code' => $this->input->post('zip_code'),
+            // FAMILY BACKGROUND
+            'father' => $this->input->post('father'),
+            'mother' => $this->input->post('mother'),
+            'guardian' => $this->input->post('guardian'),
+            'f_occupation' => $this->input->post('f_occupation'),
+            'm_occupation' => $this->input->post('m_occupation'),
+            'g_relationship' => $this->input->post('g_relationship'),
+            'f_contact' => $this->input->post('f_contact'),
+            'm_contact' => $this->input->post('m_contact'),
+            'g_contact' => $this->input->post('g_contact'),
+            'f_birthdate' => $this->input->post('f_birthdate'),
+            'm_birthdate' => $this->input->post('m_birthdate'),
+            'g_birthdate' => $this->input->post('g_birthdate'),
+            'parent_address' => $this->input->post('parent_address'),
+            'guardian_address' => $this->input->post('guardian_address'),
+            // FOR WORKING STUDENT
+            'ws_company' => $this->input->post('ws_company'),
+            'ws_position' => $this->input->post('ws_position'),
+            'ws_date_started' => $this->input->post('ws_date_started'),
+            'ws_employer' => $this->input->post('ws_employer'),
+            'ws_employer_contact' => $this->input->post('ws_employer_contact'),
+            'ws_company_address' => $this->input->post('ws_company_address'),
+            // EDUCATIONAL INFORMATION
+            // TERTIARY
+            'tertiary_school_last_attended' => $this->input->post('tertiary_school_last_attended'),
+            'tertiary_school_year_last_attended' => $this->input->post('tertiary_year_last_attended'),
+            'tertiary_school_address' => $this->input->post('tertiary_school_address'),
+            'tertiary_city' => $this->input->post('tertiary_city'),
+            'tertiary_province' => $this->input->post('tertiary_province'),
+            // SECONDARY SENIOR
+            'secondary_school_last_attended' => $this->input->post('secondary_school_last_attended'),
+            'secondary_school_year_last_attended' => $this->input->post('secondary_year_last_attended'),
+            'secondary_school_address' => $this->input->post('secondary_school_address'),
+            'secondary_city' => $this->input->post('secondary_city'),
+            'secondary_province' => $this->input->post('secondary_province'),
+            // SECONDARY JUNIOR
+            'secondary_junior_school_last_attended' => $this->input->post('secondary_junior_school_last_attended'),
+            'secondary_junior_school_year_last_attended' => $this->input->post('secondary_junior_year_last_attended'),
+            'secondary_junior_school_address' => $this->input->post('secondary_junior_school_address'),
+            'secondary_junior_city' => $this->input->post('secondary_junior_city'),
+            'secondary_junior_province' => $this->input->post('secondary_junior_province'),
+            // PRIMARY
+            'primary_school_last_attended' => $this->input->post('primary_school_last_attended'),
+            'primary_school_year_last_attended' => $this->input->post('primary_year_last_attended'),
+            'primary_school_address' => $this->input->post('primary_school_address'),
+            'primary_city' => $this->input->post('primary_city'),
+            'primary_province' => $this->input->post('primary_province'),
+
+            'program' => $this->input->post('program'),
+            'year_level' => $this->input->post('year_levels'),
+            // 'date_created' => date('Y-m-d H:i:s'),
+            'date_updated' => date('Y-m-d H:i:s'),
         );
         $this->Users_model->update_user($this->input->post('id'), $data);
+    
         echo json_encode(array("status" => TRUE));
     }
 

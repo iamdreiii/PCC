@@ -10,7 +10,7 @@
                 "serverSide": true,
                 "order": [],
                 "ajax": {
-                    "url": "<?php echo site_url('Subject/subject_list')?>",
+                    "url": "<?php echo site_url('Class_controller/class_list')?>",
                     "type": "POST"
                 },
                 "columnDefs": [
@@ -56,17 +56,17 @@
         }
 
        
-        function add_subject()
+        function add_class()
         {
             save_method = 'add';
             $('#form')[0].reset(); // reset form on modals
             $('.form-group').removeClass('has-error'); // clear error class
             $('.help-block').empty(); // clear error string
             $('#modal_form').modal('show'); // show bootstrap modal
-            $('.modal-title').text('Add Subject'); // Set Title to Bootstrap modal title
+            $('.modal-title').text('Add class'); // Set Title to Bootstrap modal title
         }
 
-        function add_subject2()
+        function add_class2()
         {
             save_method = 'add';
             $('#form')[0].reset(); // reset form on modals
@@ -76,7 +76,7 @@
             $('.modal-title').text(' Admission Form'); // Set Title to Bootstrap modal title
         }
 
-        function edit_subject(id)
+        function edit_class(id)
         {
             save_method = 'update';
             $('#form')[0].reset(); // reset form on modals
@@ -85,20 +85,16 @@
 
             //Ajax Load data from ajax
             $.ajax({
-                url : "<?php echo site_url('Subject/subject_edit/')?>/" + id,
+                url : "<?php echo site_url('Class_controller/class_edit/')?>/" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data)
                 {
                     $('[name="id"]').val(data.id);
-                    $('[name="subcode"]').val(data.subcode);
-                    $('[name="description"]').val(data.description);
-                    $('[name="units"]').val(data.units);
+                    $('[name="name"]').val(data.name);
                     $('[name="year_level"]').val(data.year_level);
-                    $('[name="semester"]').val(data.semester);
-                    $('[name="program_id"]').val(data.program_id);
                     $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-                    $('.modal-title').text('Edit Subject'); // Set title to Bootstrap modal title
+                    $('.modal-title').text('Edit Class'); // Set title to Bootstrap modal title
                     
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -118,7 +114,7 @@
 
             if(save_method == 'add') {
             // Check for empty inputs
-            var requiredFields = ['subcode', 'description', 'units', 'year_level', 'semester', 'program_id'];
+            var requiredFields = ['name'];
             var isValid = true;
             $.each(requiredFields, function(index, field) {
                 if (!$.trim($('[name="' + field + '"]').val())) {
@@ -133,9 +129,9 @@
             var url;
 
             if(save_method == 'add') {
-                url = "<?php echo site_url('Subject/subject_add')?>";
+                url = "<?php echo site_url('Class_controller/class_add')?>";
             } else {
-                url = "<?php echo site_url('Subject/subject_update')?>";
+                url = "<?php echo site_url('Class_controller/class_update')?>";
             }
 
             // ajax adding data to database
@@ -153,13 +149,13 @@
                         if(save_method == 'add'){
                             $('#modal_form').modal('hide');
                             reload_table();
-                            var stat = 'Subject Added';
+                            var stat = 'Class Added';
                             success(stat);
                         // if updating data
                         }else{
                             $('#modal_form').modal('hide');
                             reload_table();
-                            var stat = 'Subject Updated';
+                            var stat = 'Class Updated';
                             success(stat);
                         }
                     }
@@ -186,18 +182,18 @@
                 }
             });
         }
-        function delete_subject(id) {
+        function delete_class(id) {
             var modal = deletemodal(function(result) {
                 if (result) {
                     // ajax delete data from database
                     $.ajax({
-                        url: "<?php echo site_url('Subject/subject_delete')?>/" + id,
+                        url: "<?php echo site_url('Class_controller/class_delete')?>/" + id,
                         type: "POST",
                         dataType: "JSON",
                         success: function(data) {
                             $('#modal_form').modal('hide');
                             reload_table();
-                            var stat = 'subject Deleted';
+                            var stat = 'Class Deleted';
                             success(stat);
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
@@ -219,21 +215,21 @@
             }).get(); // extract the value (ID) of each checked checkbox
             if (ids.length === 0) {
                 // show an error message if no checkboxes are selected
-                alert('Please select at least one subject to delete.');
+                alert('Please select at least one class to delete.');
                 return false;
             }
             var modal = deletemodal(function(result) {
                 if (result) {
                     // send the selected IDs to the delete controller method via AJAX
                     $.ajax({
-                        url: '<?php echo site_url("subject/delete_multiple"); ?>',
+                        url: '<?php echo site_url("class/delete_multiple"); ?>',
                         type: 'POST',
                         data: {ids: ids},
                         success: function(response) {
                             // handle the response from the server (e.g. reload the DataTable)
                             $('#modal_form').modal('hide');
                             reload_table();
-                            var stat = 'subjects Deleted';
+                            var stat = 'Classs Deleted';
                             success(stat);
                         },
                         error: function(xhr) {
@@ -248,9 +244,9 @@
 
         $(document).ready(function() {
         $('#update_btn').click(function() {
-            var selectedsubjects = $('input[name="selected[]"]:checked');
-            if (selectedsubjects.length === 0) {
-            alert('Please select at least one subject.');
+            var selectedclasss = $('input[name="selected[]"]:checked');
+            if (selectedclasss.length === 0) {
+            alert('Please select at least one class.');
             } else {
             $('#class_modal').modal('show');
             }
@@ -258,19 +254,19 @@
 
         $('#save_class_btn').click(function() {
             var class_id = $('#class_id').val();
-            var subject_ids = $('input[name="selected[]"]:checked').map(function() {
+            var class_ids = $('input[name="selected[]"]:checked').map(function() {
             return this.value;
             }).get();
 
-            if (subject_ids.length === 0) {
-            alert('Please select at least one subject.');
+            if (class_ids.length === 0) {
+            alert('Please select at least one class.');
             return;
             }
 
             $.ajax({
             type: "POST",
-            url: "<?php echo site_url('subject/update_class_id'); ?>",
-            data: {class_id: class_id, subject_ids: subject_ids},
+            url: "<?php echo site_url('class/update_class_id'); ?>",
+            data: {class_id: class_id, class_ids: class_ids},
             success: function(response) {
                 reload_table();
                 var stat = response;
@@ -374,13 +370,13 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Delete subject/s</h5>
+                            <h5 class="modal-title">Delete class/s</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Are you sure you want to delete this subject/s?</p>
+                            <p>Are you sure you want to delete this class/s?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

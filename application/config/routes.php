@@ -73,3 +73,5 @@ $route['get_latest_video_urls/(:any)'] = 'Blog/get_latest_video_urls/$1';
 $route['Subject'] = 'Subject/index';
 $route['Subject_Prereq_BSE'] = 'Prereq/bseindex';
 $route['Subject_Prereq_BPA'] = 'Prereq/bpaindex';
+// Class
+$route['Class'] = 'Class_controller/index';
