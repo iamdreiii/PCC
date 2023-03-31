@@ -231,118 +231,91 @@
         });
     });
 
-    // Function to update the video container using AJAX
-    // function updateVideoContainer() {
-    //     $.ajax({
-    //         url: '<?php echo base_url('Blog/viewfiles_ajax'); ?>',
-    //         type: 'GET',
-    //         dataType: 'json',
-    //         success: function(data) {
-    //             // Loop through the returned videos and append new ones to the video container
-    //             $.each(data, function(index, video) {
-    //                 if (videoCount <= index && index < videoCount + 10) {
-    //                     let objectDate = new Date(video.created_at);
-    //                     let day = objectDate.getDate();
-    //                     let month = objectDate.toLocaleString('default', { month: 'long' });
-    //                     let year = objectDate.getFullYear(video.created_at);
-    //                     if ($('#video-card').find('#post-' + video.id).length == 0) {
-    //                         var $video = 
-    //                         $('<div class="col-lg-4 col-md-12 mb-4" id="post-' + video.id + '">'+
-    //                             '<div class="card">'+
-    //                             '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">'+
-    //                                 '<video class="img-fluid" controls></video>'+
-    //                             '</div>'+
-    //                             '<div class="card-body">'+
-    //                                 '<a href="#'+video.id+'"><h5 class="card-title">'+  video.title.toUpperCase() +'</h5></a>'+
-    //                                 '<p class="card-text">'+  video.description +'</p>'+
-    //                                 '<a href="#!" class="btn btn-primary">Read</a>'+
-    //                             '</div>'+
-    //                             '</div>'+
-    //                         '</div>');
-    //                         var $source = $('<source></source>&emsp;').attr('src', video.path + '.mp4').attr('type', 'video/mp4');
-    //                         $video.find('.bg-image video').append($source);
-    //                         $('#video-card').append($video);
-    //                     }
-    //                 }
-    //             });
 
-    //             // Remove videos that no longer exist in the database
-    //             $('#video-card .bg-image video').each(function() {
-    //                     var src = $(this).find('source').attr('src');
-    //                     var exists = false; // set to false by default
-    //                     $.each(data, function(index, video) {
-    //                         if (video.path + '.mp4' == src) {
-    //                             exists = true;
-    //                             return false;
-    //                         }
-    //                     });
-    //                     if (!exists) {
-    //                         //$(this).remove();
-    //                         $(this).closest('.col-lg-4').remove();
-    //                     }
-    //                 });
-
-    //                 // Show more button
-    //                 if (videoCount + 10 < data.length) {
-    //                     $('#show-more').show();
-    //                 } else {
-    //                     $('#show-more').hide();
-    //                 }
-    //         }
-    //     });
-    // }
     function updateVideoContainer() {
         $.ajax({
             url: '<?php echo base_url('Blog/viewfiles_ajax'); ?>',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                // Loop through the returned files and append new ones to the container
-                $.each(data, function(index, file) {
+                // Loop through the returned videos and append new ones to the video container
+                $.each(data, function(index, video) {
                     if (videoCount <= index && index < videoCount + 10) {
-                        let objectDate = new Date(file.created_at);
+                        let objectDate = new Date(video.created_at);
                         let day = objectDate.getDate();
                         let month = objectDate.toLocaleString('default', { month: 'long' });
-                        let year = objectDate.getFullYear(file.created_at);
-                        if ($('#video-card').find('#post-' + file.id).length == 0) {
-                            var $element = $('<div class="col-lg-4 col-md-12 mb-4" id="post-' + file.id + '">'+
-                                '<div class="card">'+
-                                '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light"></div>'+
-                                '<div class="card-body">'+
-                                    '<a href="#'+file.id+'"><h5 class="card-title">'+  file.title.toUpperCase() +'</h5></a>'+
-                                    '<p class="card-text">'+  file.description +'</p>'+
-                                    '<a href="#!" class="btn btn-primary">Read</a>'+
-                                '</div>'+
-                                '</div>'+
-                            '</div>');
-                            if (file.type == 'video/mp4') {
-                                var $video = $('<video class="img-fluid" controls></video>');
-                                var $source = $('<source></source>&emsp;').attr('src', 'uploads/announcement/'. file.path).attr('type', 'video/mp4');
-                                $video.append($source);
-                                $element.find('.bg-image').append($video);
-                            } else {
-                                var $image = $('<img class="img-fluid"></img>').attr('src', 'uploads/announcement/'. file.path);
-                                $element.find('.bg-image').append($image);
+                        let year = objectDate.getFullYear(video.created_at);
+                        if ($('#video-card').find('#post-' + video.id).length == 0) {
+                          var fileName = video.path.split('/').pop();
+                          var extension = fileName.split('.').pop();
+                          
+                          if (extension == 'jpg' || extension == 'jpeg' || extension == 'png') {
+                              var $image = $('<div class="col-lg-6 col-md-12 mb-4" id="post-' + video.id + '">' +
+                                '<div class="card">' +
+                                '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">' +
+                                '<img class="img-fluid" style="width:100%;height:330px;"></img>' +
+                                '</div>' +
+                                '<div class="card-body">' +
+                                '<a href="#' + video.id + '"><h5 class="card-title">' + video.title.toUpperCase() + '</h5></a>' +
+                                '<p class="card-text">' + video.description + '</p>' +
+                                '<a href="#!" class="btn btn-primary">Read</a>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>');
+                              $image.find('.bg-image img').attr('src', 'uploads/announcement/' + video.path);
+                              $image.find('.bg-image img').attr('alt', video.title.toUpperCase());
+                              $('#video-card').append($image);
+                          }else  {
+                              var $video = 
+                              $('<div class="col-lg-6 col-md-12 mb-4" id="post-' + video.id + '">'+
+                                  '<div class="card">'+
+                                  '<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">'+
+                                      '<video class="img-fluid" controls style="width:100%;height:330px;"></video>'+
+                                  '</div>'+
+                                  '<div class="card-body">'+
+                                      '<a href="#'+video.id+'"><h5 class="card-title">'+  video.title.toUpperCase() +'</h5></a>'+
+                                      '<p class="card-text">'+  video.description +'</p>'+
+                                      '<a href="#!" class="btn btn-primary">Read</a>'+
+                                  '</div>'+
+                                  '</div>'+
+                              '</div>');
+                              var $source = $('<source></source>&emsp;').attr('src', '<?=base_url()?>' + video.path + '.mp4').attr('type', 'video/mp4','video/avi','video/ogg');
+                              $video.find('.bg-image video').append($source);
+                              $('#video-card').append($video);
+                          }
                             }
-                            $('#video-card').append($element);
-                        }
                     }
                 });
 
-                // Remove files that no longer exist in the database
-                $('#video-card .bg-image video, #video-card .bg-image img').each(function() {
-                        var src = $(this).attr('src');
-                        var exists = false; // set to false by default
-                        $.each(data, function(index, file) {
-                            if (file.path == src) {
-                                exists = true;
-                                return false;
-                            }
-                        });
-                        if (!exists) {
-                            $(this).closest('.col-lg-4').remove();
+                // Remove videos that no longer exist in the database
+                $('#video-card .bg-image video').each(function() {
+                    var src = $(this).find('source').attr('src');
+                    var exists = false; // set to false by default
+                    $.each(data, function(index, video) {
+                        if (video.path + '.mp4' == src) {
+                            exists = true;
+                            return false;
                         }
                     });
+                    if (!exists) {
+                        //$(this).remove();
+                        $(this).closest('.col-lg-4').remove();
+                    }
+                });
+                // $('#video-card .bg-image img').each(function() {
+                //     var src = $(this).find('source').attr('src');
+                //     var exists = false; // set to false by default
+                //     $.each(data, function(index, video) {
+                //         if (video.path + '.mp4' == src) {
+                //             exists = true;
+                //             return false;
+                //         }
+                //     });
+                //     if (!exists) {
+                //         //$(this).remove();
+                //         $(this).closest('.col-lg-4').remove();
+                //     }
+                // });
 
                     // Show more button
                     if (videoCount + 10 < data.length) {
