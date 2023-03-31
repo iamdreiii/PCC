@@ -17,7 +17,7 @@
       <ul class="top_navs">
         <li><a href="<?php echo base_url()?>">home</a></li>
         <li><a href="aboutus.html">About Us</a></li>
-        <li><a href="<?php echo base_url()?>blog-view">Blog</a></li>
+        <li><a href="<?php echo base_url()?>blog">Blog</a></li>
         <li class="dropdown-hover">
           <a href="#">Event</a>
           <ul class="dropdown-menu">

@@ -67,7 +67,10 @@ $route['dashboard'] = 'Dashboard/index';
 $route['Users'] = 'User/index';
 $route['school-year'] = 'School_year/index';
 $route['blog-admin'] = 'Blog/index';
-$route['blog-view'] = 'Blog/viewfiles';
+// BLOG
+$route['blog/(:any)'] = 'Blog/bloghome/$1';
+$route['blog'] = 'Blog/bloghome';
+
 $route['get_latest_video_urls/(:any)'] = 'Blog/get_latest_video_urls/$1';
 // Subject
 $route['Subject'] = 'Subject/index';
