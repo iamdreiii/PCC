@@ -180,17 +180,17 @@
                     }
                     else
                     {
-                        for (var i = 0; i < data.inputerror.length; i++) {
-                            $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
-                            $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+                        // for (var i = 0; i < data.inputerror.length; i++) {
+                        //     $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
+                        //     $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
                             
-                        }
-                        // if (data.inputerror && data.inputerror.length) {
-                        //     for (var i = 0; i < data.inputerror.length; i++) {
-                        //         $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error');
-                        //         $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]);
-                        //     }
-                        //     }
+                        // }
+                        if (data.inputerror && data.inputerror.length) {
+                            for (var i = 0; i < data.inputerror.length; i++) {
+                                $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error');
+                                $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]);
+                            }
+                            }
 
                     }
                     $('#btnSave').text('save'); //change button text

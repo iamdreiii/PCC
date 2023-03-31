@@ -84,13 +84,13 @@
                 dataType: "JSON",
                 success: function(data)
                 {
+                    // PERSONAL INFO
                     $('[name="id"]').val(data.id);
                     //$('[name="imgfile"]').val(data.img);
-
                     // display image preview
-                    // if (data.img) {
-                    //     $('#image-preview').html('<img src="<?php echo base_url(); ?>uploads/useruploads/'+data.img+'" style="max-height: 100px; max-width: 100px; border-radius:10px;" />');
-                    // }
+                    if (data.img) {
+                        $('#image-preview').html('<img src="<?php echo base_url(); ?>uploads/useruploads/'+data.img+'" style="max-height: 100px; max-width: 100px; border-radius:10px;" />');
+                    }
                     $('[name="fname"]').val(data.fname);
                     $('[name="mname"]').val(data.mname);
                     $('[name="lname"]').val(data.lname);

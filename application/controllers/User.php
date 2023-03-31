@@ -70,7 +70,11 @@ class User extends CI_Controller {
         foreach ($list as $user) {
             $no++;
             $row = array();
-            $row[] = ' <td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            //$row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" width="40" height="40" style="border-radius:50%;background-size:cover;" alt="Profile" id="myImg">';
+            $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
+            width="40" height="40" style="border-radius:50%;background-size:cover;" 
+            alt="Profile" id="myImg" onclick="openModal(this)">';
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;

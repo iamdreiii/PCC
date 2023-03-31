@@ -58,60 +58,6 @@
             <li><a href="<?php echo base_url()?>Users"><i class="fa fa-circle-o"></i> Students</a></li>
           </ul>
         </li>
-        <!-- END MANAGE STUDENTS -->
-        <!-- START MANAGE CLASS -->
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-book"></i> <span>Manage Class</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>Class"><i class="fa fa-circle-o"></i> List of Class</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Manage Teachers
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher Class</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher Loads</a></li>
-                
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
-        <!-- END MANAGE CLASS -->
-        <!-- START MANAGE SUBJECTS -->
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i> <span>Manage Subjects</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>Subject"><i class="fa fa-circle-o"></i> Subjects List</a></li>
-            <li><a href="<?php echo base_url()?>Subject_Prereq_BSE"><i class="fa fa-circle-o"></i> BSE Prerequisites</a></li>
-            <li><a href="<?php echo base_url()?>Subject_Prereq_BPA"><i class="fa fa-circle-o"></i> BPA Prerequisites</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Manage Teachers Subjects
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher's Loads</a></li>
-              </ul>
-            </li>
-            
-          </ul>
-        </li>
-        <!-- END MANAGE Grades -->
-        <!-- START MANAGE SUBJECTS -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i> <span>Manage Grades</span>
@@ -166,6 +112,61 @@
             
           </ul>
         </li>
+        <!-- END MANAGE STUDENTS -->
+        <!-- START MANAGE CLASS -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>Manage Class</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url()?>Class"><i class="fa fa-circle-o"></i> List of Class</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Manage Teachers
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher Class</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher Loads</a></li>
+                
+              </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+          </ul>
+        </li>
+        <!-- END MANAGE CLASS -->
+        <!-- START MANAGE SUBJECTS -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i> <span>Manage Subjects</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url()?>Subject"><i class="fa fa-circle-o"></i> Subjects List</a></li>
+            <li><a href="<?php echo base_url()?>Subject_Prereq_BSE"><i class="fa fa-circle-o"></i> BSE Prerequisites</a></li>
+            <li><a href="<?php echo base_url()?>Subject_Prereq_BPA"><i class="fa fa-circle-o"></i> BPA Prerequisites</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Manage Teachers Subjects
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher's Loads</a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </li>
+        <!-- END MANAGE Grades -->
+        <!-- START MANAGE SUBJECTS -->
+        
         <!-- END MANAGE Grades -->
        <!-- START MANAGE SUBJECTS -->
         <li class="treeview">

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php $this->load->view('admin/user/layout/head');?>
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <?php $this->load->view('admin/dashboard/layout/header');?>
@@ -57,6 +58,7 @@
                 <thead>
                 <tr>
                     <th><input type="checkbox" id="select-all"></th>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
@@ -71,6 +73,7 @@
                 <tfoot>
                 <tr>
                     <th></th>
+                    <th>Image</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
