@@ -800,14 +800,12 @@
   }
 }
 </style>
-// Create the modal
-echo '<div id="myModal" class="modal">
+<div id="myModal" class="modal">
   <span class="close" onclick="closeModal()">&times;</span>
   <img class="modal-content" id="img01">
-</div>';
+</div>
 
-// Add the JavaScript functions
-echo '<script>
+<script>
 function openModal(img) {
   var modal = document.getElementById("myModal");
   var modalImg = document.getElementById("img01");
@@ -819,4 +817,4 @@ function closeModal() {
   var modal = document.getElementById("myModal");
   modal.style.display = "none";
 }
-</script>';
+</script>

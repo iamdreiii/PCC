@@ -56,6 +56,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url()?>Users"><i class="fa fa-circle-o"></i> Students</a></li>
+            <li><a href="<?php echo base_url()?>Student-loads"><i class="fa fa-circle-o"></i> Student Loads</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -66,47 +67,123 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Subjects List</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> BSE Prerequisites</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> BPA Prerequisites</a></li>
             <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Manage BSE
+              <a href="#"><i class="fa fa-circle-o"></i> Manage BSE Grades
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <!-- YEAR LEVEL -->
+              <ul class="treeview-menu">
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i> First Year
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?=base_url()?>bse_first_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i> Second Year
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?=base_url()?>bse_second_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i> Third Year
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?=base_url()?>bse_third_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i> Fourth Year
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?=base_url()?>bse_fourth_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i> Graduates
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?=base_url()?>bse_graduates"><i class="fa fa-circle-o"></i> Students List</a></li>
+                    </ul>
+                  </li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Manage BPA Grades
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
                   <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> Manage BPA
+                    <a href="#"><i class="fa fa-circle-o"></i> First Year
                       <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                       </span>
                     </a>
                     <ul class="treeview-menu">
-                      <li><a href="#"><i class="fa fa-circle-o"></i> Tentative Evaluation</a></li>
+                      <li><a href="<?=base_url()?>bpa_first_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
                     </ul>
                   </li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Tentative Evaluation</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Manage BPA
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class="treeview">
-                  <a href="#"><i class="fa fa-circle-o"></i> Manage BPA
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Tentative Evaluation</a></li>
-                  </ul>
-                </li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Tentative Evaluation</a></li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i> Second Year
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?=base_url()?>bpa_second_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i> Third Year
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?=base_url()?>bpa_third_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i> Fourth Year
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?=base_url()?>bpa_fourth_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
+                    </ul>
+                  </li>
+                  <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i> Graduates
+                      <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li><a href="<?=base_url()?>bpe_graduates"><i class="fa fa-circle-o"></i> Students List</a></li>
+                    </ul>
+                  </li>
               </ul>
             </li>
             
@@ -152,13 +229,13 @@
             <li><a href="<?php echo base_url()?>Subject_Prereq_BSE"><i class="fa fa-circle-o"></i> BSE Prerequisites</a></li>
             <li><a href="<?php echo base_url()?>Subject_Prereq_BPA"><i class="fa fa-circle-o"></i> BPA Prerequisites</a></li>
             <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Manage Teachers Subjects
+              <a href="#"><i class="fa fa-circle-o"></i> Manage Students Loads
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher's Loads</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Students Loads</a></li>
               </ul>
             </li>
             
@@ -171,25 +248,28 @@
        <!-- START MANAGE SUBJECTS -->
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-files-o"></i> <span>Course/Programs</span>
+            <i class="fa fa-files-o"></i> <span>Reports</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Programs List</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Academic Records</a></li>
             <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Manage Teachers Subjects
-                <span class="pull-right-container">
+              <a href="#"><i class="fa fa-circle-o"></i> Certificates
+              <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher's Loads</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Cert. of Enrollment</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Cert. of Grade</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Cert. of Transfer</a></li>
               </ul>
             </li>
-            
+            <li><a href="#"><i class="fa fa-circle-o"></i> Form 138-A</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Tentative Evaluation</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Transcript of Records</a></li>
           </ul>
         </li>
         <!-- END MANAGE SUBJECTS -->

@@ -9,40 +9,7 @@ class Blog extends CI_Controller {
       $this->load->helper('url', 'form');
       $this->load->library('session');
     }
-    public function bloghome()
-	{
-        if(!file_exists(APPPATH.'views/admin/blog/viewfiles.php')){
-            show_404();
-        }
-            $config = array();
-            $config["base_url"] = base_url() . "blog";
-            $config["total_rows"] = $this->Blog_model->get_count();
-            $config['per_page'] = 2;
-            $config["uri_segment"] = 2;
-            $config['full_tag_open'] = '<ul class="pagination generic-pagination justify-content-center">';        
-            $config['full_tag_close'] = '</ul>';        
-            $config['first_link'] = 'First';        
-            $config['last_link'] = 'Last';        
-            $config['first_tag_open'] = '<li class="page-item"><span class="page-link">';        
-            $config['first_tag_close'] = '</span></li>';        
-            $config['prev_link'] = '&laquo';        
-            $config['prev_tag_open'] = '<li class="page-item"><span class="page-link">';        
-            $config['prev_tag_close'] = '</span></li>';        
-            $config['next_link'] = '&raquo';        
-            $config['next_tag_open'] = '<li class="page-item"><span class="page-link">';        
-            $config['next_tag_close'] = '</span></li>';        
-            $config['last_tag_open'] = '<li class="page-item"><span class="page-link">';        
-            $config['last_tag_close'] = '</span></li>';        
-            $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';        
-            $config['cur_tag_close'] = '</a></li>';        
-            $config['num_tag_open'] = '<li class="page-item"><span class="page-link">';        
-            $config['num_tag_close'] = '</span></li>';
-            $this->pagination->initialize($config);
-            $page = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
-            $data["links"] = $this->pagination->create_links();
-            $data['blog'] = $this->Blog_model->get_authors($config["per_page"], $page);
-            $this->load->view('admin/blog/viewfiles', $data);
-	}
+
 	public function index()
 	{
         
@@ -58,14 +25,23 @@ class Blog extends CI_Controller {
             redirect('staff');
         }	
 	}
-    // public function viewfiles()
-	// {
-    //         $page = 'viewfiles';
-    //         if(!file_exists(APPPATH.'views/admin/blog/'.$page.'.php')){
-    //             show_404();
-    //         }
-    //         $this->load->view('admin/blog/'. $page);   
-	// }
+    public function bloghome()
+	{
+            $page = 'viewfiles';
+            if(!file_exists(APPPATH.'views/admin/blog/'.$page.'.php')){
+                show_404();
+            }
+            $this->load->view('admin/blog/'. $page);   
+	}
+    public function blogview($param)
+	{
+            $page = 'view';
+            if(!file_exists(APPPATH.'views/blog/'.$page.'.php')){
+                show_404();
+            }
+            $data['blogres'] = $this->Blog_model->get_blog_single($param);
+            $this->load->view('blog/'. $page, $data);   
+	}
    
     public function viewfiles_ajax() {
         // Fetch the videos from the database
@@ -137,11 +113,10 @@ class Blog extends CI_Controller {
         if ($this->upload->do_upload('path'))
         {
             $upload_data = $this->upload->data();
-            //$videofile['filename'] = $upload_data['file_name'];
-            $url = 'uploads/announcement/'.$video_name;
+            $videofile['filename'] = $upload_data['file_name'];
+            $url = 'uploads/announcement/'.$videofile['filename'];
             $data = array(
                 'title' => $this->input->post('title'),
-                // 'path' => $videofile['filename'],
                 'path' => $url,
                 'description' => $this->input->post('description'),
                 'created_at' => date('Y-m-d H:i:s'),
@@ -158,10 +133,10 @@ class Blog extends CI_Controller {
         {
             $upload_data = $this->upload->data();
             $imagefile['filename'] = $upload_data['file_name'];
-            //$url = 'uploads/announcement/'.$image_name;
+            $url = 'uploads/announcement/'.$imagefile['filename'];
             $data = array(
                 'title' => $this->input->post('title'),
-                'path' => $imagefile['filename'],
+                'path' => $url,
                 'description' => $this->input->post('description'),
                 'created_at' => date('Y-m-d H:i:s'),
             );
@@ -209,12 +184,12 @@ class Blog extends CI_Controller {
             $blog = $this->Blog_model->get_blog($id);
 
             // Check if there is a video already associated with the blog post. If yes, unlink the old video file.
-            if ($blog['path'].'.mp4') {
-                unlink($blog['path'].'.mp4');
+            if ($blog['path']) {
+                unlink($blog['path']);
             }
             $upload_data = $this->upload->data();
-            //$videofile['filename'] = $upload_data['file_name'];
-            $url = 'uploads/announcement/'.$video_name;
+            $videofile['filename'] = $upload_data['file_name'];
+            $url = 'uploads/announcement/'.$videofile['filename'];
             $data = array(
                 'title' => $this->input->post('title'),
                 // 'path' => $videofile['filename'],
@@ -235,15 +210,15 @@ class Blog extends CI_Controller {
             $blog = $this->Blog_model->get_blog($id);
 
             // Check if there is a video already associated with the blog post. If yes, unlink the old video file.
-            if ('uploads/announcement/'.$blog['path']) {
-                unlink('uploads/announcement/'.$blog['path']);
+            if ($blog['path']) {
+                unlink($blog['path']);
             }
             $upload_data = $this->upload->data();
             $imagefile['filename'] = $upload_data['file_name'];
-            //$url = 'uploads/announcement/'.$image_name;
+            $url = 'uploads/announcement/'.$imagefile['filename'];
             $data = array(
                 'title' => $this->input->post('title'),
-                'path' => $imagefile['filename'],
+                'path' => $url,
                 'description' => $this->input->post('description'),
                 'updated_at' => date('Y-m-d H:i:s'),
             );
@@ -311,23 +286,10 @@ class Blog extends CI_Controller {
         echo json_encode($data);
     }
 
-    // public function blog_update()
-    // {
-    //     $data = array(
-    //         'school_year' => $this->input->post('school_year'),
-    //         'status' => $this->input->post('status'),
-    //         // 'created_at' => date('Y-m-d H:i:s'),
-    //         'updated_at' => date('Y-m-d H:i:s'),
-    //     );
-    //     $this->Blog_model->update_blog($this->input->post('id'), $data);
-    //     echo json_encode(array("status" => TRUE));
-    // }
-
     public function blog_delete($id)
     {
         $blog = $this->Blog_model->get_blog($id);
 
-        // Check if there is a video already associated with the blog post. If yes, unlink the old video file.
         if ('uploads/announcement/'.$blog['path']) {
             unlink('uploads/announcement/'.$blog['path']);
         }

@@ -18,6 +18,13 @@ class Blog_model extends CI_Model
         $query = $this->db->get($this->table);
         return $query->result_array();
     }
+    public function get_blog_single($param){
+        $this->db->select('*');
+        $this->db->from('tbl_announcements');
+        $this->db->where('id', $param);
+        $query = $this->db->get();
+        return $query->result();
+    }
     public function get_all_blog()
     {
         $this->db->select('*');
@@ -105,6 +112,7 @@ class Blog_model extends CI_Model
     foreach($query->result_array() as $row)
     {
         $output[] = array(
+        'id'  => $row["id"],
         'title'  => $row["title"],
         'path'  => $row["path"],
         'description'  => $row["description"]

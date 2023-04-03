@@ -70,7 +70,7 @@ $route['blog-admin'] = 'Blog/index';
 // BLOG
 $route['blog/(:any)'] = 'Blog/bloghome/$1';
 $route['blog'] = 'Blog/bloghome';
-
+$route['blog-view/(:any)'] = 'Blog/blogview/$1';
 $route['get_latest_video_urls/(:any)'] = 'Blog/get_latest_video_urls/$1';
 // Subject
 $route['Subject'] = 'Subject/index';
@@ -78,3 +78,6 @@ $route['Subject_Prereq_BSE'] = 'Prereq/bseindex';
 $route['Subject_Prereq_BPA'] = 'Prereq/bpaindex';
 // Class
 $route['Class'] = 'Class_controller/index';
+// Student_LOADS
+$route['Student-loads'] = 'Student_loads/index';
+

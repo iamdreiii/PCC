@@ -146,47 +146,21 @@
          
         
         </div>
-        <button id="show-more" style="display:none">Show More</button>
+        <nav class="my-4">
+          <ul class="pagination pagination-circle justify-content-center">
+            <li class="page-item">
+              <button id="show-more" class="page-link" style="display:none;">Show More</button>
+            </li>
+          </ul>
+        </nav>
       </section>
       <!--Section: Content-->
-
-      <!-- Pagination -->
-      
-      <!-- <nav class="my-4" aria-label="...">
-        <ul class="pagination pagination-circle justify-content-center">
-          <li class="page-item">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item active" aria-current="page">
-            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav> -->
-      <nav class="my-4" aria-label="...">
-        <ul class="pagination pagination-circle justify-content-center">
-        <?php if(!empty($links)){echo $links;}else{} ?>
-        </ul>
-      </nav>
     </div>
   </main>
   <!--Main layout-->
 
   <!--Footer-->
   <footer class="bg-light text-lg-start">
-    <!-- <div class="py-4 text-center">
-      <a role="button" class="btn btn-primary btn-lg m-2"
-        href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow" target="_blank">
-        Learn Bootstrap 5
-      </a>
-      <a role="button" class="btn btn-primary btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank">
-        Download MDB UI KIT
-      </a>
-    </div> -->
 
     <hr class="m-0" />
 
@@ -227,10 +201,8 @@
     updateVideoContainer();
 
     $(document).ready(function() {
-        // Call the function to update the video container every 5 seconds
         setInterval(updateVideoContainer, 5000);
 
-        // Show more button click event
         $('#show-more').on('click', function() {
             videoCount += 10;
             updateVideoContainer();
@@ -244,7 +216,6 @@
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                // Loop through the returned videos and append new ones to the video container
                 $.each(data, function(index, video) {
                     if (videoCount <= index && index < videoCount + 10) {
                         let objectDate = new Date(video.created_at);
@@ -263,12 +234,12 @@
                                 '</div>' +
                                 '<div class="card-body">' +
                                 '<a href="#' + video.id + '"><h5 class="card-title">' + video.title.toUpperCase() + '</h5></a>' +
-                                '<p class="card-text">' + video.description + '</p>' +
-                                '<a href="#!" class="btn btn-primary">Read</a>' +
+                                // '<p class="card-text">' + video.description + '</p>' +
+                                '<a href="<?=base_url()?>blog-view/'+ video.id +'" class="btn btn-primary">Read</a>' +
                                 '</div>' +
                                 '</div>' +
                                 '</div>');
-                              $image.find('.bg-image img').attr('src', 'uploads/announcement/' + video.path);
+                              $image.find('.bg-image img').attr('src', '<?=base_url()?>' + video.path);
                               $image.find('.bg-image img').attr('alt', video.title.toUpperCase());
                               $('#video-card').append($image);
                           }else  {
@@ -280,50 +251,54 @@
                                   '</div>'+
                                   '<div class="card-body">'+
                                       '<a href="#'+video.id+'"><h5 class="card-title">'+  video.title.toUpperCase() +'</h5></a>'+
-                                      '<p class="card-text">'+  video.description +'</p>'+
-                                      '<a href="#!" class="btn btn-primary">Read</a>'+
+                                      // '<p class="card-text">'+  video.description +'</p>'+
+                                      '<a href="<?=base_url()?>blog-view/'+ video.id +'" class="btn btn-primary">Read</a>'+
                                   '</div>'+
                                   '</div>'+
                               '</div>');
-                              var $source = $('<source></source>&emsp;').attr('src', '<?=base_url()?>' + video.path + '.mp4').attr('type', 'video/mp4','video/avi','video/ogg');
+                              var $source = $('<source></source>&emsp;').attr('src', '<?=base_url()?>' + video.path).attr('type', 'video/mp4','video/avi','video/ogg');
                               $video.find('.bg-image video').append($source);
                               $('#video-card').append($video);
                           }
                             }
                     }
                 });
-
-                // Remove videos that no longer exist in the database
-                $('#video-card .bg-image video').each(function() {
-                    var src = $(this).find('source').attr('src');
-                    var exists = false; // set to false by default
+                $.each(data, function(index, media) {
+                var fileName = media.path.split('/').pop();
+                var extension = fileName.split('.').pop();
+                if (extension == 'jpg' || extension == 'jpeg' || extension == 'png') {
+                    $('#video-card').each(function() {
+                    var src = $(this).find('.bg-image img').attr('src');
+                    var exists = false; 
                     $.each(data, function(index, video) {
-                        if (video.path + '.mp4' == src) {
+                        if (video.path == src) {
                             exists = true;
                             return false;
                         }
                     });
                     if (!exists) {
-                        //$(this).remove();
-                        $(this).closest('.col-lg-4').remove();
+                        $(this).closest('.col-lg-6').remove();
                     }
                 });
-                // $('#video-card .bg-image img').each(function() {
-                //     var src = $(this).find('source').attr('src');
-                //     var exists = false; // set to false by default
-                //     $.each(data, function(index, video) {
-                //         if (video.path + '.mp4' == src) {
-                //             exists = true;
-                //             return false;
-                //         }
-                //     });
-                //     if (!exists) {
-                //         //$(this).remove();
-                //         $(this).closest('.col-lg-4').remove();
-                //     }
-                // });
+                }
+                else{
+                  $('#video-card .bg-image video').each(function() {
+                      var src = $(this).find('source').attr('src');
+                      var exists = false; 
+                      $.each(data, function(index, video) {
+                          if ('<?=base_url()?>' + video.path == src) {
+                              exists = true;
+                              return false;
+                          }
+                      });
+                      if (!exists) {
+                          $(this).closest('.col-lg-6').remove();
+                      }
+                  });
+                }
+              });
 
-                    // Show more button
+                    //Show more button
                     if (videoCount + 10 < data.length) {
                         $('#show-more').show();
                     } else {
@@ -354,18 +329,16 @@ $(document).ready(function(){
    limit:5,
    templates:{
     suggestion:Handlebars.compile('\
-    <div class="row" style="width:200px;justify-content: center; ">\
-    <div class="col-md-8">\
-        <video src="<?=base_url()?>{{path}}.mp4" class="img-thumbnail"></video>\
-    </div>\
-    <div class="col-md-4">\
-        <div style="background-color: white;">\
-            <a href="#{{title}}" style="float: right;">{{title}}</a>\
+    <div class="row" style="width:200px; margin:auto; display:flex; justify-content: center;background-color: white; ">\
+        <div class="col-md-4">\
+            <div style="background-color: white;">\
+                <a href="<?=base_url()?>blog-view/{{id}}" style="float: right;">{{title}}</a>\
+            </div>\
         </div>\
     </div>\
-</div>\
-<hr>\
-    ')
+    <hr>\
+')
+
    }
   });
 });
