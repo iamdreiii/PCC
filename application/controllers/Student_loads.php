@@ -166,5 +166,61 @@ class Student_loads extends CI_Controller {
         );
         echo json_encode($output);
     }
+    public function get_subjects()
+    {
+        $subjects = $this->Student_loads_model->get_subjects();
+        echo json_encode($subjects);
+    }
+    // public function add_student_loads()
+    // {
+    //     $subject_ids = $this->input->post('subject_ids');
+    //     $user_ids = $this->input->post('user_ids');
+    //     $result = $this->Student_loads_model->add_student_loads($subject_ids, $user_ids);
+    //     if ($result) {
+    //       echo 'Student Loads Added successfully.';
+    //     } else {
+    //       echo 'Error Adding Student loads ID.';
+    //     }
+      
+    // }
+    public function add_student_loads()
+{
+    $subject_ids = $this->input->post('subject_ids');
+    $subcodes = $this->input->post('subcodes');
+    $user_ids = $this->input->post('user_ids');
+
+    // Loop through each user id and insert the subject ids
+    foreach ($user_ids as $user_id) {
+        foreach ($subject_ids as $key => $subject_id) {
+            $subcode = $subcodes[$key];
+            // Check if the student has already added this subject
+            $query = $this->db->get_where('tbl_student_subject_loads', array('student_id' => $user_id,'subject_code' => $subcode,  'subject_id' => $subject_id));
+            if ($query->num_rows() > 0) {
+                // Student has already added this subject
+                continue;
+            }
+            
+            // Insert the subject id for the student id
+            $data = array('student_id' => $user_id, 'subject_code' => $subcode, 'subject_id' => $subject_id);
+            $result = $this->db->insert('tbl_student_subject_loads', $data);
+            
+            // Check if the insert was successful
+            if (!$result) {
+                // If the query failed due to a duplicate entry error, return a message indicating that the student has already added this subject
+                $error_code = $this->db->error()['code'];
+                if ($error_code == 1062) {
+                    echo 'Student has already added the subject with ID ' . $subject_id . '.';
+                } else {
+                    echo 'Error adding student subject load with ID ' . $subject_id . '.';
+                }
+                return;
+            }
+        }
+    }
+    
+    echo 'Student Loads Added successfully.';
+}
+
+
 
 }

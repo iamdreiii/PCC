@@ -1,149 +1,39 @@
-<!-- 
-<div class="modal fade" id="modal_form" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3><i class="glyphicon glyphicon-user"></i> <span class="modal-title"></span></h3>
-                </div>
-                <div class="modal-body form">
-                    <form action="#" id="form">
-                        <input type="hidden" value="" name="id"/>
-                        <div class="form-body">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="fname">First Name <b style="color:red;">*</b></label>
-                                    <input name="fname" placeholder="First Name" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="mname">Middle Name</label>
-                                    <input name="mname" placeholder="Middle Name" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="lname">Last Name <b style="color:red;">*</b></label>
-                                    <input name="lname" placeholder="Last Name" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="extensions">Extension ex: Sr, Jr</label>
-                                    <input name="extensions" placeholder="Extension" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="gender">Gender <b style="color:red;">*</b></label>
-                                    <select name="gender" class="form-control" >
-                                        <option value="">Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="date_of_birth">Birthday</label>
-                                    <input name="date_of_birth" class="form-control" type="date">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="email">Email <b style="color:red;">*</b></label>
-                                    <input name="email" placeholder="Email" class="form-control" type="email">
-                                    <span id="email-error"  class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="password">Password <b style="color:red;">*</b></label>
-                                    <input name="password" placeholder="Password" class="form-control" type="password">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="phone_number">Phone Number <b style="color:red;">*</b></label>
-                                    <input name="phone_number" placeholder="09**********" class="form-control" type="text" pattern="09123456789">
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="address">Address <b style="color:red;">*</b></label>
-                                    <textarea name="address" class="form-control" id="address"></textarea>
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="course">Course/Program <b style="color:red;">*</b></label>
-                                    <select name="course" id="course" class="form-control">
-                                        <option value="">Select a course</option>
-                                    </select>
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="year_level">Year Level</label>
-                                    <select name="year_level" id="year_level" class="form-control">
-                                        <option value="">Select Year Level</option>
-                                    </select>
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="enrollment_status">Enrollment Status</label>
-                                    <select name="enrollment_status" id="enrollment_status" class="form-control">
-                                        <option value="">Select a Enrollment Status</option>
-                                        <option value="Enrolled">Enrolled</option>
-                                        <option value="Regular">Regular</option>
-                                        <option value="Irregular">Irregular</option>
-                                        <option value="Graduate">Graduate</option>
-                                    </select>
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="btnSave" onclick="save()" class="btn btn-primary"><i class="glyphicon glyphicon-save"></i> Save</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-   
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <!-- ADD/UPDATE CLASS MODAL -->
-<div class="modal fade" id="class_modal" tabindex="-1" role="dialog" aria-labelledby="class_modal_label" aria-hidden="true">
+<div class="modal fade" id="student_loads_modal" tabindex="-1" role="dialog" aria-labelledby="class_modal_label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title" id="class_modal_label">Select Class</h3>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form id="class_form">
-            <div class="form-group">
-              <label for="class_id">Class:</label>
-              <select class="form-control" id="class_id" name="class_id">
-                  <option value="">Select Class</option>
-              </select>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="class_modal_label">Select Class</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-          </form>
+            <div class="modal-body">
+                <form id="class_form">
+                    <table id="subject_ids" class="table table-bordered table-striped" >
+                        <thead>
+                            <tr>
+                                <th width="2%"><input type="checkbox" id="select-all"></th>
+                                <th>COURSECODE</th>
+                                <th>Description</th>
+                                <th>Units</th>
+                                <th>Pre-Req</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="save_student_loads_btn">Save</button>
+            </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" id="save_class_btn">Save</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
+
 
 <style>
 .text-on-pannel {
@@ -745,7 +635,7 @@
 
 
 /* Modal Content (image) */
-.modal-content {
+.modal-content1 {
   margin: auto;
   display: block;
   width: 90%;
@@ -765,7 +655,7 @@
 }
 
 /* Add Animation */
-.modal-content, #caption {  
+.modal-content1, #caption {  
   animation-name: zoom;
   animation-duration: 0.6s;
 }
@@ -802,7 +692,7 @@
 </style>
 <div id="myModal" class="modal">
   <span class="close" onclick="closeModal()">&times;</span>
-  <img class="modal-content" id="img01">
+  <img class="modal-content1" id="img01">
 </div>
 
 <script>

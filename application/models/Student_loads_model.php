@@ -50,4 +50,31 @@ class Student_loads_model extends CI_Model
         $query = $this->db->get();
         return $query->num_rows();
     }
+    public function get_subjects()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_subject');
+        $this->db->where('year_level', '1');
+        $this->db->where('program_id', '1');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function add_student_loads($subject_ids, $user_ids)
+{
+    //$subject_ids_array = explode(',', $subject_ids);
+    $data = array();
+    foreach ($user_ids as $user_id) {
+        foreach ($subject_ids as $subject_id) {
+            $data[] = array(
+                'subject_id' => $subject_id,
+                'student_id' => $user_id
+                
+            );
+        }
+    }
+    $result = $this->db->insert_batch('tbl_student_subject_loads', $data);
+    return $result;
+}
+
+
 }

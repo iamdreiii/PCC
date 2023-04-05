@@ -53,9 +53,9 @@
                 }
             });
             $('#select-all').click(function() {
-        var checkboxes = table.column(0).nodes().to$().find(':checkbox');
-        checkboxes.prop('checked', this.checked);
-        checkboxes.trigger('change');
+            var checkboxes = table.column(0).nodes().to$().find(':checkbox');
+            checkboxes.prop('checked', this.checked);
+            checkboxes.trigger('change');
     });
         });
         
@@ -290,34 +290,37 @@
             }
         });
         $.ajax({
-            url: '<?php echo base_url("User/get_classes"); ?>',
+            url: '<?php echo base_url("Student_loads/get_subjects"); ?>',
             dataType: 'json',
-            success: function(classes) {
-                var options = '';
-                options += '<option value="none">NONE</option>';
-                $.each(classes, function(index, classes) {
-                    var yearLevel = '';
-                    switch (classes.year_level) {
-                        case '1':
-                        yearLevel = '1st Year';
-                        break;
-                        case '2':
-                        yearLevel = '2nd Year';
-                        break;
-                        case '3':
-                        yearLevel = '3rd Year';
-                        break;
-                        case '4':
-                        yearLevel = '4th Year';
-                        break;
-                        default:
-                        yearLevel = 'Unknown';
-                    }
-                    options += '<option value="' + classes.name + '">' + classes.name + ' - ' + yearLevel + '</option>';
+            success: function(subjects) {
+                var table = '<table>';
+                table += '<thead><tr><th><input type="checkbox" id="select-all"></th><th>COURSECODE</th><th>Description</th><th>Units</th><th>Pre-Req</th></tr></thead><tbody>';
+                $.each(subjects, function(index, subjects) {
+                    table += '<tr>';
+                    table += '<td><input type="checkbox" name="subject_ids[]" value="' + subjects.id + '"></td>';
+                    table += '<td>' + subjects.subcode + '</td>';
+                    table += '<td>' + subjects.description + '</td>';
+                    table += '<td>' + subjects.units + '</td>';
+                    table += '<td>' + subjects.prereq + '</td>';
+                    table += '</tr>';
                 });
-                $('#class_id').html(options);
+                table += '</tbody></table>';
+                $('#subject_ids').html(table);
+                
+                // Add select all checkbox functionality
+                $('#select-all').click(function(){
+            $('#subject_ids tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
+        });
+
+            },
+            error: function(xhr, status, error) {
+                console.log("Error: " + error);
             }
         });
+
+
+
+
         $.ajax({
             url: '<?php echo base_url("User/get_year_level"); ?>',
             dataType: 'json',
@@ -411,34 +414,74 @@
             if (selectedUsers.length === 0) {
             alert('Please select at least one user.');
             } else {
-            $('#class_modal').modal('show');
+            $('#student_loads_modal').modal('show');
             }
         });
+        // $('#save_student_loads_btn').click(function() {
+        //     var subject_ids = $('input[name="subject_ids[]"]:checked').map(function() {
+        //         return this.value;
+        //     }).get();
+        //     var user_ids = $('input[name="selected[]"]:checked').map(function() {
+        //         return this.value;
+        //     }).get();
 
-        $('#save_class_btn').click(function() {
-            var class_id = $('#class_id').val();
-            var user_ids = $('input[name="selected[]"]:checked').map(function() {
-            return this.value;
-            }).get();
+        //     if (subject_ids.length === 0) {
+        //         alert('Please select at least one subject.');
+        //         return;
+        //     }
+        //     if (user_ids.length === 0) {
+        //         alert('Please select at least one user.');
+        //         return;
+        //     }
 
-            if (user_ids.length === 0) {
-            alert('Please select at least one user.');
-            return;
-            }
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "<?php echo site_url('Student_loads/add_student_loads'); ?>",
+        //         data: {subject_ids: subject_ids, user_ids: user_ids},
+        //         success: function(response) {
+        //             reload_table();
+        //             var stat = response;
+        //             success(stat);
+        //         }
+        //     });
 
-            $.ajax({
-            type: "POST",
-            url: "<?php echo site_url('User/update_class_id'); ?>",
-            data: {class_id: class_id, user_ids: user_ids},
-            success: function(response) {
-                reload_table();
-                var stat = response;
-                success(stat);
-            }
-            });
+        //     $('#student_loads_modal').modal('hide');
+        // });
+        $('#save_student_loads_btn').click(function() {
+                var subject_ids = [];
+                var subcodes = [];
+                $('input[name="subject_ids[]"]:checked').each(function() {
+                    subject_ids.push($(this).val());
+                    subcodes.push($(this).closest('tr').find('td:eq(1)').text());
+                });
+                var user_ids = $('input[name="selected[]"]:checked').map(function() {
+                    return this.value;
+                }).get();
 
-            $('#class_modal').modal('hide');
+                if (subject_ids.length === 0) {
+                    alert('Please select at least one subject.');
+                    return;
+                }
+                if (user_ids.length === 0) {
+                    alert('Please select at least one user.');
+                    return;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo site_url('Student_loads/add_student_loads'); ?>",
+                    data: {subject_ids: subject_ids, subcodes: subcodes, user_ids: user_ids},
+                    success: function(response) {
+                        reload_table();
+                        var stat = response;
+                        success(stat);
+                    }
+                });
+
+                $('#student_loads_modal').modal('hide');
         });
+
+
         });
 
 
