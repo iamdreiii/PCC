@@ -308,9 +308,11 @@
                 $('#subject_ids').html(table);
                 
                 // Add select all checkbox functionality
-                $('#select-all').click(function(){
-            $('#subject_ids tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
-        });
+                // Add select all checkbox functionality
+$(document).on('click', '#select-all', function(){
+    $('#subject_ids tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
+});
+
 
             },
             error: function(xhr, status, error) {
@@ -417,36 +419,6 @@
             $('#student_loads_modal').modal('show');
             }
         });
-        // $('#save_student_loads_btn').click(function() {
-        //     var subject_ids = $('input[name="subject_ids[]"]:checked').map(function() {
-        //         return this.value;
-        //     }).get();
-        //     var user_ids = $('input[name="selected[]"]:checked').map(function() {
-        //         return this.value;
-        //     }).get();
-
-        //     if (subject_ids.length === 0) {
-        //         alert('Please select at least one subject.');
-        //         return;
-        //     }
-        //     if (user_ids.length === 0) {
-        //         alert('Please select at least one user.');
-        //         return;
-        //     }
-
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "<?php echo site_url('Student_loads/add_student_loads'); ?>",
-        //         data: {subject_ids: subject_ids, user_ids: user_ids},
-        //         success: function(response) {
-        //             reload_table();
-        //             var stat = response;
-        //             success(stat);
-        //         }
-        //     });
-
-        //     $('#student_loads_modal').modal('hide');
-        // });
         $('#save_student_loads_btn').click(function() {
                 var subject_ids = [];
                 var subcodes = [];
