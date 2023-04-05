@@ -66,9 +66,9 @@ class User extends CI_Controller {
         $length = $this->input->post('length');
         $list = $this->Users_model->get_all_users_search($search, $start, $length);
         $data = array();
-        $no = $_POST['start'];
+        //$no = $_POST['start'];
         foreach ($list as $user) {
-            $no++;
+           // $no++;
             $row = array();
             $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
             //$row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" width="40" height="40" style="border-radius:50%;background-size:cover;" alt="Profile" id="myImg">';

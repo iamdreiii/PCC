@@ -79,5 +79,15 @@ $route['Subject_Prereq_BPA'] = 'Prereq/bpaindex';
 // Class
 $route['Class'] = 'Class_controller/index';
 // Student_LOADS
-$route['Student-loads'] = 'Student_loads/index';
-
+// BSE
+$route['bse_student_loads_first_year'] = 'Student_loads/bse_first_year';
+$route['bse_student_loads_second_year'] = 'Student_loads/bse_second_year';
+$route['bse_student_loads_third_year'] = 'Student_loads/bse_third_year';
+$route['bse_student_loads_fourth_year'] = 'Student_loads/bse_fourth_year';
+// BPA
+$route['bpa_student_loads_first_year'] = 'Student_loads/bpa_first_year';
+$route['bpa_student_loads_second_year'] = 'Student_loads/bpa_second_year';
+$route['bpa_student_loads_third_year'] = 'Student_loads/bpa_third_year';
+$route['bpa_student_loads_fourth_year'] = 'Student_loads/bpa_fourth_year';
+// STUDENTS GRADES
+$route['grades'] = 'Grades/getgrade';

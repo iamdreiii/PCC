@@ -73,8 +73,8 @@ class Users_model extends CI_Model
         $this->db->or_like('email', $search);
         $this->db->or_like('class_id', $search);
         $this->db->or_like('year_level', $search);
-        $this->db->or_like('gender', $search);
-        $this->db->or_like('course', $search);
+        $this->db->or_like('sex', $search);
+        $this->db->or_like('program', $search);
         $this->db->or_like('address', $search);
         $this->db->or_like('city_municipality', $search);
         $this->db->or_like('zip_code', $search);

@@ -56,9 +56,37 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url()?>Users"><i class="fa fa-circle-o"></i> Students</a></li>
-            <li><a href="<?php echo base_url()?>Student-loads"><i class="fa fa-circle-o"></i> Student Loads</a></li>
+            <li li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> BSE Student Loads
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <!-- YEAR LEVEL -->
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url()?>bse_student_loads_first_year"><i class="fa fa-circle-o"></i> First Year</a></li>
+                <li><a href="<?=base_url()?>bse_student_loads_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
+                <li><a href="<?=base_url()?>bse_student_loads_third_year"><i class="fa fa-circle-o"></i> Third Year</a></li>
+                <li><a href="<?=base_url()?>bse_student_loads_fourth_year"><i class="fa fa-circle-o"></i> Fourth Year</a></li>
+              </ul>
+            </li>
+            <li li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> BPA Student Loads
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <!-- YEAR LEVEL -->
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url()?>bpa_student_loads_first_year"><i class="fa fa-circle-o"></i> First Year</a></li>
+                <li><a href="<?=base_url()?>bpa_student_loads_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
+                <li><a href="<?=base_url()?>bpa_student_loads_third_year"><i class="fa fa-circle-o"></i> Third Year</a></li>
+                <li><a href="<?=base_url()?>bpa_student_loads_fourth_year"><i class="fa fa-circle-o"></i> Fourth Year</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
+        
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i> <span>Manage Grades</span>
@@ -67,7 +95,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="treeview">
+            <li li class="treeview">
               <a href="#"><i class="fa fa-circle-o"></i> Manage BSE Grades
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
@@ -216,6 +244,34 @@
           </ul>
         </li>
         <!-- END MANAGE CLASS -->
+        <!-- START ASSIGN GRADES -->
+        <?php if($this->session->userdata('prof')){?>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-book"></i> <span>Manage Class</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url()?>Class"><i class="fa fa-circle-o"></i> List of Class</a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> Manage Teachers
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher Class</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher Loads</a></li>
+                
+              </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+          </ul>
+        </li>
+        <?php }?>
+        <!-- END ASSIGN GRADES -->
         <!-- START MANAGE SUBJECTS -->
         <li class="treeview">
           <a href="#">
@@ -255,18 +311,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="#"><i class="fa fa-circle-o"></i> Academic Records</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Certificates
-              <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Cert. of Enrollment</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Cert. of Grade</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Cert. of Transfer</a></li>
-              </ul>
-            </li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Certificates</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Form 138-A</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Tentative Evaluation</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Transcript of Records</a></li>
@@ -275,7 +320,7 @@
         <!-- END MANAGE SUBJECTS -->
         <li class="header"></li>
         <li><a href="<?php echo base_url()?>school-year"><i class="fa fa-circle-o"></i> School Year</a></li>
-        <!-- START MANAGE SUBJECTS -->
+        <!-- START MANAGE SETTINGS -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-gears"></i> <span>Settings</span>
