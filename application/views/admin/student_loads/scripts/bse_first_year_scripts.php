@@ -308,10 +308,9 @@
                 $('#subject_ids').html(table);
                 
                 // Add select all checkbox functionality
-                // Add select all checkbox functionality
-$(document).on('click', '#select-all', function(){
-    $('#subject_ids tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
-});
+            $(document).on('click', '#select-all', function(){
+                $('#subject_ids tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
+            });
 
 
             },

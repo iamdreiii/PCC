@@ -284,17 +284,6 @@
             <li><a href="<?php echo base_url()?>Subject"><i class="fa fa-circle-o"></i> Subjects List</a></li>
             <li><a href="<?php echo base_url()?>Subject_Prereq_BSE"><i class="fa fa-circle-o"></i> BSE Prerequisites</a></li>
             <li><a href="<?php echo base_url()?>Subject_Prereq_BPA"><i class="fa fa-circle-o"></i> BPA Prerequisites</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Manage Students Loads
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Students Loads</a></li>
-              </ul>
-            </li>
-            
           </ul>
         </li>
         <!-- END MANAGE Grades -->
