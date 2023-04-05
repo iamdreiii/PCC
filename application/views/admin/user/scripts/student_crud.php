@@ -88,9 +88,9 @@
                     $('[name="id"]').val(data.id);
                     //$('[name="imgfile"]').val(data.img);
                     // display image preview
-                    if (data.img) {
-                        $('#image-preview').html('<img src="<?php echo base_url(); ?>uploads/useruploads/'+data.img+'" style="max-height: 100px; max-width: 100px; border-radius:10px;" />');
-                    }
+                    // if (data.img) {
+                    //     $('#image-preview').html('<img src="<?php echo base_url(); ?>uploads/useruploads/'+data.img+'" style="max-height: 100px; max-width: 100px; border-radius:10px;" />');
+                    // }
                     $('[name="fname"]').val(data.fname);
                     $('[name="mname"]').val(data.mname);
                     $('[name="lname"]').val(data.lname);
@@ -256,11 +256,13 @@
                     }
                     else
                     {
-                        for (var i = 0; i < data.inputerror.length; i++) {
-                            $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error');
-                            $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); 
-                            
-                        }
+                        if (data.inputerror && Array.isArray(data.inputerror)) {
+    for (var i = 0; i < data.inputerror.length; i++) {
+        $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error');
+        $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); 
+    }
+}
+
                     }
                     $('#btnSave').text('save'); 
                     $('#btnSave').attr('disabled',false); 
