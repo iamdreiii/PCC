@@ -1,6 +1,7 @@
 <script type="text/javascript">
         var save_method;
         var table;
+        var table1;
         
         $(document).ready(function() {
 
@@ -178,8 +179,9 @@
         {
             table.ajax.reload(null,false); 
         }
+        
 
-
+        
         function save_student()
         {
             
@@ -289,38 +291,7 @@
                 $('#program').html(options);
             }
         });
-        $.ajax({
-            url: '<?php echo base_url("Student_loads/get_subjects"); ?>',
-            dataType: 'json',
-            success: function(subjects) {
-                var table = '<table>';
-                table += '<thead><tr><th><input type="checkbox" id="select-all"></th><th>COURSECODE</th><th>Description</th><th>Units</th><th>Pre-Req</th></tr></thead><tbody>';
-                $.each(subjects, function(index, subjects) {
-                    table += '<tr>';
-                    table += '<td><input type="checkbox" name="subject_ids[]" value="' + subjects.id + '"></td>';
-                    table += '<td>' + subjects.subcode + '</td>';
-                    table += '<td>' + subjects.description + '</td>';
-                    table += '<td>' + subjects.units + '</td>';
-                    table += '<td>' + subjects.prereq + '</td>';
-                    table += '</tr>';
-                });
-                table += '</tbody></table>';
-                $('#subject_ids').html(table);
-                
-                // Add select all checkbox functionality
-            $(document).on('click', '#select-all', function(){
-                $('#subject_ids tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
-            });
-
-
-            },
-            error: function(xhr, status, error) {
-                console.log("Error: " + error);
-            }
-        });
-
-
-
+       
 
         $.ajax({
             url: '<?php echo base_url("User/get_year_level"); ?>',
@@ -409,6 +380,36 @@
             });
         });
 
+        $.ajax({
+            url: '<?php echo base_url("Student_loads/get_subjects"); ?>',
+            dataType: 'json',
+            success: function(subjects) {
+                var table1 = '<table>';
+                table1 += '<thead><tr><th><input type="checkbox" id="select-all"></th><th>COURSECODE</th><th>Description</th><th>Units</th><th>Pre-Req</th></tr></thead><tbody>';
+                $.each(subjects, function(index, subjects) {
+                    table1 += '<tr>';
+                    table1 += '<td><input type="checkbox" name="subject_ids[]" value="' + subjects.id + '"></td>';
+                    table1 += '<td>' + subjects.subcode + '</td>';
+                    table1 += '<td>' + subjects.description + '</td>';
+                    table1 += '<td>' + subjects.units + '</td>';
+                    table1 += '<td>' + subjects.prereq + '</td>';
+                    table1+= '</tr>';
+                });
+                table1 += '</tbody></table>';
+                $('#subject_ids').html(table1);
+                
+                // Add select all checkbox functionality
+            $(document).on('click', '#select-all', function(){
+                $('#subject_ids tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
+            });
+
+
+            },
+            error: function(xhr, status, error) {
+                console.log("Error: " + error);
+            }
+        });
+        
         $(document).ready(function() {
         $('#update_btn').click(function() {
             var selectedUsers = $('input[name="selected[]"]:checked');
@@ -444,6 +445,8 @@
                     data: {subject_ids: subject_ids, subcodes: subcodes, user_ids: user_ids},
                     success: function(response) {
                         reload_table();
+                        $('input[name="subject_ids[]"]:checked').prop('checked', false);
+                        $('#select-all').prop('checked', false);
                         var stat = response;
                         success(stat);
                     }

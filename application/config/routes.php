@@ -80,6 +80,9 @@ $route['Subject_Prereq_BPA'] = 'Prereq/bpaindex';
 $route['Class'] = 'Class_controller/index';
 // Student_LOADS
 // BSE
+$route['view_student_loads/(:num)'] = 'Student_loads/view_student_loads/$1';
+$route['edit_student_loads/(:num)'] = 'Student_loads/edit_student_loads/$1';
+$route['print_student_loads/(:num)'] = 'Student_loads/print_student_loads/$1';
 $route['bse_student_loads_first_year'] = 'Student_loads/bse_first_year';
 $route['bse_student_loads_second_year'] = 'Student_loads/bse_second_year';
 $route['bse_student_loads_third_year'] = 'Student_loads/bse_third_year';

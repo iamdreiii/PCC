@@ -151,7 +151,7 @@ class Student_loads extends CI_Controller {
             $row[] = $user->program;
             $row[] = $user->class_id;
             $row[] = $user->year_level;
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+            $row[] = '<a class="btn btn-sm btn-primary" href='."'".base_url().'view_student_loads/'.$user->id."'".'><i class="glyphicon glyphicon-book"></i> Loads</a>
                   <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
             $data[] = $row;
         }
@@ -184,43 +184,88 @@ class Student_loads extends CI_Controller {
       
     // }
     public function add_student_loads()
-{
-    $subject_ids = $this->input->post('subject_ids');
-    $subcodes = $this->input->post('subcodes');
-    $user_ids = $this->input->post('user_ids');
+    {
+        $subject_ids = $this->input->post('subject_ids');
+        $subcodes = $this->input->post('subcodes');
+        $user_ids = $this->input->post('user_ids');
 
-    // Loop through each user id and insert the subject ids
-    foreach ($user_ids as $user_id) {
-        foreach ($subject_ids as $key => $subject_id) {
-            $subcode = $subcodes[$key];
-            // Check if the student has already added this subject
-            $query = $this->db->get_where('tbl_student_subject_loads', array('student_id' => $user_id,'subject_code' => $subcode,  'subject_id' => $subject_id));
-            if ($query->num_rows() > 0) {
-                // Student has already added this subject
-                continue;
-            }
-            
-            // Insert the subject id for the student id
-            $data = array('student_id' => $user_id, 'subject_code' => $subcode, 'subject_id' => $subject_id);
-            $result = $this->db->insert('tbl_student_subject_loads', $data);
-            
-            // Check if the insert was successful
-            if (!$result) {
-                // If the query failed due to a duplicate entry error, return a message indicating that the student has already added this subject
-                $error_code = $this->db->error()['code'];
-                if ($error_code == 1062) {
-                    echo 'Student has already added the subject with ID ' . $subject_id . '.';
-                } else {
-                    echo 'Error adding student subject load with ID ' . $subject_id . '.';
+        // Loop through each user id and insert the subject ids
+        foreach ($user_ids as $user_id) {
+            foreach ($subject_ids as $key => $subject_id) {
+                $subcode = $subcodes[$key];
+                // Check if the student has already added this subject
+                $query = $this->db->get_where('tbl_student_subject_loads', array('student_id' => $user_id,'subject_code' => $subcode,  'subject_id' => $subject_id));
+                if ($query->num_rows() > 0) {
+                    // Student has already added this subject
+                    continue;
                 }
-                return;
+                
+                // Insert the subject id for the student id
+                $data = array('student_id' => $user_id, 'subject_code' => $subcode, 'subject_id' => $subject_id);
+                $result = $this->db->insert('tbl_student_subject_loads', $data);
+                
+                // Check if the insert was successful
+                if (!$result) {
+                    // If the query failed due to a duplicate entry error, return a message indicating that the student has already added this subject
+                    $error_code = $this->db->error()['code'];
+                    if ($error_code == 1062) {
+                        echo 'Student has already added the subject with ID ' . $subject_id . '.';
+                    } else {
+                        echo 'Error adding student subject load with ID ' . $subject_id . '.';
+                    }
+                    return;
+                }
             }
         }
+        
+        echo 'Student Loads Added successfully.';
     }
-    
-    echo 'Student Loads Added successfully.';
-}
 
+    public function view_student_loads($param)
+    {
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+            $page = 'view_student_loads';
+            if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
+                show_404();
+            }
+            $data['title'] = "View Student Loads";
+            $data['student_loads'] = $this->Student_loads_model->get_student_loads($param);
+            $data['id'] = $param;
+            $this->load->view('admin/student_loads/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }	
+    }
+    public function edit_student_loads($param)
+    {
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+            $page = 'edit_student_loads';
+            if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
+                show_404();
+            }
+            $data['title'] = "View Student Loads";
+            $data['student_loads'] = $this->Student_loads_model->get_student_loads($param);
+            $this->load->view('admin/student_loads/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }	
+    }
+    public function print_student_loads($param)
+    {
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+            $page = 'print_student_loads';
+            if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
+                show_404();
+            }
+            $data['student_loads'] = $this->Student_loads_model->get_student_loads($param);
+            $this->load->view('admin/student_loads/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }	
+    }
 
 
 }
