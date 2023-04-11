@@ -88,12 +88,10 @@ High Shool Course Completed :  <?= ucfirst($row['secondary_school_last_attended'
 <div class="row no-print">
 <div class="col-xs-12">
 <a href="<?=base_url()?>print_student_loads/<?= $id?>" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-
-<a href="<?=base_url()?>edit_student_loads/<?= $id?>" class="btn btn-primary pull-right"><i class="fa fa-pencil"></i> Edit</a>
+<a href="<?=base_url()?>view_student_loads/<?= $id?>" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back</a>
 </div>
 </div>
 </section>
-
 
 <div class="clearfix"></div>
 </div>

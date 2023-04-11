@@ -231,6 +231,7 @@ class Student_loads extends CI_Controller {
             }
             $data['title'] = "View Student Loads";
             $data['student_loads'] = $this->Student_loads_model->get_student_loads($param);
+            $data['student_data'] = $this->Student_loads_model->get_student_data($param);
             $data['id'] = $param;
             $this->load->view('admin/student_loads/'. $page, $data);    
         }else{
@@ -245,8 +246,10 @@ class Student_loads extends CI_Controller {
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
                 show_404();
             }
-            $data['title'] = "View Student Loads";
+            $data['title'] = "Edit Student Loads";
             $data['student_loads'] = $this->Student_loads_model->get_student_loads($param);
+            $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+            $data['id'] = $param;
             $this->load->view('admin/student_loads/'. $page, $data);    
         }else{
             redirect('staff');

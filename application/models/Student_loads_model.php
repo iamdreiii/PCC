@@ -102,6 +102,14 @@ class Student_loads_model extends CI_Model
         ");
         return $query->result_array();
     }
+    public function get_student_data($param)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_student');
+        $this->db->where('id', $param);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
 
 }
