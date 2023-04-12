@@ -78,7 +78,7 @@ class Student_loads_model extends CI_Model
     // VIEW
     public function get_student_loads($param)
     {
-        $query = $this->db->query("SELECT tbl_subject.subcode as coursecode, 
+        $query = $this->db->query("SELECT tbl_student_subject_loads.id as sl_id, tbl_subject.subcode as coursecode,  
                 tbl_subject.description as description, 
                 CONCAT(tbl_student.lname, ' ', tbl_student.fname, ' ', tbl_student.mname, ' ') as fullname, 
                 SUM(tbl_subject.units) as units,
@@ -94,11 +94,30 @@ class Student_loads_model extends CI_Model
         
         UNION ALL
         
-        SELECT '', '', '', SUM(tbl_subject.units), ''
+        SELECT '', '', '', '', SUM(tbl_subject.units), ''
         FROM tbl_student_subject_loads 
         JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 
         JOIN tbl_subject ON tbl_subject.id = tbl_student_subject_loads.subject_id 
         WHERE tbl_student_subject_loads.student_id = $param
+        ");
+        return $query->result_array();
+    }
+    public function get_student_loads_print($param)
+    {
+        $query = $this->db->query("SELECT tbl_subject.subcode as coursecode,  
+                tbl_subject.description as 'description', 
+                CONCAT(tbl_student.lname, ' ', tbl_student.fname, ' ', tbl_student.mname, ' ') as fullname, 
+                tbl_subject.units as units, SUM(tbl_subject.units) as tunits,
+                CASE 
+                    WHEN tbl_subject.prereq = '' OR tbl_subject.prereq IS NULL THEN 'none' 
+                    ELSE tbl_subject.prereq 
+                END as pre_req, tbl_student_subject_loads.id as slid 
+        FROM tbl_student_subject_loads 
+        JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 
+        JOIN tbl_subject ON tbl_subject.id = tbl_student_subject_loads.subject_id 
+        WHERE tbl_student_subject_loads.student_id = $param 
+        GROUP BY tbl_subject.subcode, tbl_subject.description, tbl_student.lname, tbl_student.fname, tbl_student.mname, tbl_subject.prereq 
+        ORDER BY slid  ASC
         ");
         return $query->result_array();
     }
@@ -110,6 +129,10 @@ class Student_loads_model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
-
+    public function delete_subject_loads($id) {
+        // Delete the subject by ID from the database
+        $this->db->where('id', $id);
+        $this->db->delete('tbl_student_subject_loads');
+    }
 
 }

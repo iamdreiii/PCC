@@ -263,11 +263,29 @@ class Student_loads extends CI_Controller {
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
                 show_404();
             }
-            $data['student_loads'] = $this->Student_loads_model->get_student_loads($param);
+            $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+            $data['id'] = $param;
+            $data['student_loads'] = $this->Student_loads_model->get_student_loads_print($param);
             $this->load->view('admin/student_loads/'. $page, $data);    
         }else{
             redirect('staff');
         }	
+    }
+    public function delete_student_loads($ids) {
+        // Convert the comma-separated IDs string to an array
+        $otherId = $this->input->get('other_id');
+        $selectedIds = explode(',', $ids);
+
+        // Delete the selected subjects
+        if (!empty($selectedIds)) {
+            foreach ($selectedIds as $id) {
+                // Call the delete_subject method of the student_load_model to delete the subject by ID
+                $this->Student_loads_model->delete_subject_loads($id);
+            }
+        }
+
+        // Redirect or display a success message, depending on your requirements
+        redirect('view_student_loads/' . $otherId); // Redirect to the view_student_loads page with the appropriate ID
     }
 
 

@@ -14,60 +14,101 @@
 
 <section class="invoice">
 
-<div class="row">
-<div class="col-xs-12">
-<h2 class="page-header">
-<i class="fa fa-globe"></i> AdminLTE, Inc.
-<small class="pull-right">Date: 2/10/2014</small>
-</h2>
+
+<div class="row" style="margin-top: 5px; margin-bottom: 5px;">
+  <div class="col-xs-12 text-center">
+    <div class="d-flex justify-content-center align-items-center">
+      <div style="position: absolute; left: 10%; top: 0;">
+        <img src="<?= base_url()?>assets/img/PCC.png" alt="" style="width:85px; height:85px;">
+      </div>
+      <div style="margin-left: auto; margin-right: auto;">
+        <h2 style="margin-top: 5px; margin-bottom: 5px;">
+          <b>POLA COMMUNITY COLLEGE</b>
+        </h2>
+      </div>
+    </div>
+    <h5 style="margin-top: 5px; margin-bottom: 5px;"><b>Zone II, Pola Oriental Mindoro</b></h5>
+    <h6 style="margin-top: 5px; margin-bottom: 5px;"><b>Phone: +(63)9560875992 | E-mail: polacommunitycollege2020@gmal.com</b></h6>
+    <hr style="margin-top: 5px; margin-bottom: 2px;">
+    <hr style="margin-top: 2px; margin-bottom: 2px;">
+    <h4><b>OFFICE OF THE REGISTRAR</b></h4>
+    <h6><b>SUBJECT LOADS</b></h6>
+  </div>
 </div>
 
-</div>
 
+
+<?php foreach($student_data as $row) :?>
 <div class="row invoice-info">
 <div class="col-sm-10 invoice-col">
-<address>Name :<br>
-Address : <br>
-Course : <br>
-Date of Admission : <br>
-Place of Birth : <br>
-Elementary  Course Completed : <br>
-High Shool Course Completed : <br>
-</address>
+  <address style="white-space: nowrap;">
+    Name : <?= ucfirst($row['lname'])?>, <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?><br>
+    Address : <?= ucfirst($row['address'])?> <?= ucfirst($row['city_municipality'])?> <?= ucfirst($row['province'])?><br>
+    Course : <?php if($row['program'] == 'BSE') {echo 'Bachelor of Science in Entrepreneurship';}else{echo 'Bachelor of Public Administration';}?><br>
+    Date of Admission : <br>
+    Place of Birth :  <?= ucfirst($row['birthplace'])?><br>
+    Elementary Course Completed :  <?= ucfirst($row['primary_school_last_attended'])?><br>
+    High School Course Completed :  <?= ucfirst($row['secondary_school_last_attended'])?><br>
+  </address>
 </div>
 
 
-<div class="col-sm-2 invoice-col">
-<b>Admission Credential:</b> Form 138-A<br>
-<b>Date of Birth:</b><br>
+<div class="col-sm-2 invoice-col pull-right">
+    <address style="white-space: nowrap;">
+        Admission Credential: Form 138-A<br>
+        Date of Birth: <?= ucfirst($row['birthdate'])?> <br><br><br><br>
+        School Year :  <?= ucfirst($row['primary_school_year_last_attended'])?><br>
+        School Year :  <?= ucfirst($row['secondary_school_year_last_attended'])?><br>
+    </address>
 </div>
 
 </div>
+<?php endforeach?>
+
 
 
 <div class="row">
 <div class="col-xs-12 table-responsive">
-<table class="table table-striped table-bordered">
-<thead>
-<tr>
-<th>COURSE CODE</th>
-<th>COURSE DESCRIPTION</th>
-<th>UNITS</th>
-<th>PRE-REQ</th>
-</tr>
-</thead>
-<tbody>
-<?php foreach($student_loads as $row) :?>
-<tr>
-<td><?php echo $row['coursecode']?></td>
-<td><?php echo $row['description']?></td>
-<td><?php echo $row['units']?></td>
-<td><?php echo $row['pre_req']?></td>
-</tr>
-<?php endforeach?>
-</tbody>
+<style>
+  table {
+    border-collapse: collapse;
+  }
 
+  th, td {
+    padding: 0;
+    border: none;
+  }
+</style>
+
+<table class="table table-bordered text-center" style="border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="padding: 0; border: none;">COURSE CODE</th>
+      <th style="padding: 0; border: none;">COURSE DESCRIPTION</th>
+      <th style="padding: 0; border: none;">UNITS</th>
+      <th style="padding: 0; border: none;">PRE-REQ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach($student_loads as $row) :?>
+      <tr>
+        <td style="padding: 0; border: none;"><?php echo $row['coursecode']?></td>
+        <td style="padding: 0; border: none;"><?php echo $row['description']?></td>
+        <td style="padding: 0; border: none;"><?php echo $row['units']?></td>
+        <td style="padding: 0; border: none;"><?php echo $row['pre_req']?></td>
+      </tr>
+    <?php endforeach?>
+  </tbody>
+  <tfoot>
+  <tr>
+      <td></td>
+      <td></td>
+      <td><?php echo $row['tunits']?></td>
+      <td></td>
+  </tr>
+  </tfoot>
 </table>
+
 <div style="text-align:left; margin-top:20px;">
     Not valid without school seal
 </div>
