@@ -80,6 +80,12 @@
   }
 </style>
 
+<?php
+$total_units = 0; // Initialize total units to 0
+foreach($student_loads as $row) {
+    $total_units += $row['units']; // Add the units of each row to the total units
+}
+?>
 <table class="table table-bordered text-center" style="border-collapse: collapse;">
   <thead>
     <tr>
@@ -103,11 +109,12 @@
   <tr>
       <td></td>
       <td></td>
-      <td><?php echo $row['tunits']?></td>
+      <td><?php echo $total_units?></td> <!-- Display the total sum of units -->
       <td></td>
   </tr>
   </tfoot>
 </table>
+
 
 <div style="text-align:left; margin-top:20px;">
     Not valid without school seal
