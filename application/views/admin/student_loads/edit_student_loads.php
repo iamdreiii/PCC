@@ -73,8 +73,12 @@ School Year :  <?= ucfirst($row['secondary_school_year_last_attended'])?><br>
 
 <div class="row">
 <div class="col-xs-12 table-responsive">
-<!-- Add the "id" attribute to the table for easy reference in JavaScript -->
-<!-- Add the "id" attribute to the table for easy reference in JavaScript -->
+<?php
+$total_units = 0; // Initialize total units to 0
+foreach($student_loads as $row) {
+    $total_units += $row['units']; // Add the units of each row to the total units
+}
+?>
 <table id="myTable" class="table table-striped table-bordered">
 <thead>
 <tr>
@@ -96,6 +100,13 @@ School Year :  <?= ucfirst($row['secondary_school_year_last_attended'])?><br>
 </tr>
 <?php endforeach?>
 </tbody>
+<tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><?php echo $total_units?></td> <!-- Display the total sum of units -->
+      <td></td>
+  </tr>
 </table>
 
 
