@@ -1,121 +1,5 @@
-<!-- 
-<div class="modal fade" id="modal_form" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3><i class="glyphicon glyphicon-user"></i> <span class="modal-title"></span></h3>
-                </div>
-                <div class="modal-body form">
-                    <form action="#" id="form">
-                        <input type="hidden" value="" name="id"/>
-                        <div class="form-body">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="fname">First Name <b style="color:red;">*</b></label>
-                                    <input name="fname" placeholder="First Name" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="mname">Middle Name</label>
-                                    <input name="mname" placeholder="Middle Name" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="lname">Last Name <b style="color:red;">*</b></label>
-                                    <input name="lname" placeholder="Last Name" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="extensions">Extension ex: Sr, Jr</label>
-                                    <input name="extensions" placeholder="Extension" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="gender">Gender <b style="color:red;">*</b></label>
-                                    <select name="gender" class="form-control" >
-                                        <option value="">Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="date_of_birth">Birthday</label>
-                                    <input name="date_of_birth" class="form-control" type="date">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="email">Email <b style="color:red;">*</b></label>
-                                    <input name="email" placeholder="Email" class="form-control" type="email">
-                                    <span id="email-error"  class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="password">Password <b style="color:red;">*</b></label>
-                                    <input name="password" placeholder="Password" class="form-control" type="password">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="phone_number">Phone Number <b style="color:red;">*</b></label>
-                                    <input name="phone_number" placeholder="09**********" class="form-control" type="text" pattern="09123456789">
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="address">Address <b style="color:red;">*</b></label>
-                                    <textarea name="address" class="form-control" id="address"></textarea>
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="course">Course/Program <b style="color:red;">*</b></label>
-                                    <select name="course" id="course" class="form-control">
-                                        <option value="">Select a course</option>
-                                    </select>
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label for="year_level">Year Level</label>
-                                    <select name="year_level" id="year_level" class="form-control">
-                                        <option value="">Select Year Level</option>
-                                    </select>
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <label for="enrollment_status">Enrollment Status</label>
-                                    <select name="enrollment_status" id="enrollment_status" class="form-control">
-                                        <option value="">Select a Enrollment Status</option>
-                                        <option value="Enrolled">Enrolled</option>
-                                        <option value="Regular">Regular</option>
-                                        <option value="Irregular">Irregular</option>
-                                        <option value="Graduate">Graduate</option>
-                                    </select>
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="btnSave" onclick="save()" class="btn btn-primary"><i class="glyphicon glyphicon-save"></i> Save</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
-   
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="<?=base_url()?>assets/script/jquery-3.6.0.min.js"></script>
 
 <!-- ADD/UPDATE CLASS MODAL -->
 <div class="modal fade" id="class_modal" tabindex="-1" role="dialog" aria-labelledby="class_modal_label" aria-hidden="true">
@@ -208,8 +92,7 @@
   left: 0;
 }
 </style>
-<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-  <!-- Admission Form Modal -->
+<script type="text/javascript" src="<?=base_url()?>assets/script/jquery-3.2.1.min.js"></script>
   <div class="modal fade" id="modal_form2" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

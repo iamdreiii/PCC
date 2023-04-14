@@ -17,3 +17,5 @@
 <script src="<?php echo base_url()?>assets/dist/js/demo.js"></script>
 <!-- TOASTR -->
 <script src="<?php echo base_url()?>assets/toastr/toastr.min.js"></script>
+<!-- <script type="text/javascript" src="<?=base_url()?>assets/script/jquery-3.6.0.min.js"></script> -->
+<!-- <script type="text/javascript" src="<?=base_url()?>assets/script/jquery-3.2.1.min.js"></script> -->

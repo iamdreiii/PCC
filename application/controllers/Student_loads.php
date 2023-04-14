@@ -129,9 +129,9 @@ class Student_loads extends CI_Controller {
             redirect('staff');
         }	
 	}
+    // BSE
     public function bse_first_year_student_list()
     {
-        
         $search = $this->input->post("search")['value'];
         $start = $this->input->post('start');
         $length = $this->input->post('length');
@@ -142,9 +142,40 @@ class Student_loads extends CI_Controller {
             $no++;
             $row = array();
             $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
-            // $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
-            // width="40" height="40" style="border-radius:50%;background-size:cover;" 
-            // alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href='.base_url().'view_student_loads/'.$user->id.'><i class="glyphicon glyphicon-book"></i> Loads</a>
+                  <a class="btn btn-sm btn-warning" href="'.base_url().'edit_student_loads/'.$user->id.'" title="" ><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Student_loads_model->bse_1_count_filtered();
+        $totalCount = $this->Student_loads_model->bse_1_count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bse_second_year_student_list()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Student_loads_model->get_all_student_bse_second_year($search, $start, $length);
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $user) {
+            $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -152,11 +183,217 @@ class Student_loads extends CI_Controller {
             $row[] = $user->class_id;
             $row[] = $user->year_level;
             $row[] = '<a class="btn btn-sm btn-primary" href='."'".base_url().'view_student_loads/'.$user->id."'".'><i class="glyphicon glyphicon-book"></i> Loads</a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                  <a class="btn btn-sm btn-warning" href="'.base_url().'edit_student_loads/'.$user->id.'" title="" ><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
             $data[] = $row;
         }
-        $filteredCount = $this->Student_loads_model->count_filtered();
-        $totalCount = $this->Student_loads_model->count_all();
+        $filteredCount = $this->Student_loads_model->bse_2_count_filtered();
+        $totalCount = $this->Student_loads_model->bse_2_count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bse_third_year_student_list()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Student_loads_model->get_all_student_bse_third_year($search, $start, $length);
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $user) {
+            $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href='."'".base_url().'view_student_loads/'.$user->id."'".'><i class="glyphicon glyphicon-book"></i> Loads</a>
+                  <a class="btn btn-sm btn-warning" href="'.base_url().'edit_student_loads/'.$user->id.'" title="" ><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Student_loads_model->bse_3_count_filtered();
+        $totalCount = $this->Student_loads_model->bse_3_count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bse_fourth_year_student_list()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Student_loads_model->get_all_student_bse_fourth_year($search, $start, $length);
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $user) {
+            $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href='."'".base_url().'view_student_loads/'.$user->id."'".'><i class="glyphicon glyphicon-book"></i> Loads</a>
+                  <a class="btn btn-sm btn-warning" href="'.base_url().'edit_student_loads/'.$user->id.'" title="" ><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Student_loads_model->bse_4_count_filtered();
+        $totalCount = $this->Student_loads_model->bse_4_count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+
+    // BPA
+    public function bpa_first_year_student_list()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Student_loads_model->get_all_student_bpa_first_year($search, $start, $length);
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $user) {
+            $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href='."'".base_url().'view_student_loads/'.$user->id."'".'><i class="glyphicon glyphicon-book"></i> Loads</a>
+                  <a class="btn btn-sm btn-warning" href="'.base_url().'edit_student_loads/'.$user->id.'" title="" ><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Student_loads_model->bpa_1_count_filtered();
+        $totalCount = $this->Student_loads_model->bpa_1_count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_second_year_student_list()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Student_loads_model->get_all_student_bpa_second_year($search, $start, $length);
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $user) {
+            $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href='."'".base_url().'view_student_loads/'.$user->id."'".'><i class="glyphicon glyphicon-book"></i> Loads</a>
+                  <a class="btn btn-sm btn-warning" href="'.base_url().'edit_student_loads/'.$user->id.'" title="" ><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Student_loads_model->bpa_2_count_filtered();
+        $totalCount = $this->Student_loads_model->bpa_2_count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_third_year_student_list()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Student_loads_model->get_all_student_bpa_third_year($search, $start, $length);
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $user) {
+            $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href='."'".base_url().'view_student_loads/'.$user->id."'".'><i class="glyphicon glyphicon-book"></i> Loads</a>
+                  <a class="btn btn-sm btn-warning" href="'.base_url().'edit_student_loads/'.$user->id.'" title="" ><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Student_loads_model->bpa_3_count_filtered();
+        $totalCount = $this->Student_loads_model->bpa_3_count_all();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_fourth_year_student_list()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Student_loads_model->get_all_student_bpa_fourth_year($search, $start, $length);
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $user) {
+            $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href='."'".base_url().'view_student_loads/'.$user->id."'".'><i class="glyphicon glyphicon-book"></i> Loads</a>
+                  <a class="btn btn-sm btn-warning" href="'.base_url().'edit_student_loads/'.$user->id.'" title="" ><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Student_loads_model->bpa_4_count_filtered();
+        $totalCount = $this->Student_loads_model->bpa_4_count_all();
 
         $output = array(
             "draw" => $_POST['draw'],
@@ -171,18 +408,6 @@ class Student_loads extends CI_Controller {
         $subjects = $this->Student_loads_model->get_subjects();
         echo json_encode($subjects);
     }
-    // public function add_student_loads()
-    // {
-    //     $subject_ids = $this->input->post('subject_ids');
-    //     $user_ids = $this->input->post('user_ids');
-    //     $result = $this->Student_loads_model->add_student_loads($subject_ids, $user_ids);
-    //     if ($result) {
-    //       echo 'Student Loads Added successfully.';
-    //     } else {
-    //       echo 'Error Adding Student loads ID.';
-    //     }
-      
-    // }
     public function add_student_loads()
     {
         $subject_ids = $this->input->post('subject_ids');
@@ -223,6 +448,7 @@ class Student_loads extends CI_Controller {
 
     public function view_student_loads($param)
     {
+        $lasturl = $this->input->get('lasturl');
         if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
         {
             $page = 'view_student_loads';
@@ -233,6 +459,7 @@ class Student_loads extends CI_Controller {
             $data['student_loads'] = $this->Student_loads_model->get_student_loads($param);
             $data['student_data'] = $this->Student_loads_model->get_student_data($param);
             $data['id'] = $param;
+            $data['lasturl'] = $lasturl;
             $this->load->view('admin/student_loads/'. $page, $data);    
         }else{
             redirect('staff');

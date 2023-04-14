@@ -15,7 +15,7 @@
 <small>#<??></small>
 </h1>
 <ol class="breadcrumb">
-<li><a href="<?=base_url()?>bse_student_loads_first_year"><i class="fa fa-dashboard"></i> Manage Student</a></li>
+<li><a href="#" id="backButton"><i class="fa fa-dashboard"></i> Manage Student</a></li>
 <li><a href="#">Subject</a></li>
 <li class="active">Loads</li>
 </ol>
@@ -41,6 +41,7 @@
     <hr style="margin-top: 2px; margin-bottom: 2px;">
     <hr style="margin-top: 2px; margin-bottom: 2px;">
     <h4><b>OFFICE OF THE REGISTRAR</b></h4>
+    <h4><b>SUBJECT LOADS</b></h4>
   </div>
 </div>
 
@@ -82,7 +83,8 @@ foreach($student_loads as $row) {
 <table id="myTable" class="table table-striped table-bordered">
 <thead>
 <tr>
-  <th><input type="checkbox" id="checkAll"></th>
+  <th><input id="checkAll" type="checkbox" >
+</th>
   <th>COURSE CODE</th>
   <th>COURSE DESCRIPTION</th>
   <th>UNITS</th>
@@ -90,21 +92,27 @@ foreach($student_loads as $row) {
 </tr>
 </thead>
 <tbody>
+<?php if(empty($student_loads)) : ?>
+<tr>
+<td colspan="4" style="text-align: center;">No Matching Records</td>
+</tr>
+<?php else : ?>
 <?php foreach($student_loads as $row) :?>
 <tr>
-  <td><input type="checkbox" name="selected[]" value="<?php echo $row['sl_id']?>"></td>
-  <td><?php echo $row['coursecode']?></td>
-  <td><?php echo $row['description']?></td>
-  <td><?php echo $row['units']?></td>
-  <td><?php echo $row['pre_req']?></td>
+<td><input type="checkbox" name="selected[]" value="<?php echo $row['sl_id'];?>"></td>
+<td><?php echo $row['coursecode']?></td>
+<td><?php echo $row['description']?></td>
+<td><?php echo $row['units']?></td>
+<td><?php echo $row['pre_req']?></td>
 </tr>
 <?php endforeach?>
+<?php endif; ?>
 </tbody>
 <tr>
       <td></td>
       <td></td>
       <td></td>
-      <td><?php echo $total_units?></td> <!-- Display the total sum of units -->
+      <td><?php echo $total_units?></td>
       <td></td>
   </tr>
 </table>
@@ -120,7 +128,7 @@ foreach($student_loads as $row) {
 <div class="row no-print">
 <div class="col-xs-12">
 <a href="<?=base_url()?>print_student_loads/<?= $id?>" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-<a href="<?=base_url()?>view_student_loads/<?= $id?>" class="btn btn-default"><i class="fa fa-arrow-left"></i> Back</a>
+<button class="btn btn-default" id="backButton1"><i class="fa fa-arrow-left"></i> Back</button>
 
 <!-- Add the "id" attribute to the Delete Loads button for easy reference in JavaScript -->
 <button href="#" id="deleteLoads" class="btn btn-primary pull-right"><i class="fa fa-book"></i> Delete Loads</button>
@@ -180,6 +188,17 @@ window.onload = function() {
   });
 }
 </script>
+<script>
+document.getElementById('backButton').addEventListener('click', function() {
+  // Use JavaScript to go back to the previous URL
+  window.history.back();
+ 
+});
+document.getElementById('backButton1').addEventListener('click', function() {
+  // Use JavaScript to go back to the previous URL
+  window.history.back();
+});
 
+</script>
 </body>
 </html>

@@ -308,7 +308,11 @@
         </li>
         <!-- END MANAGE SUBJECTS -->
         <li class="header"></li>
-        <li><a href="<?php echo base_url()?>school-year"><i class="fa fa-circle-o"></i> School Year</a></li>
+        <li>
+          <a href="<?php echo base_url()?>school-year">
+            <i class="fa fa-calendar-o"></i> <span> School Year</span>
+          </a>
+        </li>
         <!-- START MANAGE SETTINGS -->
         <li class="treeview">
           <a href="#">

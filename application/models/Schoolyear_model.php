@@ -40,22 +40,34 @@ class Schoolyear_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    // public function update_sy($id, $data)
+    // {
+    //     $this->db->trans_start();
+    
+    // // Set all rows to inactive
+    // $this->db->set('status', 'inactive');
+    // $this->db->update('tbl_school_year');
+    // $this->db->set('school_year', $data['school_year']);
+    // // Set the row with the specified ID to active
+    // $this->db->set('status', 'active');
+    // $this->db->where('id', $id);
+    // $this->db->update('tbl_school_year');
+    
+    // $this->db->trans_complete();
+    // return $this->db->trans_status();
+    // }
+
     public function update_sy($id, $data)
     {
-        $this->db->trans_start();
-    
-    // Set all rows to inactive
-    $this->db->set('status', 'inactive');
-    $this->db->update('tbl_school_year');
-    $this->db->set('school_year', $data['school_year']);
-    // Set the row with the specified ID to active
-    $this->db->set('status', 'active');
-    $this->db->where('id', $id);
-    $this->db->update('tbl_school_year');
-    
-    $this->db->trans_complete();
-    return $this->db->trans_status();
+        $this->db->where('id', $id);
+        return $this->db->update('tbl_school_year', $data);
     }
+    public function update_sy_status($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('tbl_school_year', $data);
+    }
+
 
     public function delete_sy($id)
     {

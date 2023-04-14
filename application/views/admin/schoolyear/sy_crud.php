@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?=base_url()?>assets/script/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
         var save_method; //for save method string
         var table;
@@ -201,88 +202,37 @@
                 }
             });
         }
+        function toggleStatus(id, currentStatus) {
+            // Update the badge text and class
+            if (currentStatus == 'active') {
+                $('#badge_' + id).removeClass('bg-green').addClass('bg-red').text('inactive');
+            } else {
+                $('#badge_' + id).removeClass('bg-red').addClass('bg-green').text('active');
+            }
 
-        // TOASTR
-        function success(stat){
-            toastr.options = {
-                                "closeButton": true,
-                                "debug": false,
-                                "newestOnTop": true,
-                                "progressBar": false,
-                                "positionClass": "toast-bottom-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "200",
-                                "hideDuration": "1000",
-                                "timeOut": "3000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                                }
-                            toastr.success(stat)
+            // Send AJAX request to update status
+            $.ajax({
+                url: '<?=base_url()?>School_year/sy_update_status',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    id: id,
+                    status: currentStatus
+                },
+                success: function(response) {
+                    // Handle success response
+                    reload_table();
+                    var stat = 'School Year Status Updated';
+                    success(stat);
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response
+                    error(status);
+                }
+            });
         }
-        function warning(stat){
-            toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": true,
-                            "progressBar": false,
-                            "positionClass": "toast-bottom-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "200",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                            }
-                        toastr.warning(stat)
-        }
-        function error(stat){
-            toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": true,
-                            "progressBar": false,
-                            "positionClass": "toast-bottom-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "200",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                            }
-                        toastr.error(stat)
-        }
-        function info(stat){
-            toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": true,
-                            "progressBar": false,
-                            "positionClass": "toast-bottom-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "200",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                            }
-                        toastr.info(stat)
-        }
+
+
         function deletemodal(callback) {
         // Create modal HTML
         var modalHtml = `
@@ -336,3 +286,4 @@
     }
     </script>
 
+<?php $this->load->view('helpers/toastr');?>

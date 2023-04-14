@@ -12,18 +12,7 @@
                             <div class="row">
                                 <label class="col-xs-3" for="school_year">School Year <b style="color:red;">*</b></label>
                                 <div class="col-xs-8">
-                                    <input name="school_year" placeholder="First Name" class="form-control" type="text">
-                                    <span class="help-block"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label class="col-xs-3" for="status">Status <b style="color:red;">*</b></label>
-                                <div class="col-xs-8">
-                                    <select name="status" id="status" class="form-control">
-                                        <option value="">Select</option>
-                                        <option value="active">Active</option>
-                                        <option value="inactive">Inactive</option>
-                                    </select>
+                                    <input name="school_year" placeholder="School Year" class="form-control" type="text">
                                     <span class="help-block"></span>
                                 </div>
                             </div>
@@ -38,4 +27,4 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+

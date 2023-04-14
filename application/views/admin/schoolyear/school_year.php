@@ -32,9 +32,9 @@
                 <tr>
                     <th>#</th>
                     <th>School Year</th>
-                    <th>Current SY</th>
                     <th>Created</th>
                     <th>Updated</th>
+                    <th>Current SY</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -44,9 +44,9 @@
                 <tr>
                     <th>#</th>
                     <th>School Year</th>
-                    <th>Current SY</th>
                     <th>Created</th>
                     <th>Updated</th>
+                    <th>Current SY</th>
                     <th width="14%">Action</th>
                 </tr>
                 </tfoot>

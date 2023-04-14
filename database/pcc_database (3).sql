@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Mar 29, 2023 at 10:43 AM
+-- Generation Time: Apr 13, 2023 at 04:46 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -36,6 +36,15 @@ CREATE TABLE `tbl_announcements` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_announcements`
+--
+
+INSERT INTO `tbl_announcements` (`id`, `title`, `path`, `description`, `created_at`, `updated_at`) VALUES
+(128, 'sdfsdfsd', 'uploads/announcement/09134.png', 'fdsfsdf', '2023-04-03 04:12:44', '2023-04-03 04:23:25'),
+(130, 'fgdfg', 'uploads/announcement/75264.mp4', 'gfd', '2023-04-03 04:16:50', '2023-04-03 04:22:20'),
+(131, 'sample', 'uploads/announcement/90276.mp4', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at. Urna nec tincidunt praesent semper feugiat nibh sed. Vitae sapien pellentesque habitant morbi tristique senectus. Leo integer malesuada nunc vel risus commodo viverra maecenas accumsan. In mollis nunc sed id semper risus in. Amet justo donec enim diam vulputate ut. Quam quisque id diam vel quam elementum pulvinar etiam non. Pulvinar elementum integer enim neque. Aliquet sagittis id consectetur purus ut faucibus pulvinar elementum. Elementum pulvinar etiam non quam lacus suspendisse faucibus interdum. Aliquam nulla facilisi cras fermentum. Nunc mattis enim ut tellus elementum sagittis vitae et leo. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo.\n\nAmet aliquam id diam maecenas ultricies mi eget mauris. In pellentesque massa placerat duis ultricies lacus sed turpis tincidunt. Urna nec tincidunt praesent semper. Netus et malesuada fames ac. Pharetra magna ac placerat vestibulum lectus. Vel facilisis volutpat est velit. Ut consequat semper viverra nam libero justo laoreet sit. Tincidunt lobortis feugiat vivamus at augue eget. In hendrerit gravida rutrum quisque non tellus orci. Lorem ipsum dolor sit amet. Quam viverra orci sagittis eu. Diam donec adipiscing tristique risus nec feugiat in fermentum. Cursus turpis massa tincidunt dui ut ornare lectus. Maecenas sed enim ut sem viverra aliquet eget. Sem viverra aliquet eget sit amet tellus. Donec adipiscing tristique risus nec feugiat in fermentum.\n\nDiam maecenas ultricies mi eget mauris pharetra et ultrices neque. Amet porttitor eget dolor morbi non arcu. Mi eget mauris pharetra et ultrices neque ornare aenean euismod. Cursus sit amet dictum sit amet. Lacinia quis vel eros donec ac odio. Mollis aliquam ut porttitor leo a. Convallis convallis tellus id interdum velit. Nunc aliquet bibendum enim facilisis gravida neque. Nisi lacus sed viverra tellus. Tincidunt id aliquet risus feugiat in ante metus dictum at. Vulputate odio ut enim blandit volutpat maecenas volutpat. Consequat nisl vel pretium lectus quam.\n\nNeque egestas congue quisque egestas diam in arcu cursus. Sed sed risus pretium quam vulputate dignissim suspendisse in. Enim neque volutpat ac tincidunt. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Lacus vel facilisis volutpat est velit egestas dui id. Tempor orci eu lobortis elementum nibh tellus molestie. Id aliquet lectus proin nibh nisl. Pellentesque id nibh tortor id. Eu turpis egestas pretium aenean pharetra magna. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Nunc mi ipsum faucibus vitae aliquet nec. Amet mauris commodo quis imperdiet massa.\n\nDui id ornare arcu odio ut sem nulla pharetra diam. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper sit. Nulla facilisi morbi tempus iaculis urna id. Molestie at elementum eu facilisis sed odio morbi quis commodo. Facilisis leo vel fringilla est ullamcorper eget nulla facilisi etiam. Bibendum at varius vel pharetra vel turpis nunc. Dui ut ornare lectus sit amet est. Pellentesque pulvinar pellentesque habitant morbi. Donec ac odio tempor orci dapibus. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Nec ullamcorper sit amet risus nullam. Amet nisl purus in mollis. Mattis nunc sed blandit libero volutpat sed cras ornare. Massa tincidunt dui ut ornare lectus sit. Eu mi bibendum neque egestas congue quisque egestas. Pulvinar sapien et ligula ullamcorper malesuada proin libero nunc consequat. Cursus euismod quis viverra nibh cras pulvinar mattis. Risus sed vulputate odio ut enim blandit volutpat. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem. Consequat nisl vel pretium lectus quam id leo.', '2023-04-03 04:27:44', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +54,7 @@ CREATE TABLE `tbl_announcements` (
 CREATE TABLE `tbl_class` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `year_level` int(11) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -53,9 +63,11 @@ CREATE TABLE `tbl_class` (
 -- Dumping data for table `tbl_class`
 --
 
-INSERT INTO `tbl_class` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'CLASS 1', '2023-03-02 11:37:12', '2023-03-02 11:37:12'),
-(2, 'CLASS 2', '2023-03-02 11:37:12', '2023-03-02 11:37:12');
+INSERT INTO `tbl_class` (`id`, `name`, `year_level`, `created_at`, `updated_at`) VALUES
+(1, 'CLASS 1', 1, '2023-03-02 11:37:12', '2023-03-30 08:06:36'),
+(3, 'CLASS 2', 2, '2023-03-30 07:51:52', '2023-03-30 08:22:53'),
+(4, 'CLASS 3', 3, '2023-03-30 08:07:35', '2023-03-30 08:22:56'),
+(5, 'CLASS 4', 4, '2023-03-30 08:23:05', '2023-03-30 14:23:05');
 
 -- --------------------------------------------------------
 
@@ -182,9 +194,11 @@ INSERT INTO `tbl_staff` (`id`, `username`, `password`, `type`, `created_at`, `up
 
 CREATE TABLE `tbl_student` (
   `id` int(11) NOT NULL,
+  `img` varchar(255) DEFAULT NULL,
   `lname` varchar(255) DEFAULT NULL,
   `fname` varchar(255) DEFAULT NULL,
   `mname` varchar(255) DEFAULT NULL,
+  `extension` varchar(100) DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `sex` varchar(6) DEFAULT NULL,
@@ -204,6 +218,15 @@ CREATE TABLE `tbl_student` (
   `father` varchar(255) DEFAULT NULL,
   `mother` varchar(255) DEFAULT NULL,
   `guardian` varchar(255) DEFAULT NULL,
+  `f_occupation` varchar(250) DEFAULT NULL,
+  `m_occupation` varchar(250) DEFAULT NULL,
+  `g_relationship` varchar(100) DEFAULT NULL,
+  `f_contact` varchar(11) DEFAULT NULL,
+  `m_contact` varchar(11) DEFAULT NULL,
+  `g_contact` varchar(11) DEFAULT NULL,
+  `f_birthdate` date DEFAULT NULL,
+  `m_birthdate` date DEFAULT NULL,
+  `g_birthdate` date DEFAULT NULL,
   `parent_address` varchar(255) DEFAULT NULL,
   `guardian_address` varchar(255) DEFAULT NULL,
   `ws_company` varchar(255) DEFAULT NULL,
@@ -215,59 +238,85 @@ CREATE TABLE `tbl_student` (
   `program` varchar(255) DEFAULT NULL,
   `year_level` varchar(100) DEFAULT NULL,
   `sem` varchar(45) DEFAULT NULL,
+  `class_id` varchar(100) DEFAULT NULL,
   `tertiary_school_last_attended` varchar(255) DEFAULT NULL,
   `tertiary_school_address` varchar(255) DEFAULT NULL,
-  `tertiary_school_year_last_attended` date DEFAULT NULL,
+  `tertiary_school_year_last_attended` varchar(100) DEFAULT NULL,
+  `tertiary_city` varchar(250) DEFAULT NULL,
+  `tertiary_province` varchar(250) DEFAULT NULL,
   `secondary_school_last_attended` varchar(255) DEFAULT NULL,
   `secondary_school_address` varchar(255) DEFAULT NULL,
-  `secondary_school_year_last_attended` date DEFAULT NULL,
+  `secondary_school_year_last_attended` varchar(100) DEFAULT NULL,
+  `secondary_city` varchar(250) DEFAULT NULL,
+  `secondary_province` varchar(250) DEFAULT NULL,
   `secondary_junior_school_last_attended` varchar(255) DEFAULT NULL,
-  `secondary_junior_school_year_last_attended` date DEFAULT NULL,
+  `secondary_junior_school_year_last_attended` varchar(100) DEFAULT NULL,
   `secondary_junior_school_address` varchar(255) DEFAULT NULL,
+  `secondary_junior_city` varchar(250) DEFAULT NULL,
+  `secondary_junior_province` varchar(250) DEFAULT NULL,
   `primary_school_last_attended` varchar(255) DEFAULT NULL,
-  `primary_school_year_last_attended` date DEFAULT NULL,
+  `primary_school_year_last_attended` varchar(100) DEFAULT NULL,
   `primary_school_address` varchar(255) DEFAULT NULL,
-  `img` varchar(255) DEFAULT NULL,
+  `primary_city` varchar(250) DEFAULT NULL,
+  `primary_province` varchar(250) DEFAULT NULL,
   `date_created` date DEFAULT current_timestamp(),
   `date_updated` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tbl_student`
+--
+
+INSERT INTO `tbl_student` (`id`, `img`, `lname`, `fname`, `mname`, `extension`, `birthdate`, `age`, `sex`, `height`, `weight`, `birthplace`, `citizenship`, `religion`, `civil_status`, `mobile_no`, `email`, `facebook`, `address`, `city_municipality`, `province`, `zip_code`, `father`, `mother`, `guardian`, `f_occupation`, `m_occupation`, `g_relationship`, `f_contact`, `m_contact`, `g_contact`, `f_birthdate`, `m_birthdate`, `g_birthdate`, `parent_address`, `guardian_address`, `ws_company`, `ws_position`, `ws_date_started`, `ws_employer`, `ws_employer_contact`, `ws_company_address`, `program`, `year_level`, `sem`, `class_id`, `tertiary_school_last_attended`, `tertiary_school_address`, `tertiary_school_year_last_attended`, `tertiary_city`, `tertiary_province`, `secondary_school_last_attended`, `secondary_school_address`, `secondary_school_year_last_attended`, `secondary_city`, `secondary_province`, `secondary_junior_school_last_attended`, `secondary_junior_school_year_last_attended`, `secondary_junior_school_address`, `secondary_junior_city`, `secondary_junior_province`, `primary_school_last_attended`, `primary_school_year_last_attended`, `primary_school_address`, `primary_city`, `primary_province`, `date_created`, `date_updated`) VALUES
+(6, 'IMG_20210306_1703311.jpg', 'Dela Cruz', 'John', 'M', NULL, '2023-03-09', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'john@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '1st Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-03-31', '2023-03-31'),
+(7, NULL, 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'onilevaeduj@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '1st Year', NULL, NULL, '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_student_loads`
+-- Table structure for table `tbl_students_grades`
 --
 
-CREATE TABLE `tbl_student_loads` (
+CREATE TABLE `tbl_students_grades` (
   `id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL,
-  `teacher_id` int(11) NOT NULL,
+  `grades` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_student_loads`
---
-
-INSERT INTO `tbl_student_loads` (`id`, `student_id`, `subject_id`, `teacher_id`, `created_at`, `updated_at`) VALUES
-(2, 43, 1, 1, '2023-02-25 12:48:29', '2023-02-25 12:48:29');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_student_subject`
+-- Table structure for table `tbl_student_subject_loads`
 --
 
-CREATE TABLE `tbl_student_subject` (
+CREATE TABLE `tbl_student_subject_loads` (
   `id` int(11) NOT NULL,
   `subject_id` int(11) DEFAULT NULL,
   `subject_code` varchar(45) DEFAULT NULL,
   `student_id` int(11) DEFAULT NULL,
-  `date_created` date DEFAULT current_timestamp(),
-  `date_updated` date DEFAULT NULL
+  `grade` varchar(100) DEFAULT NULL,
+  `date_created` datetime DEFAULT current_timestamp(),
+  `date_updated` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_student_subject_loads`
+--
+
+INSERT INTO `tbl_student_subject_loads` (`id`, `subject_id`, `subject_code`, `student_id`, `grade`, `date_created`, `date_updated`) VALUES
+(118, 1, 'GENE01', 6, NULL, '2023-04-11 10:16:15', NULL),
+(119, 2, 'GENE02', 6, NULL, '2023-04-11 10:16:15', NULL),
+(120, 3, 'GENE03', 6, NULL, '2023-04-11 10:16:15', NULL),
+(121, 4, 'GENE04', 6, NULL, '2023-04-11 10:16:15', NULL),
+(122, 5, 'GENE05', 6, NULL, '2023-04-11 10:16:15', NULL),
+(123, 6, 'GENE06', 6, NULL, '2023-04-11 10:16:15', NULL),
+(124, 7, 'PHED01', 6, NULL, '2023-04-11 10:16:15', NULL),
+(125, 8, 'NSTP1', 6, NULL, '2023-04-11 10:16:15', NULL),
+(178, 1, 'GENE01', 7, NULL, '2023-04-13 08:37:24', NULL),
+(179, 2, 'GENE02', 7, NULL, '2023-04-13 08:37:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -280,7 +329,7 @@ CREATE TABLE `tbl_subject` (
   `subcode` varchar(45) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `units` int(11) DEFAULT NULL,
-  `prereq` varchar(100) DEFAULT NULL,
+  `prereq` varchar(100) DEFAULT 'none',
   `year_level` int(11) NOT NULL,
   `semester` int(11) NOT NULL,
   `program_id` int(11) DEFAULT NULL,
@@ -293,32 +342,32 @@ CREATE TABLE `tbl_subject` (
 --
 
 INSERT INTO `tbl_subject` (`id`, `subcode`, `description`, `units`, `prereq`, `year_level`, `semester`, `program_id`, `date_created`, `date_updated`) VALUES
-(1, 'GENE01', 'Purposive Communication ', 3, '', 1, 1, 1, NULL, '2023-03-27 09:21:15'),
-(2, 'GENE02', 'Mathematics in the Modern World', 3, '', 1, 1, 1, NULL, NULL),
-(3, 'GENE03', 'Art Apreciation', 3, '', 1, 1, 1, NULL, '2023-03-29 04:45:43'),
-(4, 'GENE04', 'Understanding the Self', 3, '', 1, 1, 1, NULL, NULL),
-(5, 'GENE05', 'Readings in the Philippine History', 3, '', 1, 1, 1, NULL, NULL),
-(6, 'GENE06', 'Ethics', 3, '', 1, 1, 1, NULL, '2023-03-29 07:35:22'),
-(7, 'PHED01', 'Self-Testing Acivities', 2, '', 1, 1, 1, NULL, '2023-03-28 09:10:39'),
-(8, 'NSTP1', 'Civic Welfare Training Service 1', 3, '', 1, 1, 1, NULL, NULL),
-(9, 'GENE07', 'The Contemporary World', 3, '', 1, 2, 1, '2023-03-24 00:00:00', NULL),
-(10, 'GENE08', 'Science, Technology and Society', 3, '', 1, 2, 1, '2023-03-24 00:00:00', NULL),
-(11, 'GENE09', 'People and the Earth\'s Ecosystem', 3, '', 1, 2, 1, '2023-03-24 00:00:00', NULL),
-(15, 'GENE10', 'Gender and Society', 3, '', 1, 2, 1, '2023-03-24 00:00:00', NULL),
-(16, 'GENE11', 'Information Technology (IT) in the New Era', 3, '', 1, 2, 1, '2023-03-24 00:00:00', '2023-03-24 00:00:00'),
+(1, 'GENE01', 'Purposive Communication ', 3, 'none', 1, 1, 1, NULL, '2023-03-27 09:21:15'),
+(2, 'GENE02', 'Mathematics in the Modern World', 3, 'none', 1, 1, 1, NULL, NULL),
+(3, 'GENE03', 'Art Apreciation', 3, 'none', 1, 1, 1, NULL, '2023-03-29 04:45:43'),
+(4, 'GENE04', 'Understanding the Self', 3, 'none', 1, 1, 1, NULL, NULL),
+(5, 'GENE05', 'Readings in the Philippine History', 3, 'none', 1, 1, 1, NULL, NULL),
+(6, 'GENE06', 'Ethics', 3, 'none', 1, 1, 1, NULL, '2023-03-29 07:35:22'),
+(7, 'PHED01', 'Self-Testing Acivities', 2, 'none', 1, 1, 1, NULL, '2023-03-28 09:10:39'),
+(8, 'NSTP1', 'Civic Welfare Training Service 1', 3, 'none', 1, 1, 1, NULL, NULL),
+(9, 'GENE07', 'The Contemporary World', 3, 'none', 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(10, 'GENE08', 'Science, Technology and Society', 3, 'none', 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(11, 'GENE09', 'People and the Earth\'s Ecosystem', 3, 'none', 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(15, 'GENE10', 'Gender and Society', 3, 'none', 1, 2, 1, '2023-03-24 00:00:00', NULL),
+(16, 'GENE11', 'Information Technology (IT) in the New Era', 3, 'none', 1, 2, 1, '2023-03-24 00:00:00', '2023-03-24 00:00:00'),
 (17, 'PHED02', 'Rhythmic Activities', 3, 'PHED01', 1, 2, 1, '2023-03-24 11:58:37', '2023-03-29 02:50:25'),
 (19, 'NSTP02', 'Civic Welfare Training Service 2', 3, 'NSTP1', 1, 2, 1, '2023-03-27 13:46:28', '2023-03-29 02:49:56'),
-(20, 'RIZA01', 'Rizal\'s Life and Works', 3, '', 2, 1, 1, '2023-03-27 13:49:04', '2023-03-27 13:49:04'),
-(21, 'ENCO01', 'Entrepreneurial Behavior and Mindset', 3, '', 2, 1, 1, '2023-03-27 09:01:43', '2023-03-27 09:21:32'),
-(22, 'ENCO02', 'Microeconomics', 3, '', 2, 1, 1, '2023-03-27 09:18:22', '2023-03-27 09:21:36'),
+(20, 'RIZA01', 'Rizal\'s Life and Works', 3, 'none', 2, 1, 1, '2023-03-27 13:49:04', '2023-03-27 13:49:04'),
+(21, 'ENCO01', 'Entrepreneurial Behavior and Mindset', 3, 'none', 2, 1, 1, '2023-03-27 09:01:43', '2023-03-27 09:21:32'),
+(22, 'ENCO02', 'Microeconomics', 3, 'none', 2, 1, 1, '2023-03-27 09:18:22', '2023-03-27 09:21:36'),
 (23, 'ENCO03', 'Opportunity Seeking', 3, 'ENCO01', 2, 1, 1, '2023-03-27 09:23:38', '2023-03-29 02:51:34'),
 (24, 'ENCO04', 'Market Research and Consumer Behavior', 3, 'ENCO01', 2, 1, 1, '2023-03-27 09:24:11', '2023-03-29 04:18:52'),
-(25, 'BACC01', 'Fundamentals of Accounting', 6, '', 2, 1, 1, '2023-03-27 09:24:56', '2023-03-27 15:24:56'),
+(25, 'BACC01', 'Fundamentals of Accounting', 6, 'none', 2, 1, 1, '2023-03-27 09:24:56', '2023-03-27 15:24:56'),
 (26, 'PHED03', 'Fundamentals of Games and Sports', 2, 'PHED02', 2, 1, 1, '2023-03-27 09:26:23', '2023-03-29 02:50:48'),
 (27, 'ENCO05', 'Innovation Management', 3, 'ENCO01', 2, 2, 1, '2023-03-27 09:43:42', '2023-03-29 02:51:47'),
 (28, 'ENCO06', 'Pricing and Costing', 3, 'BACC01', 2, 2, 1, '2023-03-27 09:44:17', '2023-03-29 02:52:12'),
 (29, 'ENCO07', 'Human Resource Management', 3, 'ENCO01', 2, 2, 1, '2023-03-27 09:45:04', '2023-03-29 05:48:24'),
-(30, 'ENTR01', 'Human Behavior inOrganization', 3, '', 2, 2, 1, '2023-03-27 10:16:31', '2023-03-29 03:57:43'),
+(30, 'ENTR01', 'Human Behavior inOrganization', 3, 'none', 2, 2, 1, '2023-03-27 10:16:31', '2023-03-29 03:57:43'),
 (31, 'TECEN01', 'Fundamentals of Technopreneurship', 3, 'ENCO03', 2, 2, 1, '2023-03-27 10:17:13', '2023-03-29 02:53:12'),
 (32, 'FBAN01', 'Fundmentals of Business Analytics', 3, 'none', 2, 2, 1, '2023-03-27 10:18:24', '2023-03-29 05:49:20'),
 (33, 'PHED04', 'Recreational Activities for College Students', 2, 'PHED03', 2, 2, 1, '2023-03-27 10:19:01', '2023-03-29 04:04:00'),
@@ -328,7 +377,7 @@ INSERT INTO `tbl_subject` (`id`, `subcode`, `description`, `units`, `prereq`, `y
 (37, 'SPET01', 'Hospitality Management', 3, 'ENCO03', 3, 1, 1, '2023-03-27 10:22:48', '2023-03-29 04:05:28'),
 (38, 'ELEC01', 'Entrepreneurial Leadership in Organization', 3, 'ENTR01', 3, 1, 1, '2023-03-27 10:23:28', '2023-03-29 10:02:54'),
 (39, 'ELEC02', 'Entrepreneurial Marketing  Strategies', 3, 'ENCO03', 3, 1, 1, '2023-03-27 10:24:08', '2023-03-29 04:05:48'),
-(40, 'ENTR02', 'Principles in Crop Production', 3, '', 3, 1, 1, '2023-03-27 10:25:00', '2023-03-29 03:58:04'),
+(40, 'ENTR02', 'Principles in Crop Production', 3, 'none', 3, 1, 1, '2023-03-27 10:25:00', '2023-03-29 03:58:04'),
 (41, 'SPET02', 'Convention and Meeting Management', 3, 'ENCO03', 3, 2, 1, '2023-03-27 10:37:51', '2023-03-29 04:17:57'),
 (42, 'ELEC03', 'E-Commerce', 3, 'TECEN01', 3, 2, 1, '2023-03-27 10:38:29', '2023-03-29 04:18:06'),
 (43, 'ELEC04', 'Agribusiness', 3, 'ENCO03', 3, 2, 1, '2023-03-27 10:39:03', '2023-03-29 04:18:19'),
@@ -341,27 +390,27 @@ INSERT INTO `tbl_subject` (`id`, `subcode`, `description`, `units`, `prereq`, `y
 (50, 'ENCO14', 'Business Plan Implementation 2', 5, 'ENCO12', 4, 2, 1, '2023-03-27 10:44:08', '2023-03-29 04:21:51'),
 (51, 'ENCO15', 'Programs Policies on Enterprise Development', 3, 'ENCO09', 4, 2, 1, '2023-03-27 10:44:44', '2023-03-29 04:22:00'),
 (52, 'SPET04', 'Wholesale and Retail Management', 3, 'ENCO03', 4, 2, 1, '2023-03-27 10:45:12', '2023-03-29 04:22:07'),
-(53, 'GENE01', 'Purposive Communication ', 3, NULL, 1, 1, 2, '2023-03-29 05:02:34', '2023-03-29 11:02:34'),
+(53, 'GENE01', 'Purposive Communication ', 3, 'none', 1, 1, 2, '2023-03-29 05:02:34', '2023-03-29 11:02:34'),
 (54, 'GENE02', 'Mathematics in the Modern World', 3, 'none', 1, 1, 2, '2023-03-29 05:03:34', '2023-03-29 05:05:42'),
-(55, 'GENE03', 'Arts Appreciation', 3, NULL, 1, 1, 2, '2023-03-29 05:19:03', '2023-03-29 11:19:03'),
-(56, 'GENE04', 'Understanding the Self', 3, NULL, 1, 1, 2, '2023-03-29 05:20:03', '2023-03-29 11:20:03'),
-(57, 'GENE05', 'Readings in Philippine History', 3, NULL, 1, 1, 2, '2023-03-29 05:21:27', '2023-03-29 11:21:27'),
-(58, 'GENE06', 'Ethics', 3, NULL, 1, 1, 2, '2023-03-29 05:22:46', '2023-03-29 11:22:46'),
-(59, 'PHED01', 'Self Testing Activities', 2, NULL, 1, 1, 2, '2023-03-29 05:23:47', '2023-03-29 11:23:47'),
-(60, 'NSTP01', 'CWS/MS 11', 3, NULL, 1, 1, 2, '2023-03-29 05:24:55', '2023-03-29 11:24:55'),
-(61, 'GENE07', 'The Contemporary World', 3, NULL, 1, 2, 2, '2023-03-29 05:26:36', '2023-03-29 11:26:36'),
-(62, 'GENE08', 'Science, Technology and Society', 3, NULL, 1, 2, 2, '2023-03-29 05:27:34', '2023-03-29 11:27:34'),
-(63, 'GENE09', 'Philippine Government and Constitution ', 3, NULL, 1, 2, 2, '2023-03-29 05:28:48', '2023-03-29 11:28:48'),
-(64, 'GENE10', 'Gender and Society', 3, NULL, 1, 2, 2, '2023-03-29 05:29:32', '2023-03-29 11:29:32'),
-(65, 'GENE11', 'Information Technology(IT) in the New Era', 3, NULL, 1, 2, 2, '2023-03-29 05:30:28', '2023-03-29 11:30:28'),
+(55, 'GENE03', 'Arts Appreciation', 3, 'none', 1, 1, 2, '2023-03-29 05:19:03', '2023-03-29 11:19:03'),
+(56, 'GENE04', 'Understanding the Self', 3, 'none', 1, 1, 2, '2023-03-29 05:20:03', '2023-03-29 11:20:03'),
+(57, 'GENE05', 'Readings in Philippine History', 3, 'none', 1, 1, 2, '2023-03-29 05:21:27', '2023-03-29 11:21:27'),
+(58, 'GENE06', 'Ethics', 3, 'none', 1, 1, 2, '2023-03-29 05:22:46', '2023-03-29 11:22:46'),
+(59, 'PHED01', 'Self Testing Activities', 2, 'none', 1, 1, 2, '2023-03-29 05:23:47', '2023-03-29 11:23:47'),
+(60, 'NSTP01', 'CWS/MS 11', 3, 'none', 1, 1, 2, '2023-03-29 05:24:55', '2023-03-29 11:24:55'),
+(61, 'GENE07', 'The Contemporary World', 3, 'none', 1, 2, 2, '2023-03-29 05:26:36', '2023-03-29 11:26:36'),
+(62, 'GENE08', 'Science, Technology and Society', 3, 'none', 1, 2, 2, '2023-03-29 05:27:34', '2023-03-29 11:27:34'),
+(63, 'GENE09', 'Philippine Government and Constitution ', 3, 'none', 1, 2, 2, '2023-03-29 05:28:48', '2023-03-29 11:28:48'),
+(64, 'GENE10', 'Gender and Society', 3, 'none', 1, 2, 2, '2023-03-29 05:29:32', '2023-03-29 11:29:32'),
+(65, 'GENE11', 'Information Technology(IT) in the New Era', 3, 'none', 1, 2, 2, '2023-03-29 05:30:28', '2023-03-29 11:30:28'),
 (66, 'PHED02', 'Rhythmic Activities', 2, 'PHED01', 1, 2, 2, '2023-03-29 05:31:37', '2023-03-29 10:29:49'),
 (67, 'NSTP02', 'CWS/MS 12', 3, 'NSTP1', 1, 2, 2, '2023-03-29 05:32:11', '2023-03-29 10:29:54'),
-(68, 'BPAM01', 'Introduction to Public Administration', 3, NULL, 2, 1, 2, '2023-03-29 05:34:04', '2023-03-29 11:34:04'),
-(69, 'GENE12', 'Entrepreneurial Behavior and Mindset', 3, NULL, 2, 1, 2, '2023-03-29 05:34:47', '2023-03-29 11:34:47'),
+(68, 'BPAM01', 'Introduction to Public Administration', 3, 'none', 2, 1, 2, '2023-03-29 05:34:04', '2023-03-29 11:34:04'),
+(69, 'GENE12', 'Entrepreneurial Behavior and Mindset', 3, 'none', 2, 1, 2, '2023-03-29 05:34:47', '2023-03-29 11:34:47'),
 (70, 'BPAM02', 'Philippine Administrative Thought and Institutions', 3, 'BPAM01', 2, 1, 2, '2023-03-29 05:35:53', '2023-03-29 10:30:08'),
 (71, 'BPAC01', 'Basic Accounting', 3, 'BPAC01', 2, 1, 2, '2023-03-29 05:37:24', '2023-03-29 10:31:02'),
 (72, 'BPAC02', 'Elementary Statistics', 3, 'BPAC01', 2, 1, 2, '2023-03-29 05:37:59', '2023-03-29 10:30:46'),
-(73, 'RIZA01', 'Rizal\'s Life and Works', 3, NULL, 2, 1, 2, '2023-03-29 05:38:55', '2023-03-29 11:38:55'),
+(73, 'RIZA01', 'Rizal\'s Life and Works', 3, 'none', 2, 1, 2, '2023-03-29 05:38:55', '2023-03-29 11:38:55'),
 (74, 'PHED03', 'Fundamental of Games and Sports', 3, 'PHED02', 2, 1, 2, '2023-03-29 05:39:40', '2023-03-29 10:31:12'),
 (75, 'BPAC03', 'Good Governance and and Social Responsibility', 3, 'BPAC01', 2, 2, 2, '2023-03-29 05:40:47', '2023-03-29 10:31:22'),
 (76, 'BPAC04', 'Sociology', 3, 'BPAC01', 2, 2, 2, '2023-03-29 05:41:14', '2023-03-29 10:31:26'),
@@ -381,7 +430,7 @@ INSERT INTO `tbl_subject` (`id`, `subcode`, `description`, `units`, `prereq`, `y
 (90, 'BPAM12', 'Public Fiscal Administration', 3, 'BPAM01', 3, 2, 2, '2023-03-29 10:17:03', '2023-03-29 10:34:45'),
 (91, 'BPAM13', 'Administrative Law', 3, 'BPAM01', 3, 2, 2, '2023-03-29 10:17:33', '2023-03-29 10:35:08'),
 (92, 'BPAE04', 'Program Administration (implementation)', 3, 'BPAM01', 3, 2, 2, '2023-03-29 10:18:15', '2023-03-29 10:35:23'),
-(93, 'BPAE06', 'Environmental Management', 3, NULL, 3, 2, 2, '2023-03-29 10:18:59', '2023-03-29 16:18:59'),
+(93, 'BPAE06', 'Environmental Management', 3, 'none', 3, 2, 2, '2023-03-29 10:18:59', '2023-03-29 16:18:59'),
 (94, 'BPAM14', 'Research Method in PA 1', 3, 'BPAM01', 4, 1, 2, '2023-03-29 10:20:56', '2023-03-29 10:35:37'),
 (97, 'BPAM15', 'Public Policy and Program Administration', 3, 'BPAM01', 4, 1, 2, '2023-03-29 10:22:31', '2023-03-29 10:35:45'),
 (98, 'BPAM16', 'Politics and Administration', 3, 'BPAM01', 4, 1, 2, '2023-03-29 10:23:23', '2023-03-29 10:35:54'),
@@ -389,29 +438,7 @@ INSERT INTO `tbl_subject` (`id`, `subcode`, `description`, `units`, `prereq`, `y
 (100, 'BPAE05', 'Globalization & Public Administration', 3, 'BPAM01', 4, 1, 2, '2023-03-29 10:24:59', '2023-03-29 10:36:05'),
 (101, 'BPAM18', 'Leadership and Decision Making', 3, 'BPAM01', 4, 2, 2, '2023-03-29 10:25:40', '2023-03-29 10:36:11'),
 (102, 'BPAM19', 'Research Methods in PA 2', 3, 'BPAM01', 4, 2, 2, '2023-03-29 10:26:17', '2023-03-29 10:36:17'),
-(103, 'BPAM20', 'PA Practicum', 6, NULL, 4, 2, 2, '2023-03-29 10:26:43', '2023-03-29 16:26:43');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_subjects`
---
-
-CREATE TABLE `tbl_subjects` (
-  `id` int(11) NOT NULL,
-  `subject_code` varchar(250) NOT NULL,
-  `subject_name` varchar(250) NOT NULL,
-  `subject_units` int(250) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_subjects`
---
-
-INSERT INTO `tbl_subjects` (`id`, `subject_code`, `subject_name`, `subject_units`, `created_at`, `updated_at`) VALUES
-(1, 'subject-111', 'Subject 1', 3, '2023-02-25 12:44:29', '2023-02-25 12:44:29');
+(103, 'BPAM20', 'PA Practicum', 6, 'none', 4, 2, 2, '2023-03-29 10:26:43', '2023-03-29 16:26:43');
 
 -- --------------------------------------------------------
 
@@ -481,33 +508,6 @@ CREATE TABLE `tbl_teacher_loads` (
 
 INSERT INTO `tbl_teacher_loads` (`id`, `teacher_id`, `subject_id`, `created_at`, `updated_at`) VALUES
 (2, 1, 1, '2023-02-25 12:44:53', '2023-02-25 12:44:53');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_user`
---
-
-CREATE TABLE `tbl_user` (
-  `id` int(11) NOT NULL,
-  `school_id` varchar(11) NOT NULL,
-  `fname` varchar(255) NOT NULL,
-  `mname` varchar(255) NOT NULL,
-  `lname` varchar(255) NOT NULL,
-  `date_of_birth` datetime DEFAULT NULL,
-  `gender` varchar(6) NOT NULL,
-  `extensions` varchar(100) NOT NULL,
-  `email` varchar(250) NOT NULL,
-  `phone_number` varchar(11) NOT NULL,
-  `address` varchar(250) NOT NULL,
-  `password` varchar(250) NOT NULL,
-  `course` varchar(255) NOT NULL,
-  `year_level` varchar(50) NOT NULL,
-  `class_id` int(11) DEFAULT NULL,
-  `enrollment_status` varchar(10) NOT NULL COMMENT 'regular or irregular or enrolled or graduated',
-  `created_at` date NOT NULL DEFAULT current_timestamp(),
-  `updated_at` date NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -582,24 +582,24 @@ ALTER TABLE `tbl_staff`
 -- Indexes for table `tbl_student`
 --
 ALTER TABLE `tbl_student`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `tbl_student_loads`
+-- Indexes for table `tbl_students_grades`
 --
-ALTER TABLE `tbl_student_loads`
+ALTER TABLE `tbl_students_grades`
   ADD PRIMARY KEY (`id`),
   ADD KEY `student_id` (`student_id`),
-  ADD KEY `subject_id` (`subject_id`),
-  ADD KEY `tbl_student_loads_ibfk_2` (`teacher_id`);
+  ADD KEY `tbl_students_grades_ibfk_2` (`subject_id`);
 
 --
--- Indexes for table `tbl_student_subject`
+-- Indexes for table `tbl_student_subject_loads`
 --
-ALTER TABLE `tbl_student_subject`
+ALTER TABLE `tbl_student_subject_loads`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `subject_id` (`subject_id`),
-  ADD KEY `student_id` (`student_id`);
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `subject_id` (`subject_id`) USING BTREE;
 
 --
 -- Indexes for table `tbl_subject`
@@ -607,12 +607,6 @@ ALTER TABLE `tbl_student_subject`
 ALTER TABLE `tbl_subject`
   ADD PRIMARY KEY (`id`),
   ADD KEY `program_id` (`program_id`);
-
---
--- Indexes for table `tbl_subjects`
---
-ALTER TABLE `tbl_subjects`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_subject_prereq`
@@ -637,15 +631,6 @@ ALTER TABLE `tbl_teacher_loads`
   ADD KEY `subject_id` (`subject_id`);
 
 --
--- Indexes for table `tbl_user`
---
-ALTER TABLE `tbl_user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `school_id` (`school_id`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `class_id` (`class_id`);
-
---
 -- Indexes for table `tbl_year_level`
 --
 ALTER TABLE `tbl_year_level`
@@ -659,13 +644,13 @@ ALTER TABLE `tbl_year_level`
 -- AUTO_INCREMENT for table `tbl_announcements`
 --
 ALTER TABLE `tbl_announcements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `tbl_class`
 --
 ALTER TABLE `tbl_class`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_comment_filter_dict`
@@ -701,25 +686,25 @@ ALTER TABLE `tbl_staff`
 -- AUTO_INCREMENT for table `tbl_student`
 --
 ALTER TABLE `tbl_student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tbl_student_loads`
+-- AUTO_INCREMENT for table `tbl_students_grades`
 --
-ALTER TABLE `tbl_student_loads`
+ALTER TABLE `tbl_students_grades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_student_subject_loads`
+--
+ALTER TABLE `tbl_student_subject_loads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
 -- AUTO_INCREMENT for table `tbl_subject`
 --
 ALTER TABLE `tbl_subject`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
-
---
--- AUTO_INCREMENT for table `tbl_subjects`
---
-ALTER TABLE `tbl_subjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_subject_prereq`
@@ -734,14 +719,22 @@ ALTER TABLE `tbl_teachers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tbl_user`
---
-ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `tbl_students_grades`
+--
+ALTER TABLE `tbl_students_grades`
+  ADD CONSTRAINT `tbl_students_grades_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `tbl_student` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_students_grades_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `tbl_subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_student_subject_loads`
+--
+ALTER TABLE `tbl_student_subject_loads`
+  ADD CONSTRAINT `tbl_student_subject_loads_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `tbl_student` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tbl_student_subject_loads_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `tbl_subject` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_subject`

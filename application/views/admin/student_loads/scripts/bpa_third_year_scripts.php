@@ -15,7 +15,7 @@
                 "pageLength": 10,
                 "order": [],
                 "ajax": {
-                    "url": "<?php echo site_url('Student_loads/bse_first_year_student_list')?>",
+                    "url": "<?php echo site_url('Student_loads/bpa_third_year_student_list')?>",
                     "type": "POST"
                 },
                 "columnDefs": [

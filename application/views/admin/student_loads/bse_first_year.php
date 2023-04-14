@@ -25,9 +25,6 @@
 
           <div class="box">
             <div class="btn float-right">
-            <!-- <button class="btn btn-sm btn-success" onclick="add_user2()"><i class="glyphicon glyphicon-plus"></i> Add Student</button> -->
-            <!-- <button id="delete-selected" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete Selected</button>
-            <button id="update_btn" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-pencil"></i> Add/Update Class ID</button> -->
             <button id="update_btn" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i> Subject Loads</button>
             </div>
 
@@ -76,7 +73,7 @@
 
 <?php $this->load->view('admin/dashboard/layout/control_sidebar');?>
 </div>
-<?php $this->load->view('admin/student_loads/modals/bse_first_year_modals');?>
+<?php $this->load->view('admin/student_loads/modals/modals');?>
 <?php $this->load->view('admin/student_loads/scripts/bse_first_year_scripts');?>
 <?php $this->load->view('admin/user/scripts/footer');?>
 </body>
