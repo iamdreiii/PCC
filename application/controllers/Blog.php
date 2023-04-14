@@ -87,6 +87,7 @@ class Blog extends CI_Controller {
     
     public function blog_add()
     {
+        $des = $this->input->post('description');
         $this->load->helper('string');
 
         // Video upload configuration
@@ -118,7 +119,7 @@ class Blog extends CI_Controller {
             $data = array(
                 'title' => $this->input->post('title'),
                 'path' => $url,
-                'description' => $this->input->post('description'),
+                'description' => $des,
                 'created_at' => date('Y-m-d H:i:s'),
             );
             $insert = $this->Blog_model->add_blog($data);
@@ -137,7 +138,7 @@ class Blog extends CI_Controller {
             $data = array(
                 'title' => $this->input->post('title'),
                 'path' => $url,
-                'description' => $this->input->post('description'),
+                'description' => $des,
                 'created_at' => date('Y-m-d H:i:s'),
             );
             $insert = $this->Blog_model->add_blog($data);
@@ -176,6 +177,21 @@ class Blog extends CI_Controller {
         $this->load->library('upload');
 
         // Upload video
+        if(empty($_FILES['path']['name'])){
+            $upload_data = $this->upload->data();
+            $videofile['filename'] = $upload_data['file_name'];
+            $url = 'uploads/announcement/'.$videofile['filename'];
+            $data = array(
+                'title' => $this->input->post('title'),
+                // 'path' => $videofile['filename'],
+                //'path' => $url,
+                'description' => $this->input->post('description'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            );
+            $this->Blog_model->update_blog($id, $data);
+            echo json_encode(array("status" => TRUE));
+            return;
+        }
         $this->upload->initialize($configVideo);
         
         if ($this->upload->do_upload('path'))
@@ -204,6 +220,20 @@ class Blog extends CI_Controller {
         $video_error = $this->upload->display_errors('', '');
 
         // Upload image
+        if(empty($_FILES['path']['name'])){
+            $upload_data = $this->upload->data();
+            $imagefile['filename'] = $upload_data['file_name'];
+            $url = 'uploads/announcement/'.$imagefile['filename'];
+            $data = array(
+                'title' => $this->input->post('title'),
+                //'path' => $url,
+                'description' => $this->input->post('description'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            );
+            $this->Blog_model->update_blog($id, $data);
+            echo json_encode(array("status" => TRUE));
+            return;
+        }
         $this->upload->initialize($configImage);
         if ($this->upload->do_upload('path'))
         {
@@ -290,8 +320,8 @@ class Blog extends CI_Controller {
     {
         $blog = $this->Blog_model->get_blog($id);
 
-        if ('uploads/announcement/'.$blog['path']) {
-            unlink('uploads/announcement/'.$blog['path']);
+        if ($blog['path']) {
+            unlink($blog['path']);
         }
         $this->Blog_model->delete_blog($id);
         echo json_encode(array("status" => TRUE));

@@ -2,6 +2,9 @@
   $user = $this->session->userdata('user');
   extract($user);
 ?>
+<div id="loading-overlay">
+  <div id="loading-spinner"></div>
+</div>
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">

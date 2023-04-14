@@ -1,4 +1,6 @@
+
 <script type="text/javascript" src="<?=base_url()?>assets/script/jquery-3.2.1.min.js"></script>
+
 <script type="text/javascript">
         var save_method; //for save method string
         var table;
@@ -55,6 +57,13 @@
             });
         });
 
+        $('#announcementButton').on('click', function() {
+        // Clear textarea
+        $('textarea[name="description"]').val('');
+        $('#description').val('');
+        // Clear p element
+        //$('p[name="description"]').text('');
+        });
 
        
         function add_blog()
@@ -63,6 +72,7 @@
             $('#form')[0].reset(); // reset form on modals
             $('.form-group').removeClass('has-error'); // clear error class
             $('.help-block').empty(); // clear error string
+            $('#description').summernote('reset');
             $('#blog_modal_form').modal('show'); // show bootstrap modal
             $('.modal-title').text('Add Announcement'); // Set Title to Bootstrap modal title
         }
@@ -83,8 +93,8 @@
                 {
                     $('[name="id"]').val(data.id);
                     $('[name="title"]').val(data.title);
-                    // $('[name="path"]').val(data.path);
-                    $('[name="description"]').val(data.description);
+                    $('textarea[name="description"]').summernote('code', data.description);
+                    //$('#description').summernote('code', data.description);
                     $('#blog_modal_form').modal('show'); // show bootstrap modal when complete loaded
                     $('.modal-title').text('Edit Announcement'); // Set title to Bootstrap modal title
                     
@@ -110,7 +120,7 @@
 
             if(save_method == 'add') {
             // Check for empty inputs
-            var requiredFields = ['title', 'path', 'description'];
+            var requiredFields = ['title', 'description'];
             var isValid = true;
             $.each(requiredFields, function(index, field) {
                 if (!$.trim($('[name="' + field + '"]').val())) {
@@ -124,7 +134,7 @@
                 return false;
             }
             }else{
-                var requiredFields = ['title', 'path', 'description'];
+                var requiredFields = ['title','description'];
                 var isValid = true;
                 $.each(requiredFields, function(index, field) {
                     if (!$.trim($('[name="' + field + '"]').val())) {
@@ -167,6 +177,7 @@
                     {
                         // if adding data
                         if(save_method == 'add'){
+                           
                             $('#blog_modal_form').modal('hide');
                             reload_table();
                             var stat = 'Announcement Added';
@@ -233,124 +244,6 @@
             });
         }
 
-        // TOASTR
-        function success(stat){
-            toastr.options = {
-                                "closeButton": true,
-                                "debug": false,
-                                "newestOnTop": true,
-                                "progressBar": false,
-                                "positionClass": "toast-bottom-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "200",
-                                "hideDuration": "1000",
-                                "timeOut": "3000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                                }
-                            toastr.success(stat)
-        }
-        function warning(stat){
-            toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": true,
-                            "progressBar": false,
-                            "positionClass": "toast-bottom-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "200",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                            }
-                        toastr.warning(stat)
-        }
-        function error(stat){
-            toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": true,
-                            "progressBar": false,
-                            "positionClass": "toast-bottom-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "200",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                            }
-                        toastr.error(stat)
-        }
-        function info(stat){
-            toastr.options = {
-                            "closeButton": true,
-                            "debug": false,
-                            "newestOnTop": true,
-                            "progressBar": false,
-                            "positionClass": "toast-bottom-right",
-                            "preventDuplicates": false,
-                            "onclick": null,
-                            "showDuration": "200",
-                            "hideDuration": "1000",
-                            "timeOut": "3000",
-                            "extendedTimeOut": "1000",
-                            "showEasing": "swing",
-                            "hideEasing": "linear",
-                            "showMethod": "fadeIn",
-                            "hideMethod": "fadeOut"
-                            }
-                        toastr.info(stat)
-        }
-        // function deletemodal(callback) {
-        // // create a new modal element
-        // var modal = $('<div class="modal modal-danger fade" id="modal-danger">\
-        //                 <div class="modal-dialog modal-sm">\
-        //                     <div class="modal-content">\
-        //                     <div class="modal-header">\
-        //                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">\
-        //                         <span aria-hidden="true">&times;</span></button>\
-        //                         <h4 class="modal-title">Delete Confirmation</h4>\
-        //                     </div>\
-        //                     <div class="modal-body">\
-        //                         <p>Are you sure you want to delete?</p>\
-        //                     </div>\
-        //                     <div class="modal-footer">\
-        //                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>\
-        //                         <button type="button" class="btn btn-danger" id="deleteBtn">Delete</button>\
-        //                     </div>\
-        //                     </div>\
-        //                 </div>\
-        //                 </div>');
-
-        // // add the modal to the DOM
-        // $('body').append(modal);
-
-        // // show the modal
-        // modal.modal('show');
-
-        // // add a click event listener to the delete button
-        // $('#deleteBtn').click(function() {
-        //     // perform the delete operation
-        //     callback(true);
-        //     // hide the modal
-        //     modal.remove();
-        // });
-
-        // return modal;
-        // }
         function deletemodal(callback) {
         // Create modal HTML
         var modalHtml = `
@@ -406,3 +299,4 @@
 
     </script>
 
+<?php $this->load->view('helpers/toastr')?>

@@ -149,7 +149,7 @@
           <img class="img-fluid" src="<?php echo base_url().$row->path?>" style="width:100%;min-height:500px;height:600px;max-height:100%;"></img>
           </div>
           <div class="card-body">
-          <a href="# video.id + '"><h5 class="card-title"><?php echo strtoupper($row->title); ?></h5></a>
+          <h5 class="card-title"><?php echo strtoupper($row->title); ?></h5>
           <p class="card-text" style="text-align: justify;"><?php echo $row->description; ?></p>
           </div>
           </div>
@@ -161,7 +161,7 @@
               <video class="img-fluid" style="width:100%;height:100%;" controls><source src="<?php echo base_url().$row->path; ?>"></video>
           </div>
           <div class="card-body">
-              <a href="#video.id+'"><h5 class="card-title"><?php echo strtoupper($row->title); ?></h5></a>
+              <h5 class="card-title"><?php echo strtoupper($row->title); ?></h5>
               <p class="card-text" style="text-align: justify;"><?php echo $row->description; ?></p>
           </div>
           </div>

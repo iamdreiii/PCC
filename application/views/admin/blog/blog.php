@@ -24,7 +24,7 @@
 
           <div class="box">
             <div class="btn float-right">
-            <button class="btn btn-success" onclick="add_blog()"><i class="glyphicon glyphicon-plus"></i> Announcement</button>
+            <button class="btn btn-success" id="announcementButton" onclick="add_blog()"><i class="glyphicon glyphicon-plus"></i> Announcement</button>
             </div>
             <div class="box-body">
               <table id="table" class="table table-bordered table-striped" style="width:100%">
@@ -51,6 +51,7 @@
                 </tr>
                 </tfoot>
               </table>
+              
             </div>
           </div>
         </div>
@@ -67,8 +68,9 @@
 
 <?php $this->load->view('admin/dashboard/layout/control_sidebar');?>
 </div>
-<?php $this->load->view('admin/blog/modals/modals');?>
+
 <?php $this->load->view('admin/blog/blog_crud');?>
 <?php $this->load->view('admin/user/scripts/footer');?>
+<?php $this->load->view('admin/blog/modals/modals');?>
 </body>
 </html>

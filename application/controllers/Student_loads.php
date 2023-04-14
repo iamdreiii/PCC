@@ -161,6 +161,7 @@ class Student_loads extends CI_Controller {
             "recordsFiltered" => $filteredCount,
             "data" => $data,
         );
+        
         echo json_encode($output);
     }
     public function bse_second_year_student_list()

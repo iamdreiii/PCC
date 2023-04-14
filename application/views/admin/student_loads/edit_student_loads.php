@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html>
 <?php $this->load->view('admin/user/layout/head');?>
-
+<style>
+/* Print-specific style */
+@media print {
+  #checkAll {
+    display: none !important; /* Hide the button when printing */
+  }
+  #selected {
+    display: none !important; /* Hide the button when printing */
+  }
+}
+</style>
 <body class="hold-transition skin-blue sidebar-mini">
+
 <div class="wrapper">
   <?php $this->load->view('admin/dashboard/layout/header');?>
   <?php $this->load->view('admin/dashboard/layout/sidebar');?>
@@ -50,22 +61,25 @@
 <?php foreach($student_data as $row) :?>
 <div class="row invoice-info">
 <div class="col-sm-10 invoice-col">
-<address>Name : <?= ucfirst($row['lname'])?>, <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?><br>
-Address : <?= ucfirst($row['address'])?> <?= ucfirst($row['city_municipality'])?> <?= ucfirst($row['province'])?><br>
-Course : <?php if($row['program'] = 'BSE') {echo 'Bachelor of Science in Entrepreneurship';}else{echo 'Bachelor of Public Administration';}?><br>
-Date of Admission : <br>
-Place of Birth :  <?= ucfirst($row['birthplace'])?><br>
-Elementary  Course Completed :  <?= ucfirst($row['primary_school_last_attended'])?><br>
-High Shool Course Completed :  <?= ucfirst($row['secondary_school_last_attended'])?><br>
+<address style="white-space: nowrap;">
+  Name : <?= ucfirst($row['lname'])?>, <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?><br>
+  Address : <?= ucfirst($row['address'])?> <?= ucfirst($row['city_municipality'])?> <?= ucfirst($row['province'])?><br>
+  Course : <?php if($row['program'] = 'BSE') {echo 'Bachelor of Science in Entrepreneurship';}else{echo 'Bachelor of Public Administration';}?><br>
+  Date of Admission : <br>
+  Place of Birth :  <?= ucfirst($row['birthplace'])?><br>
+  Elementary  Course Completed :  <?= ucfirst($row['primary_school_last_attended'])?><br>
+  High Shool Course Completed :  <?= ucfirst($row['secondary_school_last_attended'])?><br>
 </address>
 </div>
 
 
 <div class="col-sm-2 invoice-col pull-right">
-Admission Credential: Form 138-A<br>
-Date of Birth: <?= ucfirst($row['birthdate'])?> <br><br><br><br><br>
-School Year :  <?= ucfirst($row['primary_school_year_last_attended'])?><br>
-School Year :  <?= ucfirst($row['secondary_school_year_last_attended'])?><br>
+<address style="white-space: nowrap;">
+  Admission Credential: Form 138-A<br>
+  Date of Birth: <?= ucfirst($row['birthdate'])?> <br><br><br><br>
+  School Year :  <?= ucfirst($row['primary_school_year_last_attended'])?><br>
+  School Year :  <?= ucfirst($row['secondary_school_year_last_attended'])?><br>
+</address>
 </div>
 
 </div>
@@ -99,7 +113,7 @@ foreach($student_loads as $row) {
 <?php else : ?>
 <?php foreach($student_loads as $row) :?>
 <tr>
-<td><input type="checkbox" name="selected[]" value="<?php echo $row['sl_id'];?>"></td>
+<td><input type="checkbox" name="selected[]" id="selected" value="<?php echo $row['sl_id'];?>"></td>
 <td><?php echo $row['coursecode']?></td>
 <td><?php echo $row['description']?></td>
 <td><?php echo $row['units']?></td>
@@ -181,6 +195,10 @@ window.onload = function() {
         ids.push(checkboxes[i].value);
       }
     }
+    if (ids.length === 0) {
+    alert("Please select at least one load to delete.");
+    return; // Stop further execution of the function
+  }
     // Perform action with the selected IDs, e.g. submit form, make AJAX request, etc.
     // Example code for submitting form using GET request
     window.location.href = "<?=base_url()?>Student_loads/delete_student_loads/" + ids.join(",")+ "?other_id=" + otherId;
