@@ -29,7 +29,7 @@
   <div class="pcc_home" style="background-image: url('<?=base_url()?>assets/home/images/2.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
     <div class="pcc_title">
       <span>POLA COMMUNITY COLLEGE</span>
-      <b><h1>POLA SORCERER'S COMMUNITY 2</h1></b>
+      <b><h1>POLA COMMUNITY COLLEGE</h1></b>
       <p>Innovative Nationalistic Affective.</p>
       
     </div>
@@ -37,7 +37,7 @@
   <div class="pcc_home" style="background-image: url('<?=base_url()?>assets/home/images/3.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
     <div class="pcc_title">
       <span>POLA COMMUNITY COLLEGE</span>
-      <b><h1>POLA SORCERER'S COMMUNITY 3</h1></b>
+      <b><h1>POLA COMMUNITY COLLEGE</h1></b>
       <p>Innovative Nationalistic Affective.</p>
       
     </div>
