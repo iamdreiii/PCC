@@ -28,26 +28,58 @@ class Users_model extends CI_Model
 
     public function add_user($data)
     {
-        $this->db->insert('tbl_student', $data);
+        $ad = $this->db->insert('tbl_student', $data);
+        $log = array(
+            'activity' => 'Added Student',
+            'details' => ''.$this->session->userdata('user')['username'].' Added Student - data : '.implode($data).'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($ad){
+            $this->db->insert('tbl_logs', $log);
+        }
         return $this->db->insert_id();
     }
 
     public function update_user($id, $userdata)
     {
         $this->db->where('id', $id);
-        $this->db->update('tbl_student', $userdata);
+        $up = $this->db->update('tbl_student', $userdata);
+        $log = array(
+            'activity' => 'Updated Student Details',
+            'details' => ''.$this->session->userdata('user')['username'].' Updated Student Details - ID : '.$id.' data : '.implode($userdata).'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($up){
+            $this->db->insert('tbl_logs', $log);
+        }
         return $this->db->affected_rows();
     }
 
     public function delete_user($id)
     {
         $this->db->where('id', $id);
-        $this->db->delete('tbl_student');
+        $del = $this->db->delete('tbl_student');
+        $log = array(
+            'activity' => 'Deleted Student',
+            'details' => ''.$this->session->userdata('user')['username'].' Deleted Student - ID : '.$id.'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($del){
+            $this->db->insert('tbl_logs', $log);
+        }
         return $this->db->affected_rows();
     }
     
     public function delete_multiple($ids) {
-        $this->db->where_in('id', $ids);
+        $dels = $this->db->where_in('id', $ids);
+        $log = array(
+            'activity' => 'Deleted Student/s',
+            'details' => ''.$this->session->userdata('user')['username'].' Deleted Student/s - ID : '.implode($ids).'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($dels){
+            $this->db->insert('tbl_logs', $log);
+        }
         $this->db->delete('tbl_student');
     }
 
