@@ -109,7 +109,7 @@
 
             if(save_method == 'add') {
             // Check for empty inputs
-            var requiredFields = ['school_year', 'status'];
+            var requiredFields = ['school_year'];
             var isValid = true;
             $.each(requiredFields, function(index, field) {
                 if (!$.trim($('[name="' + field + '"]').val())) {

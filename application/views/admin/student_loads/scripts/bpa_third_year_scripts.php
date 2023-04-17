@@ -129,28 +129,36 @@
         });
 
         $.ajax({
-            url: '<?php echo base_url("Student_loads/get_subjects"); ?>',
+            url: '<?php echo base_url("Student_loads/get_subjects_third_year_bpa"); ?>',
             dataType: 'json',
             success: function(subjects) {
                 var table1 = '<table>';
                 table1 += '<thead><tr><th><input type="checkbox" id="select-all"></th><th>COURSECODE</th><th>Description</th><th>Units</th><th>Pre-Req</th></tr></thead><tbody>';
-                $.each(subjects, function(index, subjects) {
+                var isFirstSemester = true; // flag to track if it's the first semester
+                $.each(subjects, function(index, subject) {
+                    if (subject.semester == 1 && isFirstSemester) {
+                        table1 += '<tr><td colspan="5" style="text-align: center;"><strong><u>1st Sem</u></strong></td></tr>';
+                        isFirstSemester = false;
+                    }
+                    if (subject.semester == 2 && !isFirstSemester) {
+                        table1 += '<tr><td colspan="5" style="text-align: center;"><strong><u>2nd Sem</u></strong></td></tr>';
+                        isFirstSemester = true;
+                    }
                     table1 += '<tr>';
-                    table1 += '<td><input type="checkbox" name="subject_ids[]" value="' + subjects.id + '"></td>';
-                    table1 += '<td>' + subjects.subcode + '</td>';
-                    table1 += '<td>' + subjects.description + '</td>';
-                    table1 += '<td>' + subjects.units + '</td>';
-                    table1 += '<td>' + subjects.prereq + '</td>';
-                    table1+= '</tr>';
+                    table1 += '<td><input type="checkbox" name="subject_ids[]" value="' + subject.id + '"></td>';
+                    table1 += '<td>' + subject.subcode + '</td>';
+                    table1 += '<td>' + subject.description + '</td>';
+                    table1 += '<td>' + subject.units + '</td>';
+                    table1 += '<td>' + subject.prereq + '</td>';
+                    table1 += '</tr>';
                 });
                 table1 += '</tbody></table>';
                 $('#subject_ids').html(table1);
-                
-                // Add select all checkbox functionality
-            $(document).on('click', '#select-all', function(){
-                $('#subject_ids tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
-            });
 
+                // Add select all checkbox functionality
+                $(document).on('click', '#select-all', function() {
+                    $('#subject_ids tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
+                });
 
             },
             error: function(xhr, status, error) {

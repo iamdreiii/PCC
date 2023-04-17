@@ -404,9 +404,44 @@ class Student_loads extends CI_Controller {
         );
         echo json_encode($output);
     }
-    public function get_subjects()
+    public function get_subjects_first_year_bse()
     {
-        $subjects = $this->Student_loads_model->get_subjects();
+        $subjects = $this->Student_loads_model->get_subjects_first_year_bse();
+        echo json_encode($subjects);
+    }
+    public function get_subjects_second_year_bse()
+    {
+        $subjects = $this->Student_loads_model->get_subjects_second_year_bse();
+        echo json_encode($subjects);
+    }
+    public function get_subjects_third_year_bse()
+    {
+        $subjects = $this->Student_loads_model->get_subjects_third_year_bse();
+        echo json_encode($subjects);
+    }
+    public function get_subjects_fourth_year_bse()
+    {
+        $subjects = $this->Student_loads_model->get_subjects_fourth_year_bse();
+        echo json_encode($subjects);
+    }
+    public function get_subjects_first_year_bpa()
+    {
+        $subjects = $this->Student_loads_model->get_subjects_first_year_bpa();
+        echo json_encode($subjects);
+    }
+    public function get_subjects_second_year_bpa()
+    {
+        $subjects = $this->Student_loads_model->get_subjects_second_year_bpa();
+        echo json_encode($subjects);
+    }
+    public function get_subjects_third_year_bpa()
+    {
+        $subjects = $this->Student_loads_model->get_subjects_third_year_bpa();
+        echo json_encode($subjects);
+    }
+    public function get_subjects_fourth_year_bpa()
+    {
+        $subjects = $this->Student_loads_model->get_subjects_fourth_year_bpa();
         echo json_encode($subjects);
     }
     public function add_student_loads()
@@ -414,20 +449,26 @@ class Student_loads extends CI_Controller {
         $subject_ids = $this->input->post('subject_ids');
         $subcodes = $this->input->post('subcodes');
         $user_ids = $this->input->post('user_ids');
-
+        $query = $this->db->where('status', 'active')->get('tbl_school_year');
+        $sy = $query->result_array();
+        $s_y = '';
+        foreach ($sy as $school_year) {
+            $s_y = $school_year['school_year'];
+            // Process the query result as needed
+        }
         // Loop through each user id and insert the subject ids
         foreach ($user_ids as $user_id) {
             foreach ($subject_ids as $key => $subject_id) {
                 $subcode = $subcodes[$key];
                 // Check if the student has already added this subject
-                $query = $this->db->get_where('tbl_student_subject_loads', array('student_id' => $user_id,'subject_code' => $subcode,  'subject_id' => $subject_id));
+                $query = $this->db->get_where('tbl_student_subject_loads', array('student_id' => $user_id,'subject_code' => $subcode,  'subject_id' => $subject_id, 'school_year' => $s_y));
                 if ($query->num_rows() > 0) {
                     // Student has already added this subject
                     continue;
                 }
-                
+               
                 // Insert the subject id for the student id
-                $data = array('student_id' => $user_id, 'subject_code' => $subcode, 'subject_id' => $subject_id);
+                $data = array('student_id' => $user_id, 'subject_code' => $subcode, 'subject_id' => $subject_id, 'school_year' => $s_y);
                 $result = $this->db->insert('tbl_student_subject_loads', $data);
                 
                 // Check if the insert was successful
@@ -456,10 +497,40 @@ class Student_loads extends CI_Controller {
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
                 show_404();
             }
-            $data['title'] = "View Student Loads";
-            $data['student_loads'] = $this->Student_loads_model->get_student_loads($param);
-            $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+            
+            $year_level = $this->Student_loads_model->get_student_data($param);
+            //print_r($year_level[0]['year_level']);
+            foreach($year_level as $yl) :
+            if($yl['year_level'] == '1st Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_first_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+            }elseif($yl['year_level'] == '2nd Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_second_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+            }elseif($yl['year_level'] == '3rd Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_third_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+                
+            }elseif($yl['year_level'] == '4th Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_fourth_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+            }
+            endforeach;
+            //print_r($data['student_data']);
             $data['id'] = $param;
+            $data['title'] = "View Student Loads";
             $data['lasturl'] = $lasturl;
             $this->load->view('admin/student_loads/'. $page, $data);    
         }else{
@@ -474,9 +545,35 @@ class Student_loads extends CI_Controller {
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
                 show_404();
             }
+            $year_level = $this->Student_loads_model->get_student_data($param);
+            foreach($year_level as $yl) :
+            if($yl['year_level'] == '1st Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_first_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+            }elseif($yl['year_level'] == '2nd Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_second_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+            }elseif($yl['year_level'] == '3rd Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_third_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+            }elseif($yl['year_level'] == '4th Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_fourth_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+            }
+            endforeach;
             $data['title'] = "Edit Student Loads";
-            $data['student_loads'] = $this->Student_loads_model->get_student_loads($param);
-            $data['student_data'] = $this->Student_loads_model->get_student_data($param);
             $data['id'] = $param;
             $this->load->view('admin/student_loads/'. $page, $data);    
         }else{
@@ -491,9 +588,35 @@ class Student_loads extends CI_Controller {
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
                 show_404();
             }
-            $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+            $year_level = $this->Student_loads_model->get_student_data($param);
+            foreach($year_level as $yl) :
+            if($yl['year_level'] == '1st Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_first_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+            }elseif($yl['year_level'] == '2nd Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_second_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+            }elseif($yl['year_level'] == '3rd Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_third_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+            }elseif($yl['year_level'] == '4th Year'){
+                $data['student_loads'] = $this->Student_loads_model->get_student_loads_fourth_year($param);
+                $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+                if (isset($data['student_loads'][0]['school_year'])) {
+                $data['sy'] = $data['student_loads'][0]['school_year'];
+                }
+            }
+            endforeach;
             $data['id'] = $param;
-            $data['student_loads'] = $this->Student_loads_model->get_student_loads_print($param);
             $this->load->view('admin/student_loads/'. $page, $data);    
         }else{
             redirect('staff');

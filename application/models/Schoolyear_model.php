@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Schoolyear_model extends CI_Model 
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -37,7 +36,16 @@ class Schoolyear_model extends CI_Model
     public function add_sy($data)
     {
         $this->db->insert('tbl_school_year', $data);
-        return $this->db->insert_id();
+        $ad =  $this->db->insert_id();
+        $log = array(
+            'activity' => 'Created New School Year',
+            'details' => ''.$this->session->userdata('user')['username'].' Created School Year -'.$data['school_year'].'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($ad){
+            $this->db->insert('tbl_logs', $log);
+        }
+        return $ad;
     }
 
     // public function update_sy($id, $data)
@@ -56,23 +64,81 @@ class Schoolyear_model extends CI_Model
     // $this->db->trans_complete();
     // return $this->db->trans_status();
     // }
+    public function get_active_sy()
+    {
+        // Assuming you have a database table named 'schoolyears'
+        $this->db->select('*');
+        $this->db->from('tbl_school_year');
+        $this->db->where('status', 'active');
+        $query = $this->db->get();
 
+        if ($query->num_rows() > 0) {
+            // Return the row as an array
+            return $query->row_array();
+        } else {
+            // Return false if no active row found
+            return false;
+        }
+    }
+    public function update_other_sy_statuses($id, $status) {
+        // Set status to inactive for all records with the same ID except the current one
+        $this->db->where('id !=', $id); // Exclude the current record
+        $this->db->where('status', 'active'); // Update only active records
+        $up = $this->db->update('tbl_school_year', array('status' => $status, 'updated_at' => date('Y-m-d H:i:s')));
+        $log = array(
+            'activity' => 'Updated School Year',
+            'details' => ''.$this->session->userdata('user')['username'].' Updated School Year - ID : '.$id.' to '.$status.'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($up){
+            $this->db->insert('tbl_logs', $log);
+        }
+    }
+
+
+    // ...
     public function update_sy($id, $data)
     {
         $this->db->where('id', $id);
-        return $this->db->update('tbl_school_year', $data);
+        $up = $this->db->update('tbl_school_year', $data);
+        $log = array(
+            'activity' => 'Updated School Year',
+            'details' => ''.$this->session->userdata('user')['username'].' Updated School Year - ID : '.$id.' to '.$data['school_year'].'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($up){
+            $this->db->insert('tbl_logs', $log);
+        }
+        return $up;
     }
     public function update_sy_status($id, $data)
     {
         $this->db->where('id', $id);
-        return $this->db->update('tbl_school_year', $data);
+        $up =  $this->db->update('tbl_school_year', $data);
+        $log = array(
+            'activity' => 'Updated School Year',
+            'details' => ''.$this->session->userdata('user')['username'].' Updated School Year - ID : '.$id.' to '.$data['status'].'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($up){
+            $this->db->insert('tbl_logs', $log);
+        }
+        return $up;
     }
 
 
     public function delete_sy($id)
     {
         $this->db->where('id', $id);
-        $this->db->delete('tbl_school_year');
+        $del = $this->db->delete('tbl_school_year');
+        $log = array(
+            'activity' => 'Deleted School Year',
+            'details' => ''.$this->session->userdata('user')['username'].' Deleted School Year ID : '.$id.'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($del){
+            $this->db->insert('tbl_logs', $log);
+        }
         return $this->db->affected_rows();
     }
 

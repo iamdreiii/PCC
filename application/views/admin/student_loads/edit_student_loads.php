@@ -95,33 +95,65 @@ foreach($student_loads as $row) {
 }
 ?>
 <table id="myTable" class="table table-striped table-bordered">
+
+
+<table  id="myTable" class="table table-striped table-bordered">
 <thead>
 <tr>
-  <th><input id="checkAll" type="checkbox" >
-</th>
-  <th>COURSE CODE</th>
-  <th>COURSE DESCRIPTION</th>
-  <th>UNITS</th>
-  <th>PRE-REQ</th>
+<th><input id="checkAll" type="checkbox" ></th>
+<th>COURSE CODE</th>
+<th>COURSE DESCRIPTION</th>
+<th>UNITS</th>
+<th>PRE-REQ</th>
 </tr>
 </thead>
 <tbody>
 <?php if(empty($student_loads)) : ?>
 <tr>
-<td colspan="4" style="text-align: center;">No Matching Records</td>
+<td colspan="5" style="text-align: center;">No Matching Records</td>
 </tr>
 <?php else : ?>
+<tr>
+  <td colspan="5" style="text-align: center;"><strong><u>First Semester : <?= $sy?></u></strong></td>
+</tr>
 <?php foreach($student_loads as $row) :?>
+<?php if($row['semester'] == 1) {?>
+<tr>
+  <td><input type="checkbox" name="selected[]" id="selected" value="<?php echo $row['sl_id'];?>"></td>
+  <td><?php echo $row['coursecode']?></td>
+  <td><?php echo $row['description']?></td>
+  <td><?php echo $row['units']?></td>
+  <td><?php echo $row['pre_req']?></td>
+</tr>
+<?php }?>
+<?php endforeach?>
+<?php 
+$has_second_semester = false;
+foreach($student_loads as $row) {
+  if($row['semester'] == 2) {
+    $has_second_semester = true;
+    break;
+  }
+}
+if($has_second_semester) : ?>
+<tr>
+  <td colspan="4" style="text-align: center;"><strong><u>Second Semester <?php if(empty($sy)){}else{echo $sy;}?></u></strong></td>
+</tr>
+<?php foreach($student_loads as $row) :?>
+<?php if($row['semester'] == 2) {?>
 <tr>
 <td><input type="checkbox" name="selected[]" id="selected" value="<?php echo $row['sl_id'];?>"></td>
-<td><?php echo $row['coursecode']?></td>
-<td><?php echo $row['description']?></td>
-<td><?php echo $row['units']?></td>
-<td><?php echo $row['pre_req']?></td>
+  <td><?php echo $row['coursecode']?></td>
+  <td><?php echo $row['description']?></td>
+  <td><?php echo $row['units']?></td>
+  <td><?php echo $row['pre_req']?></td>
 </tr>
+<?php }?>
 <?php endforeach?>
 <?php endif; ?>
+<?php endif; ?>
 </tbody>
+
 <tr>
       <td></td>
       <td></td>
@@ -130,7 +162,6 @@ foreach($student_loads as $row) {
       <td></td>
   </tr>
 </table>
-
 
 </div>
 

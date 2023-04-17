@@ -57,13 +57,13 @@
             });
         });
 
-        $('#announcementButton').on('click', function() {
-        // Clear textarea
-        $('textarea[name="description"]').val('');
-        $('#description').val('');
-        // Clear p element
-        //$('p[name="description"]').text('');
-        });
+        // $('#announcementButton').on('click', function() {
+        // // Clear textarea
+        // $('textarea[name="description"]').val('');
+        // $('#description').val('');
+        // // Clear p element
+        // //$('p[name="description"]').text('');
+        // });
 
        
         function add_blog()
@@ -94,7 +94,6 @@
                     $('[name="id"]').val(data.id);
                     $('[name="title"]').val(data.title);
                     $('textarea[name="description"]').summernote('code', data.description);
-                    //$('#description').summernote('code', data.description);
                     $('#blog_modal_form').modal('show'); // show bootstrap modal when complete loaded
                     $('.modal-title').text('Edit Announcement'); // Set title to Bootstrap modal title
                     

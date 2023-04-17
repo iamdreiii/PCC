@@ -95,32 +95,59 @@ foreach($student_loads as $row) {
     $total_units += $row['units']; // Add the units of each row to the total units
 }
 ?>
-<table class="table table-bordered text-center" style="border-collapse: collapse;">
-  <thead>
-    <tr>
-      <th style="padding: 0; border: none;">COURSE CODE</th>
-      <th style="padding: 0; border: none;">COURSE DESCRIPTION</th>
-      <th style="padding: 0; border: none;">UNITS</th>
-      <th style="padding: 0; border: none;">PRE-REQ</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php if(empty($student_loads)) : ?>
-    <tr>
-    <td colspan="4" style="text-align: center;">No Matching Records</td>
-    </tr>
-    <?php else : ?>
-    <?php foreach($student_loads as $row) :?>
-    <tr>
-    <td style="padding: 0; border: none;"><?php echo $row['coursecode']?></td>
-            <td style="padding: 0; border: none;"><?php echo $row['description']?></td>
-            <td style="padding: 0; border: none;"><?php echo $row['units']?></td>
-            <td style="padding: 0; border: none;"><?php echo $row['pre_req']?></td>
-    </tr>
-    <?php endforeach?>
-    <?php endif; ?>
-  </tbody>
-  <tfoot>
+<table class="table table-striped table-bordered">
+<thead>
+<tr>
+<th>COURSE CODE</th>
+<th>COURSE DESCRIPTION</th>
+<th>UNITS</th>
+<th>PRE-REQ</th>
+</tr>
+</thead>
+<tbody>
+<?php if(empty($student_loads)) : ?>
+<tr>
+<td colspan="4" style="text-align: center;">No Matching Records</td>
+</tr>
+<?php else : ?>
+<tr>
+  <td colspan="4" style="text-align: center;"><strong><u>First Semester : <?= $sy?></u></strong></td>
+</tr>
+<?php foreach($student_loads as $row) :?>
+<?php if($row['semester'] == 1) {?>
+<tr>
+  <td><?php echo $row['coursecode']?></td>
+  <td><?php echo $row['description']?></td>
+  <td><?php echo $row['units']?></td>
+  <td><?php echo $row['pre_req']?></td>
+</tr>
+<?php }?>
+<?php endforeach?>
+<?php 
+$has_second_semester = false;
+foreach($student_loads as $row) {
+  if($row['semester'] == 2) {
+    $has_second_semester = true;
+    break;
+  }
+}
+if($has_second_semester) : ?>
+<tr>
+  <td colspan="4" style="text-align: center;"><strong><u>Second Semester <?php if(empty($sy)){}else{echo $sy;}?></u></strong></td>
+</tr>
+<?php foreach($student_loads as $row) :?>
+<?php if($row['semester'] == 2) {?>
+<tr>
+  <td><?php echo $row['coursecode']?></td>
+  <td><?php echo $row['description']?></td>
+  <td><?php echo $row['units']?></td>
+  <td><?php echo $row['pre_req']?></td>
+</tr>
+<?php }?>
+<?php endforeach?>
+<?php endif; ?>
+<?php endif; ?>
+</tbody>
   <tr>
       <td></td>
       <td></td>

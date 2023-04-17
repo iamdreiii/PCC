@@ -56,20 +56,45 @@ class Blog_model extends CI_Model
 
     public function add_blog($data)
     {
-        $this->db->insert('tbl_announcements', $data);
+        $ad = $this->db->insert('tbl_announcements', $data);
+        $log = array(
+            'activity' => 'Added Announcement',
+            'details' => ''.$this->session->userdata('user')['username'].' Added Announcement  -  data : '.implode($data).'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($ad){
+            $this->db->insert('tbl_logs', $log);
+        }
         return $this->db->insert_id();
     }
 
     public function update_blog($id, $data)
     {
         $this->db->where('id', $id);
-        return $this->db->update('tbl_announcements', $data);
+        $up =  $this->db->update('tbl_announcements', $data);
+        $log = array(
+            'activity' => 'Updated Announcement',
+            'details' => ''.$this->session->userdata('user')['username'].' Updated Announcement - ID : '.$id.' data : '.implode($data).'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($up){
+            $this->db->insert('tbl_logs', $log);
+        }
+        return $up;
     }
 
     public function delete_blog($id)
     {
         $this->db->where('id', $id);
-        $this->db->delete('tbl_announcements');
+        $del =$this->db->delete('tbl_announcements');
+        $log = array(
+            'activity' => 'Deleted Announcement',
+            'details' => ''.$this->session->userdata('user')['username'].' Deleted Announcement - ID : '.$id.'',
+            'created_at' => date('Y-m-d H:i:s'),
+        );
+        if($del){
+            $this->db->insert('tbl_logs', $log);
+        }
         return $this->db->affected_rows();
     }
     public function get_all_blog_search($search, $start, $length)

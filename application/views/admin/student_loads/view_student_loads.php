@@ -75,7 +75,6 @@
 
 <div class="row">
 <div class="col-xs-12 table-responsive">
-<!-- Display the HTML table with a check for empty student_loads array -->
 <table class="table table-striped table-bordered">
 <thead>
 <tr>
@@ -91,18 +90,45 @@
 <td colspan="4" style="text-align: center;">No Matching Records</td>
 </tr>
 <?php else : ?>
-<?php foreach($student_loads as $row) :?>
 <tr>
-<td><?php echo $row['coursecode']?></td>
-<td><?php echo $row['description']?></td>
-<td><?php echo $row['units']?></td>
-<td><?php echo $row['pre_req']?></td>
+  <td colspan="4" style="text-align: center;"><strong><u>First Semester <?php if(empty($sy)){}else{echo $sy;}?></u></strong></td>
 </tr>
+<?php foreach($student_loads as $row) :?>
+<?php if($row['semester'] == 1) {?>
+<tr>
+  <td><?php echo $row['coursecode']?></td>
+  <td><?php echo $row['description']?></td>
+  <td><?php echo $row['units']?></td>
+  <td><?php echo $row['pre_req']?></td>
+</tr>
+<?php }?>
 <?php endforeach?>
+<?php 
+$has_second_semester = false;
+foreach($student_loads as $row) {
+  if($row['semester'] == 2) {
+    $has_second_semester = true;
+    break;
+  }
+}
+if($has_second_semester) : ?>
+<tr>
+  <td colspan="4" style="text-align: center;"><strong><u>Second Semester <?php if(empty($sy)){}else{echo $sy;}?></u></strong></td>
+</tr>
+<?php foreach($student_loads as $row) :?>
+<?php if($row['semester'] == 2) {?>
+<tr>
+  <td><?php echo $row['coursecode']?></td>
+  <td><?php echo $row['description']?></td>
+  <td><?php echo $row['units']?></td>
+  <td><?php echo $row['pre_req']?></td>
+</tr>
+<?php }?>
+<?php endforeach?>
+<?php endif; ?>
 <?php endif; ?>
 </tbody>
 </table>
-
 </div>
 
 </div>

@@ -404,12 +404,75 @@ class Student_loads_model extends CI_Model
         $query = $this->db->get();
         return $query->num_rows();
     }
-    public function get_subjects()
+    public function get_subjects_first_year_bse()
     {
         $this->db->select('*');
         $this->db->from('tbl_subject');
         $this->db->where('year_level', '1');
         $this->db->where('program_id', '1');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_subjects_second_year_bse()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_subject');
+        $this->db->where('year_level', '2');
+        $this->db->where('program_id', '1');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_subjects_third_year_bse()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_subject');
+        $this->db->where('year_level', '3');
+        $this->db->where('program_id', '1');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_subjects_fourth_year_bse()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_subject');
+        $this->db->where('year_level', '4');
+        $this->db->where('program_id', '1');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_subjects_first_year_bpa()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_subject');
+        $this->db->where('year_level', '1');
+        $this->db->where('program_id', '2');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_subjects_second_year_bpa()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_subject');
+        $this->db->where('year_level', '2');
+        $this->db->where('program_id', '2');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_subjects_third_year_bpa()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_subject');
+        $this->db->where('year_level', '3');
+        $this->db->where('program_id', '2');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_subjects_fourth_year_bpa()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_subject');
+        $this->db->where('year_level', '4');
+        $this->db->where('program_id', '2');
         $query = $this->db->get();
         return $query->result();
     }
@@ -430,9 +493,9 @@ class Student_loads_model extends CI_Model
         return $result;
     }
     // VIEW
-    public function get_student_loads($param)
+    public function get_student_loads_first_year($param)
     {
-        $query = $this->db->query("SELECT tbl_subject.subcode as coursecode,  
+        $query = $this->db->query("SELECT tbl_subject.subcode as coursecode,  tbl_subject.semester as semester, tbl_student_subject_loads.school_year as school_year,
                 tbl_subject.description as 'description', 
                 CONCAT(tbl_student.lname, ' ', tbl_student.fname, ' ', tbl_student.mname, ' ') as fullname, 
                 tbl_subject.units as units, 
@@ -445,7 +508,74 @@ class Student_loads_model extends CI_Model
         FROM tbl_student_subject_loads 
         JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 
         JOIN tbl_subject ON tbl_subject.id = tbl_student_subject_loads.subject_id 
-        WHERE tbl_student_subject_loads.student_id = $param 
+        WHERE tbl_student_subject_loads.student_id = $param AND
+        tbl_subject.year_level = 1
+        GROUP BY tbl_subject.subcode
+        ORDER BY sl_id ASC
+        ");
+        return $query->result_array();
+    }
+    public function get_student_loads_second_year($param)
+    {
+        $query = $this->db->query("SELECT tbl_subject.subcode as coursecode,  tbl_subject.semester as semester, tbl_student_subject_loads.school_year as school_year,
+                tbl_subject.description as 'description', 
+                CONCAT(tbl_student.lname, ' ', tbl_student.fname, ' ', tbl_student.mname, ' ') as fullname, 
+                tbl_subject.units as units, 
+                SUM(tbl_subject.units) as tunits,
+                CASE 
+                    WHEN tbl_subject.prereq = '' OR tbl_subject.prereq IS NULL THEN 'none' 
+                    ELSE tbl_subject.prereq 
+                END as pre_req, 
+                tbl_student_subject_loads.id as sl_id 
+        FROM tbl_student_subject_loads 
+        JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 
+        JOIN tbl_subject ON tbl_subject.id = tbl_student_subject_loads.subject_id 
+        WHERE tbl_student_subject_loads.student_id = $param  AND
+        tbl_subject.year_level = 2
+        GROUP BY tbl_subject.subcode
+        ORDER BY sl_id ASC
+        ");
+        return $query->result_array();
+    }
+    public function get_student_loads_third_year($param)
+    {
+        $query = $this->db->query("SELECT tbl_subject.subcode as coursecode,  tbl_subject.semester as semester, tbl_student_subject_loads.school_year as school_year,
+                tbl_subject.description as 'description', 
+                CONCAT(tbl_student.lname, ' ', tbl_student.fname, ' ', tbl_student.mname, ' ') as fullname, 
+                tbl_subject.units as units, 
+                SUM(tbl_subject.units) as tunits,
+                CASE 
+                    WHEN tbl_subject.prereq = '' OR tbl_subject.prereq IS NULL THEN 'none' 
+                    ELSE tbl_subject.prereq 
+                END as pre_req, 
+                tbl_student_subject_loads.id as sl_id 
+        FROM tbl_student_subject_loads 
+        JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 
+        JOIN tbl_subject ON tbl_subject.id = tbl_student_subject_loads.subject_id 
+        WHERE tbl_student_subject_loads.student_id = $param  AND
+        tbl_subject.year_level = 3
+        GROUP BY tbl_subject.subcode
+        ORDER BY sl_id ASC
+        ");
+        return $query->result_array();
+    }
+    public function get_student_loads_fourth_year($param)
+    {
+        $query = $this->db->query("SELECT tbl_subject.subcode as coursecode,  tbl_subject.semester as semester, tbl_student_subject_loads.school_year as school_year,
+                tbl_subject.description as 'description', 
+                CONCAT(tbl_student.lname, ' ', tbl_student.fname, ' ', tbl_student.mname, ' ') as fullname, 
+                tbl_subject.units as units, 
+                SUM(tbl_subject.units) as tunits,
+                CASE 
+                    WHEN tbl_subject.prereq = '' OR tbl_subject.prereq IS NULL THEN 'none' 
+                    ELSE tbl_subject.prereq 
+                END as pre_req, 
+                tbl_student_subject_loads.id as sl_id 
+        FROM tbl_student_subject_loads 
+        JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 
+        JOIN tbl_subject ON tbl_subject.id = tbl_student_subject_loads.subject_id 
+        WHERE tbl_student_subject_loads.student_id = $param  AND
+        tbl_subject.year_level = 4
         GROUP BY tbl_subject.subcode
         ORDER BY sl_id ASC
         ");

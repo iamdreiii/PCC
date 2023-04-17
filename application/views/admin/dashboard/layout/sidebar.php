@@ -231,7 +231,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url()?>Class"><i class="fa fa-circle-o"></i> List of Class</a></li>
-            <li class="treeview">
+            <!-- <li class="treeview">
               <a href="#"><i class="fa fa-circle-o"></i> Manage Teachers
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
@@ -242,8 +242,7 @@
                 <li><a href="#"><i class="fa fa-circle-o"></i> Teacher Loads</a></li>
                 
               </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            </li> -->
           </ul>
         </li>
         <!-- END MANAGE CLASS -->
@@ -334,8 +333,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> About Us</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Logo/Names</a></li>
+                <!-- <li><a href="#"><i class="fa fa-circle-o"></i> About Us</a></li> -->
+                <li><a href="#"><i class="fa fa-circle-o"></i> Links</a></li>
+                <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Logo/Names</a></li> -->
               </ul>
             </li>
             

@@ -97,6 +97,7 @@ class School_year extends CI_Controller {
     {
         $data = array(
             'school_year' => $this->input->post('school_year'),
+            'status' => 'inactive',
             'created_at' => date('Y-m-d H:i:s'),
             // 'updated_at' => date('Y-m-d H:i:s'),
         );
@@ -120,33 +121,66 @@ class School_year extends CI_Controller {
         $this->Schoolyear_model->update_sy($this->input->post('id'), $data);
         echo json_encode(array("status" => TRUE));
     }
+    // public function sy_update_status()
+    // {
+    //     $id = $this->input->post('id');
+    //     $status = $this->input->post('status');
+
+    //     // Update status based on current status
+    //     if ($status == 'active') {
+    //         // Update to inactive
+    //         $updatedStatus = 'inactive';
+    //     } else {
+    //         // Update to active
+    //         $updatedStatus = 'active';
+    //     }
+    //     $data = array(
+    //         'status' => $updatedStatus,
+    //         // 'created_at' => date('Y-m-d H:i:s'),
+    //         'updated_at' => date('Y-m-d H:i:s'),
+    //     );
+    //     // Call your model function to update the status in the database
+    //     $stat = $this->Schoolyear_model->update_sy_status($id, $data);
+
+    //     if($stat ==  true){
+    //         echo json_encode(array("status" => TRUE));
+    //     }else{
+    //         echo json_encode(array("status" => FALSE));
+    //     }
+    // }
     public function sy_update_status()
-    {
-        $id = $this->input->post('id');
-        $status = $this->input->post('status');
+{
+    $id = $this->input->post('id');
+    $status = $this->input->post('status');
 
-        // Update status based on current status
-        if ($status == 'active') {
-            // Update to inactive
-            $updatedStatus = 'inactive';
-        } else {
-            // Update to active
-            $updatedStatus = 'active';
-        }
-        $data = array(
-            'status' => $updatedStatus,
-            // 'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        );
-        // Call your model function to update the status in the database
-        $stat = $this->Schoolyear_model->update_sy_status($id, $data);
-
-        if($stat ==  true){
-            echo json_encode(array("status" => TRUE));
-        }else{
-            echo json_encode(array("status" => FALSE));
-        }
+    // Update status based on current status
+    if ($status == 'active') {
+        // Update to inactive
+        $updatedStatus = 'inactive';
+    } else {
+        // Update to active
+        $updatedStatus = 'active';
     }
+    $data = array(
+        'status' => $updatedStatus,
+        'updated_at' => date('Y-m-d H:i:s'),
+    );
+    // Call your model function to update the status in the database
+    $stat = $this->Schoolyear_model->update_sy_status($id, $data);
+
+    if($stat ==  true){
+        // If update is successful, update other records to inactive
+        if ($status == 'inactive') {
+            $this->Schoolyear_model->update_other_sy_statuses($id, 'inactive');
+        }
+        echo json_encode(array("status" => TRUE));
+    }else{
+        echo json_encode(array("status" => FALSE));
+    }
+}
+
+    
+
 
     public function sy_delete($id)
     {
