@@ -371,6 +371,10 @@ class User extends CI_Controller {
 
     public function user_delete($id)
     {
+        $old_image_path =  'uploads/useruploads/'.$this->db->select('img')->where('id', $id)->get('tbl_student')->row('img');
+        if (file_exists($old_image_path)) {
+            unlink($old_image_path);
+        }
         $this->Users_model->delete_user($id);
         echo json_encode(array("status" => TRUE));
     }
