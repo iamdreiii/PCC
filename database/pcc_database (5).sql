@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Apr 18, 2023 at 02:11 AM
+-- Generation Time: Apr 19, 2023 at 10:24 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -43,6 +43,33 @@ CREATE TABLE `tbl_announcements` (
 INSERT INTO `tbl_announcements` (`id`, `title`, `path`, `description`, `created_at`, `updated_at`) VALUES
 (141, 'Sample ', 'uploads/announcement/29487.png', '<p>Sample</p>', '2023-04-17 10:18:37', '2023-04-17 10:20:29'),
 (142, 'gfd', 'uploads/announcement/17403.png', '<p>gfdgdf</p>', '2023-04-17 10:19:30', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_blog_setting`
+--
+
+CREATE TABLE `tbl_blog_setting` (
+  `id` int(11) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `subtitle` varchar(250) NOT NULL,
+  `facebook` varchar(50) NOT NULL,
+  `instagram` varchar(50) NOT NULL,
+  `twitter` varchar(50) NOT NULL,
+  `youtube` varchar(50) NOT NULL,
+  `footer` varchar(250) NOT NULL,
+  `navbar_color` varchar(100) NOT NULL,
+  `body_color` varchar(100) NOT NULL,
+  `footer_color` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_blog_setting`
+--
+
+INSERT INTO `tbl_blog_setting` (`id`, `title`, `subtitle`, `facebook`, `instagram`, `twitter`, `youtube`, `footer`, `navbar_color`, `body_color`, `footer_color`) VALUES
+(1, 'P C C     B L O G', '<strong>I</strong>nnovative • <strong>N</strong>ationalistic • <strong>A</strong>ffective', '1', '1', '1', '1', 'pcc.edu.com', '#524132', '#dad0c7', '#907358');
 
 -- --------------------------------------------------------
 
@@ -127,8 +154,11 @@ INSERT INTO `tbl_course` (`id`, `course`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `tbl_links` (
   `id` int(11) NOT NULL,
-  `platform` varchar(250) NOT NULL,
-  `link` varchar(250) NOT NULL,
+  `facebook` varchar(250) NOT NULL,
+  `twitter` varchar(250) NOT NULL,
+  `instagram` varchar(250) NOT NULL,
+  `youtube` varchar(250) NOT NULL,
+  `gmail` varchar(250) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -137,11 +167,8 @@ CREATE TABLE `tbl_links` (
 -- Dumping data for table `tbl_links`
 --
 
-INSERT INTO `tbl_links` (`id`, `platform`, `link`, `created_at`, `updated_at`) VALUES
-(1, 'Facebook', '', '2023-04-17 09:11:06', '2023-04-17 09:11:06'),
-(2, 'Youtube', '', '2023-04-17 09:11:06', '2023-04-17 09:11:06'),
-(3, 'Instagram', '', '2023-04-17 09:11:47', '2023-04-17 09:11:47'),
-(4, 'Twitter', '', '2023-04-17 09:11:47', '2023-04-17 09:11:47');
+INSERT INTO `tbl_links` (`id`, `facebook`, `twitter`, `instagram`, `youtube`, `gmail`, `created_at`, `updated_at`) VALUES
+(1, 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', 'https://www.gmail.com/', '2023-04-18 03:37:24', '2023-04-18 03:37:24');
 
 -- --------------------------------------------------------
 
@@ -172,7 +199,15 @@ INSERT INTO `tbl_logs` (`id`, `activity`, `details`, `created_at`, `updated_at`)
 (41, 'Updated Student Details', 'admin Updated Student Details - ID : 16 data : Screenshot_2023-04-14_0927061.pngsadsadsadsaDela Cruz2023-04-0423Male5\'665sampleFilipinoSampleSingle09123456789oniledfsdfsrevaeduj@gmail.comSampleSampledfsdfdsf52062023202320232023BPA1st Year2023-04-17 1', '2023-04-17 10:30:01', '0000-00-00 00:00:00'),
 (42, 'Deleted Student', 'admin Deleted Stduent - ID : 16', '2023-04-17 10:30:13', '0000-00-00 00:00:00'),
 (43, 'Updated Student Details', 'admin Updated Student Details - ID : 15 data : Screenshot_2023-04-14_092751.pngJuanADela Cruz2023-04-1223Male5\'665sampleFilipinoSampleSingle09123456789ssf ghty67567das23wqe3f@gmail.comSampleSampleSampleSample52062023202320232023BSE4th Year2023-04-17 ', '2023-04-17 10:35:44', '0000-00-00 00:00:00'),
-(44, 'Deleted Student', 'admin Deleted Student - ID : 15', '2023-04-17 10:35:53', '0000-00-00 00:00:00');
+(44, 'Deleted Student', 'admin Deleted Student - ID : 15', '2023-04-17 10:35:53', '0000-00-00 00:00:00'),
+(45, 'Updated School Year', 'admin Updated School Year - ID : 6 to active', '2023-04-18 02:20:44', '0000-00-00 00:00:00'),
+(46, 'Updated School Year', 'admin Updated School Year - ID : 6 to inactive', '2023-04-18 02:20:44', '0000-00-00 00:00:00'),
+(47, 'Updated School Year', 'admin Updated School Year - ID : 1 to active', '2023-04-18 02:20:46', '0000-00-00 00:00:00'),
+(48, 'Updated School Year', 'admin Updated School Year - ID : 1 to inactive', '2023-04-18 02:20:46', '0000-00-00 00:00:00'),
+(49, 'Updated School Year', 'admin Updated School Year - ID : 6 to active', '2023-04-18 02:30:01', '0000-00-00 00:00:00'),
+(50, 'Updated School Year', 'admin Updated School Year - ID : 6 to inactive', '2023-04-18 02:30:01', '0000-00-00 00:00:00'),
+(51, 'Updated School Year', 'admin Updated School Year - ID : 1 to active', '2023-04-18 02:30:02', '0000-00-00 00:00:00'),
+(52, 'Updated School Year', 'admin Updated School Year - ID : 1 to inactive', '2023-04-18 02:30:02', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -214,8 +249,8 @@ CREATE TABLE `tbl_school_year` (
 --
 
 INSERT INTO `tbl_school_year` (`id`, `school_year`, `status`, `created_at`, `updated_at`) VALUES
-(1, '2022-2023', 'active', '2023-02-27 08:35:14', '2023-04-17 10:11:46'),
-(6, '2023-2024', 'inactive', '2023-02-28 11:31:52', '2023-04-17 10:10:41');
+(1, '2022-2023', 'active', '2023-02-27 08:35:14', '2023-04-18 02:30:02'),
+(6, '2023-2024', 'inactive', '2023-02-28 11:31:52', '2023-04-18 02:30:02');
 
 -- --------------------------------------------------------
 
@@ -322,13 +357,13 @@ CREATE TABLE `tbl_student` (
 
 INSERT INTO `tbl_student` (`id`, `img`, `lname`, `fname`, `mname`, `extension`, `birthdate`, `age`, `sex`, `height`, `weight`, `birthplace`, `citizenship`, `religion`, `civil_status`, `mobile_no`, `email`, `facebook`, `address`, `city_municipality`, `province`, `zip_code`, `father`, `mother`, `guardian`, `f_occupation`, `m_occupation`, `g_relationship`, `f_contact`, `m_contact`, `g_contact`, `f_birthdate`, `m_birthdate`, `g_birthdate`, `parent_address`, `guardian_address`, `ws_company`, `ws_position`, `ws_date_started`, `ws_employer`, `ws_employer_contact`, `ws_company_address`, `program`, `year_level`, `sem`, `class_id`, `tertiary_school_last_attended`, `tertiary_school_address`, `tertiary_school_year_last_attended`, `tertiary_city`, `tertiary_province`, `secondary_school_last_attended`, `secondary_school_address`, `secondary_school_year_last_attended`, `secondary_city`, `secondary_province`, `secondary_junior_school_last_attended`, `secondary_junior_school_year_last_attended`, `secondary_junior_school_address`, `secondary_junior_city`, `secondary_junior_province`, `primary_school_last_attended`, `primary_school_year_last_attended`, `primary_school_address`, `primary_city`, `primary_province`, `date_created`, `date_updated`) VALUES
 (6, 'IMG_20210306_1703311.jpg', 'Dela Cruz', 'John', 'M', NULL, '2023-03-09', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'john@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '1st Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-03-31', '2023-03-31'),
-(7, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'onilevaeduj@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '2nd Year', NULL, NULL, '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-17'),
-(8, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'jiohnsad@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '2nd Year', NULL, NULL, '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
-(9, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgf@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '3rd Year', NULL, NULL, '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
-(10, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgwqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '4th Year', NULL, NULL, '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
-(11, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdg23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '1st Year', NULL, NULL, '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
-(12, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgas23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '3rd Year', NULL, NULL, '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
-(13, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdsddgas23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '2nd Year', NULL, NULL, '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13');
+(7, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'onilevaeduj@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '2nd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-17'),
+(8, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'jiohnsad@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '2nd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
+(9, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgf@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '3rd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
+(10, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgwqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '4th Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
+(11, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdg23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '1st Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
+(12, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgas23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '3rd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
+(13, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdsddgas23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '2nd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13');
 
 -- --------------------------------------------------------
 
@@ -692,6 +727,12 @@ ALTER TABLE `tbl_announcements`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_blog_setting`
+--
+ALTER TABLE `tbl_blog_setting`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_class`
 --
 ALTER TABLE `tbl_class`
@@ -808,6 +849,12 @@ ALTER TABLE `tbl_announcements`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
+-- AUTO_INCREMENT for table `tbl_blog_setting`
+--
+ALTER TABLE `tbl_blog_setting`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_class`
 --
 ALTER TABLE `tbl_class`
@@ -826,16 +873,10 @@ ALTER TABLE `tbl_course`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tbl_links`
---
-ALTER TABLE `tbl_links`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `tbl_program`
