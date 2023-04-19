@@ -146,4 +146,10 @@ class Blog_model extends CI_Model
     echo json_encode($output);
     }
     }
+
+    public function getblogsetting()
+    {
+        $query = $this->db->get('tbl_blog_setting');
+        return $query->result_array();
+    }
 }

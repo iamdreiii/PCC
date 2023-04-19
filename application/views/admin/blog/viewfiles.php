@@ -38,8 +38,9 @@
           margin-top: 45px;
         }
       }
+      /* DYNAMIC COLOR FRO DATABASE  NAVBAR*/
       .navbar{
-        background-color: rgb(82, 65, 50);
+        background-color: <?= $navbar_color?>;
         color: #fff;
       }
       .navbar .container-fluid .collapse ul li .nav-link{
@@ -55,8 +56,9 @@
         color: rgb(201, 201, 201);
         text-decoration: underline;
       }
+      /* DYNAMIC COLOR FRO DATABASE  FOOTER*/
       .blog-footer{
-        background-color: rgba(144, 115, 88); 
+        background-color: <?= $footer_color?>; 
         position: relative; 
         width: 100%;
         overflow: hidden;
@@ -95,27 +97,35 @@
 
           <ul class="navbar-nav d-flex flex-row">
             <!-- Icons -->
+            <?php if($yt == 1) :?>
             <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
+              <a class="nav-link" href="#" id="youtube" rel="nofollow"
                 target="_blank">
                 <i class="fab fa-youtube"></i>
               </a>
             </li>
+            <?php endif ?>
+            <?php if($fb == 1) :?>
             <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
+              <a class="nav-link" href="#" id="facebook" rel="nofollow" target="_blank">
                 <i class="fab fa-facebook-f"></i>
               </a>
             </li>
+            <?php endif ?>
+            <?php if($tw == 1) :?>
             <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
+              <a class="nav-link" href="#" id="twitter" rel="nofollow" target="_blank">
                 <i class="fab fa-twitter"></i>
               </a>
             </li>
+            <?php endif ?>
+            <?php if($ig == 1) :?>
             <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
-                <i class="fab fa-github"></i>
+              <a class="nav-link" href="#" id="instagram" rel="nofollow" target="_blank">
+                <i class="fab fa-instagram"></i>
               </a>
             </li>
+            <?php endif ?>
           </ul>
         </div>
       </div>
@@ -123,9 +133,10 @@
     <!-- Navbar -->
 
     <!-- Jumbotron -->
-    <div id="intro" class="p-5 text-center" style="background-color: rgb(218, 208, 199);">
-      <h1 class="mb-3 h1">P C C   &emsp; B L O G</h1>
-      <p class="mb-3"><strong>I</strong>nnovative • <strong>N</strong>ationalistic • <strong>A</strong>ffective</p>
+    <!-- DYNAMIC BACKGROUND COLOR FROM DB  -->
+    <div id="intro" class="p-5 text-center" style="background-color: <?= $body_color?>;">
+      <h1 class="mb-3 h1"><?= $title?></h1>
+      <p class="mb-3"><?=$subtitle?></p>
       <div id="prefetch" style="width:200px; margin:auto; display:flex;">
         <input type="text" name="search_box" id="search_box" class="form-control input-lg typeahead" placeholder="Search Here" />
       </div>
@@ -139,7 +150,7 @@
     <div class="container" >
       <!--Section: Content-->
       <section class="text-center">
-        <h4 class="mb-5"><strong>Latest posts</strong></h4>
+        <h4 class="mb-5"><strong>Latest Announcements</strong></h4>
 
         <div class="row"  id="video-card">
 
@@ -166,28 +177,36 @@
 
     <div class="text-center py-4 align-items-center">
       <p>Follow PCC on social media</p>
-      <a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" class="btn btn-primary m-1" role="button"
+      <?php if($yt == 1) :?>
+      <a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" id="yt" class="btn btn-primary m-1" role="button"
         rel="nofollow" target="_blank">
         <i class="fab fa-youtube"></i>
       </a>
-      <a href="https://www.facebook.com/mdbootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
+      <?php endif?>
+      <?php if($fb == 1) :?>
+      <a href="https://www.facebook.com/mdbootstrap" id="fb" class="btn btn-primary m-1" role="button" rel="nofollow"
         target="_blank">
         <i class="fab fa-facebook-f"></i>
       </a>
-      <a href="https://twitter.com/MDBootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
+      <?php endif?>
+      <?php if($tw == 1) :?>
+      <a href="https://twitter.com/MDBootstrap" id="tw" class="btn btn-primary m-1" role="button" rel="nofollow"
         target="_blank">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="https://github.com/mdbootstrap/mdb-ui-kit" class="btn btn-primary m-1" role="button" rel="nofollow"
+      <?php endif?>
+      <?php if($ig == 1) :?>
+      <a href="https://github.com/mdbootstrap/mdb-ui-kit" id="ig" class="btn btn-primary m-1" role="button" rel="nofollow"
         target="_blank">
-        <i class="fab fa-github"></i>
+        <i class="fab fa-instagram"></i>
       </a>
+      <?php endif?>
     </div>
 
     <!-- Copyright -->
     <div class="blog-footer text-center p-3">
       © 2023 Copyright:
-      <a class="text-dark" href="https://mdbootstrap.com/">pcc.edu.com</a>
+      <a class="text-dark" href="https://mdbootstrap.com/"><?=$footer?></a>
     </div>
     <!-- Copyright -->
   </footer>
@@ -343,6 +362,27 @@ $(document).ready(function(){
   });
 });
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  fetch('Links/fetchlinks')
+    .then(response => response.json())
+    .then(data => {
+      const { facebook, twitter, instagram, youtube, gmail } = data;
+      document.getElementById('facebook').href = facebook || '';
+      document.getElementById('twitter').href = twitter || '';
+      document.getElementById('instagram').href = instagram || '';
+      document.getElementById('youtube').href = youtube || '';
+      document.getElementById('fb').href = facebook || '';
+      document.getElementById('tw').href = twitter || '';
+      document.getElementById('ig').href = instagram || '';
+      document.getElementById('yt').href = youtube || '';
+    })
+    .catch(error => console.error(error));
+});
+</script>
+
 <style>
     .img-thumbnail{
         padding: 0px;

@@ -31,7 +31,20 @@ class Blog extends CI_Controller {
             if(!file_exists(APPPATH.'views/admin/blog/'.$page.'.php')){
                 show_404();
             }
-            $this->load->view('admin/blog/'. $page);   
+            $data['blogsetting'] = $this->Blog_model->getblogsetting();
+            foreach($data['blogsetting'] as $row) :
+                $data['title'] = $row['title'];
+                $data['subtitle'] = $row['subtitle'];
+                $data['fb'] = $row['facebook'];
+                $data['ig'] = $row['instagram'];
+                $data['tw'] = $row['twitter'];
+                $data['yt'] = $row['youtube'];
+                $data['footer'] = $row['footer'];
+                $data['navbar_color'] = $row['navbar_color'];
+                $data['body_color'] = $row['body_color'];
+                $data['footer_color'] = $row['footer_color'];
+            endforeach;
+            $this->load->view('admin/blog/'. $page, $data);   
 	}
     public function blogview($param)
 	{

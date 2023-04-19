@@ -113,7 +113,7 @@
             </li>
             <li class="nav-item me-3 me-lg-0">
               <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
-                <i class="fab fa-github"></i>
+                <i class="fab fa-instagram"></i>
               </a>
             </li>
           </ul>
@@ -200,7 +200,7 @@
       </a>
       <a href="https://github.com/mdbootstrap/mdb-ui-kit" class="btn btn-primary m-1" role="button" rel="nofollow"
         target="_blank">
-        <i class="fab fa-github"></i>
+        <i class="fab fa-instagram"></i>
       </a>
     </div>
 

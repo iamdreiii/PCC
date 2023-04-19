@@ -324,8 +324,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Users</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Staff</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Users</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Staff</a></li>
             <li class="treeview">
               <a href="#"><i class="fa fa-circle-o"></i> Website
                 <span class="pull-right-container">
@@ -333,9 +333,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <!-- <li><a href="#"><i class="fa fa-circle-o"></i> About Us</a></li> -->
-                <li><a href="#"><i class="fa fa-circle-o"></i> Links</a></li>
-                <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Logo/Names</a></li> -->
+                <!-- <li><a href=""><i class="fa fa-info"></i> About Us</a></li> -->
+                <li><a href="<?=base_url()?>manage_links"><i class="fa fa-external-link"></i> Links</a></li>
+                <li><a href="<?=base_url()?>blog-setting"><i class="fa fa-gear"></i> Blog Settings</a></li>
               </ul>
             </li>
             
