@@ -25,6 +25,14 @@ class Blog extends CI_Controller {
             redirect('staff');
         }	
 	}
+    public function fb()
+	{
+            $page = 'fb';
+            if(!file_exists(APPPATH.'views/admin/blog/'.$page.'.php')){
+                show_404();
+            }
+            $this->load->view('admin/blog/'. $page);    
+	}
     public function bloghome()
 	{
             $page = 'viewfiles';
@@ -52,6 +60,19 @@ class Blog extends CI_Controller {
             if(!file_exists(APPPATH.'views/blog/'.$page.'.php')){
                 show_404();
             }
+            $data['blogsetting'] = $this->Blog_model->getblogsetting();
+            foreach($data['blogsetting'] as $row) :
+                $data['title'] = $row['title'];
+                $data['subtitle'] = $row['subtitle'];
+                $data['fb'] = $row['facebook'];
+                $data['ig'] = $row['instagram'];
+                $data['tw'] = $row['twitter'];
+                $data['yt'] = $row['youtube'];
+                $data['footer'] = $row['footer'];
+                $data['navbar_color'] = $row['navbar_color'];
+                $data['body_color'] = $row['body_color'];
+                $data['footer_color'] = $row['footer_color'];
+            endforeach;
             $data['blogres'] = $this->Blog_model->get_blog_single($param);
             $this->load->view('blog/'. $page, $data);   
 	}

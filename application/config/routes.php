@@ -98,3 +98,4 @@ $route['grades'] = 'Grades/getgrade';
 $route['manage_links'] = 'Links/index';
 // BLOG SETTING
 $route['blog-setting'] = 'BlogSetting/index';
+$route['fb'] = 'Blog/fb';

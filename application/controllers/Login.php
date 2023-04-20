@@ -8,6 +8,19 @@ class Login extends CI_Controller {
       $this->load->helper('url', 'form');
       $this->load->library('session');
     }
+    public function inactive_user() {
+        // get user id from session data
+        $user = $this->session->userdata('user')['id'];
+        // extract($user);
+        //var_dump($user);
+        // update user status to inactive in the database
+        $this->db->where('id', $user);
+        $this->db->update('tbl_staff', array('active_status' => 'inactive'));
+        
+        //unset session data
+        $this->session->unset_userdata('id');
+    }
+    
 	public function index()
 	{
        
@@ -36,8 +49,11 @@ class Login extends CI_Controller {
 		$output = array('error' => false);
 		$username = $_POST['username'];
 		$password = md5($_POST['password']);
+        $this->db->where('username', $username);
+        $this->db->update('tbl_staff', array('active_status' => 'active'));
 		$data = $this->Login_model->login($username, $password);
 		if($data){
+            
 			$this->session->set_userdata('user', $data);
 			$output['message'] = 'Logging in. Please wait...';
             $this->session->set_tempdata('success','Logged In',1);
@@ -49,6 +65,9 @@ class Login extends CI_Controller {
 		echo json_encode($output); 
     }
     public function logout(){
+        $user = $this->session->userdata('user')['id'];
+        $this->db->where('id', $user);
+        $this->db->update('tbl_staff', array('active_status' => 'inactive'));
 		//load session library
 		$this->load->library('session');
 		$this->session->unset_userdata('user');

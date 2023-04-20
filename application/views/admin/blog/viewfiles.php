@@ -151,7 +151,6 @@
       <!--Section: Content-->
       <section class="text-center">
         <h4 class="mb-5"><strong>Latest Announcements</strong></h4>
-
         <div class="row"  id="video-card">
 
          
@@ -370,14 +369,22 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(data => {
       const { facebook, twitter, instagram, youtube, gmail } = data;
-      document.getElementById('facebook').href = facebook || '';
-      document.getElementById('twitter').href = twitter || '';
-      document.getElementById('instagram').href = instagram || '';
-      document.getElementById('youtube').href = youtube || '';
-      document.getElementById('fb').href = facebook || '';
-      document.getElementById('tw').href = twitter || '';
-      document.getElementById('ig').href = instagram || '';
-      document.getElementById('yt').href = youtube || '';
+      <?php if($yt == 1) :?>
+        document.getElementById('youtube').href = youtube || '';
+        document.getElementById('yt').href = youtube || '';
+      <?php endif?> 
+      <?php if($fb == 1) :?>
+        document.getElementById('facebook').href = facebook || '';
+        document.getElementById('fb').href = facebook || '';
+      <?php endif?> 
+      <?php if($tw == 1) :?>
+        document.getElementById('twitter').href = twitter || '';
+        document.getElementById('tw').href = twitter || '';
+      <?php endif?> 
+      <?php if($ig == 1) :?>
+        document.getElementById('ig').href = instagram || '';
+        document.getElementById('instagram').href = instagram || '';
+      <?php endif?> 
     })
     .catch(error => console.error(error));
 });

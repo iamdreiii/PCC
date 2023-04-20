@@ -11,11 +11,11 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url()?>assets/dist/img/avatar3.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p><?php echo strtoupper($username)?></p>
-          <?php if($this->session->userdata('user')){?>
+          <?php if($this->session->userdata('user')['active_status'] = 'active'){ ?>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           <?php }else{?>
           <a href="#"><i class="fa fa-circle text-error"></i> Offline</a>
@@ -324,10 +324,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-circle-o"></i> Users</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Staff</a></li>
+            <li><a href="#"><i class="fa fa-users"></i> Staff</a></li>
+            <li><a href="#"><i class="fa fa-pencil"></i> Signatory</a></li>
             <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Website
+              <a href="#"><i class="fa fa-laptop"></i> Website
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>

@@ -22,42 +22,6 @@ class User extends CI_Controller {
         }
 		
 	}
-    // public function user_list()
-    // {
-        
-    //     $search = $this->input->post("search")['value'];
-    //     $start = $this->input->post('start');
-    //     $length = $this->input->post('length');
-    //     $list = $this->Users_model->get_all_users_search($search, $start, $length);
-    //     $data = array();
-    //     $no = $_POST['start'];
-    //     foreach ($list as $user) {
-    //         $no++;
-    //         $row = array();
-    //         $row[] = ' <td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
-    //         $row[] = $user->school_id;
-    //         $row[] = $user->fname .' '. $user->mname .' '. $user->lname .' '. $user->extensions;
-    //         $row[] = $user->email;
-    //         $row[] = $user->gender;
-    //         $row[] = $user->course;
-    //         $row[] = $user->class_id;
-    //         $row[] = $user->year_level;
-    //         $row[] = $user->enrollment_status;
-    //         $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-    //               <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
-    //         $data[] = $row;
-    //     }
-    //     $filteredCount = $this->Users_model->count_filtered();
-    //     $totalCount = $this->Users_model->count_all();
-
-    //     $output = array(
-    //         "draw" => $_POST['draw'],
-    //         "recordsTotal" => $totalCount,
-    //         "recordsFiltered" => $filteredCount,
-    //         "data" => $data,
-    //     );
-    //     echo json_encode($output);
-    // }
     public function user_list()
     {
         
