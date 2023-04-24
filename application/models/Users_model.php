@@ -99,6 +99,7 @@ class Users_model extends CI_Model
     $this->db->from('tbl_student');
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
+        $this->db->group_start();
         $this->db->like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
@@ -110,6 +111,7 @@ class Users_model extends CI_Model
         $this->db->or_like('address', $search);
         $this->db->or_like('city_municipality', $search);
         $this->db->or_like('zip_code', $search);
+        $this->db->group_end();
     }
     $this->db->limit($length, $start);
     $query = $this->db->get();
@@ -253,12 +255,12 @@ class Users_model extends CI_Model
         $this->db->where('year_level', '1st Year');
         $this->db->where('program', 'BSE');
         if (!empty($search)) {
+            $this->db->group_start();
             $this->db->like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
-            $this->db->where('year_level', '1st Year');
-            $this->db->where('program', 'BSE');
+            $this->db->group_end();
         }
         $query = $this->db->get();
         return $query->num_rows();
@@ -270,12 +272,12 @@ class Users_model extends CI_Model
         $this->db->where('year_level', '2nd Year');
         $this->db->where('program', 'BSE');
         if (!empty($search)) {
+            $this->db->group_start();
             $this->db->like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
-            $this->db->where('year_level', '2nd Year');
-            $this->db->where('program', 'BSE');
+            $this->db->group_end();
         }
         $query = $this->db->get();
         return $query->num_rows();
@@ -287,12 +289,12 @@ class Users_model extends CI_Model
         $this->db->where('year_level', '3rd Year');
         $this->db->where('program', 'BSE');
         if (!empty($search)) {
+            $this->db->group_start();
             $this->db->like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
-            $this->db->where('year_level', '3rd Year');
-            $this->db->where('program', 'BSE');
+            $this->db->group_end();
         }
         $query = $this->db->get();
         return $query->num_rows();
@@ -304,12 +306,12 @@ class Users_model extends CI_Model
         $this->db->where('year_level', '4th Year');
         $this->db->where('program', 'BSE');
         if (!empty($search)) {
+            $this->db->group_start();
             $this->db->like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
-            $this->db->where('year_level', '4th Year');
-            $this->db->where('program', 'BSE');
+            $this->db->group_end();
         }
         $query = $this->db->get();
         return $query->num_rows();
@@ -322,12 +324,12 @@ class Users_model extends CI_Model
         $this->db->where('year_level', '1st Year');
         $this->db->where('program', 'BPA');
         if (!empty($search)) {
+            $this->db->group_start();
             $this->db->like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
-            $this->db->where('year_level', '1st Year');
-            $this->db->where('program', 'BPA');
+            $this->db->group_end();
         }
         $query = $this->db->get();
         return $query->num_rows();
@@ -339,12 +341,12 @@ class Users_model extends CI_Model
         $this->db->where('year_level', '2nd Year');
         $this->db->where('program', 'BPA');
         if (!empty($search)) {
+            $this->db->group_start();
             $this->db->like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
-            $this->db->where('year_level', '2nd Year');
-            $this->db->where('program', 'BPA');
+            $this->db->group_end();
         }
         $query = $this->db->get();
         return $query->num_rows();
@@ -356,12 +358,12 @@ class Users_model extends CI_Model
         $this->db->where('year_level', '3rd Year');
         $this->db->where('program', 'BPA');
         if (!empty($search)) {
+            $this->db->group_start();
             $this->db->like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
-            $this->db->where('year_level', '3rd Year');
-            $this->db->where('program', 'BPA');
+            $this->db->group_end();
         }
         $query = $this->db->get();
         return $query->num_rows();
@@ -373,12 +375,12 @@ class Users_model extends CI_Model
         $this->db->where('year_level', '4th Year');
         $this->db->where('program', 'BPA');
         if (!empty($search)) {
+            $this->db->group_start();
             $this->db->like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
-            $this->db->where('year_level', '4th Year');
-            $this->db->where('program', 'BPA');
+            $this->db->group_end();
         }
         $query = $this->db->get();
         return $query->num_rows();
@@ -391,6 +393,7 @@ class Users_model extends CI_Model
     $this->db->where('year_level', '1st Year');
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
+        $this->db->group_start();
         $this->db->like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
@@ -402,12 +405,9 @@ class Users_model extends CI_Model
         $this->db->or_like('address', $search);
         $this->db->or_like('city_municipality', $search);
         $this->db->or_like('zip_code', $search);
-        $this->db->where('year_level', '1st Year');
-        $this->db->where('program', 'BSE');
+        $this->db->group_end();
     }
     $this->db->limit($length, $start);
-    $this->db->where('year_level', '1st Year');
-        $this->db->where('program', 'BSE');
     $query = $this->db->get();
     return $query->result();
     }
@@ -419,6 +419,7 @@ class Users_model extends CI_Model
     $this->db->where('program', 'BSE');
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
+        $this->db->group_start();
         $this->db->like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
@@ -430,8 +431,7 @@ class Users_model extends CI_Model
         $this->db->or_like('address', $search);
         $this->db->or_like('city_municipality', $search);
         $this->db->or_like('zip_code', $search);
-        $this->db->where('year_level', '1st Year');
-        $this->db->where('program', 'BSE');
+        $this->db->group_end();
     }
     $this->db->limit($length, $start);
     $query = $this->db->get();
@@ -445,6 +445,7 @@ class Users_model extends CI_Model
     $this->db->where('program', 'BSE');
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
+        $this->db->group_start();
         $this->db->like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
@@ -456,8 +457,7 @@ class Users_model extends CI_Model
         $this->db->or_like('address', $search);
         $this->db->or_like('city_municipality', $search);
         $this->db->or_like('zip_code', $search);
-        $this->db->where('year_level', '1st Year');
-        $this->db->where('program', 'BSE');
+        $this->db->group_end();
     }
     $this->db->limit($length, $start);
     $query = $this->db->get();
@@ -471,6 +471,7 @@ class Users_model extends CI_Model
     $this->db->where('program', 'BSE');
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
+        $this->db->group_start();
         $this->db->like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
@@ -482,8 +483,7 @@ class Users_model extends CI_Model
         $this->db->or_like('address', $search);
         $this->db->or_like('city_municipality', $search);
         $this->db->or_like('zip_code', $search);
-        $this->db->where('year_level', '1st Year');
-        $this->db->where('program', 'BSE');
+        $this->db->group_end();
     }
     $this->db->limit($length, $start);
     $query = $this->db->get();
@@ -499,6 +499,7 @@ class Users_model extends CI_Model
     $this->db->where('program', 'BPA');
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
+        $this->db->group_start();
         $this->db->like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
@@ -510,8 +511,7 @@ class Users_model extends CI_Model
         $this->db->or_like('address', $search);
         $this->db->or_like('city_municipality', $search);
         $this->db->or_like('zip_code', $search);
-        $this->db->where('year_level', '1st Year');
-        $this->db->where('program', 'BPA');
+        $this->db->group_end();
     }
     $this->db->limit($length, $start);
     $query = $this->db->get();
@@ -525,6 +525,7 @@ class Users_model extends CI_Model
     $this->db->where('program', 'BPA');
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
+        $this->db->group_start();
         $this->db->like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
@@ -536,8 +537,7 @@ class Users_model extends CI_Model
         $this->db->or_like('address', $search);
         $this->db->or_like('city_municipality', $search);
         $this->db->or_like('zip_code', $search);
-        $this->db->where('year_level', '1st Year');
-        $this->db->where('program', 'BPA');
+        $this->db->group_end();
     }
     $this->db->limit($length, $start);
     $query = $this->db->get();
@@ -551,6 +551,7 @@ class Users_model extends CI_Model
     $this->db->where('program', 'BPA');
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
+        $this->db->group_start();
         $this->db->like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
@@ -562,8 +563,7 @@ class Users_model extends CI_Model
         $this->db->or_like('address', $search);
         $this->db->or_like('city_municipality', $search);
         $this->db->or_like('zip_code', $search);
-        $this->db->where('year_level', '1st Year');
-        $this->db->where('program', 'BPA');
+        $this->db->group_end();
     }
     $this->db->limit($length, $start);
     $query = $this->db->get();
@@ -577,6 +577,7 @@ class Users_model extends CI_Model
     $this->db->where('program', 'BPA');
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
+        $this->db->group_start();
         $this->db->like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
@@ -588,8 +589,7 @@ class Users_model extends CI_Model
         $this->db->or_like('address', $search);
         $this->db->or_like('city_municipality', $search);
         $this->db->or_like('zip_code', $search);
-        $this->db->where('year_level', '4th Year');
-        $this->db->where('program', 'BPA');
+        $this->db->group_end();
     }
     $this->db->limit($length, $start);
     $query = $this->db->get();
