@@ -64,7 +64,7 @@ $route['viewlist'] = 'Words_filter/viewlist';
 $route['staff'] = 'Login/index';
 // ADMIN DASHBOARD
 $route['dashboard'] = 'Dashboard/index';
-$route['Users'] = 'User/index';
+$route['all_student'] = 'User/index';
 $route['school-year'] = 'School_year/index';
 $route['blog-admin'] = 'Blog/index';
 // BLOG
@@ -78,6 +78,17 @@ $route['Subject_Prereq_BSE'] = 'Prereq/bseindex';
 $route['Subject_Prereq_BPA'] = 'Prereq/bpaindex';
 // Class
 $route['Class'] = 'Class_controller/index';
+// STUDENT LISTS
+// BSe
+$route['bse_student_list_first_year'] = 'User/bse_first_year';
+$route['bse_student_list_second_year'] = 'User/bse_second_year';
+$route['bse_student_list_third_year'] = 'User/bse_third_year';
+$route['bse_student_list_fourth_year'] = 'User/bse_fourth_year';
+// BPA
+$route['bpa_student_list_first_year'] = 'User/bpa_first_year';
+$route['bpa_student_list_second_year'] = 'User/bpa_second_year';
+$route['bpa_student_list_third_year'] = 'User/bpa_third_year';
+$route['bpa_student_list_fourth_year'] = 'User/bpa_fourth_year';
 // Student_LOADS
 // BSE
 $route['view_student_loads/(:num)'] = 'Student_loads/view_student_loads/$1';

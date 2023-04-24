@@ -186,5 +186,416 @@ class Users_model extends CI_Model
     {
         return $this->db->count_all('tbl_staff');
     }
+    // BSE QUERIES START
+    // BSE
+    public function bse_count_all_first_year()
+    {
+        $this->db->where('program', 'BSE');
+        $this->db->where('year_level', '1st Year');
+        $this->db->from('tbl_student');
+        return $this->db->count_all_results();
+    }
+    public function bse_count_all_second_year()
+    {
+        $this->db->where('program', 'BSE');
+        $this->db->where('year_level', '2nd Year');
+        $this->db->from('tbl_student');
+        return $this->db->count_all_results();
+    }
+    public function bse_count_all_third_year()
+    {
+        $this->db->where('program', 'BSE');
+        $this->db->where('year_level', '3rd Year');
+        $this->db->from('tbl_student');
+        return $this->db->count_all_results();
+    }
+    public function bse_count_all_fourth_year()
+    {
+        $this->db->where('program', 'BSE');
+        $this->db->where('year_level', '4th Year');
+        $this->db->from('tbl_student');
+        return $this->db->count_all_results();
+    }
+    // BPA
+    public function bpa_count_all_first_year()
+    {
+        $this->db->where('program', 'BPA');
+        $this->db->where('year_level', '1st Year');
+        $this->db->from('tbl_student');
+        return $this->db->count_all_results();
+    }
+    public function bpa_count_all_second_year()
+    {
+        $this->db->where('program', 'BPA');
+        $this->db->where('year_level', '2nd Year');
+        $this->db->from('tbl_student');
+        return $this->db->count_all_results();
+    }
+    public function bpa_count_all_third_year()
+    {
+        $this->db->where('program', 'BPA');
+        $this->db->where('year_level', '3rd Year');
+        $this->db->from('tbl_student');
+        return $this->db->count_all_results();
+    }
+    public function bpa_count_all_fourth_year()
+    {
+        $this->db->where('program', 'BPA');
+        $this->db->where('year_level', '4th Year');
+        $this->db->from('tbl_student');
+        return $this->db->count_all_results();
+    }
+    // BSE
+    public function bse_count_filter_first_year($search = null)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_student');
+        $this->db->where('year_level', '1st Year');
+        $this->db->where('program', 'BSE');
+        if (!empty($search)) {
+            $this->db->like('fname', $search);
+            $this->db->or_like('mname', $search);
+            $this->db->or_like('lname', $search);
+            $this->db->or_like('email', $search);
+            $this->db->where('year_level', '1st Year');
+            $this->db->where('program', 'BSE');
+        }
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    public function bse_count_filter_second_year($search = null)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_student');
+        $this->db->where('year_level', '2nd Year');
+        $this->db->where('program', 'BSE');
+        if (!empty($search)) {
+            $this->db->like('fname', $search);
+            $this->db->or_like('mname', $search);
+            $this->db->or_like('lname', $search);
+            $this->db->or_like('email', $search);
+            $this->db->where('year_level', '2nd Year');
+            $this->db->where('program', 'BSE');
+        }
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    public function bse_count_filter_third_year($search = null)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_student');
+        $this->db->where('year_level', '3rd Year');
+        $this->db->where('program', 'BSE');
+        if (!empty($search)) {
+            $this->db->like('fname', $search);
+            $this->db->or_like('mname', $search);
+            $this->db->or_like('lname', $search);
+            $this->db->or_like('email', $search);
+            $this->db->where('year_level', '3rd Year');
+            $this->db->where('program', 'BSE');
+        }
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    public function bse_count_filter_fourth_year($search = null)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_student');
+        $this->db->where('year_level', '4th Year');
+        $this->db->where('program', 'BSE');
+        if (!empty($search)) {
+            $this->db->like('fname', $search);
+            $this->db->or_like('mname', $search);
+            $this->db->or_like('lname', $search);
+            $this->db->or_like('email', $search);
+            $this->db->where('year_level', '4th Year');
+            $this->db->where('program', 'BSE');
+        }
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    // BPA
+    public function bpa_count_filter_first_year($search = null)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_student');
+        $this->db->where('year_level', '1st Year');
+        $this->db->where('program', 'BPA');
+        if (!empty($search)) {
+            $this->db->like('fname', $search);
+            $this->db->or_like('mname', $search);
+            $this->db->or_like('lname', $search);
+            $this->db->or_like('email', $search);
+            $this->db->where('year_level', '1st Year');
+            $this->db->where('program', 'BPA');
+        }
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    public function bpa_count_filter_second_year($search = null)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_student');
+        $this->db->where('year_level', '2nd Year');
+        $this->db->where('program', 'BPA');
+        if (!empty($search)) {
+            $this->db->like('fname', $search);
+            $this->db->or_like('mname', $search);
+            $this->db->or_like('lname', $search);
+            $this->db->or_like('email', $search);
+            $this->db->where('year_level', '2nd Year');
+            $this->db->where('program', 'BPA');
+        }
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    public function bpa_count_filter_third_year($search = null)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_student');
+        $this->db->where('year_level', '3rd Year');
+        $this->db->where('program', 'BPA');
+        if (!empty($search)) {
+            $this->db->like('fname', $search);
+            $this->db->or_like('mname', $search);
+            $this->db->or_like('lname', $search);
+            $this->db->or_like('email', $search);
+            $this->db->where('year_level', '3rd Year');
+            $this->db->where('program', 'BPA');
+        }
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    public function bpa_count_filter_fourth_year($search = null)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_student');
+        $this->db->where('year_level', '4th Year');
+        $this->db->where('program', 'BPA');
+        if (!empty($search)) {
+            $this->db->like('fname', $search);
+            $this->db->or_like('mname', $search);
+            $this->db->or_like('lname', $search);
+            $this->db->or_like('email', $search);
+            $this->db->where('year_level', '4th Year');
+            $this->db->where('program', 'BPA');
+        }
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    public function bse_student_list_first_year($search, $start, $length)
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_student');
+    $this->db->where('program', 'BSE');
+    $this->db->where('year_level', '1st Year');
+    if (!empty($search)) {
+        //$this->db->like('school_id', $search);
+        $this->db->like('fname', $search);
+        $this->db->or_like('mname', $search);
+        $this->db->or_like('lname', $search);
+        $this->db->or_like('email', $search);
+        $this->db->or_like('class_id', $search);
+        $this->db->or_like('year_level', $search);
+        $this->db->or_like('sex', $search);
+        $this->db->or_like('program', $search);
+        $this->db->or_like('address', $search);
+        $this->db->or_like('city_municipality', $search);
+        $this->db->or_like('zip_code', $search);
+        $this->db->where('year_level', '1st Year');
+        $this->db->where('program', 'BSE');
+    }
+    $this->db->limit($length, $start);
+    $this->db->where('year_level', '1st Year');
+        $this->db->where('program', 'BSE');
+    $query = $this->db->get();
+    return $query->result();
+    }
+    public function bse_student_list_second_year($search, $start, $length)
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_student');
+    $this->db->where('year_level', '2nd Year');
+    $this->db->where('program', 'BSE');
+    if (!empty($search)) {
+        //$this->db->like('school_id', $search);
+        $this->db->like('fname', $search);
+        $this->db->or_like('mname', $search);
+        $this->db->or_like('lname', $search);
+        $this->db->or_like('email', $search);
+        $this->db->or_like('class_id', $search);
+        $this->db->or_like('year_level', $search);
+        $this->db->or_like('sex', $search);
+        $this->db->or_like('program', $search);
+        $this->db->or_like('address', $search);
+        $this->db->or_like('city_municipality', $search);
+        $this->db->or_like('zip_code', $search);
+        $this->db->where('year_level', '1st Year');
+        $this->db->where('program', 'BSE');
+    }
+    $this->db->limit($length, $start);
+    $query = $this->db->get();
+    return $query->result();
+    }
+    public function bse_student_list_third_year($search, $start, $length)
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_student');
+    $this->db->where('year_level', '3rd Year');
+    $this->db->where('program', 'BSE');
+    if (!empty($search)) {
+        //$this->db->like('school_id', $search);
+        $this->db->like('fname', $search);
+        $this->db->or_like('mname', $search);
+        $this->db->or_like('lname', $search);
+        $this->db->or_like('email', $search);
+        $this->db->or_like('class_id', $search);
+        $this->db->or_like('year_level', $search);
+        $this->db->or_like('sex', $search);
+        $this->db->or_like('program', $search);
+        $this->db->or_like('address', $search);
+        $this->db->or_like('city_municipality', $search);
+        $this->db->or_like('zip_code', $search);
+        $this->db->where('year_level', '1st Year');
+        $this->db->where('program', 'BSE');
+    }
+    $this->db->limit($length, $start);
+    $query = $this->db->get();
+    return $query->result();
+    }
+    public function bse_student_list_fourth_year($search, $start, $length)
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_student');
+    $this->db->where('year_level', '4th Year');
+    $this->db->where('program', 'BSE');
+    if (!empty($search)) {
+        //$this->db->like('school_id', $search);
+        $this->db->like('fname', $search);
+        $this->db->or_like('mname', $search);
+        $this->db->or_like('lname', $search);
+        $this->db->or_like('email', $search);
+        $this->db->or_like('class_id', $search);
+        $this->db->or_like('year_level', $search);
+        $this->db->or_like('sex', $search);
+        $this->db->or_like('program', $search);
+        $this->db->or_like('address', $search);
+        $this->db->or_like('city_municipality', $search);
+        $this->db->or_like('zip_code', $search);
+        $this->db->where('year_level', '1st Year');
+        $this->db->where('program', 'BSE');
+    }
+    $this->db->limit($length, $start);
+    $query = $this->db->get();
+    return $query->result();
+    }
+    // BSE QUERIES END
+    // BPA QUERIES START
+    public function bpa_student_list_first_year($search, $start, $length)
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_student');
+    $this->db->where('year_level', '1st Year');
+    $this->db->where('program', 'BPA');
+    if (!empty($search)) {
+        //$this->db->like('school_id', $search);
+        $this->db->like('fname', $search);
+        $this->db->or_like('mname', $search);
+        $this->db->or_like('lname', $search);
+        $this->db->or_like('email', $search);
+        $this->db->or_like('class_id', $search);
+        $this->db->or_like('year_level', $search);
+        $this->db->or_like('sex', $search);
+        $this->db->or_like('program', $search);
+        $this->db->or_like('address', $search);
+        $this->db->or_like('city_municipality', $search);
+        $this->db->or_like('zip_code', $search);
+        $this->db->where('year_level', '1st Year');
+        $this->db->where('program', 'BPA');
+    }
+    $this->db->limit($length, $start);
+    $query = $this->db->get();
+    return $query->result();
+    }
+    public function bpa_student_list_second_year($search, $start, $length)
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_student');
+    $this->db->where('year_level', '2nd Year');
+    $this->db->where('program', 'BPA');
+    if (!empty($search)) {
+        //$this->db->like('school_id', $search);
+        $this->db->like('fname', $search);
+        $this->db->or_like('mname', $search);
+        $this->db->or_like('lname', $search);
+        $this->db->or_like('email', $search);
+        $this->db->or_like('class_id', $search);
+        $this->db->or_like('year_level', $search);
+        $this->db->or_like('sex', $search);
+        $this->db->or_like('program', $search);
+        $this->db->or_like('address', $search);
+        $this->db->or_like('city_municipality', $search);
+        $this->db->or_like('zip_code', $search);
+        $this->db->where('year_level', '1st Year');
+        $this->db->where('program', 'BPA');
+    }
+    $this->db->limit($length, $start);
+    $query = $this->db->get();
+    return $query->result();
+    }
+    public function bpa_student_list_third_year($search, $start, $length)
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_student');
+    $this->db->where('year_level', '3rd Year');
+    $this->db->where('program', 'BPA');
+    if (!empty($search)) {
+        //$this->db->like('school_id', $search);
+        $this->db->like('fname', $search);
+        $this->db->or_like('mname', $search);
+        $this->db->or_like('lname', $search);
+        $this->db->or_like('email', $search);
+        $this->db->or_like('class_id', $search);
+        $this->db->or_like('year_level', $search);
+        $this->db->or_like('sex', $search);
+        $this->db->or_like('program', $search);
+        $this->db->or_like('address', $search);
+        $this->db->or_like('city_municipality', $search);
+        $this->db->or_like('zip_code', $search);
+        $this->db->where('year_level', '1st Year');
+        $this->db->where('program', 'BPA');
+    }
+    $this->db->limit($length, $start);
+    $query = $this->db->get();
+    return $query->result();
+    }
+    public function bpa_student_list_fourth_year($search, $start, $length)
+    {
+    $this->db->select('*');
+    $this->db->from('tbl_student');
+    $this->db->where('year_level', '4th Year');
+    $this->db->where('program', 'BPA');
+    if (!empty($search)) {
+        //$this->db->like('school_id', $search);
+        $this->db->like('fname', $search);
+        $this->db->or_like('mname', $search);
+        $this->db->or_like('lname', $search);
+        $this->db->or_like('email', $search);
+        $this->db->or_like('class_id', $search);
+        $this->db->or_like('year_level', $search);
+        $this->db->or_like('sex', $search);
+        $this->db->or_like('program', $search);
+        $this->db->or_like('address', $search);
+        $this->db->or_like('city_municipality', $search);
+        $this->db->or_like('zip_code', $search);
+        $this->db->where('year_level', '4th Year');
+        $this->db->where('program', 'BPA');
+    }
+    $this->db->limit($length, $start);
+    $query = $this->db->get();
+    return $query->result();
+    }
+    // BPA QUERIES END
+
 
 }

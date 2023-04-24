@@ -58,9 +58,50 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>Users"><i class="fa fa-circle-o"></i> Students</a></li>
+            <li><a href="<?php echo base_url()?>all_student"><i class="fa fa-circle-o"></i> All Students</a></li>
             <li li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> BSE Student Loads
+              <a href="#"><i class="fa fa-circle-o"></i> BSE Students Lists
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <!-- YEAR LEVEL -->
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url()?>bse_student_list_first_year"><i class="fa fa-circle-o"></i> First Year</a></li>
+                <li><a href="<?=base_url()?>bse_student_list_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
+                <li><a href="<?=base_url()?>bse_student_list_third_year"><i class="fa fa-circle-o"></i> Third Year</a></li>
+                <li><a href="<?=base_url()?>bse_student_list_fourth_year"><i class="fa fa-circle-o"></i> Fourth Year</a></li>
+              </ul>
+            </li>
+            <li li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> BPA Students Lists
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <!-- YEAR LEVEL -->
+              <ul class="treeview-menu">
+                <li><a href="<?=base_url()?>bpa_student_list_first_year"><i class="fa fa-circle-o"></i> First Year</a></li>
+                <li><a href="<?=base_url()?>bpa_student_list_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
+                <li><a href="<?=base_url()?>bpa_student_list_third_year"><i class="fa fa-circle-o"></i> Third Year</a></li>
+                <li><a href="<?=base_url()?>bpa_student_list_fourth_year"><i class="fa fa-circle-o"></i> Fourth Year</a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </li>
+        <!-- START MANAGE STUDENTS SUBJECTS -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-book"></i>
+            <span>Manage Students Subjects</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> BSE Student Subjects
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -74,7 +115,7 @@
               </ul>
             </li>
             <li li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> BPA Student Loads
+              <a href="#"><i class="fa fa-circle-o"></i> BPA Student Subjects
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>

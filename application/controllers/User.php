@@ -22,6 +22,132 @@ class User extends CI_Controller {
         }
 		
 	}
+    // BSE PAGES START
+    public function bse_first_year()
+	{
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+        $page = 'bse_first_year';
+           if(!file_exists(APPPATH.'views/admin/user/'.$page.'.php')){
+                show_404();
+            }
+            $data['title'] = 'Manage Students';
+            $this->load->view('admin/user/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }
+		
+	}
+    public function bse_second_year()
+	{
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+        $page = 'bse_second_year';
+           if(!file_exists(APPPATH.'views/admin/user/'.$page.'.php')){
+                show_404();
+            }
+            $data['title'] = 'Manage Students';
+            $this->load->view('admin/user/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }
+		
+	}
+    public function bse_third_year()
+	{
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+        $page = 'bse_third_year';
+           if(!file_exists(APPPATH.'views/admin/user/'.$page.'.php')){
+                show_404();
+            }
+            $data['title'] = 'Manage Students';
+            $this->load->view('admin/user/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }
+		
+	}
+    public function bse_fourth_year()
+	{
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+        $page = 'bse_fourth_year';
+           if(!file_exists(APPPATH.'views/admin/user/'.$page.'.php')){
+                show_404();
+            }
+            $data['title'] = 'Manage Students';
+            $this->load->view('admin/user/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }
+		
+	}
+    // BSE PAGES END
+
+    // BPA PAGES START
+    public function bpa_first_year()
+	{
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+        $page = 'bpa_first_year';
+           if(!file_exists(APPPATH.'views/admin/user/'.$page.'.php')){
+                show_404();
+            }
+            $data['title'] = 'Manage Students';
+            $this->load->view('admin/user/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }
+		
+	}
+    public function bpa_second_year()
+	{
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+        $page = 'bpa_second_year';
+           if(!file_exists(APPPATH.'views/admin/user/'.$page.'.php')){
+                show_404();
+            }
+            $data['title'] = 'Manage Students';
+            $this->load->view('admin/user/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }
+		
+	}
+    public function bpa_third_year()
+	{
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+        $page = 'bpa_third_year';
+           if(!file_exists(APPPATH.'views/admin/user/'.$page.'.php')){
+                show_404();
+            }
+            $data['title'] = 'Manage Students';
+            $this->load->view('admin/user/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }
+		
+	}
+    public function bpa_fourth_year()
+	{
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+        $page = 'bpa_fourth_year';
+           if(!file_exists(APPPATH.'views/admin/user/'.$page.'.php')){
+                show_404();
+            }
+            $data['title'] = 'Manage Students';
+            $this->load->view('admin/user/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }
+		
+	}
+    // BPA PAGES END
+
     public function user_list()
     {
         
@@ -35,7 +161,6 @@ class User extends CI_Controller {
            // $no++;
             $row = array();
             $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
-            //$row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" width="40" height="40" style="border-radius:50%;background-size:cover;" alt="Profile" id="myImg">';
             $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
             width="40" height="40" style="border-radius:50%;background-size:cover;" 
             alt="Profile" id="myImg" onclick="openModal(this)">';
@@ -60,8 +185,309 @@ class User extends CI_Controller {
         );
         echo json_encode($output);
     }
+    // BSE DATATABLES START
+    public function bse_student_list_first_year()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Users_model->bse_student_list_first_year($search, $start, $length);
+        $data = array();
+        //$no = $_POST['start'];
+        foreach ($list as $user) {
+           // $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
+            width="40" height="40" style="border-radius:50%;background-size:cover;" 
+            alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Users_model->bse_count_all_first_year();
+        $totalCount = $this->Users_model->bse_count_filter_first_year();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bse_student_list_second_year()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Users_model->bse_student_list_second_year($search, $start, $length);
+        $data = array();
+        //$no = $_POST['start'];
+        foreach ($list as $user) {
+           // $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
+            width="40" height="40" style="border-radius:50%;background-size:cover;" 
+            alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Users_model->bse_count_all_second_year();
+        $totalCount = $this->Users_model->bse_count_filter_second_year();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bse_student_list_third_year()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Users_model->bse_student_list_third_year($search, $start, $length);
+        $data = array();
+        //$no = $_POST['start'];
+        foreach ($list as $user) {
+           // $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
+            width="40" height="40" style="border-radius:50%;background-size:cover;" 
+            alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Users_model->bse_count_all_third_year();
+        $totalCount = $this->Users_model->bse_count_filter_third_year();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
     
+    public function bse_student_list_fourth_year()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Users_model->bse_student_list_fourth_year($search, $start, $length);
+        $data = array();
+        //$no = $_POST['start'];
+        foreach ($list as $user) {
+           // $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
+            width="40" height="40" style="border-radius:50%;background-size:cover;" 
+            alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Users_model->bse_count_all_fourth_year();
+        $totalCount = $this->Users_model->bse_count_filter_fourth_year();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    // BSE DATATABLES END
+
+    // BPA DATATABLES START
+    public function bpa_student_list_first_year()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Users_model->bpa_student_list_first_year($search, $start, $length);
+        $data = array();
+        //$no = $_POST['start'];
+        foreach ($list as $user) {
+           // $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
+            width="40" height="40" style="border-radius:50%;background-size:cover;" 
+            alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Users_model->bpa_count_all_first_year();
+        $totalCount = $this->Users_model->bpa_count_filter_first_year();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_student_list_second_year()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Users_model->bpa_student_list_second_year($search, $start, $length);
+        $data = array();
+        //$no = $_POST['start'];
+        foreach ($list as $user) {
+           // $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
+            width="40" height="40" style="border-radius:50%;background-size:cover;" 
+            alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Users_model->bpa_count_all_second_year();
+        $totalCount = $this->Users_model->bpa_count_filter_second_year();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function bpa_student_list_third_year()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Users_model->bpa_student_list_third_year($search, $start, $length);
+        $data = array();
+        //$no = $_POST['start'];
+        foreach ($list as $user) {
+           // $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
+            width="40" height="40" style="border-radius:50%;background-size:cover;" 
+            alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Users_model->bpa_count_all_third_year();
+        $totalCount = $this->Users_model->bpa_count_filter_third_year();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
     
+    public function bpa_student_list_fourth_year()
+    {
+        
+        $search = $this->input->post("search")['value'];
+        $start = $this->input->post('start');
+        $length = $this->input->post('length');
+        $list = $this->Users_model->bpa_student_list_fourth_year($search, $start, $length);
+        $data = array();
+        //$no = $_POST['start'];
+        foreach ($list as $user) {
+           // $no++;
+            $row = array();
+            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
+            width="40" height="40" style="border-radius:50%;background-size:cover;" 
+            alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
+            $row[] = $user->email;
+            $row[] = $user->sex;
+            $row[] = $user->program;
+            $row[] = $user->class_id;
+            $row[] = $user->year_level;
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_user('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $data[] = $row;
+        }
+        $filteredCount = $this->Users_model->bpa_count_all_fourth_year();
+        $totalCount = $this->Users_model->bpa_count_filter_fourth_year();
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $totalCount,
+            "recordsFiltered" => $filteredCount,
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    // BPA DATATABLES END
     public function user_add()
     {
         // $school_id = 'PCC'.date('y').'-'.rand(0,10000);
