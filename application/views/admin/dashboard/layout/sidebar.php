@@ -140,125 +140,35 @@
           </a>
           <ul class="treeview-menu">
             <li li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Manage BSE Grades
+              <a href="#"><i class="fa fa-circle-o"></i> BSE Students
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <!-- YEAR LEVEL -->
               <ul class="treeview-menu">
-                  <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> First Year
-                      <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="<?=base_url()?>bse_first_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
-                    </ul>
-                  </li>
-                  <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> Second Year
-                      <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="<?=base_url()?>bse_second_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
-                    </ul>
-                  </li>
-                  <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> Third Year
-                      <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="<?=base_url()?>bse_third_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
-                    </ul>
-                  </li>
-                  <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> Fourth Year
-                      <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="<?=base_url()?>bse_fourth_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
-                    </ul>
-                  </li>
-                  <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> Graduates
-                      <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="<?=base_url()?>bse_graduates"><i class="fa fa-circle-o"></i> Students List</a></li>
-                    </ul>
-                  </li>
+                <li><a href="<?=base_url()?>bse_student_grades_first_year"><i class="fa fa-circle-o"></i> First Year</a></li>
+                <li><a href="<?=base_url()?>bse_student_grades_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
+                <li><a href="<?=base_url()?>bse_student_grades_third_year"><i class="fa fa-circle-o"></i> Third Year</a></li>
+                <li><a href="<?=base_url()?>bse_student_grades_fourth_year"><i class="fa fa-circle-o"></i> Fourth Year</a></li>
+                <li><a href="<?=base_url()?>bse_student_grades_graduates"><i class="fa fa-circle-o"></i> Graduates</a></li>
               </ul>
             </li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Manage BPA Grades
+            <li li class="treeview">
+              <a href="#"><i class="fa fa-circle-o"></i> BPA Students
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
+              <!-- YEAR LEVEL -->
               <ul class="treeview-menu">
-                  <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> First Year
-                      <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="<?=base_url()?>bpa_first_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
-                    </ul>
-                  </li>
-                  <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> Second Year
-                      <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="<?=base_url()?>bpa_second_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
-                    </ul>
-                  </li>
-                  <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> Third Year
-                      <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="<?=base_url()?>bpa_third_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
-                    </ul>
-                  </li>
-                  <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> Fourth Year
-                      <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="<?=base_url()?>bpa_fourth_year_students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
-                    </ul>
-                  </li>
-                  <li class="treeview">
-                    <a href="#"><i class="fa fa-circle-o"></i> Graduates
-                      <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                    </a>
-                    <ul class="treeview-menu">
-                      <li><a href="<?=base_url()?>bpe_graduates"><i class="fa fa-circle-o"></i> Students List</a></li>
-                    </ul>
-                  </li>
+                <li><a href="<?=base_url()?>bpa_student_grades_first_year"><i class="fa fa-circle-o"></i> First Year</a></li>
+                <li><a href="<?=base_url()?>bpa_student_grades_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
+                <li><a href="<?=base_url()?>bpa_student_grades_third_year"><i class="fa fa-circle-o"></i> Third Year</a></li>
+                <li><a href="<?=base_url()?>bpa_student_grades_fourth_year"><i class="fa fa-circle-o"></i> Fourth Year</a></li>
+                <li><a href="<?=base_url()?>bse_student_grades_graduates"><i class="fa fa-circle-o"></i> Graduates</a></li>
               </ul>
             </li>
-            
           </ul>
         </li>
         <!-- END MANAGE STUDENTS -->
@@ -336,12 +246,13 @@
        <!-- START MANAGE SUBJECTS -->
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-files-o"></i> <span>Reports</span>
+            <i class="fa fa-files-o"></i> <span>Records</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
+          <li><a href="<?=base_url()?>bse_grade_first_year"><i class="fa fa-circle-o"></i> Grade</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Academic Records</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Certificates</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i> Form 138-A</a></li>

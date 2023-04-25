@@ -42,7 +42,6 @@
 }
 
 .panel {
-  /* for text on pannel */
   margin-top: 27px !important;
 }
 
@@ -612,23 +611,23 @@
 #myImg:hover {opacity: 0.7;}
 
 /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  /* z-index: 1;  */
-  left: 50%; /* Center horizontally */
-  top: 50%; /* Center vertically */
-  transform: translate(-50%, -50%); /* Center both horizontally and vertically */
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.9); 
-  padding: 20px; /* Add some padding for readability */
-}
 
+/* .modal {
+  display: none;
+  position: fixed; 
+  left: 50%;
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 100%;
+  height: 100%; 
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9); 
+  padding: 20px; 
+} */
 
 /* Modal Content (image) */
-.modal-content {
+.modal-content1 {
+  padding-top: 100px;
   margin: auto;
   display: block;
   width: 90%;
@@ -636,7 +635,7 @@
 }
 
 /* Caption of Modal Image */
-#caption {
+/* #caption {
   margin: auto;
   display: block;
   width: 80%;
@@ -645,10 +644,10 @@
   color: #ccc;
   padding: 10px 0;
   height: 150px;
-}
+} */
 
 /* Add Animation */
-.modal-content, #caption {  
+.modal-content1, #caption {  
   animation-name: zoom;
   animation-duration: 0.6s;
 }
@@ -659,33 +658,33 @@
 }
 
 /* The Close Button */
-.close {
+.close1 {
   position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
+  top: 105px;
+  right: 33%;
+  color: #e6e6e6;
   font-size: 40px;
   font-weight: bold;
   transition: 0.3s;
 }
 
-.close:hover,
-.close:focus {
-  color: #bbb;
+.close1:hover,
+.close1:focus {
+  color: #c4c2c2;
   text-decoration: none;
   cursor: pointer;
 }
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
-  .modal-content {
+  .modal-content1 {
     width: 100%;
   }
 }
 </style>
 <div id="myModal" class="modal">
-  <span class="close" onclick="closeModal()">&times;</span>
-  <img class="modal-content" id="img01">
+  <span class="close1" onclick="closeModal()">&times;</span>
+  <img class="modal-content1" id="img01">
 </div>
 
 <script>
@@ -699,5 +698,11 @@ function openModal(img) {
 function closeModal() {
   var modal = document.getElementById("myModal");
   modal.style.display = "none";
+}
+window.onclick = function(event) {
+  var modal = document.getElementById("myModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
 </script>

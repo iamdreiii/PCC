@@ -78,19 +78,19 @@ $route['Subject_Prereq_BSE'] = 'Prereq/bseindex';
 $route['Subject_Prereq_BPA'] = 'Prereq/bpaindex';
 // Class
 $route['Class'] = 'Class_controller/index';
-// STUDENT LISTS
-// BSe
+
+// BSe STUDENT LISTS
 $route['bse_student_list_first_year'] = 'User/bse_first_year';
 $route['bse_student_list_second_year'] = 'User/bse_second_year';
 $route['bse_student_list_third_year'] = 'User/bse_third_year';
 $route['bse_student_list_fourth_year'] = 'User/bse_fourth_year';
-// BPA
+// BPA STUDENT LISTS
 $route['bpa_student_list_first_year'] = 'User/bpa_first_year';
 $route['bpa_student_list_second_year'] = 'User/bpa_second_year';
 $route['bpa_student_list_third_year'] = 'User/bpa_third_year';
 $route['bpa_student_list_fourth_year'] = 'User/bpa_fourth_year';
-// Student_LOADS
-// BSE
+
+// BSE Student_LOADS
 $route['view_student_loads/(:num)'] = 'Student_loads/view_student_loads/$1';
 $route['edit_student_loads/(:num)'] = 'Student_loads/edit_student_loads/$1';
 $route['print_student_loads/(:num)'] = 'Student_loads/print_student_loads/$1';
@@ -98,15 +98,32 @@ $route['bse_student_loads_first_year'] = 'Student_loads/bse_first_year';
 $route['bse_student_loads_second_year'] = 'Student_loads/bse_second_year';
 $route['bse_student_loads_third_year'] = 'Student_loads/bse_third_year';
 $route['bse_student_loads_fourth_year'] = 'Student_loads/bse_fourth_year';
-// BPA
+// BPA Student_LOADS
 $route['bpa_student_loads_first_year'] = 'Student_loads/bpa_first_year';
 $route['bpa_student_loads_second_year'] = 'Student_loads/bpa_second_year';
 $route['bpa_student_loads_third_year'] = 'Student_loads/bpa_third_year';
 $route['bpa_student_loads_fourth_year'] = 'Student_loads/bpa_fourth_year';
+
 // STUDENTS GRADES
 $route['grades'] = 'Grades/getgrade';
+// edit GRADE
+$route['edit_grades/(:num)'] = 'Grades/edit_grades/$1';
+$route['load_data/(:num)'] = 'Grades/load_data/$1';
+// BSE STUDENT GRADES
+$route['bse_student_grades_first_year'] = 'Grades/bse_first_year';
+$route['bse_student_grades_second_year'] = 'Grades/bse_second_year';
+$route['bse_student_grades_third_year'] = 'Grades/bse_third_year';
+$route['bse_student_grades_fourth_year'] = 'Grades/bse_fourth_year';
+// BPA STUDENT GRADES
+$route['bpa_student_grades_first_year'] = 'Grades/bpa_first_year';
+$route['bpa_student_grades_second_year'] = 'Grades/bpa_second_year';
+$route['bpa_student_grades_third_year'] = 'Grades/bpa_third_year';
+$route['bpa_student_grades_fourth_year'] = 'Grades/bpa_fourth_year';
+
 // LINKS
 $route['manage_links'] = 'Links/index';
 // BLOG SETTING
 $route['blog-setting'] = 'BlogSetting/index';
 $route['fb'] = 'Blog/fb';
+// GRADES
+$route['bse_grade_first_year'] = 'Grade/index';

@@ -1,3 +1,5 @@
+<link href="<?php echo base_url()?>assets/toastr/toastr.css" rel="stylesheet"/>
+<script src="<?php echo base_url()?>assets/toastr/toastr.min.js"></script>
 <script>
     function success(stat){
             toastr.options = {
