@@ -116,6 +116,17 @@
                             </div>
                             <div class="panel panel-primary">
                                 <div class="row panel-body">
+                                <h4 class="text-on-pannel text-primary">Student ID <b style="color:red;">*</b></h4>
+                                    <div class="col-xs-4"></div>
+                                    <div class="col-xs-4">
+                                        <input name="student_id" placeholder="student_id" class="form-control" type="text">
+                                        <span class="help-block"></span>
+                                    </div>
+                                    <div class="col-xs-4"></div>
+                                </div><br>
+                            </div>
+                            <div class="panel panel-primary">
+                                <div class="row panel-body">
                                 <h4 class="text-on-pannel text-primary">Personal Information</h4>
                                     <div class="col-xs-3">
                                         <input name="lname" placeholder="Surname" class="form-control" type="text">

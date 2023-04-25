@@ -16,7 +16,7 @@
     <section class="content-header">
       <h1>
         Dashboard <?php echo $school_year['school_year']?>
-        <small>Version 2.0</small>
+        <small>pcc.edu.ph</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -30,11 +30,11 @@
       <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+            <span class="info-box-icon bg-aqua"><i class="ion ion-university"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">CPU Traffic</span>
-              <span class="info-box-number">90<small>%</small></span>
+              <span class="info-box-text">BSE STUDENTS</span>
+              <span class="info-box-number"><?php echo $usercountbse?></span>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -43,11 +43,11 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+            <span class="info-box-icon bg-red"><i class="ion ion-university"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
-              <span class="info-box-number">41,410</span>
+              <span class="info-box-text">BPA STUDENTS</span>
+              <span class="info-box-number"><?php echo $usercountbpa?></span>
             </div>
             <!-- /.info-box-content -->
           </div>

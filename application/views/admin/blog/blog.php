@@ -27,32 +27,34 @@
             <button class="btn btn-success" id="announcementButton" onclick="add_blog()"><i class="glyphicon glyphicon-plus"></i> Announcement</button>
             </div>
             <div class="box-body">
+            <div class="table-responsive">
               <table id="table" class="table table-bordered table-striped" style="width:100%">
                 <thead>
-                <tr>
+                  <tr>
                     <th>#</th>
                     <th>Title</th>
                     <th>Path</th>
                     <th>created</th>
                     <th>updated</th>
                     <th width="14%">Action</th>
-                </tr>
+                  </tr>
                 </thead>
                 <tbody>
                 </tbody>
                 <tfoot>
-                <tr>
+                  <tr>
                     <th>#</th>
                     <th>Title</th>
                     <th>Path</th>
                     <th>created</th>
                     <th>updated</th>
                     <th width="14%">Action</th>
-                </tr>
+                  </tr>
                 </tfoot>
               </table>
-              
             </div>
+          </div>
+
           </div>
         </div>
       </div>

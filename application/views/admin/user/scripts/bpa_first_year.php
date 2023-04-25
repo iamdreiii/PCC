@@ -9,7 +9,7 @@
                 "searching": true,
                 "processing": true,
                 "serverSide" : true,
-                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
                 "pageLength": 10,
                 "order": [],
                 "ajax": {
@@ -86,6 +86,7 @@
                 {
                     // PERSONAL INFO
                     $('[name="id"]').val(data.id);
+                    $('[name="student_id"]').val(data.student_id);
                     //$('[name="imgfile"]').val(data.img);
                     // display image preview
                     // if (data.img) {

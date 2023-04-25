@@ -502,6 +502,7 @@ class User extends CI_Controller {
         // $school_id = 'PCC'.date('y').'-'.rand(0,10000);
         $data = array(
             // PERSONAL INFO
+            'student_id' => $this->input->post('student_id'),
             'fname' => $this->input->post('fname'),
             'mname' => $this->input->post('mname'),
             'lname' => $this->input->post('lname'),
@@ -615,6 +616,7 @@ class User extends CI_Controller {
         }
         if(empty($data['userimg'])){
             $data = array(
+                'student_id' => $this->input->post('student_id'),
                 'fname' => $this->input->post('fname'),
                 'mname' => $this->input->post('mname'),
                 'lname' => $this->input->post('lname'),
@@ -690,6 +692,7 @@ class User extends CI_Controller {
         }else{
         $data = array(
             'img' => $data['userimg'],
+            'student_id' => $this->input->post('student_id'),
             'fname' => $this->input->post('fname'),
             'mname' => $this->input->post('mname'),
             'lname' => $this->input->post('lname'),
@@ -763,9 +766,26 @@ class User extends CI_Controller {
             'date_updated' => date('Y-m-d H:i:s'),
         );
     }
-        $this->Users_model->update_user($this->input->post('id'), $data);
+        try {
+            // Call the add_user method in the model
+            $this->Users_model->update_user($this->input->post('id'), $data);
     
-        echo json_encode(array("status" => TRUE));
+            // If the method is executed successfully, return a JSON response with status = true
+            $response = array('status' => TRUE);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($response));
+        } catch (Exception $e) {
+            // If there is an error, assign the error message to a variable
+            $error = $e->getMessage();
+    
+            // Return a JSON response with status = false and the error message
+            $response = array('status' => FALSE, 'error' => $error);
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode($response));
+        }
+        
     }
 
     public function user_delete($id)

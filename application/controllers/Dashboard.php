@@ -21,6 +21,8 @@ class Dashboard extends CI_Controller {
             $data['staffcount'] = $this->Users_model->count_all_staff();
             $data['school_year'] = $this->Schoolyear_model->get_current_school_year();
             $data['usercount'] = $this->Users_model->count_all_student();
+            $data['usercountbse'] = $this->Users_model->getbsetotal();
+            $data['usercountbpa'] = $this->Users_model->getbpatotal();
             $this->load->view('admin/dashboard/'. $page, $data);    
         }else{
             redirect('staff');

@@ -9,6 +9,26 @@ class Users_model extends CI_Model
         parent::__construct();
     }
 
+    // COUNT BSE TOTAL
+    public function getbsetotal()
+    {
+        $query = $this->db->select('COUNT(*) as total_students')
+        ->from('tbl_student')
+        ->where('program', 'BSE')
+        ->get();
+        $result = $query->row();
+        return $result->total_students;
+    }
+    // COUNT BPA TOTAl
+    public function getbpatotal()
+    {
+        $query = $this->db->select('COUNT(*) as total_students')
+        ->from('tbl_student')
+        ->where('program', 'BPA')
+        ->get();
+        $result = $query->row();
+        return $result->total_students;
+    }
     public function get_all_users()
     {
         $this->db->select('*');
@@ -100,7 +120,8 @@ class Users_model extends CI_Model
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
         $this->db->group_start();
-        $this->db->like('fname', $search);
+         $this->db->like('student_id', $search);
+        $this->db->or_like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
         $this->db->or_like('email', $search);
@@ -256,7 +277,8 @@ class Users_model extends CI_Model
         $this->db->where('program', 'BSE');
         if (!empty($search)) {
             $this->db->group_start();
-            $this->db->like('fname', $search);
+            $this->db->like('student_id', $search);
+            $this->db->or_like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
@@ -273,7 +295,8 @@ class Users_model extends CI_Model
         $this->db->where('program', 'BSE');
         if (!empty($search)) {
             $this->db->group_start();
-            $this->db->like('fname', $search);
+            $this->db->like('student_id', $search);
+            $this->db->or_like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
@@ -290,7 +313,8 @@ class Users_model extends CI_Model
         $this->db->where('program', 'BSE');
         if (!empty($search)) {
             $this->db->group_start();
-            $this->db->like('fname', $search);
+            $this->db->like('student_id', $search);
+            $this->db->or_like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
@@ -307,7 +331,8 @@ class Users_model extends CI_Model
         $this->db->where('program', 'BSE');
         if (!empty($search)) {
             $this->db->group_start();
-            $this->db->like('fname', $search);
+            $this->db->like('student_id', $search);
+            $this->db->or_like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
@@ -325,7 +350,8 @@ class Users_model extends CI_Model
         $this->db->where('program', 'BPA');
         if (!empty($search)) {
             $this->db->group_start();
-            $this->db->like('fname', $search);
+            $this->db->like('student_id', $search);
+            $this->db->or_like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
@@ -342,7 +368,8 @@ class Users_model extends CI_Model
         $this->db->where('program', 'BPA');
         if (!empty($search)) {
             $this->db->group_start();
-            $this->db->like('fname', $search);
+            $this->db->like('student_id', $search);
+            $this->db->or_like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
@@ -359,7 +386,8 @@ class Users_model extends CI_Model
         $this->db->where('program', 'BPA');
         if (!empty($search)) {
             $this->db->group_start();
-            $this->db->like('fname', $search);
+            $this->db->like('student_id', $search);
+            $this->db->or_like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
@@ -376,7 +404,8 @@ class Users_model extends CI_Model
         $this->db->where('program', 'BPA');
         if (!empty($search)) {
             $this->db->group_start();
-            $this->db->like('fname', $search);
+            $this->db->like('student_id', $search);
+            $this->db->or_like('fname', $search);
             $this->db->or_like('mname', $search);
             $this->db->or_like('lname', $search);
             $this->db->or_like('email', $search);
@@ -394,7 +423,8 @@ class Users_model extends CI_Model
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
         $this->db->group_start();
-        $this->db->like('fname', $search);
+         $this->db->like('student_id', $search);
+        $this->db->or_like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
         $this->db->or_like('email', $search);
@@ -420,7 +450,8 @@ class Users_model extends CI_Model
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
         $this->db->group_start();
-        $this->db->like('fname', $search);
+         $this->db->like('student_id', $search);
+        $this->db->or_like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
         $this->db->or_like('email', $search);
@@ -446,7 +477,8 @@ class Users_model extends CI_Model
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
         $this->db->group_start();
-        $this->db->like('fname', $search);
+         $this->db->like('student_id', $search);
+        $this->db->or_like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
         $this->db->or_like('email', $search);
@@ -472,7 +504,8 @@ class Users_model extends CI_Model
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
         $this->db->group_start();
-        $this->db->like('fname', $search);
+         $this->db->like('student_id', $search);
+        $this->db->or_like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
         $this->db->or_like('email', $search);
@@ -500,7 +533,8 @@ class Users_model extends CI_Model
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
         $this->db->group_start();
-        $this->db->like('fname', $search);
+         $this->db->like('student_id', $search);
+        $this->db->or_like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
         $this->db->or_like('email', $search);
@@ -526,7 +560,8 @@ class Users_model extends CI_Model
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
         $this->db->group_start();
-        $this->db->like('fname', $search);
+         $this->db->like('student_id', $search);
+        $this->db->or_like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
         $this->db->or_like('email', $search);
@@ -552,7 +587,8 @@ class Users_model extends CI_Model
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
         $this->db->group_start();
-        $this->db->like('fname', $search);
+         $this->db->like('student_id', $search);
+        $this->db->or_like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
         $this->db->or_like('email', $search);
@@ -578,7 +614,8 @@ class Users_model extends CI_Model
     if (!empty($search)) {
         //$this->db->like('school_id', $search);
         $this->db->group_start();
-        $this->db->like('fname', $search);
+         $this->db->like('student_id', $search);
+        $this->db->or_like('fname', $search);
         $this->db->or_like('mname', $search);
         $this->db->or_like('lname', $search);
         $this->db->or_like('email', $search);

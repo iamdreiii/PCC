@@ -9,7 +9,7 @@
                 "searching": true,
                 "processing": true,
                 "serverSide" : true,
-                "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                "lengthMenu": [[10, 25, 50, 100,500,1000], [10, 25, 50, 100, 500, "All"]],
                 "pageLength": 10,
                 "order": [],
                 "ajax": {
@@ -86,6 +86,7 @@
                 {
                     // PERSONAL INFO
                     $('[name="id"]').val(data.id);
+                    $('[name="student_id"]').val(data.student_id);
                     //$('[name="imgfile"]').val(data.img);
                     // display image preview
                     // if (data.img) {
@@ -185,8 +186,6 @@
             
             $('.form-group').removeClass('has-error');
             $('.help-block').empty();
-            // var formData = $('#form2').serializeArray();
-            // console.log(formData);
             var form = $('#form2')[0];
             var formData = new FormData(form);
             if(save_method == 'add') {
@@ -271,7 +270,12 @@
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {
-                    var stat = 'Add/Update Failed';
+                    
+                    if (jqXHR.responseText.includes('Duplicate entry')) {
+                        var stat = 'Duplicate Student ID';
+                    } else {
+                        var stat = 'Updated';
+                    }
                     error(stat);
                     $('#btnSave').text('save'); 
                     $('#btnSave').attr('disabled',false);  
