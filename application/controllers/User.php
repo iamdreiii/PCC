@@ -164,6 +164,7 @@ class User extends CI_Controller {
             $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
             width="40" height="40" style="border-radius:50%;background-size:cover;" 
             alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -202,6 +203,7 @@ class User extends CI_Controller {
             $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
             width="40" height="40" style="border-radius:50%;background-size:cover;" 
             alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -239,6 +241,7 @@ class User extends CI_Controller {
             $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
             width="40" height="40" style="border-radius:50%;background-size:cover;" 
             alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -276,6 +279,7 @@ class User extends CI_Controller {
             $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
             width="40" height="40" style="border-radius:50%;background-size:cover;" 
             alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -314,6 +318,7 @@ class User extends CI_Controller {
             $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
             width="40" height="40" style="border-radius:50%;background-size:cover;" 
             alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -354,6 +359,7 @@ class User extends CI_Controller {
             $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
             width="40" height="40" style="border-radius:50%;background-size:cover;" 
             alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -391,6 +397,7 @@ class User extends CI_Controller {
             $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
             width="40" height="40" style="border-radius:50%;background-size:cover;" 
             alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -428,6 +435,7 @@ class User extends CI_Controller {
             $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
             width="40" height="40" style="border-radius:50%;background-size:cover;" 
             alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -466,6 +474,7 @@ class User extends CI_Controller {
             $row[] = '<img src="'.base_url().'uploads/useruploads/'.$user->img.'" 
             width="40" height="40" style="border-radius:50%;background-size:cover;" 
             alt="Profile" id="myImg" onclick="openModal(this)">';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;

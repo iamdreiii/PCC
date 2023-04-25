@@ -24,15 +24,14 @@
          
 
           <div class="box">
-            <div class="btn float-right">
+            <!-- <div class="btn float-right">
             <button id="update_btn" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i> Subject Loads</button>
-            </div>
+            </div> -->
 
             <div class="box-body">
               <table id="table" class="table table-bordered table-striped" style="width:100%">
                 <thead>
                 <tr>
-                    <th width="2%"><input type="checkbox" id="select-all"></th>
                     <th>Student ID</th>
                     <th>Name</th>
                     <th>Email</th>
@@ -47,8 +46,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th width="2%"></th>
-                    <th>Student ID</th>
+                    <th></th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
@@ -75,8 +73,8 @@
 
 <?php $this->load->view('admin/dashboard/layout/control_sidebar');?>
 </div>
-<?php $this->load->view('admin/student_loads/modals/modals');?>
-<?php $this->load->view('admin/student_loads/scripts/bpa_third_year_scripts');?>
+<?php $this->load->view('admin/grades/modals/modals');?>
+<?php $this->load->view('admin/grades/script/bpa_first_year_scripts');?>
 <?php $this->load->view('admin/user/scripts/footer');?>
 </body>
 </html>

@@ -36,6 +36,7 @@
                 <tr>
                     <th><input type="checkbox" id="select-all"></th>
                     <th>Image</th>
+                    <th>Student ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
@@ -51,6 +52,7 @@
                 <tr>
                     <th></th>
                     <th>Image</th>
+                    <th>Student ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>

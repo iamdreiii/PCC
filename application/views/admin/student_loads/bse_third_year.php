@@ -33,6 +33,7 @@
                 <thead>
                 <tr>
                     <th width="2%"><input type="checkbox" id="select-all"></th>
+                    <th>Student ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
@@ -47,6 +48,7 @@
                 <tfoot>
                 <tr>
                     <th width="2%"></th>
+                    <th>Student ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>

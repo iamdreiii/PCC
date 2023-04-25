@@ -151,7 +151,7 @@
                 <li><a href="<?=base_url()?>bse_student_grades_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
                 <li><a href="<?=base_url()?>bse_student_grades_third_year"><i class="fa fa-circle-o"></i> Third Year</a></li>
                 <li><a href="<?=base_url()?>bse_student_grades_fourth_year"><i class="fa fa-circle-o"></i> Fourth Year</a></li>
-                <li><a href="<?=base_url()?>bse_student_grades_graduates"><i class="fa fa-circle-o"></i> Graduates</a></li>
+                <!-- <li><a href="<?=base_url()?>bse_student_grades_graduates"><i class="fa fa-circle-o"></i> Graduates</a></li> -->
               </ul>
             </li>
             <li li class="treeview">
@@ -166,7 +166,7 @@
                 <li><a href="<?=base_url()?>bpa_student_grades_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
                 <li><a href="<?=base_url()?>bpa_student_grades_third_year"><i class="fa fa-circle-o"></i> Third Year</a></li>
                 <li><a href="<?=base_url()?>bpa_student_grades_fourth_year"><i class="fa fa-circle-o"></i> Fourth Year</a></li>
-                <li><a href="<?=base_url()?>bse_student_grades_graduates"><i class="fa fa-circle-o"></i> Graduates</a></li>
+                <!-- <li><a href="<?=base_url()?>bse_student_grades_graduates"><i class="fa fa-circle-o"></i> Graduates</a></li> -->
               </ul>
             </li>
           </ul>

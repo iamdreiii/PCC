@@ -74,7 +74,7 @@
 <?php $this->load->view('admin/dashboard/layout/control_sidebar');?>
 </div>
 <?php $this->load->view('admin/grades/modals/modals');?>
-<?php $this->load->view('admin/grades/script/bse_first_year_scripts');?>
+<?php $this->load->view('admin/grades/script/bse_third_year_scripts');?>
 <?php $this->load->view('admin/user/scripts/footer');?>
 </body>
 </html>

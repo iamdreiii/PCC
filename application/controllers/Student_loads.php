@@ -142,6 +142,7 @@ class Student_loads extends CI_Controller {
             $no++;
             $row = array();
             $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -177,6 +178,7 @@ class Student_loads extends CI_Controller {
             $no++;
             $row = array();
             $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -211,6 +213,7 @@ class Student_loads extends CI_Controller {
             $no++;
             $row = array();
             $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -245,6 +248,7 @@ class Student_loads extends CI_Controller {
             $no++;
             $row = array();
             $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -281,6 +285,7 @@ class Student_loads extends CI_Controller {
             $no++;
             $row = array();
             $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -315,6 +320,7 @@ class Student_loads extends CI_Controller {
             $no++;
             $row = array();
             $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -349,6 +355,7 @@ class Student_loads extends CI_Controller {
             $no++;
             $row = array();
             $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;
@@ -383,6 +390,7 @@ class Student_loads extends CI_Controller {
             $no++;
             $row = array();
             $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
             $row[] = $user->sex;

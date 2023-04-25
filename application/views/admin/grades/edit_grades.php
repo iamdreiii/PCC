@@ -144,6 +144,7 @@ input:checked + .slider:before {
 
 <div class="row no-print">
   <div class="col-xs-12">
+    <input type="hidden" name="id" value="<?=$id?>">
     <?php if(empty($student_loads)) : ?>
       <!-- <a href="<?=base_url()?>print_student_loads/<?= $id?>" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a> -->
       <button class="btn btn-default" id="backButton1"><i class="fa fa-arrow-left"></i> Back</button>
@@ -193,32 +194,38 @@ $(document).ready(function(){
 
   function load_data(edit_cells) {
   $.ajax({
-    url:"<?php echo base_url(); ?>Grades/load_data/"+<?=$id?>,
+    url:"<?php echo base_url(); ?>Grades/load_data",
     dataType:"JSON",
+    data: {id: <?=$id?>},
     success:function(data){
       var html = '';
       var isFirstSemester = true;
-      $.each(data, function(key, value) {
-        if (value.semester == 1 && isFirstSemester) {
-          html += '<tr><td colspan="5" style="text-align: center; margin-right:100px;"><strong><u>1st Sem</u></strong></td></tr>';
-            isFirstSemester = false;
-        }
-        if (value.semester == 2 && !isFirstSemester) {
-          html += '<tr><td colspan="5" style="text-align: center;"><strong><u>2nd Sem</u></strong></td></tr>';
-            isFirstSemester = true;
-        }
-        html += '<tr>';
-        html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="coursecode">'+value.coursecode+'</td>';
-        html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="description">'+value.description+'</td>';
-        html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="units">'+value.units+'</td>';
-        html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="pre_req">'+value.pre_req+'</td>';
-        if (edit_cells) {
-          html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="grade" contenteditable>'+value.grade+'</td>';
-        } else {
-          html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="grade">'+value.grade+'</td>';
-        }
-        html += '</tr>';
-      });
+      if(data == null || data == ''){
+          html += '<tr><td colspan="5" style="text-align: center; margin-right:100px;"><strong><u>No Subject/s</u></strong></td></tr>';
+        }else {
+        $.each(data, function(key, value) {
+          
+          if (value.semester == 1 && isFirstSemester) {
+            html += '<tr><td colspan="5" style="text-align: center; margin-right:100px;"><strong><u>1st Sem</u></strong></td></tr>';
+              isFirstSemester = false;
+          }
+          if (value.semester == 2 && !isFirstSemester) {
+            html += '<tr><td colspan="5" style="text-align: center;"><strong><u>2nd Sem</u></strong></td></tr>';
+              isFirstSemester = true;
+          }
+          html += '<tr>';
+          html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="coursecode">'+value.coursecode+'</td>';
+          html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="description">'+value.description+'</td>';
+          html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="units">'+value.units+'</td>';
+          html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="pre_req">'+value.pre_req+'</td>';
+          if (edit_cells) {
+            html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="grade" contenteditable>'+value.grade+'</td>';
+          } else {
+            html += '<td class="table_data" data-row_id="'+value.sl_id+'" data-column_name="grade">'+value.grade+'</td>';
+          }
+          html += '</tr>';
+        });
+      }
       $('tbody').html(html);
     }
   });
