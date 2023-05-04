@@ -13,7 +13,7 @@
                 "pageLength": 10,
                 "order": [],
                 "ajax": {
-                    "url": "<?php echo site_url('School_year/sy_list')?>",
+                    "url": "<?php echo site_url('Staff/staff_list')?>",
                     "type": "POST"
                 },
                 "columnDefs": [
@@ -57,14 +57,14 @@
 
 
        
-        function add_sy()
+        function add_staff()
         {
             save_method = 'add';
             $('#form')[0].reset(); // reset form on modals
             $('.form-group').removeClass('has-error'); // clear error class
             $('.help-block').empty(); // clear error string
-            $('#sy_modal_form').modal('show'); // show bootstrap modal
-            $('.modal-title').text('Add School Year'); // Set Title to Bootstrap modal title
+            $('#staff_modal_form').modal('show'); // show bootstrap modal
+            $('.modal-title').text('Add Staff'); // Set Title to Bootstrap modal title
         }
 
         function edit_sy(id)
@@ -76,16 +76,17 @@
 
             //Ajax Load data from ajax
             $.ajax({
-                url : "<?php echo site_url('School_year/sy_edit/')?>/" + id,
+                url : "<?php echo site_url('Staff/edit/')?>/" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data)
                 {
                     $('[name="id"]').val(data.id);
-                    $('[name="school_year"]').val(data.school_year);
-                    $('[name="status"]').val(data.status);
-                    $('#sy_modal_form').modal('show'); // show bootstrap modal when complete loaded
-                    $('.modal-title').text('Edit School Year'); // Set title to Bootstrap modal title
+                    $('[name="username"]').val(data.username);
+                    $('[name="password"]').val(data.password);
+                    $('[name="type"]').val(data.type);
+                    $('#staff_modal_form').modal('show'); // show bootstrap modal when complete loaded
+                    $('.modal-title').text('Edit Staff'); // Set title to Bootstrap modal title
                     
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -109,7 +110,7 @@
 
             if(save_method == 'add') {
             // Check for empty inputs
-            var requiredFields = ['school_year'];
+            var requiredFields = ['username', 'password', 'type'];
             var isValid = true;
             $.each(requiredFields, function(index, field) {
                 if (!$.trim($('[name="' + field + '"]').val())) {
@@ -128,9 +129,9 @@
             var url;
 
             if(save_method == 'add') {
-                url = "<?php echo site_url('School_year/sy_add')?>";
+                url = "<?php echo site_url('Staff/add')?>";
             } else {
-                url = "<?php echo site_url('School_year/sy_update')?>";
+                url = "<?php echo site_url('Staff/update')?>";
             }
 
             // ajax adding data to database
@@ -145,15 +146,15 @@
                     {
                         // if adding data
                         if(save_method == 'add'){
-                            $('#sy_modal_form').modal('hide');
+                            $('#staff_modal_form').modal('hide');
                             reload_table();
-                            var stat = 'School Year Added';
+                            var stat = 'Staff Added';
                             success(stat);
                         // if updating data
                         }else{
-                            $('#sy_modal_form').modal('hide');
+                            $('#staff_modal_form').modal('hide');
                             reload_table();
-                            var stat = 'School Year Updated';
+                            var stat = 'Staff Updated';
                             success(stat);
                         }
                     }
@@ -185,13 +186,13 @@
                 if (result) {
                     // ajax delete data from database
                     $.ajax({
-                        url: "<?php echo site_url('School_year/sy_delete')?>/" + id,
+                        url: "<?php echo site_url('Staff/delete')?>/" + id,
                         type: "POST",
                         dataType: "JSON",
                         success: function(data) {
-                            $('#sy_modal_form').modal('hide');
+                            $('#staff_modal_form').modal('hide');
                             reload_table();
-                            var stat = 'School Year Deleted';
+                            var stat = 'Staff Deleted';
                             success(stat);
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
@@ -202,36 +203,6 @@
                 }
             });
         }
-        function toggleStatus(id, currentStatus) {
-            // Update the badge text and class
-            if (currentStatus == 'active') {
-                $('#badge_' + id).removeClass('bg-green').addClass('bg-red').text('inactive');
-            } else {
-                $('#badge_' + id).removeClass('bg-red').addClass('bg-green').text('active');
-            }
-
-            // Send AJAX request to update status
-            $.ajax({
-                url: '<?=base_url()?>School_year/sy_update_status',
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    id: id,
-                    status: currentStatus
-                },
-                success: function(response) {
-                    // Handle success response
-                    reload_table();
-                    var stat = 'School Year Status Updated';
-                    success(stat);
-                },
-                error: function(xhr, status, error) {
-                    // Handle error response
-                    error(status);
-                }
-            });
-        }
-
 
         function deletemodal(callback) {
         // Create modal HTML
@@ -240,13 +211,13 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Delete SY</h5>
+                            <h5 class="modal-title">Delete Announcement</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Are you sure you want to delete this SY?</p>
+                            <p>Are you sure you want to delete this announcement?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

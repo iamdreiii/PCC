@@ -118,6 +118,7 @@ input:checked + .slider:before {
   <input id="edit-switch" type="checkbox">
   <span class="slider round"></span>
 </label> -->
+<label for="">Edit Grade </label><br>
 <label><input id="edit-switch" type="checkbox"  data-toggle="toggle" data-on="Enabled" data-off="Disabled"></label>
 <br>
 <br>
@@ -181,8 +182,10 @@ document.getElementById('backButton1').addEventListener('click', function() {
 });
 </script>
 
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<!-- <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> -->
+<link href="<?php echo base_url()?>assets/bootstraptoggle/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="<?php echo base_url()?>assets/bootstraptoggle/bootstrap-toggle.min.js"></script>
 
 <script type="text/javascript" language="javascript" >
  

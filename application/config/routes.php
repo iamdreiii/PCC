@@ -127,3 +127,9 @@ $route['blog-setting'] = 'BlogSetting/index';
 $route['fb'] = 'Blog/fb';
 // GRADES
 $route['bse_grade_first_year'] = 'Grade/index';
+// STAFF
+$route['manage_staff'] =  'Staff/index';
+// Signatory
+$route['Signatory'] =  'Signatory/index';
+// RECORDS
+$route['records'] =  'Records/index';
