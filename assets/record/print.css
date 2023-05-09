@@ -1,19 +1,31 @@
 @media print {
     #backButton {
-        display: none !important; /* Hide the button when printing */
+        display: none !important; 
     }
+    
     .table {
         border-collapse: collapse;
         width: 100%;
         margin-bottom: 20px;
         overflow: hidden;
-        page-break-inside: avoid; /* Prevent table from being split across pages */
+        page-break-inside: avoid;
+    }
+    .table:nth-child(2n+1) {
+        page-break-after: always; 
     }
     .table:last-of-type {
-        page-break-after: always; /* Force a page break after the last table on the page */
+        page-break-after: always; 
     }
-    /* Hide scroll bars */
+      
+    .table:nth-child(2),
+    .table:nth-child(4) {
+        page-break-after: always;
+    }
+    .container {
+        page-break-inside: avoid;
+    }
     ::-webkit-scrollbar {
         display: none;
     }
+    
 }

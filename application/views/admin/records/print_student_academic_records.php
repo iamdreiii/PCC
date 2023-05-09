@@ -27,6 +27,13 @@
 .table tr.spacing>th {
   margin:0; padding:0;
 }
+.container {
+    page-break-inside: avoid;
+}
+.table:nth-child(odd) {
+        page-break-after: always;
+      }
+
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <!-- <script nonce="3d834fa7-28d1-4d4e-8237-9f10ec8d35b3">(function(w,d){!function(bv,bw,bx,by){bv[bx]=bv[bx]||{};bv[bx].executed=[];bv.zaraz={deferred:[],listeners:[]};bv.zaraz.q=[];bv.zaraz._f=function(bz){return function(){var bA=Array.prototype.slice.call(arguments);bv.zaraz.q.push({m:bz,a:bA})}};for(const bB of["track","set","debug"])bv.zaraz[bB]=bv.zaraz._f(bB);bv.zaraz.init=()=>{var bC=bw.getElementsByTagName(by)[0],bD=bw.createElement(by),bE=bw.getElementsByTagName("title")[0];bE&&(bv[bx].t=bw.getElementsByTagName("title")[0].text);bv[bx].x=Math.random();bv[bx].w=bv.screen.width;bv[bx].h=bv.screen.height;bv[bx].j=bv.innerHeight;bv[bx].e=bv.innerWidth;bv[bx].l=bv.location.href;bv[bx].r=bw.referrer;bv[bx].k=bv.screen.colorDepth;bv[bx].n=bw.characterSet;bv[bx].o=(new Date).getTimezoneOffset();if(bv.dataLayer)for(const bI of Object.entries(Object.entries(dataLayer).reduce(((bJ,bK)=>({...bJ[1],...bK[1]})))))zaraz.set(bI[0],bI[1],{scope:"page"});bv[bx].q=[];for(;bv.zaraz.q.length;){const bL=bv.zaraz.q.shift();bv[bx].q.push(bL)}bD.defer=!0;for(const bM of[localStorage,sessionStorage])Object.keys(bM||{}).filter((bO=>bO.startsWith("_zaraz_"))).forEach((bN=>{try{bv[bx]["z_"+bN.slice(7)]=JSON.parse(bM.getItem(bN))}catch{bv[bx]["z_"+bN.slice(7)]=bM.getItem(bN)}}));bD.referrerPolicy="origin";bD.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(bv[bx])));bC.parentNode.insertBefore(bD,bC)};["complete","interactive"].includes(bw.readyState)?zaraz.init():bv.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document);</script> -->
@@ -60,8 +67,6 @@
   </div>
 </div>
 
-
-
 <?php foreach($student_data as $row) :?>
 <div class="row invoice-info">
 <div class="col-sm-10 invoice-col">
@@ -75,7 +80,6 @@
     High School Course Completed :  <?= ucfirst($row['secondary_school_last_attended'])?><br>
   </address>
 </div>
-
 
 <div class="col-sm-2 invoice-col pull-right">
     <address style="white-space: nowrap;">
@@ -230,7 +234,7 @@ if($has_second_semester) : ?>
 
 <!--------------------------------------------------------------------3RD------------------------------------------------------------------------------>
 
-<table class="table" >
+<table class="table" class="page-break">
 <h4><strong>Third Year</strong></h4>
 <thead>
 <tr class="spacing">
@@ -364,6 +368,7 @@ if($has_second_semester4) : ?>
 
 
 </div>
+
 <div style="text-align:left; margin-top:20px;">
     Not valid without school seal
 </div>
@@ -372,6 +377,7 @@ if($has_second_semester4) : ?>
     College Registrar
 </div>
 </div>
+
 </section>
 
 </div>
