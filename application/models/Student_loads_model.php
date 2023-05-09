@@ -511,7 +511,7 @@ class Student_loads_model extends CI_Model
                 CASE 
                     WHEN tbl_subject.prereq = '' OR tbl_subject.prereq IS NULL THEN 'none' 
                     ELSE tbl_subject.prereq 
-                END as pre_req, 
+                END as pre_req, tbl_student_subject_loads.grade as grade,
                 tbl_student_subject_loads.id as sl_id 
         FROM tbl_student_subject_loads 
         JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 
@@ -533,7 +533,7 @@ class Student_loads_model extends CI_Model
                 CASE 
                     WHEN tbl_subject.prereq = '' OR tbl_subject.prereq IS NULL THEN 'none' 
                     ELSE tbl_subject.prereq 
-                END as pre_req, 
+                END as pre_req, tbl_student_subject_loads.grade as grade,
                 tbl_student_subject_loads.id as sl_id 
         FROM tbl_student_subject_loads 
         JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 
@@ -555,7 +555,7 @@ class Student_loads_model extends CI_Model
                 CASE 
                     WHEN tbl_subject.prereq = '' OR tbl_subject.prereq IS NULL THEN 'none' 
                     ELSE tbl_subject.prereq 
-                END as pre_req, 
+                END as pre_req, tbl_student_subject_loads.grade as grade,
                 tbl_student_subject_loads.id as sl_id 
         FROM tbl_student_subject_loads 
         JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 
@@ -577,7 +577,7 @@ class Student_loads_model extends CI_Model
                 CASE 
                     WHEN tbl_subject.prereq = '' OR tbl_subject.prereq IS NULL THEN 'none' 
                     ELSE tbl_subject.prereq 
-                END as pre_req, 
+                END as pre_req, tbl_student_subject_loads.grade as grade,
                 tbl_student_subject_loads.id as sl_id 
         FROM tbl_student_subject_loads 
         JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 
@@ -599,7 +599,7 @@ class Student_loads_model extends CI_Model
                 CASE 
                     WHEN tbl_subject.prereq = '' OR tbl_subject.prereq IS NULL THEN 'none' 
                     ELSE tbl_subject.prereq 
-                END as pre_req, 
+                END as pre_req, tbl_student_subject_loads.grade as grade,
                 tbl_student_subject_loads.id as slid 
         FROM tbl_student_subject_loads 
         JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 

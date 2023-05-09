@@ -6,8 +6,13 @@ class Login extends CI_Controller {
     {
       parent::__construct();
       $this->load->helper('url', 'form');
-      $this->load->library('session');
+      
+      
     }
+
+    
+
+
     public function inactive_user() {
         // get user id from session data
         $user = $this->session->userdata('user')['id'];
@@ -50,7 +55,7 @@ class Login extends CI_Controller {
 		$username = $_POST['username'];
 		$password = md5($_POST['password']);
         $this->db->where('username', $username);
-        $this->db->update('tbl_staff', array('active_status' => 'active'));
+        $this->db->update('tbl_staff', array('active_status' => 'active', 'last_activity' => time()));
 		$data = $this->Login_model->login($username, $password);
 		if($data){
             

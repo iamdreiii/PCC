@@ -51,7 +51,7 @@ class Records extends CI_Controller {
             <span class="sr-only">Toggle Dropdown</span>
             </button>
             <ul class="dropdown-menu" role="menu">
-            <li><a href="'.base_url().'academic_records/'. $user->id.'">Academic Records</a></li>
+            <li><a href="'.base_url().'print_student_academic_records/'. $user->id.'">Academic Records</a></li>
             <li><a href="'.base_url().'cert_of_enrollment/'. $user->id.'">Cert. of Enrollment</a></li>
             <li><a href="'.base_url().'cert_of_grade/'. $user->id.'">Cert. of Grade</a></li>
             <li><a href="'.base_url().'cert_of_transfer/'. $user->id.'">Cert. of Transfer</a></li>
@@ -78,4 +78,39 @@ class Records extends CI_Controller {
     {
         return $this->db->count_all('tbl_student');
     }
+
+
+    //START PRINT SECTIONS CONTROLLER
+    public function print_student_academic_records($param)
+    {
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        {
+            $page = 'print_student_academic_records';
+            if(!file_exists(APPPATH.'views/admin/records/'.$page.'.php')){
+                show_404();
+            }
+            $data['first_student_loads'] = $this->Student_loads_model->get_student_loads_first_year($param);
+            $data['second_student_loads'] = $this->Student_loads_model->get_student_loads_second_year($param);
+            $data['third_student_loads'] = $this->Student_loads_model->get_student_loads_third_year($param);
+            $data['fourth_student_loads'] = $this->Student_loads_model->get_student_loads_fourth_year($param);
+            $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+            if (isset($data['first_student_loads'][0]['school_year'])) {
+            $data['firstsy'] = $data['first_student_loads'][0]['school_year'];
+            }
+            if (isset($data['second_student_loads'][0]['school_year'])) {
+            $data['secondsy'] = $data['second_student_loads'][0]['school_year'];
+            }
+            if (isset($data['third_student_loads'][0]['school_year'])) {
+            $data['thirdsy'] = $data['third_student_loads'][0]['school_year'];
+            }
+            if (isset($data['fourth_student_loads'][0]['school_year'])) {
+            $data['fourthsy'] = $data['fourth_student_loads'][0]['school_year'];
+            }
+            $data['id'] = $param;
+            $this->load->view('admin/records/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }	
+    }
+    // END SECTION CONTROLLER
 }
