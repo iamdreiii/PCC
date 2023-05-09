@@ -27,12 +27,8 @@
 .table tr.spacing>th {
   margin:0; padding:0;
 }
-.container {
-    page-break-inside: avoid;
-}
-.table:nth-child(odd) {
-        page-break-after: always;
-      }
+
+
 
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -41,7 +37,6 @@
 
 <body onload="window.print();">
 
-<div class="wrapper">
 
 <section class="invoice">
 <button class="btn btn-primary pull-right" onclick="window.print();" id="backButton"><i class="fa fa-print"></i> Print</button>
@@ -95,8 +90,7 @@
 
 
 
-<div class="row">
-<div class="col-xs-12 table-responsive">
+<div class="container col-xs-12">
 
 <!-- <?php
 $total_units1 = 0; 
@@ -367,7 +361,7 @@ if($has_second_semester4) : ?>
 
 
 
-</div>
+
 
 <div style="text-align:left; margin-top:20px;">
     Not valid without school seal
@@ -376,7 +370,7 @@ if($has_second_semester4) : ?>
     Name of Registrar <br>
     College Registrar
 </div>
-</div>
+
 
 </section>
 
