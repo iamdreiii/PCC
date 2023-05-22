@@ -163,7 +163,11 @@ if($has_second_semester) : ?>
 
 <!-----------------------------------------------------------------2ND--------------------------------------------------------------------------------->
 
-
+<?php if(empty($second_student_loads)) : ?>
+<tr>
+<!-- <td colspan="4" style="text-align: center;">No Matching Records</td> -->
+</tr>
+<?php else : ?>
 <table class="table" >
 <h4><strong>Second Year</strong></h4>
 <thead>
@@ -175,11 +179,7 @@ if($has_second_semester) : ?>
 </tr>
 </thead>
 <tbody>
-<?php if(empty($second_student_loads)) : ?>
-<tr>
-<td colspan="4" style="text-align: center;">No Matching Records</td>
-</tr>
-<?php else : ?>
+
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>First Semester : <?= $secondsy?></u></strong></td>
@@ -228,6 +228,12 @@ if($has_second_semester) : ?>
 
 <!--------------------------------------------------------------------3RD------------------------------------------------------------------------------>
 
+
+<?php if(empty($third_student_loads)) : ?>
+<tr>
+<!-- <td colspan="4" style="text-align: center;">No Matching Records</td> -->
+</tr>
+<?php else : ?>
 <table class="table" class="page-break">
 <h4><strong>Third Year</strong></h4>
 <thead>
@@ -239,11 +245,7 @@ if($has_second_semester) : ?>
 </tr>
 </thead>
 <tbody>
-<?php if(empty($third_student_loads)) : ?>
-<tr>
-<td colspan="4" style="text-align: center;">No Matching Records</td>
-</tr>
-<?php else : ?>
+
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>First Semester : <?= $thirdsy?></u></strong></td>
@@ -293,6 +295,12 @@ if($has_second_semester3) : ?>
 <!----------------------------------------------------------------------4TH---------------------------------------------------------------------------->
 
 
+
+<?php if(empty($fourth_student_loads)) : ?>
+<tr>
+<!-- <td colspan="4" style="text-align: center;">No Matching Records</td> -->
+</tr>
+<?php else : ?>
 <table class="table" >
 <h4><strong>Fourth Year</strong></h4>
 <thead>
@@ -304,11 +312,7 @@ if($has_second_semester3) : ?>
 </tr>
 </thead>
 <tbody>
-<?php if(empty($fourth_student_loads)) : ?>
-<tr>
-<td colspan="4" style="text-align: center;">No Matching Records</td>
-</tr>
-<?php else : ?>
+
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>First Semester : <?= $fourthsy?></u></strong></td>
