@@ -13,7 +13,7 @@ class Grades extends CI_Controller {
     public function bse_first_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bse_first_year';
             if(!file_exists(APPPATH.'views/admin/grades/'.$page.'.php')){
@@ -28,7 +28,7 @@ class Grades extends CI_Controller {
     public function bse_second_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bse_second_year';
             if(!file_exists(APPPATH.'views/admin/grades/'.$page.'.php')){
@@ -43,7 +43,7 @@ class Grades extends CI_Controller {
     public function bse_third_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bse_third_year';
             if(!file_exists(APPPATH.'views/admin/grades/'.$page.'.php')){
@@ -58,7 +58,7 @@ class Grades extends CI_Controller {
     public function bse_fourth_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bse_fourth_year';
             if(!file_exists(APPPATH.'views/admin/grades/'.$page.'.php')){
@@ -74,7 +74,7 @@ class Grades extends CI_Controller {
     public function bpa_first_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bpa_first_year';
             if(!file_exists(APPPATH.'views/admin/grades/'.$page.'.php')){
@@ -89,7 +89,7 @@ class Grades extends CI_Controller {
     public function bpa_second_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bpa_second_year';
             if(!file_exists(APPPATH.'views/admin/grades/'.$page.'.php')){
@@ -104,7 +104,7 @@ class Grades extends CI_Controller {
     public function bpa_third_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bpa_third_year';
             if(!file_exists(APPPATH.'views/admin/grades/'.$page.'.php')){
@@ -119,7 +119,7 @@ class Grades extends CI_Controller {
     public function bpa_fourth_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bpa_fourth_year';
             if(!file_exists(APPPATH.'views/admin/grades/'.$page.'.php')){
@@ -402,7 +402,7 @@ class Grades extends CI_Controller {
     public function edit_grades($param)
     {
         $lasturl = $this->input->get('lasturl');
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'edit_grades';
             if(!file_exists(APPPATH.'views/admin/grades/'.$page.'.php')){

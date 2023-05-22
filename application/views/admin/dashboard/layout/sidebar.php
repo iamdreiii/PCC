@@ -15,7 +15,7 @@
         </div>
         <div class="pull-left info">
           <p><?php echo strtoupper($username)?></p>
-          <?php if($this->session->userdata('user')['active_status'] = 'active'){ ?>
+          <?php if($this->session->userdata('user')['active_status'] == 'active'){ ?>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           <?php }else{?>
           <a href="#"><i class="fa fa-circle text-error"></i> Offline</a>
@@ -184,34 +184,7 @@
           </ul>
         </li>
         <!-- END MANAGE CLASS -->
-        <!-- START ASSIGN GRADES -->
-        <?php if($this->session->userdata('prof')){?>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-book"></i> <span>Manage Class</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>Class"><i class="fa fa-circle-o"></i> List of Class</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Manage Teachers
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher Class</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i> Teacher Loads</a></li>
-                
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-        </li>
-        <?php }?>
-        <!-- END ASSIGN GRADES -->
+        <?php if($this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff') : ?>
         <!-- START MANAGE SUBJECTS -->
         <li class="treeview">
           <a href="#">
@@ -227,6 +200,7 @@
           </ul>
         </li>
         <!-- END MANAGE Grades -->
+        <?php endif?>
         <!-- START MANAGE SUBJECTS -->
         
         <!-- END MANAGE Grades -->
@@ -238,6 +212,7 @@
         </li>
         <!-- END MANAGE SUBJECTS -->
         <li class="header"></li>
+        <?php if($this->session->userdata('user')['type'] == 'admin') : ?>
         <li>
           <a href="<?php echo base_url()?>school-year">
             <i class="fa fa-calendar-o"></i> <span> School Year</span>
@@ -269,6 +244,7 @@
             
           </ul>
         </li>
+        <?php endif ?>
         <!-- END MANAGE SUBJECTS -->
       </ul>
     </section>

@@ -12,7 +12,7 @@ class Student_loads extends CI_Controller {
 	public function bse_first_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bse_first_year';
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
@@ -27,7 +27,7 @@ class Student_loads extends CI_Controller {
     public function bse_second_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bse_second_year';
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
@@ -42,7 +42,7 @@ class Student_loads extends CI_Controller {
     public function bse_third_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bse_third_year';
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
@@ -57,7 +57,7 @@ class Student_loads extends CI_Controller {
     public function bse_fourth_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bse_fourth_year';
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
@@ -72,7 +72,7 @@ class Student_loads extends CI_Controller {
     public function bpa_first_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bpa_first_year';
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
@@ -87,7 +87,7 @@ class Student_loads extends CI_Controller {
     public function bpa_second_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bpa_second_year';
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
@@ -102,7 +102,7 @@ class Student_loads extends CI_Controller {
     public function bpa_third_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bpa_third_year';
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
@@ -117,7 +117,7 @@ class Student_loads extends CI_Controller {
     public function bpa_fourth_year()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bpa_fourth_year';
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
@@ -499,7 +499,7 @@ class Student_loads extends CI_Controller {
     public function view_student_loads($param)
     {
         $lasturl = $this->input->get('lasturl');
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'view_student_loads';
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
@@ -547,7 +547,7 @@ class Student_loads extends CI_Controller {
     }
     public function edit_student_loads($param)
     {
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'edit_student_loads';
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){
@@ -590,7 +590,7 @@ class Student_loads extends CI_Controller {
     }
     public function print_student_loads($param)
     {
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'print_student_loads';
             if(!file_exists(APPPATH.'views/admin/student_loads/'.$page.'.php')){

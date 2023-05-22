@@ -36,9 +36,9 @@ class Login extends CI_Controller {
         elseif($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'teacher') 
         {
             redirect('teacher-dashboard');   
-        }elseif($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'registrar') 
+        }elseif($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'staff') 
         {
-            redirect('registrar-dashboard');  
+            redirect('dashboard');  
         }else{
             $page = 'login';
             if(!file_exists(APPPATH.'views/admin/dashboard/'.$page.'.php')){

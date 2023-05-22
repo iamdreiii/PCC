@@ -63,7 +63,7 @@
 </div>
 
 <?php foreach($student_data as $row) :?>
-<div class="row invoice-info">
+<div class="row col-sm-12 invoice-info">
 <div class="col-sm-10 invoice-col">
   <address style="white-space: nowrap;">
     Name : <?= ucfirst($row['lname'])?>, <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?><br>
@@ -90,7 +90,7 @@
 
 
 
-<div class="container col-xs-12">
+<div class="container col-sm-12">
 
 <!-- <?php
 $total_units1 = 0; 
@@ -126,7 +126,7 @@ foreach($first_student_loads as $row) {
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['coursecode']?></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['description']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['grade']?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo intval( $row['grade'])?></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php if(empty($row['grade']) ||$row['grade'] == 0.00 || $row['grade'] == NULL){echo 0;}else{echo $row['units'];}?></td>
 </tr>
 <?php }?>

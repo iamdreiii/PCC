@@ -40,7 +40,7 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'dashboard';
             if(!file_exists(APPPATH.'views/admin/dashboard/'.$page.'.php')){

@@ -12,7 +12,7 @@ class Subject extends CI_Controller {
 	public function index()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin'  || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'index';
             if(!file_exists(APPPATH.'views/admin/subject/'.$page.'.php')){

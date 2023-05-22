@@ -13,7 +13,7 @@ class Records extends CI_Controller {
 	public function index()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'index';
             if(!file_exists(APPPATH.'views/admin/records/'.$page.'.php')){
@@ -83,7 +83,7 @@ class Records extends CI_Controller {
     //START PRINT SECTIONS CONTROLLER
     public function print_student_academic_records($param)
     {
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'print_student_academic_records';
             if(!file_exists(APPPATH.'views/admin/records/'.$page.'.php')){

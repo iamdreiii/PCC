@@ -12,7 +12,7 @@ class Prereq extends CI_Controller {
 	public function bseindex()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bseindex';
             if(!file_exists(APPPATH.'views/admin/subject_prereq/'.$page.'.php')){
@@ -27,7 +27,7 @@ class Prereq extends CI_Controller {
     public function bpaindex()
 	{
         
-        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin')
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
             $page = 'bpaindex';
             if(!file_exists(APPPATH.'views/admin/subject_prereq/'.$page.'.php')){
