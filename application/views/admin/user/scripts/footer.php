@@ -28,4 +28,4 @@ window.addEventListener('load', function() {
 
 </script>
 <script src="<?php echo base_url()?>assets/record/bootstrap.min.js"></script>
-<script src="<?php echo base_url()?>assets/summernote/summernote.min.js"></script>
+<script src="<?php echo base_url()?>assets/summernote/js/summernote.min.js"></script>
