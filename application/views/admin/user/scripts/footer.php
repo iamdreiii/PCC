@@ -27,5 +27,5 @@ window.addEventListener('load', function() {
 });
 
 </script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="<?php echo base_url()?>assets/record/bootstrap.min.js"></script>
+<script src="<?php echo base_url()?>assets/summernote/summernote.min.js"></script>
