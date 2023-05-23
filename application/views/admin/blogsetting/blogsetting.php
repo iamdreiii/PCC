@@ -72,16 +72,17 @@ input:checked + .slider:before {
 }
 </style>
   <!-- codemirror -->
-  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.css" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/theme/blackboard.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/theme/monokai.min.css">
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/mode/xml/xml.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/codemirror/css/codemirror.min.css" />
+<link rel="stylesheet" href="<?php echo base_url()?>assets/codemirror/theme/blackboard.min.css">
+<link rel="stylesheet" href="<?php echo base_url()?>assets/codemirror/theme/monokai.min.css">
+<script type="text/javascript" src="<?php echo base_url()?>assets/codemirror/js/codemirror.js"></script>
+<script src="<?php echo base_url()?>assets/codemirror/xml/xml.min.js"></script>
 
   <!-- add summernote -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/lang/summernote-ko-KR.min.js"></script>
+<link href="<?php echo base_url()?>assets/summernote/css/summernote.min.css" rel="stylesheet">
+<script src="<?php echo base_url()?>assets/summernote/js/summernote.min.js"></script>
+<script src="<?php echo base_url()?>assets/summernote/lang/summernote-ko-KR.min.js"></script>
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <?php $this->load->view('admin/dashboard/layout/header');?>

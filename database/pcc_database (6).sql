@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Apr 19, 2023 at 10:24 AM
+-- Generation Time: May 23, 2023 at 03:03 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `pcc_database`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sample_data`
+--
+
+CREATE TABLE `sample_data` (
+  `id` int(10) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `age` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `sample_data`
+--
+
+INSERT INTO `sample_data` (`id`, `first_name`, `last_name`, `age`) VALUES
+(4, 'dfgdfgfd', 'gdfgdfg', 323),
+(5, 'gfgdf', 'gfd', 2),
+(6, 'hfghfg', 'fghfg21', 122);
 
 -- --------------------------------------------------------
 
@@ -41,8 +63,8 @@ CREATE TABLE `tbl_announcements` (
 --
 
 INSERT INTO `tbl_announcements` (`id`, `title`, `path`, `description`, `created_at`, `updated_at`) VALUES
-(141, 'Sample ', 'uploads/announcement/29487.png', '<p>Sample</p>', '2023-04-17 10:18:37', '2023-04-17 10:20:29'),
-(142, 'gfd', 'uploads/announcement/17403.png', '<p>gfdgdf</p>', '2023-04-17 10:19:30', '0000-00-00 00:00:00');
+(141, 'Sample ', 'uploads/announcement/68495.png', '<p>Sample</p>', '2023-04-17 10:18:37', '2023-04-24 09:25:11'),
+(142, 'gfd', 'uploads/announcement/21975.png', '<p>gfdgdf</p>', '2023-04-17 10:19:30', '2023-04-24 09:24:59');
 
 -- --------------------------------------------------------
 
@@ -168,7 +190,7 @@ CREATE TABLE `tbl_links` (
 --
 
 INSERT INTO `tbl_links` (`id`, `facebook`, `twitter`, `instagram`, `youtube`, `gmail`, `created_at`, `updated_at`) VALUES
-(1, 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', 'https://www.gmail.com/', '2023-04-18 03:37:24', '2023-04-18 03:37:24');
+(1, 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.instagram.com/', 'https://www.youtube.com/', 'polacommunitycollege2020@gmal.com', '2023-04-18 03:37:24', '2023-04-18 03:37:24');
 
 -- --------------------------------------------------------
 
@@ -189,25 +211,13 @@ CREATE TABLE `tbl_logs` (
 --
 
 INSERT INTO `tbl_logs` (`id`, `activity`, `details`, `created_at`, `updated_at`) VALUES
-(34, 'Updated Announcement', 'admin Updated Announcement - ID : 139 data : sdfsdfsdfsd', '2023-04-17 10:16:14', '0000-00-00 00:00:00'),
-(35, 'Deleted Announcement', 'admin Deleted Announcement - ID : 139', '2023-04-17 10:17:37', '0000-00-00 00:00:00'),
-(36, 'Added Announcement', 'admin Added Announcement  -  data : Array', '2023-04-17 10:18:37', '0000-00-00 00:00:00'),
-(37, 'Added Announcement', 'admin Added Announcement  -  data : gfduploads/announcement/17403.png<p>gfdgdf</p>2023-04-17 10:19:30', '2023-04-17 10:19:30', '0000-00-00 00:00:00'),
-(38, 'Updated Announcement', 'admin Updated Announcement - ID : 141 data : Sample <p>Sample</p>2023-04-17 10:20:29', '2023-04-17 10:20:29', '0000-00-00 00:00:00'),
-(39, 'Added Student', 'admin Added Student - data : sadsadsadsaDela Cruz2023-04-0423Male5\'665sampleFilipinoSampleSingle09123456789oniledfsdfsrevaeduj@gmail.comSampleSampledfsdfdsf52062023202320232023BPA1st Year2023-04-17 10:29:33', '2023-04-17 10:29:33', '0000-00-00 00:00:00'),
-(40, 'Updated Student Details', 'admin Updated Student Details - ID : 16 data : Screenshot_2023-04-14_092706.pngsadsadsadsaDela Cruz2023-04-0423Male5\'665sampleFilipinoSampleSingle09123456789oniledfsdfsrevaeduj@gmail.comSampleSampledfsdfdsf52062023202320232023BPA1st Year2023-04-17 10', '2023-04-17 10:29:57', '0000-00-00 00:00:00'),
-(41, 'Updated Student Details', 'admin Updated Student Details - ID : 16 data : Screenshot_2023-04-14_0927061.pngsadsadsadsaDela Cruz2023-04-0423Male5\'665sampleFilipinoSampleSingle09123456789oniledfsdfsrevaeduj@gmail.comSampleSampledfsdfdsf52062023202320232023BPA1st Year2023-04-17 1', '2023-04-17 10:30:01', '0000-00-00 00:00:00'),
-(42, 'Deleted Student', 'admin Deleted Stduent - ID : 16', '2023-04-17 10:30:13', '0000-00-00 00:00:00'),
-(43, 'Updated Student Details', 'admin Updated Student Details - ID : 15 data : Screenshot_2023-04-14_092751.pngJuanADela Cruz2023-04-1223Male5\'665sampleFilipinoSampleSingle09123456789ssf ghty67567das23wqe3f@gmail.comSampleSampleSampleSample52062023202320232023BSE4th Year2023-04-17 ', '2023-04-17 10:35:44', '0000-00-00 00:00:00'),
-(44, 'Deleted Student', 'admin Deleted Student - ID : 15', '2023-04-17 10:35:53', '0000-00-00 00:00:00'),
-(45, 'Updated School Year', 'admin Updated School Year - ID : 6 to active', '2023-04-18 02:20:44', '0000-00-00 00:00:00'),
-(46, 'Updated School Year', 'admin Updated School Year - ID : 6 to inactive', '2023-04-18 02:20:44', '0000-00-00 00:00:00'),
-(47, 'Updated School Year', 'admin Updated School Year - ID : 1 to active', '2023-04-18 02:20:46', '0000-00-00 00:00:00'),
-(48, 'Updated School Year', 'admin Updated School Year - ID : 1 to inactive', '2023-04-18 02:20:46', '0000-00-00 00:00:00'),
-(49, 'Updated School Year', 'admin Updated School Year - ID : 6 to active', '2023-04-18 02:30:01', '0000-00-00 00:00:00'),
-(50, 'Updated School Year', 'admin Updated School Year - ID : 6 to inactive', '2023-04-18 02:30:01', '0000-00-00 00:00:00'),
-(51, 'Updated School Year', 'admin Updated School Year - ID : 1 to active', '2023-04-18 02:30:02', '0000-00-00 00:00:00'),
-(52, 'Updated School Year', 'admin Updated School Year - ID : 1 to inactive', '2023-04-18 02:30:02', '0000-00-00 00:00:00');
+(142, 'Updated Staff', 'admin Updated Staff- ID : 3', '2023-05-08 05:09:05', '0000-00-00 00:00:00'),
+(143, 'Updated Student Details', 'admin Updated Student Details - ID : 6 data : avatar3.jpg2023-1JohnMDela Cruz2023-03-0923Male5\'665sampleFilipinoSampleSingle09123456789john@gmail.comSampleSampleSampleSampleSample2023202320232023BSE1st Year2023-05-09 02:22:15', '2023-05-09 02:22:15', '0000-00-00 00:00:00'),
+(144, 'Updated Student Details', 'admin Updated Student Details - ID : 7 data : 2023-2JuanADela Cruz2023-04-1223Male5\'665sampleFilipinoSampleSingle09123456789onilevaeduj@gmail.comSampleSampleSampleSample52062023202320232023BSE1st Year2023-05-09 03:37:04', '2023-05-09 03:37:04', '0000-00-00 00:00:00'),
+(145, 'Updated Student Details', 'admin Updated Student Details - ID : 7 data : 2023-2JuanADela Cruz2023-04-1223Male5\'665sampleFilipinoSampleSingle09123456789onilevaeduj@gmail.comSampleSampleSampleSample52062023202320232023BSE2nd Year2023-05-09 03:37:32', '2023-05-09 03:37:32', '0000-00-00 00:00:00'),
+(146, 'Updated Student Details', 'admin Updated Student Details - ID : 7 data : 2023-2JuanADela Cruz2023-04-1223Male5\'665sampleFilipinoSampleSingle09123456789onilevaeduj@gmail.comSampleSampleSampleSample52062023202320232023BSE3rd Year2023-05-09 07:22:25', '2023-05-09 07:22:25', '0000-00-00 00:00:00'),
+(147, 'Updated Student Details', 'admin Updated Student Details - ID : 7 data : 2023-2JuanADela Cruz2023-04-1223Male5\'665sampleFilipinoSampleSingle09123456789onilevaeduj@gmail.comSampleSampleSampleSample52062023202320232023BSE4th Year2023-05-09 07:27:54', '2023-05-09 07:27:54', '0000-00-00 00:00:00'),
+(148, 'Updated Student Details', 'admin Updated Student Details - ID : 7 data : 2023-2JuanADela Cruz2023-04-1223Male5\'665sampleFilipinoSampleSingle09123456789onilevaeduj@gmail.comSampleSampleSampleSample52062023202320232023BSE1st Year2023-05-09 09:36:19', '2023-05-09 09:36:19', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -249,8 +259,30 @@ CREATE TABLE `tbl_school_year` (
 --
 
 INSERT INTO `tbl_school_year` (`id`, `school_year`, `status`, `created_at`, `updated_at`) VALUES
-(1, '2022-2023', 'active', '2023-02-27 08:35:14', '2023-04-18 02:30:02'),
-(6, '2023-2024', 'inactive', '2023-02-28 11:31:52', '2023-04-18 02:30:02');
+(1, '2022-2023', 'active', '2023-02-27 08:35:14', '2023-04-27 08:21:33'),
+(6, '2023-2024', 'inactive', '2023-02-28 11:31:52', '2023-04-27 08:21:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_signatory`
+--
+
+CREATE TABLE `tbl_signatory` (
+  `id` int(11) NOT NULL,
+  `fullname` varchar(250) NOT NULL,
+  `position` varchar(250) NOT NULL,
+  `status` varchar(10) NOT NULL COMMENT 'active or inactive',
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_signatory`
+--
+
+INSERT INTO `tbl_signatory` (`id`, `fullname`, `position`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Baby Mylin M. Vargas', 'College Registrar', 'active', '2023-04-27 13:07:16', '2023-04-27 09:35:31');
 
 -- --------------------------------------------------------
 
@@ -263,6 +295,8 @@ CREATE TABLE `tbl_staff` (
   `username` varchar(250) NOT NULL,
   `password` varchar(250) NOT NULL,
   `type` varchar(11) NOT NULL,
+  `active_status` varchar(10) NOT NULL,
+  `last_activity` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -271,8 +305,9 @@ CREATE TABLE `tbl_staff` (
 -- Dumping data for table `tbl_staff`
 --
 
-INSERT INTO `tbl_staff` (`id`, `username`, `password`, `type`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '2023-03-24 15:44:31', '2023-03-24 15:44:31');
+INSERT INTO `tbl_staff` (`id`, `username`, `password`, `type`, `active_status`, `last_activity`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'active', 1684802086, '2023-03-24 15:44:31', '2023-03-24 15:44:31'),
+(3, 'staff', '1253208465b1efa876f982d8a9e73eef', 'staff', 'inactive', 1683863061, '2023-05-04 10:05:32', '2023-05-08 05:09:05');
 
 -- --------------------------------------------------------
 
@@ -282,6 +317,7 @@ INSERT INTO `tbl_staff` (`id`, `username`, `password`, `type`, `created_at`, `up
 
 CREATE TABLE `tbl_student` (
   `id` int(11) NOT NULL,
+  `student_id` varchar(100) NOT NULL,
   `img` varchar(255) DEFAULT NULL,
   `lname` varchar(255) DEFAULT NULL,
   `fname` varchar(255) DEFAULT NULL,
@@ -355,15 +391,16 @@ CREATE TABLE `tbl_student` (
 -- Dumping data for table `tbl_student`
 --
 
-INSERT INTO `tbl_student` (`id`, `img`, `lname`, `fname`, `mname`, `extension`, `birthdate`, `age`, `sex`, `height`, `weight`, `birthplace`, `citizenship`, `religion`, `civil_status`, `mobile_no`, `email`, `facebook`, `address`, `city_municipality`, `province`, `zip_code`, `father`, `mother`, `guardian`, `f_occupation`, `m_occupation`, `g_relationship`, `f_contact`, `m_contact`, `g_contact`, `f_birthdate`, `m_birthdate`, `g_birthdate`, `parent_address`, `guardian_address`, `ws_company`, `ws_position`, `ws_date_started`, `ws_employer`, `ws_employer_contact`, `ws_company_address`, `program`, `year_level`, `sem`, `class_id`, `tertiary_school_last_attended`, `tertiary_school_address`, `tertiary_school_year_last_attended`, `tertiary_city`, `tertiary_province`, `secondary_school_last_attended`, `secondary_school_address`, `secondary_school_year_last_attended`, `secondary_city`, `secondary_province`, `secondary_junior_school_last_attended`, `secondary_junior_school_year_last_attended`, `secondary_junior_school_address`, `secondary_junior_city`, `secondary_junior_province`, `primary_school_last_attended`, `primary_school_year_last_attended`, `primary_school_address`, `primary_city`, `primary_province`, `date_created`, `date_updated`) VALUES
-(6, 'IMG_20210306_1703311.jpg', 'Dela Cruz', 'John', 'M', NULL, '2023-03-09', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'john@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '1st Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-03-31', '2023-03-31'),
-(7, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'onilevaeduj@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '2nd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-17'),
-(8, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'jiohnsad@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '2nd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
-(9, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgf@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '3rd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
-(10, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgwqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '4th Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
-(11, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdg23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '1st Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
-(12, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgas23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '3rd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13'),
-(13, 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdsddgas23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '2nd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-13');
+INSERT INTO `tbl_student` (`id`, `student_id`, `img`, `lname`, `fname`, `mname`, `extension`, `birthdate`, `age`, `sex`, `height`, `weight`, `birthplace`, `citizenship`, `religion`, `civil_status`, `mobile_no`, `email`, `facebook`, `address`, `city_municipality`, `province`, `zip_code`, `father`, `mother`, `guardian`, `f_occupation`, `m_occupation`, `g_relationship`, `f_contact`, `m_contact`, `g_contact`, `f_birthdate`, `m_birthdate`, `g_birthdate`, `parent_address`, `guardian_address`, `ws_company`, `ws_position`, `ws_date_started`, `ws_employer`, `ws_employer_contact`, `ws_company_address`, `program`, `year_level`, `sem`, `class_id`, `tertiary_school_last_attended`, `tertiary_school_address`, `tertiary_school_year_last_attended`, `tertiary_city`, `tertiary_province`, `secondary_school_last_attended`, `secondary_school_address`, `secondary_school_year_last_attended`, `secondary_city`, `secondary_province`, `secondary_junior_school_last_attended`, `secondary_junior_school_year_last_attended`, `secondary_junior_school_address`, `secondary_junior_city`, `secondary_junior_province`, `primary_school_last_attended`, `primary_school_year_last_attended`, `primary_school_address`, `primary_city`, `primary_province`, `date_created`, `date_updated`) VALUES
+(6, '2023-1', 'avatar3.jpg', 'Dela Cruz', 'John', 'M', NULL, '2023-03-09', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'john@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', 'Sample', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '1st Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-03-31', '2023-05-09'),
+(7, '2023-2', 'avatar.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'onilevaeduj@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '1st Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-05-09'),
+(8, '2023-3', 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'jiohnsad@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '2nd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-25'),
+(9, '2023-4', 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgf@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '3rd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-25'),
+(10, '2023-5', 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgwqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '4th Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-25'),
+(11, '2023-6', 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdg23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '1st Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-25'),
+(12, '2023-7', 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdgas23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '3rd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-25'),
+(13, '2023-8', 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'sadfdgfdsddgas23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BPA', '2nd Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-25'),
+(17, '2023-9', 'avatar1.jpg', 'Dela Cruz', 'Juan', 'A', NULL, '2023-04-12', 23, 'Male', '5\'6', '65', 'sample', 'Filipino', 'Sample', 'Single', '09123456789', 'wdr234dr34e23wqe3f@gmail.com', 'Sample', 'Sample', 'Sample', 'Sample', '5206', '', '', '', '', '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '', '', '', '', '0000-00-00', '', '', '', 'BSE', '4th Year', NULL, 'none', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023', '', '', '', '', '2023', '', '', '', '2023-04-13', '2023-04-25');
 
 -- --------------------------------------------------------
 
@@ -391,7 +428,8 @@ CREATE TABLE `tbl_student_subject_loads` (
   `subject_id` int(11) DEFAULT NULL,
   `subject_code` varchar(45) DEFAULT NULL,
   `student_id` int(11) DEFAULT NULL,
-  `grade` varchar(100) DEFAULT NULL,
+  `grade` float(4,2) NOT NULL,
+  `credit` int(4) DEFAULT NULL,
   `school_year` varchar(100) DEFAULT NULL,
   `date_created` datetime DEFAULT current_timestamp(),
   `date_updated` datetime DEFAULT NULL
@@ -401,106 +439,148 @@ CREATE TABLE `tbl_student_subject_loads` (
 -- Dumping data for table `tbl_student_subject_loads`
 --
 
-INSERT INTO `tbl_student_subject_loads` (`id`, `subject_id`, `subject_code`, `student_id`, `grade`, `school_year`, `date_created`, `date_updated`) VALUES
-(193, 1, 'GENE01', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(194, 2, 'GENE02', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(195, 3, 'GENE03', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(196, 4, 'GENE04', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(197, 5, 'GENE05', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(198, 6, 'GENE06', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(199, 7, 'PHED01', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(200, 8, 'NSTP1', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(201, 9, 'GENE07', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(202, 10, 'GENE08', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(203, 11, 'GENE09', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(204, 15, 'GENE10', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(205, 16, 'GENE11', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(206, 17, 'PHED02', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(207, 19, 'NSTP02', 8, NULL, '', '2023-04-13 13:24:48', NULL),
-(233, 1, 'GENE01', 7, NULL, '2022-2023', '2023-04-17 11:09:39', NULL),
-(234, 2, 'GENE02', 7, NULL, '2022-2023', '2023-04-17 11:09:39', NULL),
-(235, 3, 'GENE03', 7, NULL, '2022-2023', '2023-04-17 11:09:39', NULL),
-(236, 4, 'GENE04', 7, NULL, '2022-2023', '2023-04-17 11:09:39', NULL),
-(237, 5, 'GENE05', 7, NULL, '2022-2023', '2023-04-17 11:09:39', NULL),
-(238, 6, 'GENE06', 7, NULL, '2022-2023', '2023-04-17 11:09:39', NULL),
-(239, 7, 'PHED01', 7, NULL, '2022-2023', '2023-04-17 11:09:39', NULL),
-(240, 8, 'NSTP1', 7, NULL, '2022-2023', '2023-04-17 11:09:39', NULL),
-(241, 20, 'RIZA01', 8, NULL, '2022-2023', '2023-04-17 11:46:58', NULL),
-(242, 21, 'ENCO01', 8, NULL, '2022-2023', '2023-04-17 11:46:58', NULL),
-(243, 22, 'ENCO02', 8, NULL, '2022-2023', '2023-04-17 11:46:58', NULL),
-(244, 23, 'ENCO03', 8, NULL, '2022-2023', '2023-04-17 11:46:58', NULL),
-(245, 24, 'ENCO04', 8, NULL, '2022-2023', '2023-04-17 11:46:58', NULL),
-(246, 25, 'BACC01', 8, NULL, '2022-2023', '2023-04-17 11:46:58', NULL),
-(247, 26, 'PHED03', 8, NULL, '2022-2023', '2023-04-17 11:46:58', NULL),
-(255, 29, 'ENCO07', 8, NULL, '2022-2023', '2023-04-17 13:15:18', NULL),
-(256, 30, 'ENTR01', 8, NULL, '2022-2023', '2023-04-17 13:15:18', NULL),
-(257, 31, 'TECEN01', 8, NULL, '2022-2023', '2023-04-17 13:15:18', NULL),
-(258, 32, 'FBAN01', 8, NULL, '2022-2023', '2023-04-17 13:15:18', NULL),
-(259, 33, 'PHED04', 8, NULL, '2022-2023', '2023-04-17 13:15:18', NULL),
-(264, 1, 'GENE01', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(265, 2, 'GENE02', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(266, 3, 'GENE03', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(267, 4, 'GENE04', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(268, 5, 'GENE05', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(269, 6, 'GENE06', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(270, 7, 'PHED01', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(271, 8, 'NSTP1', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(272, 9, 'GENE07', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(273, 10, 'GENE08', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(274, 11, 'GENE09', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(275, 15, 'GENE10', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(276, 16, 'GENE11', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(277, 17, 'PHED02', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(278, 19, 'NSTP02', 6, NULL, '2022-2023', '2023-04-17 14:29:16', NULL),
-(279, 53, 'GENE01', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(280, 54, 'GENE02', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(281, 55, 'GENE03', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(282, 56, 'GENE04', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(283, 57, 'GENE05', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(284, 58, 'GENE06', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(285, 59, 'PHED01', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(286, 60, 'NSTP01', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(287, 61, 'GENE07', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(288, 62, 'GENE08', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(289, 63, 'GENE09', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(290, 64, 'GENE10', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(291, 65, 'GENE11', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(292, 66, 'PHED02', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(293, 67, 'NSTP02', 11, NULL, '2022-2023', '2023-04-17 14:42:10', NULL),
-(294, 82, 'BPAM07', 12, NULL, '2022-2023', '2023-04-17 14:46:16', NULL),
-(295, 83, 'BPAM08', 12, NULL, '2022-2023', '2023-04-17 14:46:16', NULL),
-(296, 84, 'BPAM09', 12, NULL, '2022-2023', '2023-04-17 14:46:16', NULL),
-(297, 85, 'BPAE01', 12, NULL, '2022-2023', '2023-04-17 14:46:16', NULL),
-(298, 86, 'BPAE03', 12, NULL, '2022-2023', '2023-04-17 14:46:16', NULL),
-(299, 87, 'BPAE05', 12, NULL, '2022-2023', '2023-04-17 14:46:16', NULL),
-(300, 88, 'BPAM10', 12, NULL, '2022-2023', '2023-04-17 14:46:16', NULL),
-(301, 89, 'BPAM11', 12, NULL, '2022-2023', '2023-04-17 14:46:16', NULL),
-(302, 90, 'BPAM12', 12, NULL, '2022-2023', '2023-04-17 14:46:16', NULL),
-(303, 91, 'BPAM13', 12, NULL, '2022-2023', '2023-04-17 14:46:16', NULL),
-(304, 92, 'BPAE04', 12, NULL, '2022-2023', '2023-04-17 14:46:17', NULL),
-(305, 93, 'BPAE06', 12, NULL, '2022-2023', '2023-04-17 14:46:17', NULL),
-(306, 68, 'BPAM01', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(307, 69, 'GENE12', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(308, 70, 'BPAM02', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(309, 71, 'BPAC01', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(310, 72, 'BPAC02', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(311, 73, 'RIZA01', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(312, 74, 'PHED03', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(313, 75, 'BPAC03', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(314, 76, 'BPAC04', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(315, 77, 'BPAM03', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(316, 78, 'BPAM04', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(317, 79, 'BPAM05', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(318, 80, 'BPAM06', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(319, 81, 'PHED04', 13, NULL, '2022-2023', '2023-04-17 14:47:41', NULL),
-(320, 94, 'BPAM14', 10, NULL, '2022-2023', '2023-04-17 14:59:11', NULL),
-(321, 97, 'BPAM15', 10, NULL, '2022-2023', '2023-04-17 14:59:11', NULL),
-(322, 98, 'BPAM16', 10, NULL, '2022-2023', '2023-04-17 14:59:11', NULL),
-(323, 99, 'BPAM17', 10, NULL, '2022-2023', '2023-04-17 14:59:11', NULL),
-(324, 100, 'BPAE05', 10, NULL, '2022-2023', '2023-04-17 14:59:11', NULL),
-(325, 101, 'BPAM18', 10, NULL, '2022-2023', '2023-04-17 14:59:11', NULL),
-(326, 102, 'BPAM19', 10, NULL, '2022-2023', '2023-04-17 14:59:11', NULL),
-(327, 103, 'BPAM20', 10, NULL, '2022-2023', '2023-04-17 14:59:11', NULL);
+INSERT INTO `tbl_student_subject_loads` (`id`, `subject_id`, `subject_code`, `student_id`, `grade`, `credit`, `school_year`, `date_created`, `date_updated`) VALUES
+(193, 1, 'GENE01', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(194, 2, 'GENE02', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(195, 3, 'GENE03', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(196, 4, 'GENE04', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(197, 5, 'GENE05', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(198, 6, 'GENE06', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(199, 7, 'PHED01', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(200, 8, 'NSTP1', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(201, 9, 'GENE07', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(202, 10, 'GENE08', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(203, 11, 'GENE09', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(204, 15, 'GENE10', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(205, 16, 'GENE11', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(206, 17, 'PHED02', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(207, 19, 'NSTP02', 8, 0.00, 0, '2022-2023', '2023-04-13 13:24:48', NULL),
+(233, 1, 'GENE01', 7, 90.75, 0, '2022-2023', '2023-04-17 11:09:39', NULL),
+(234, 2, 'GENE02', 7, 90.00, 0, '2022-2023', '2023-04-17 11:09:39', NULL),
+(235, 3, 'GENE03', 7, 90.00, 0, '2022-2023', '2023-04-17 11:09:39', NULL),
+(236, 4, 'GENE04', 7, 90.00, 0, '2022-2023', '2023-04-17 11:09:39', NULL),
+(237, 5, 'GENE05', 7, 90.00, 0, '2022-2023', '2023-04-17 11:09:39', NULL),
+(238, 6, 'GENE06', 7, 90.00, 0, '2022-2023', '2023-04-17 11:09:39', NULL),
+(239, 7, 'PHED01', 7, 90.00, 0, '2022-2023', '2023-04-17 11:09:39', NULL),
+(240, 8, 'NSTP1', 7, 90.00, 0, '2022-2023', '2023-04-17 11:09:39', NULL),
+(241, 20, 'RIZA01', 8, 89.00, 0, '2022-2023', '2023-04-17 11:46:58', NULL),
+(242, 21, 'ENCO01', 8, 0.00, 0, '2022-2023', '2023-04-17 11:46:58', NULL),
+(243, 22, 'ENCO02', 8, 0.00, 0, '2022-2023', '2023-04-17 11:46:58', NULL),
+(244, 23, 'ENCO03', 8, 0.00, 0, '2022-2023', '2023-04-17 11:46:58', NULL),
+(245, 24, 'ENCO04', 8, 0.00, 0, '2022-2023', '2023-04-17 11:46:58', NULL),
+(246, 25, 'BACC01', 8, 0.00, 0, '2022-2023', '2023-04-17 11:46:58', NULL),
+(247, 26, 'PHED03', 8, 0.00, 0, '2022-2023', '2023-04-17 11:46:58', NULL),
+(255, 29, 'ENCO07', 8, 0.00, 0, '2022-2023', '2023-04-17 13:15:18', NULL),
+(256, 30, 'ENTR01', 8, 0.00, 0, '2022-2023', '2023-04-17 13:15:18', NULL),
+(257, 31, 'TECEN01', 8, 0.00, 0, '2022-2023', '2023-04-17 13:15:18', NULL),
+(258, 32, 'FBAN01', 8, 0.00, 0, '2022-2023', '2023-04-17 13:15:18', NULL),
+(259, 33, 'PHED04', 8, 0.00, 0, '2022-2023', '2023-04-17 13:15:18', NULL),
+(279, 53, 'GENE01', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(280, 54, 'GENE02', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(281, 55, 'GENE03', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(282, 56, 'GENE04', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(283, 57, 'GENE05', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(284, 58, 'GENE06', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(285, 59, 'PHED01', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(286, 60, 'NSTP01', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(287, 61, 'GENE07', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(288, 62, 'GENE08', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(289, 63, 'GENE09', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(290, 64, 'GENE10', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(291, 65, 'GENE11', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(292, 66, 'PHED02', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(293, 67, 'NSTP02', 11, 0.00, 0, '2022-2023', '2023-04-17 14:42:10', NULL),
+(294, 82, 'BPAM07', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:16', NULL),
+(295, 83, 'BPAM08', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:16', NULL),
+(296, 84, 'BPAM09', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:16', NULL),
+(297, 85, 'BPAE01', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:16', NULL),
+(298, 86, 'BPAE03', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:16', NULL),
+(299, 87, 'BPAE05', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:16', NULL),
+(300, 88, 'BPAM10', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:16', NULL),
+(301, 89, 'BPAM11', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:16', NULL),
+(302, 90, 'BPAM12', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:16', NULL),
+(303, 91, 'BPAM13', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:16', NULL),
+(304, 92, 'BPAE04', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:17', NULL),
+(305, 93, 'BPAE06', 12, 0.00, 0, '2022-2023', '2023-04-17 14:46:17', NULL),
+(306, 68, 'BPAM01', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(307, 69, 'GENE12', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(308, 70, 'BPAM02', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(309, 71, 'BPAC01', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(310, 72, 'BPAC02', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(311, 73, 'RIZA01', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(312, 74, 'PHED03', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(313, 75, 'BPAC03', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(314, 76, 'BPAC04', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(315, 77, 'BPAM03', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(316, 78, 'BPAM04', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(317, 79, 'BPAM05', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(318, 80, 'BPAM06', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(319, 81, 'PHED04', 13, 0.00, 0, '2022-2023', '2023-04-17 14:47:41', NULL),
+(320, 94, 'BPAM14', 10, 0.00, 0, '2022-2023', '2023-04-17 14:59:11', NULL),
+(321, 97, 'BPAM15', 10, 0.00, 0, '2022-2023', '2023-04-17 14:59:11', NULL),
+(322, 98, 'BPAM16', 10, 0.00, 0, '2022-2023', '2023-04-17 14:59:11', NULL),
+(323, 99, 'BPAM17', 10, 0.00, 0, '2022-2023', '2023-04-17 14:59:11', NULL),
+(324, 100, 'BPAE05', 10, 0.00, 0, '2022-2023', '2023-04-17 14:59:11', NULL),
+(325, 101, 'BPAM18', 10, 0.00, 0, '2022-2023', '2023-04-17 14:59:11', NULL),
+(326, 102, 'BPAM19', 10, 0.00, 0, '2022-2023', '2023-04-17 14:59:11', NULL),
+(327, 103, 'BPAM20', 10, 0.00, 0, '2022-2023', '2023-04-17 14:59:11', NULL),
+(328, 1, 'GENE01', 6, 98.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(329, 2, 'GENE02', 6, 90.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(330, 3, 'GENE03', 6, 89.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(331, 4, 'GENE04', 6, 89.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(332, 5, 'GENE05', 6, 90.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(333, 6, 'GENE06', 6, 90.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(334, 7, 'PHED01', 6, 12.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(335, 8, 'NSTP1', 6, 98.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(336, 9, 'GENE07', 6, 12.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(337, 10, 'GENE08', 6, 34.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(338, 11, 'GENE09', 6, 0.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(339, 15, 'GENE10', 6, 0.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(340, 16, 'GENE11', 6, 0.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(341, 17, 'PHED02', 6, 0.00, NULL, '2022-2023', '2023-04-25 08:40:00', NULL),
+(343, 19, 'NSTP02', 6, 0.00, NULL, '2022-2023', '2023-04-25 08:41:06', NULL),
+(344, 27, 'ENCO05', 8, 0.00, NULL, '2022-2023', '2023-04-25 15:40:15', NULL),
+(345, 28, 'ENCO06', 8, 0.00, NULL, '2022-2023', '2023-04-25 15:40:15', NULL),
+(360, 20, 'RIZA01', 7, 90.00, NULL, '2022-2023', '2023-04-25 15:42:13', NULL),
+(361, 21, 'ENCO01', 7, 54.00, NULL, '2022-2023', '2023-04-25 15:42:13', NULL),
+(362, 22, 'ENCO02', 7, 98.00, NULL, '2022-2023', '2023-04-25 15:42:13', NULL),
+(363, 23, 'ENCO03', 7, 98.00, NULL, '2022-2023', '2023-04-25 15:42:13', NULL),
+(364, 24, 'ENCO04', 7, 98.00, NULL, '2022-2023', '2023-04-25 15:42:13', NULL),
+(365, 25, 'BACC01', 7, 89.00, NULL, '2022-2023', '2023-04-25 15:42:13', NULL),
+(366, 26, 'PHED03', 7, 89.00, NULL, '2022-2023', '2023-04-25 15:42:13', NULL),
+(367, 27, 'ENCO05', 7, 0.00, NULL, '2022-2023', '2023-05-09 09:34:52', NULL),
+(368, 28, 'ENCO06', 7, 0.00, NULL, '2022-2023', '2023-05-09 09:34:52', NULL),
+(369, 29, 'ENCO07', 7, 0.00, NULL, '2022-2023', '2023-05-09 09:34:52', NULL),
+(370, 30, 'ENTR01', 7, 0.00, NULL, '2022-2023', '2023-05-09 09:34:52', NULL),
+(371, 31, 'TECEN01', 7, 0.00, NULL, '2022-2023', '2023-05-09 09:34:52', NULL),
+(372, 32, 'FBAN01', 7, 0.00, NULL, '2022-2023', '2023-05-09 09:34:52', NULL),
+(373, 33, 'PHED04', 7, 0.00, NULL, '2022-2023', '2023-05-09 09:34:52', NULL),
+(374, 9, 'GENE07', 7, 90.00, NULL, '2022-2023', '2023-05-09 09:37:18', NULL),
+(375, 10, 'GENE08', 7, 90.00, NULL, '2022-2023', '2023-05-09 09:37:18', NULL),
+(376, 11, 'GENE09', 7, 90.00, NULL, '2022-2023', '2023-05-09 09:37:18', NULL),
+(377, 15, 'GENE10', 7, 90.00, NULL, '2022-2023', '2023-05-09 09:37:18', NULL),
+(378, 16, 'GENE11', 7, 90.00, NULL, '2022-2023', '2023-05-09 09:37:18', NULL),
+(379, 17, 'PHED02', 7, 90.00, NULL, '2022-2023', '2023-05-09 09:37:18', NULL),
+(380, 19, 'NSTP02', 7, 90.00, NULL, '2022-2023', '2023-05-09 09:37:18', NULL),
+(381, 34, 'ENCO08', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(382, 35, 'ENCO09', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(383, 36, 'CBME01', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(384, 37, 'SPET01', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(385, 38, 'ELEC01', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(386, 39, 'ELEC02', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(387, 40, 'ENTR02', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(388, 41, 'SPET02', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(389, 42, 'ELEC03', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(390, 43, 'ELEC04', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(391, 44, 'ENCO10', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(392, 45, 'ENCO11', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(393, 46, 'CBME02', 7, 0.00, NULL, '2022-2023', '2023-05-09 13:22:35', NULL),
+(394, 47, 'ENCO12', 7, 80.00, NULL, '2022-2023', '2023-05-09 13:28:04', NULL),
+(395, 48, 'ENCO13', 7, 90.00, NULL, '2022-2023', '2023-05-09 13:28:04', NULL),
+(396, 49, 'SPET03', 7, 89.00, NULL, '2022-2023', '2023-05-09 13:28:04', NULL),
+(397, 50, 'ENCO14', 7, 80.00, NULL, '2022-2023', '2023-05-09 13:28:04', NULL),
+(398, 51, 'ENCO15', 7, 78.00, NULL, '2022-2023', '2023-05-09 13:28:04', NULL),
+(399, 52, 'SPET04', 7, 89.00, NULL, '2022-2023', '2023-05-09 13:28:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -721,6 +801,12 @@ INSERT INTO `tbl_year_level` (`id`, `year`, `created_at`, `updated_at`) VALUES
 --
 
 --
+-- Indexes for table `sample_data`
+--
+ALTER TABLE `sample_data`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_announcements`
 --
 ALTER TABLE `tbl_announcements`
@@ -775,6 +861,12 @@ ALTER TABLE `tbl_school_year`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_signatory`
+--
+ALTER TABLE `tbl_signatory`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_staff`
 --
 ALTER TABLE `tbl_staff`
@@ -785,6 +877,7 @@ ALTER TABLE `tbl_staff`
 --
 ALTER TABLE `tbl_student`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `student_id` (`student_id`) USING BTREE,
   ADD UNIQUE KEY `email` (`email`);
 
 --
@@ -843,6 +936,12 @@ ALTER TABLE `tbl_year_level`
 --
 
 --
+-- AUTO_INCREMENT for table `sample_data`
+--
+ALTER TABLE `sample_data`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `tbl_announcements`
 --
 ALTER TABLE `tbl_announcements`
@@ -876,7 +975,7 @@ ALTER TABLE `tbl_course`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT for table `tbl_program`
@@ -891,16 +990,22 @@ ALTER TABLE `tbl_school_year`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `tbl_signatory`
+--
+ALTER TABLE `tbl_signatory`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tbl_staff`
 --
 ALTER TABLE `tbl_staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_student`
 --
 ALTER TABLE `tbl_student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_students_grades`
@@ -912,7 +1017,7 @@ ALTER TABLE `tbl_students_grades`
 -- AUTO_INCREMENT for table `tbl_student_subject_loads`
 --
 ALTER TABLE `tbl_student_subject_loads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=328;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=400;
 
 --
 -- AUTO_INCREMENT for table `tbl_subject`
