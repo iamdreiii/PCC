@@ -16,6 +16,12 @@
   text-align: center;
   padding:0px,0px,0px,0px;
 }
+.table td {
+  text-align: center;
+  padding: 0;
+  border-left: 1px solid black; /* Add this line */
+}
+
 
 .table tr:last-child td {
   border-bottom: 1px solid black;
@@ -47,13 +53,13 @@
         <h3 style="margin-top: 5px; margin-bottom: 5px;">
           <b>POLA COMMUNITY COLLEGE</b>
         </h3>
-        <h3 style="margin-top: 5px; margin-bottom: 5px;">
-          <b><?php foreach($student_data as $row) {echo $row['program'];}?></b>
-        </h3>
+        
       </div>
     </div>
-    
-    
+    <h5 style="margin-top: 5px; margin-bottom: 5px;"><b>Zone II, Pola Oriental Mindoro</b></h5>
+    <h4 style="margin-top: 5px; margin-bottom: 5px;">
+          <b><?php foreach($student_data as $row) {if($row['program'] == 'BSE'){echo 'BACHELOR OF SCIENCE IN ENTREPRENEURSHIP';}elseif($row['program'] == 'BPA'){echo 'BACHELOR OF PUBLIC ADMINISTRATION';}}?></b>
+        </h4>
     <h4><b>TENTATIVE EVALUATION</b></h4>
     <h4><b>A.Y. <?php foreach($sy as $row) {if($row['status'] == 'active'){echo $row['school_year'];}}?></b></h4>
   </div>
@@ -76,7 +82,7 @@
 <div class="container col-sm-12">
 <!-----------------------------------------------------------------2ND--------------------------------------------------------------------------------->
 
-<?php if(empty($fourth_student_loads)) : ?>
+<?php if(empty($first_student_loads)) : ?>
 <tr>
 <!-- <td colspan="4" style="text-align: center;">No Matching Records</td> -->
 </tr>
@@ -157,13 +163,10 @@ foreach ($first_student_loads as $count) {
     {
       echo $row['grade'];
     }
-  ?>
-  </td>
+  ?></td>
 </tr>
-
 <?php }?>
 <?php endforeach?>
-
 <tr>
   <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
   <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
@@ -231,8 +234,7 @@ if($has_second_semester1) : ?>
     {
       echo $row['grade'];
     }
-  ?>
-  </td>
+  ?></td>
 </tr>
 <?php }?>
 <?php endforeach?>
@@ -249,7 +251,6 @@ if($has_second_semester1) : ?>
 </tr>
 </tfoot>
 </table>
-
 
 <!-----------------------------------------------------------------2ND--------------------------------------------------------------------------------->
 
@@ -331,13 +332,10 @@ foreach ($second_student_loads as $count) {
     {
       echo $row['grade'];
     }
-  ?>
-  </td>
+  ?></td>
 </tr>
-
 <?php }?>
 <?php endforeach?>
-
 <tr>
   <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
   <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
@@ -345,7 +343,6 @@ foreach ($second_student_loads as $count) {
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"></td>
   <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;"></td>
 </tr>
-
 <?php 
 $has_second_semester2 = false;
 foreach($second_student_loads as $row) {
@@ -405,8 +402,7 @@ if($has_second_semester2) : ?>
     {
       echo $row['grade'];
     }
-  ?>
-  </td>
+  ?></td>
 </tr>
 <?php }?>
 <?php endforeach?>
@@ -423,7 +419,6 @@ if($has_second_semester2) : ?>
 </tr>
 </tfoot>
 </table>
-
 
 <!--------------------------------------------------------------------3RD------------------------------------------------------------------------------>
 
@@ -505,13 +500,10 @@ foreach ($third_student_loads as $count) {
     {
       echo $row['grade'];
     }
-  ?>
-  </td>
+  ?></td>
 </tr>
-
 <?php }?>
 <?php endforeach?>
-
 <tr>
   <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
   <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
@@ -519,7 +511,6 @@ foreach ($third_student_loads as $count) {
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"></td>
   <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;"></td>
 </tr>
-
 <?php 
 $has_second_semester3 = false;
 foreach($third_student_loads as $row) {
@@ -579,8 +570,7 @@ if($has_second_semester3) : ?>
     {
       echo $row['grade'];
     }
-  ?>
-  </td>
+  ?></td>
 </tr>
 <?php }?>
 <?php endforeach?>
@@ -678,13 +668,10 @@ foreach ($fourth_student_loads as $count) {
     {
       echo $row['grade'];
     }
-  ?>
-  </td>
+  ?></td>
 </tr>
-
 <?php }?>
 <?php endforeach?>
-
 <tr>
   <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
   <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
@@ -692,7 +679,6 @@ foreach ($fourth_student_loads as $count) {
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"></td>
   <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;"></td>
 </tr>
-
 <?php 
 $has_second_semester4 = false;
 foreach($fourth_student_loads as $row) {
@@ -752,8 +738,7 @@ if($has_second_semester4) : ?>
     {
       echo $row['grade'];
     }
-  ?>
-  </td>
+  ?></td>
 </tr>
 <?php }?>
 <?php endforeach?>
@@ -761,13 +746,13 @@ if($has_second_semester4) : ?>
 <?php endif; ?>
 </tbody>
 <tfoot>
-<tr>
-  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px; border-bottom:hidden;"></td>
-  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"><?php if(empty($total_units4_2)){}else{echo $total_units4_2;}?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
-  <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;border-bottom:hidden;"></td>
-</tr>
+  <tr>
+    <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px; border-bottom:hidden;"></td>
+    <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
+    <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"><?php if(empty($total_units4_2)){}else{echo $total_units4_2;}?></td>
+    <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
+    <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;border-bottom:hidden;"></td>
+  </tr>
 </tfoot>
 </table>
 
@@ -783,7 +768,7 @@ if($has_second_semester4) : ?>
   }
   }elseif($data['program'] == 'BPA'){
     foreach($countbpa as $row) {
-      $row['un'];
+      echo $row['un'];
   }
   }
 }
@@ -825,10 +810,7 @@ if($has_second_semester4) : ?>
 <?php endforeach?>
 </div>
 
-
-</section>
-
 </div>
-
+</section>
 </body>
 </html>
