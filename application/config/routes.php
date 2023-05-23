@@ -135,3 +135,4 @@ $route['Signatory'] =  'Signatory/index';
 // RECORDS
 $route['records'] =  'Records/index';
 $route['print_student_academic_records/(:num)'] = 'Records/print_student_academic_records/$1';
+$route['print_tentative_evaluation/(:num)'] = 'Records/print_tentative_evaluation/$1';

@@ -625,4 +625,13 @@ class Student_loads_model extends CI_Model
         $this->db->delete('tbl_student_subject_loads');
     }
 
+    public function signatory()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_signatory');
+        $this->db->where('status', 'active');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 }

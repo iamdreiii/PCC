@@ -56,7 +56,7 @@ class Records extends CI_Controller {
             <li><a href="'.base_url().'cert_of_grade/'. $user->id.'">Cert. of Grade</a></li>
             <li><a href="'.base_url().'cert_of_transfer/'. $user->id.'">Cert. of Transfer</a></li>
             <li><a href="'.base_url().'form_138/'. $user->id.'">Form-138</a></li>
-            <li><a href="'.base_url().'tentative_evaluation/'. $user->id.'">Tentative Evaluation</a></li>
+            <li><a href="'.base_url().'print_tentative_evaluation/'. $user->id.'">Tentative Evaluation</a></li>
             <li><a href="'.base_url().'tor/'. $user->id.'">Transcript of Records</a></li>
             </ul>
             </div>';
@@ -94,6 +94,39 @@ class Records extends CI_Controller {
             $data['third_student_loads'] = $this->Student_loads_model->get_student_loads_third_year($param);
             $data['fourth_student_loads'] = $this->Student_loads_model->get_student_loads_fourth_year($param);
             $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+            $data['signatory'] = $this->Student_loads_model->signatory();
+            if (isset($data['first_student_loads'][0]['school_year'])) {
+            $data['firstsy'] = $data['first_student_loads'][0]['school_year'];
+            }
+            if (isset($data['second_student_loads'][0]['school_year'])) {
+            $data['secondsy'] = $data['second_student_loads'][0]['school_year'];
+            }
+            if (isset($data['third_student_loads'][0]['school_year'])) {
+            $data['thirdsy'] = $data['third_student_loads'][0]['school_year'];
+            }
+            if (isset($data['fourth_student_loads'][0]['school_year'])) {
+            $data['fourthsy'] = $data['fourth_student_loads'][0]['school_year'];
+            }
+            $data['id'] = $param;
+            $this->load->view('admin/records/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }	
+    }
+    public function print_tentative_evaluation($param)
+    {
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
+        {
+            $page = 'print_tentative_evaluation';
+            if(!file_exists(APPPATH.'views/admin/records/'.$page.'.php')){
+                show_404();
+            }
+            $data['first_student_loads'] = $this->Student_loads_model->get_student_loads_first_year($param);
+            $data['second_student_loads'] = $this->Student_loads_model->get_student_loads_second_year($param);
+            $data['third_student_loads'] = $this->Student_loads_model->get_student_loads_third_year($param);
+            $data['fourth_student_loads'] = $this->Student_loads_model->get_student_loads_fourth_year($param);
+            $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+            $data['signatory'] = $this->Student_loads_model->signatory();
             if (isset($data['first_student_loads'][0]['school_year'])) {
             $data['firstsy'] = $data['first_student_loads'][0]['school_year'];
             }
