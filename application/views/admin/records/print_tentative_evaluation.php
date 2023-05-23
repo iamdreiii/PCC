@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="<?=base_url()?>assets/record/print.css" media="print">
 <style>
 
-.table {
+/* .table {
     text-align: center;
     border: 0;
 }
@@ -26,7 +26,7 @@
 }
 .table tr.spacing>th {
   margin:0; padding:0;
-}
+} */
 
 
 
@@ -51,14 +51,15 @@
         <h3 style="margin-top: 5px; margin-bottom: 5px;">
           <b>POLA COMMUNITY COLLEGE</b>
         </h3>
+        <h3 style="margin-top: 5px; margin-bottom: 5px;">
+          <b><?php foreach($student_data as $row) {echo $row['program'];}?></b>
+        </h3>
       </div>
     </div>
-    <h5 style="margin-top: 5px; margin-bottom: 5px;"><b>Zone II, Pola Oriental Mindoro</b></h5>
-    <h6 style="margin-top: 5px; margin-bottom: 5px;"><b>Phone: +(63)9560875992 | E-mail: polacommunitycollege2020@gmail.com</b></h6>
-    <hr style="margin-top: 15px; margin-bottom: 2px;">
-    <hr style="margin-top: 2px; margin-bottom: 2px;">
-    <h4><b>OFFICE OF THE REGISTRAR</b></h4>
-    <h4><b>ACADEMIC RECORDS</b></h4>
+    
+    
+    <h4><b>TENTATIVE EVALUATION</b></h4>
+    <h4><b>A.Y. <?php foreach($sy as $row) {if($row['status'] == 'active'){echo $row['school_year'];}}?></b></h4>
   </div>
 </div>
 
@@ -66,13 +67,7 @@
 <div class="row col-sm-12 invoice-info">
 <div class="col-sm-10 invoice-col">
   <address style="white-space: nowrap;">
-    Name : <?= ucfirst($row['lname'])?>, <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?><br>
-    Address : <?= ucfirst($row['address'])?> <?= ucfirst($row['city_municipality'])?> <?= ucfirst($row['province'])?><br>
-    Course : <?php if($row['program'] == 'BSE') {echo 'Bachelor of Science in Entrepreneurship';}else{echo 'Bachelor of Public Administration';}?><br>
-    Date of Admission : <br>
-    Place of Birth :  <?= ucfirst($row['birthplace'])?><br>
-    Elementary Course Completed :  <?= ucfirst($row['primary_school_last_attended'])?><br>
-    High School Course Completed :  <?= ucfirst($row['secondary_school_last_attended'])?><br>
+    <strong><?= ucfirst($row['lname'])?>, <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?></strong>
   </address>
 </div>
 
@@ -83,33 +78,43 @@
 
 
 <div class="container col-sm-12">
+<!-----------------------------------------------------------------2ND--------------------------------------------------------------------------------->
 
-<!-- <?php
-$total_units1 = 0; 
-foreach($first_student_loads as $row) {
-    $total_units1 += $row['units']; 
+<?php if(empty($fourth_student_loads)) : ?>
+<tr>
+<!-- <td colspan="4" style="text-align: center;">No Matching Records</td> -->
+</tr>
+<?php else : ?>
+<?php
+$total_units1_1 = 0;
+$total_units1_2 = 0;
+
+foreach ($first_student_loads as $count) {
+    if ($count['semester'] == 1) {
+        $total_units1_1 += $count['units'];
+    } elseif ($count['semester'] == 2) {
+        $total_units1_2 += $count['units'];
+    }
 }
-?> -->
 
-<table class="table" >
-<center><h4><strong>First Year</strong></h4></center>
+?>
+<table class="table">
+<center><h4 ><strong>First Year</strong></h4></center>
 <thead>
 <tr class="spacing">
 <th style="border: 1px solid black;">COURSE CODE</th>
 <th style="border: 1px solid black;">COURSE DESCRIPTION</th>
+<th style="border: 1px solid black;">UNITS</th>
+<th style="border: 1px solid black;">PRE-REQ</th>
 <th style="border: 1px solid black;">GRADES</th>
-<th style="border: 1px solid black;">CREDIT</th>
 </tr>
 </thead>
 <tbody>
-<?php if(empty($first_student_loads)) : ?>
-<tr>
-<td colspan="4" style="text-align: center;">No Matching Records</td>
-</tr>
-<?php else : ?>
+
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>First Semester : <?= $firstsy?></u></strong></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
 </tr>
@@ -118,23 +123,72 @@ foreach($first_student_loads as $row) {
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['coursecode']?></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['description']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo intval( $row['grade'])?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php if(empty($row['grade']) ||$row['grade'] == 0.00 || $row['grade'] == NULL){echo 0;}else{echo $row['units'];}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['units']?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo strtoupper($row['pre_req'])?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">
+  <?php
+   if($row['grade'] >= 98 && $row['grade'] <= 100)
+    {
+      echo '1.0';
+    }elseif($row['grade'] >= 95 && $row['grade'] <= 97)
+    {
+      echo '1.25';
+    }elseif($row['grade'] >= 92 && $row['grade'] <= 94)
+    {
+      echo '1.5';
+    }elseif($row['grade'] >= 89 && $row['grade'] <= 91)
+    {
+      echo '1.75';
+    }elseif($row['grade'] >= 86 && $row['grade'] <= 88)
+    {
+      echo '2.0';
+    }elseif($row['grade'] >= 83 && $row['grade'] <= 85)
+    {
+      echo '2.25';
+    }elseif($row['grade'] >= 80 && $row['grade'] <= 82)
+    {
+      echo '2.5';
+    }elseif($row['grade'] >= 77 && $row['grade'] <= 79)
+    {
+      echo '2.75';
+    }elseif($row['grade'] >= 75 && $row['grade'] <= 76)
+    {
+      echo '3.0';
+    }elseif($row['grade'] < 75 && $row['grade'] >= 1)
+    {
+      echo '5';
+    }elseif(empty($row['grade']) || $row['grade'] == 0.00 || $row['grade'] == NULL)
+    {
+      echo $row['grade'];
+    }
+  ?>
+  </td>
 </tr>
+
 <?php }?>
 <?php endforeach?>
+
+<tr>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"><?php if(empty($total_units1_1)){}else{echo $total_units1_1;}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;"></td>
+</tr>
+
 <?php 
-$has_second_semester = false;
+$has_second_semester1 = false;
 foreach($first_student_loads as $row) {
   if($row['semester'] == 2) {
-    $has_second_semester = true;
+    $has_second_semester1 = true;
     break;
   }
 }
-if($has_second_semester) : ?>
+if($has_second_semester1) : ?>
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"><strong><u>Second Semester <?php if(empty($firstsy)){}else{echo $firstsy;}?></u></strong></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
 </tr>
@@ -143,15 +197,63 @@ if($has_second_semester) : ?>
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['coursecode']?></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['description']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['grade']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php if(empty($row['grade']) ||$row['grade'] == 0.00 || $row['grade'] == NULL){echo 0;}else{echo $row['units'];}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['units']?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo strtoupper($row['pre_req'])?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">
+  <?php
+   if($row['grade'] >= 98 && $row['grade'] <= 100)
+    {
+      echo '1.0';
+    }elseif($row['grade'] >= 95 && $row['grade'] <= 97)
+    {
+      echo '1.25';
+    }elseif($row['grade'] >= 92 && $row['grade'] <= 94)
+    {
+      echo '1.5';
+    }elseif($row['grade'] >= 89 && $row['grade'] <= 91)
+    {
+      echo '1.75';
+    }elseif($row['grade'] >= 86 && $row['grade'] <= 88)
+    {
+      echo '2.0';
+    }elseif($row['grade'] >= 83 && $row['grade'] <= 85)
+    {
+      echo '2.25';
+    }elseif($row['grade'] >= 80 && $row['grade'] <= 82)
+    {
+      echo '2.5';
+    }elseif($row['grade'] >= 77 && $row['grade'] <= 79)
+    {
+      echo '2.75';
+    }elseif($row['grade'] >= 75 && $row['grade'] <= 76)
+    {
+      echo '3.0';
+    }elseif($row['grade'] < 75 && $row['grade'] >= 1)
+    {
+      echo '5';
+    }elseif(empty($row['grade']) || $row['grade'] == 0.00 || $row['grade'] == NULL)
+    {
+      echo $row['grade'];
+    }
+  ?>
+  </td>
 </tr>
 <?php }?>
 <?php endforeach?>
 <?php endif; ?>
 <?php endif; ?>
 </tbody>
+<tfoot>
+<tr>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px; border-bottom:hidden;"></td>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"><?php if(empty($total_units1_2)){}else{echo $total_units1_2;}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
+  <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;border-bottom:hidden;"></td>
+</tr>
+</tfoot>
 </table>
+
 
 <!-----------------------------------------------------------------2ND--------------------------------------------------------------------------------->
 
@@ -160,21 +262,33 @@ if($has_second_semester) : ?>
 <!-- <td colspan="4" style="text-align: center;">No Matching Records</td> -->
 </tr>
 <?php else : ?>
+<?php
+$total_units2_1 = 0;
+$total_units2_2 = 0;
+foreach ($second_student_loads as $count) {
+    if ($count['semester'] == 1) {
+        $total_units2_1 += $count['units'];
+    } elseif ($count['semester'] == 2) {
+        $total_units2_2 += $count['units'];
+    }
+}
+?>
 <table class="table" >
-<center><h4><strong>Second Year</strong></h4></center>
+<center><h4 ><strong>Second Year</strong></h4></center>
 <thead>
 <tr class="spacing">
 <th style="border: 1px solid black;">COURSE CODE</th>
 <th style="border: 1px solid black;">COURSE DESCRIPTION</th>
+<th style="border: 1px solid black;">UNITS</th>
+<th style="border: 1px solid black;">PRE-REQ</th>
 <th style="border: 1px solid black;">GRADES</th>
-<th style="border: 1px solid black;">CREDIT</th>
 </tr>
 </thead>
 <tbody>
-
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>First Semester : <?= $secondsy?></u></strong></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
 </tr>
@@ -183,11 +297,59 @@ if($has_second_semester) : ?>
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['coursecode']?></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['description']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['grade']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php if(empty($row['grade']) ||$row['grade'] == 0.00 || $row['grade'] == NULL){echo 0;}else{echo $row['units'];}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['units']?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo strtoupper($row['pre_req'])?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">
+  <?php
+   if($row['grade'] >= 98 && $row['grade'] <= 100)
+    {
+      echo '1.0';
+    }elseif($row['grade'] >= 95 && $row['grade'] <= 97)
+    {
+      echo '1.25';
+    }elseif($row['grade'] >= 92 && $row['grade'] <= 94)
+    {
+      echo '1.5';
+    }elseif($row['grade'] >= 89 && $row['grade'] <= 91)
+    {
+      echo '1.75';
+    }elseif($row['grade'] >= 86 && $row['grade'] <= 88)
+    {
+      echo '2.0';
+    }elseif($row['grade'] >= 83 && $row['grade'] <= 85)
+    {
+      echo '2.25';
+    }elseif($row['grade'] >= 80 && $row['grade'] <= 82)
+    {
+      echo '2.5';
+    }elseif($row['grade'] >= 77 && $row['grade'] <= 79)
+    {
+      echo '2.75';
+    }elseif($row['grade'] >= 75 && $row['grade'] <= 76)
+    {
+      echo '3.0';
+    }elseif($row['grade'] < 75 && $row['grade'] >= 1)
+    {
+      echo '5';
+    }elseif(empty($row['grade']) || $row['grade'] == 0.00 || $row['grade'] == NULL)
+    {
+      echo $row['grade'];
+    }
+  ?>
+  </td>
 </tr>
+
 <?php }?>
 <?php endforeach?>
+
+<tr>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"><?php if(empty($total_units2_1)){}else{echo $total_units2_1;}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;"></td>
+</tr>
+
 <?php 
 $has_second_semester2 = false;
 foreach($second_student_loads as $row) {
@@ -196,10 +358,11 @@ foreach($second_student_loads as $row) {
     break;
   }
 }
-if($has_second_semester) : ?>
+if($has_second_semester2) : ?>
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"><strong><u>Second Semester <?php if(empty($secondsy)){}else{echo $secondsy;}?></u></strong></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
 </tr>
@@ -208,39 +371,98 @@ if($has_second_semester) : ?>
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['coursecode']?></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['description']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['grade']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php if(empty($row['grade']) ||$row['grade'] == 0.00 || $row['grade'] == NULL){echo 0;}else{echo $row['units'];}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['units']?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo strtoupper($row['pre_req'])?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">
+  <?php
+   if($row['grade'] >= 98 && $row['grade'] <= 100)
+    {
+      echo '1.0';
+    }elseif($row['grade'] >= 95 && $row['grade'] <= 97)
+    {
+      echo '1.25';
+    }elseif($row['grade'] >= 92 && $row['grade'] <= 94)
+    {
+      echo '1.5';
+    }elseif($row['grade'] >= 89 && $row['grade'] <= 91)
+    {
+      echo '1.75';
+    }elseif($row['grade'] >= 86 && $row['grade'] <= 88)
+    {
+      echo '2.0';
+    }elseif($row['grade'] >= 83 && $row['grade'] <= 85)
+    {
+      echo '2.25';
+    }elseif($row['grade'] >= 80 && $row['grade'] <= 82)
+    {
+      echo '2.5';
+    }elseif($row['grade'] >= 77 && $row['grade'] <= 79)
+    {
+      echo '2.75';
+    }elseif($row['grade'] >= 75 && $row['grade'] <= 76)
+    {
+      echo '3.0';
+    }elseif($row['grade'] < 75 && $row['grade'] >= 1)
+    {
+      echo '5';
+    }elseif(empty($row['grade']) || $row['grade'] == 0.00 || $row['grade'] == NULL)
+    {
+      echo $row['grade'];
+    }
+  ?>
+  </td>
 </tr>
 <?php }?>
 <?php endforeach?>
 <?php endif; ?>
 <?php endif; ?>
 </tbody>
+<tfoot>
+<tr>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px; border-bottom:hidden;"></td>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"><?php if(empty($total_units2_2)){}else{echo $total_units2_2;}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
+  <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;border-bottom:hidden;"></td>
+</tr>
+</tfoot>
 </table>
 
-<!--------------------------------------------------------------------3RD------------------------------------------------------------------------------>
 
+<!--------------------------------------------------------------------3RD------------------------------------------------------------------------------>
 
 <?php if(empty($third_student_loads)) : ?>
 <tr>
 <!-- <td colspan="4" style="text-align: center;">No Matching Records</td> -->
 </tr>
 <?php else : ?>
-<table class="table" class="page-break">
-<center><h4><strong>Third Year</strong></h4></center>
+<?php
+$total_units3_1 = 0;
+$total_units3_2 = 0;
+foreach ($third_student_loads as $count) {
+    if ($count['semester'] == 1) {
+        $total_units3_1 += $count['units'];
+    } elseif ($count['semester'] == 2) {
+        $total_units3_2 += $count['units'];
+    }
+}
+?>
+<table class="table" >
+<center><h4 ><strong>Third Year</strong></h4></center>
 <thead>
 <tr class="spacing">
 <th style="border: 1px solid black;">COURSE CODE</th>
 <th style="border: 1px solid black;">COURSE DESCRIPTION</th>
+<th style="border: 1px solid black;">UNITS</th>
+<th style="border: 1px solid black;">PRE-REQ</th>
 <th style="border: 1px solid black;">GRADES</th>
-<th style="border: 1px solid black;">CREDIT</th>
 </tr>
 </thead>
 <tbody>
-
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>First Semester : <?= $thirdsy?></u></strong></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
 </tr>
@@ -249,11 +471,59 @@ if($has_second_semester) : ?>
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['coursecode']?></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['description']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['grade']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php if(empty($row['grade']) ||$row['grade'] == 0.00 || $row['grade'] == NULL){echo 0;}else{echo $row['units'];}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['units']?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo strtoupper($row['pre_req'])?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">
+  <?php
+   if($row['grade'] >= 98 && $row['grade'] <= 100)
+    {
+      echo '1.0';
+    }elseif($row['grade'] >= 95 && $row['grade'] <= 97)
+    {
+      echo '1.25';
+    }elseif($row['grade'] >= 92 && $row['grade'] <= 94)
+    {
+      echo '1.5';
+    }elseif($row['grade'] >= 89 && $row['grade'] <= 91)
+    {
+      echo '1.75';
+    }elseif($row['grade'] >= 86 && $row['grade'] <= 88)
+    {
+      echo '2.0';
+    }elseif($row['grade'] >= 83 && $row['grade'] <= 85)
+    {
+      echo '2.25';
+    }elseif($row['grade'] >= 80 && $row['grade'] <= 82)
+    {
+      echo '2.5';
+    }elseif($row['grade'] >= 77 && $row['grade'] <= 79)
+    {
+      echo '2.75';
+    }elseif($row['grade'] >= 75 && $row['grade'] <= 76)
+    {
+      echo '3.0';
+    }elseif($row['grade'] < 75 && $row['grade'] >= 1)
+    {
+      echo '5';
+    }elseif(empty($row['grade']) || $row['grade'] == 0.00 || $row['grade'] == NULL)
+    {
+      echo $row['grade'];
+    }
+  ?>
+  </td>
 </tr>
+
 <?php }?>
 <?php endforeach?>
+
+<tr>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"><?php if(empty($total_units3_1)){}else{echo $total_units3_1;}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;"></td>
+</tr>
+
 <?php 
 $has_second_semester3 = false;
 foreach($third_student_loads as $row) {
@@ -268,46 +538,104 @@ if($has_second_semester3) : ?>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"><strong><u>Second Semester <?php if(empty($thirdsy)){}else{echo $thirdsy;}?></u></strong></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
 </tr>
 <?php foreach($third_student_loads as $row) :?>
 <?php if($row['semester'] == 2) {?>
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['coursecode']?></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['description']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['grade']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php if(empty($row['grade']) ||$row['grade'] == 0.00 || $row['grade'] == NULL){echo 0;}else{echo $row['units'];}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['units']?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo strtoupper($row['pre_req'])?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">
+  <?php
+   if($row['grade'] >= 98 && $row['grade'] <= 100)
+    {
+      echo '1.0';
+    }elseif($row['grade'] >= 95 && $row['grade'] <= 97)
+    {
+      echo '1.25';
+    }elseif($row['grade'] >= 92 && $row['grade'] <= 94)
+    {
+      echo '1.5';
+    }elseif($row['grade'] >= 89 && $row['grade'] <= 91)
+    {
+      echo '1.75';
+    }elseif($row['grade'] >= 86 && $row['grade'] <= 88)
+    {
+      echo '2.0';
+    }elseif($row['grade'] >= 83 && $row['grade'] <= 85)
+    {
+      echo '2.25';
+    }elseif($row['grade'] >= 80 && $row['grade'] <= 82)
+    {
+      echo '2.5';
+    }elseif($row['grade'] >= 77 && $row['grade'] <= 79)
+    {
+      echo '2.75';
+    }elseif($row['grade'] >= 75 && $row['grade'] <= 76)
+    {
+      echo '3.0';
+    }elseif($row['grade'] < 75 && $row['grade'] >= 1)
+    {
+      echo '5';
+    }elseif(empty($row['grade']) || $row['grade'] == 0.00 || $row['grade'] == NULL)
+    {
+      echo $row['grade'];
+    }
+  ?>
+  </td>
 </tr>
 <?php }?>
 <?php endforeach?>
 <?php endif; ?>
 <?php endif; ?>
 </tbody>
+<tfoot>
+<tr>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px; border-bottom:hidden;"></td>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"><?php if(empty($total_units3_2)){}else{echo $total_units3_2;}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
+  <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;border-bottom:hidden;"></td>
+</tr>
+</tfoot>
 </table>
 
 <!----------------------------------------------------------------------4TH---------------------------------------------------------------------------->
-
-
 
 <?php if(empty($fourth_student_loads)) : ?>
 <tr>
 <!-- <td colspan="4" style="text-align: center;">No Matching Records</td> -->
 </tr>
 <?php else : ?>
+<?php
+$total_units4_1 = 0;
+$total_units4_2 = 0;
+foreach ($fourth_student_loads as $count) {
+    if ($count['semester'] == 1) {
+        $total_units4_1 += $count['units'];
+    } elseif ($count['semester'] == 2) {
+        $total_units4_2 += $count['units'];
+    }
+}
+?>
 <table class="table" >
 <center><h4 ><strong>Fourth Year</strong></h4></center>
 <thead>
 <tr class="spacing">
 <th style="border: 1px solid black;">COURSE CODE</th>
 <th style="border: 1px solid black;">COURSE DESCRIPTION</th>
+<th style="border: 1px solid black;">UNITS</th>
+<th style="border: 1px solid black;">PRE-REQ</th>
 <th style="border: 1px solid black;">GRADES</th>
-<th style="border: 1px solid black;">CREDIT</th>
 </tr>
 </thead>
 <tbody>
-
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>First Semester : <?= $fourthsy?></u></strong></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;"></td>
 </tr>
@@ -316,11 +644,59 @@ if($has_second_semester3) : ?>
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['coursecode']?></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['description']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['grade']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php if(empty($row['grade']) ||$row['grade'] == 0.00 || $row['grade'] == NULL){echo 0;}else{echo $row['units'];}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['units']?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo strtoupper($row['pre_req'])?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">
+  <?php
+   if($row['grade'] >= 98 && $row['grade'] <= 100)
+    {
+      echo '1.0';
+    }elseif($row['grade'] >= 95 && $row['grade'] <= 97)
+    {
+      echo '1.25';
+    }elseif($row['grade'] >= 92 && $row['grade'] <= 94)
+    {
+      echo '1.5';
+    }elseif($row['grade'] >= 89 && $row['grade'] <= 91)
+    {
+      echo '1.75';
+    }elseif($row['grade'] >= 86 && $row['grade'] <= 88)
+    {
+      echo '2.0';
+    }elseif($row['grade'] >= 83 && $row['grade'] <= 85)
+    {
+      echo '2.25';
+    }elseif($row['grade'] >= 80 && $row['grade'] <= 82)
+    {
+      echo '2.5';
+    }elseif($row['grade'] >= 77 && $row['grade'] <= 79)
+    {
+      echo '2.75';
+    }elseif($row['grade'] >= 75 && $row['grade'] <= 76)
+    {
+      echo '3.0';
+    }elseif($row['grade'] < 75 && $row['grade'] >= 1)
+    {
+      echo '5';
+    }elseif(empty($row['grade']) || $row['grade'] == 0.00 || $row['grade'] == NULL)
+    {
+      echo $row['grade'];
+    }
+  ?>
+  </td>
 </tr>
+
 <?php }?>
 <?php endforeach?>
+
+<tr>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"><?php if(empty($total_units4_1)){}else{echo $total_units4_1;}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"></td>
+  <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;"></td>
+</tr>
+
 <?php 
 $has_second_semester4 = false;
 foreach($fourth_student_loads as $row) {
@@ -335,22 +711,87 @@ if($has_second_semester4) : ?>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"><strong><u>Second Semester <?php if(empty($fourthsy)){}else{echo $fourthsy;}?></u></strong></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black; border-top:1px solid black;"></td>
 </tr>
 <?php foreach($fourth_student_loads as $row) :?>
 <?php if($row['semester'] == 2) {?>
 <tr class="spaceUnder">
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['coursecode']?></td>
   <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['description']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['grade']?></td>
-  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php if(empty($row['grade']) ||$row['grade'] == 0.00 || $row['grade'] == NULL){echo 0;}else{echo $row['units'];}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo $row['units']?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;"><?php echo strtoupper($row['pre_req'])?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">
+  <?php
+   if($row['grade'] >= 98 && $row['grade'] <= 100)
+    {
+      echo '1.0';
+    }elseif($row['grade'] >= 95 && $row['grade'] <= 97)
+    {
+      echo '1.25';
+    }elseif($row['grade'] >= 92 && $row['grade'] <= 94)
+    {
+      echo '1.5';
+    }elseif($row['grade'] >= 89 && $row['grade'] <= 91)
+    {
+      echo '1.75';
+    }elseif($row['grade'] >= 86 && $row['grade'] <= 88)
+    {
+      echo '2.0';
+    }elseif($row['grade'] >= 83 && $row['grade'] <= 85)
+    {
+      echo '2.25';
+    }elseif($row['grade'] >= 80 && $row['grade'] <= 82)
+    {
+      echo '2.5';
+    }elseif($row['grade'] >= 77 && $row['grade'] <= 79)
+    {
+      echo '2.75';
+    }elseif($row['grade'] >= 75 && $row['grade'] <= 76)
+    {
+      echo '3.0';
+    }elseif($row['grade'] < 75 && $row['grade'] >= 1)
+    {
+      echo '5';
+    }elseif(empty($row['grade']) || $row['grade'] == 0.00 || $row['grade'] == NULL)
+    {
+      echo $row['grade'];
+    }
+  ?>
+  </td>
 </tr>
 <?php }?>
 <?php endforeach?>
 <?php endif; ?>
 <?php endif; ?>
 </tbody>
+<tfoot>
+<tr>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px; border-bottom:hidden;"></td>
+  <td style="border-left: hidden;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;"><?php if(empty($total_units4_2)){}else{echo $total_units4_2;}?></td>
+  <td style="border-left: 1px solid black;border-right: 1px solid black;border-top: solid black 1px;border-bottom:hidden;"></td>
+  <td style="border-left: hidden;border-right: hidden;border-top: solid black 1px;border-bottom:hidden;"></td>
+</tr>
+</tfoot>
 </table>
 
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+<center><h4><strong> TOTAL NUMBER OF UNITS : &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;
+  <?php foreach($student_data as $data) {
+  if($data['program'] == 'BSE'){
+    foreach($countbse as $row) {
+      echo $row['un'];
+  }
+  }elseif($data['program'] == 'BPA'){
+    foreach($countbpa as $row) {
+      $row['un'];
+  }
+  }
+}
+  ?></strong></h4></center>
 <!-------------------------------------------------------------------------------------------------------------------------------------------------->
 
 

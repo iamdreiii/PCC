@@ -634,4 +634,23 @@ class Student_loads_model extends CI_Model
         return $query->result_array();
     }
 
+    public function sy()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_school_year');
+        $this->db->where('status', 'active');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function countbse()
+    {
+        $query = $this->db->query("SELECT SUM(units) as un FROM tbl_subject WHERE program_id = 1");
+        return $query->result_array();
+    }
+    public function countbpa()
+    {
+        $query = $this->db->query("SELECT SUM(units) as un FROM tbl_subject WHERE program_id = 2");
+        return $query->result_array();
+    }
 }

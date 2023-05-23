@@ -125,8 +125,12 @@ class Records extends CI_Controller {
             $data['second_student_loads'] = $this->Student_loads_model->get_student_loads_second_year($param);
             $data['third_student_loads'] = $this->Student_loads_model->get_student_loads_third_year($param);
             $data['fourth_student_loads'] = $this->Student_loads_model->get_student_loads_fourth_year($param);
+
+            $data['countbse'] = $this->Student_loads_model->countbse();
+            $data['countbpa'] = $this->Student_loads_model->countbpa();
             $data['student_data'] = $this->Student_loads_model->get_student_data($param);
             $data['signatory'] = $this->Student_loads_model->signatory();
+            $data['sy'] = $this->Student_loads_model->sy();
             if (isset($data['first_student_loads'][0]['school_year'])) {
             $data['firstsy'] = $data['first_student_loads'][0]['school_year'];
             }
