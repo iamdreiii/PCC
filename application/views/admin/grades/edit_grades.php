@@ -114,12 +114,25 @@ input:checked + .slider:before {
 
 </div>
 <?php endforeach?>
-<!-- <label class="switch">
-  <input id="edit-switch" type="checkbox">
-  <span class="slider round"></span>
-</label> -->
+
 <label for="">Edit Grade </label><br>
-<label><input id="edit-switch" type="checkbox"  data-toggle="toggle" data-on="Enabled" data-off="Disabled"></label>
+<div style="display: flex; align-items: center;">
+  <label style="margin-right: 10px;">
+    <input id="edit-switch" type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled">
+  </label>
+  
+  <div style="width: 110px; margin-right: 10px;">
+    <select name="select" id="select" class="form-control">
+      <option value="1">1st Year</option>
+      <option value="2">2nd Year</option>
+      <option value="3">3rd Year</option>
+      <option value="4">4th Year</option>
+    </select>
+  </div>
+</div>
+
+
+
 <br>
 <br>
 <div class="row">
@@ -194,12 +207,16 @@ $(document).ready(function(){
     var switchState = $(this).prop('checked');
     load_data(switchState);
   });
+  $('#select').change(function() {
+    load_data();
+  });
 
   function load_data(edit_cells) {
+  var selectedYear = $('#select').val();
   $.ajax({
     url:"<?php echo base_url(); ?>Grades/load_data",
     dataType:"JSON",
-    data: {id: <?=$id?>},
+    data: {id: <?=$id?>,year: selectedYear},
     success:function(data){
       var html = '';
       var isFirstSemester = true;
@@ -209,6 +226,16 @@ $(document).ready(function(){
         $.each(data, function(key, value) {
           
           if (value.semester == 1 && isFirstSemester) {
+            if (value.year_level === '1') {
+              html += '<tr><td colspan="5" style="text-align: center; margin-right:100px;"><strong><u>First Year</u></strong></td></tr>';
+            } else if (value.year_level === '2') {
+              html += '<tr><td colspan="5" style="text-align: center; margin-right:100px;"><strong><u>Second Year</u></strong></td></tr>';
+            }else if (value.year_level === '3') {
+              html += '<tr><td colspan="5" style="text-align: center; margin-right:100px;"><strong><u>Third Year</u></strong></td></tr>';
+            }else if (value.year_level === '4') {
+              html += '<tr><td colspan="5" style="text-align: center; margin-right:100px;"><strong><u>Fourth Year</u></strong></td></tr>';
+            }
+
             html += '<tr><td colspan="5" style="text-align: center; margin-right:100px;"><strong><u>1st Sem</u></strong></td></tr>';
               isFirstSemester = false;
           }
