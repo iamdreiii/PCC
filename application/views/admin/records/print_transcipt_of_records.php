@@ -57,8 +57,8 @@
     <h6 style="margin-top: 5px; margin-bottom: 5px;"><b>Phone: +(63)9560875992 | E-mail: polacommunitycollege2020@gmail.com</b></h6>
     <hr style="margin-top: 15px; margin-bottom: 2px;">
     <hr style="margin-top: 2px; margin-bottom: 2px;">
-    <h4 style="color:#907358;"><b>OFFICE OF THE REGISTRAR</b></h4>
-    <h4><b>ACADEMIC RECORDS</b></h4>
+    <h4 style="color:#907358;"><strong>OFFICE OF THE REGISTRAR</strong></h4>
+    <h4><b>OFFICIAL TRANSCRIPT OF RECORDS</b></h4>
   </div>
 </div>
 

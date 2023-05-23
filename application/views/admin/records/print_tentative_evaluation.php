@@ -60,7 +60,7 @@
     <h4 style="margin-top: 5px; margin-bottom: 5px;">
           <b><?php foreach($student_data as $row) {if($row['program'] == 'BSE'){echo 'BACHELOR OF SCIENCE IN ENTREPRENEURSHIP';}elseif($row['program'] == 'BPA'){echo 'BACHELOR OF PUBLIC ADMINISTRATION';}}?></b>
         </h4>
-    <h4><b>TENTATIVE EVALUATION</b></h4>
+    <h4 style="color:#907358;"><b>TENTATIVE EVALUATION</b></h4>
     <h4><b>A.Y. <?php foreach($sy as $row) {if($row['status'] == 'active'){echo $row['school_year'];}}?></b></h4>
   </div>
 </div>
@@ -791,7 +791,7 @@ if($has_second_semester4) : ?>
 
   <div class="col-sm-2 invoice-col pull-right">
       <address style="white-space: nowrap;"><br>
-      <small>83-85 - 2.25 - Thourough Satisfactory</small><br>
+      <small>83-85 - 2.25 - Thorough Satisfactory</small><br>
       <small>80-82 - 2.5 - Satisfactory</small><br>
       <small>77-79 - 2.75 - Fair</small><br>
       <small>75-76 - 3.0 -  Passing</small><br>
