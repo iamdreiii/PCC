@@ -105,7 +105,7 @@ $route['bpa_student_loads_second_year'] = 'Student_loads/bpa_second_year';
 $route['bpa_student_loads_third_year'] = 'Student_loads/bpa_third_year';
 $route['bpa_student_loads_fourth_year'] = 'Student_loads/bpa_fourth_year';
 
-// STUDENTS GRADES
+// STUDENTS GRADESs
 $route['grades'] = 'Grades/getgrade';
 // edit GRADE
 $route['edit_grades/(:num)'] = 'Grades/edit_grades/$1';
@@ -135,3 +135,4 @@ $route['Signatory'] =  'Signatory/index';
 // RECORDS
 $route['records'] =  'Records/index';
 $route['print_student_academic_records/(:num)'] = 'Records/print_student_academic_records/$1';
+$route['print_tentative_evaluation/(:num)'] = 'Records/print_tentative_evaluation/$1';
