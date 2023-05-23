@@ -105,7 +105,7 @@ $route['bpa_student_loads_second_year'] = 'Student_loads/bpa_second_year';
 $route['bpa_student_loads_third_year'] = 'Student_loads/bpa_third_year';
 $route['bpa_student_loads_fourth_year'] = 'Student_loads/bpa_fourth_year';
 
-// STUDENTS GRADES
+// STUDENTS GRADESs
 $route['grades'] = 'Grades/getgrade';
 // edit GRADE
 $route['edit_grades/(:num)'] = 'Grades/edit_grades/$1';
