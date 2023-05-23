@@ -421,17 +421,18 @@ class Grades extends CI_Controller {
     public function load_data()
     {
         $param = $this->input->get('id');
-        $getstudent = $this->Student_loads_model->get_student_data($param);
+        $year = $this->input->get('year');
+        $getstudent = $this->Student_loads_model->get_student_data($param, $year);
         
         foreach($getstudent as $stud) :
             if($stud['year_level'] == '1st Year'){
-                $data = $this->Grades_model->bse_load_data_first_year($param);
+                $data = $this->Grades_model->bse_load_data_first_year($param, $year);
             } elseif($stud['year_level'] == '2nd Year'){
-                $data = $this->Grades_model->bse_load_data_second_year($param);
+                $data = $this->Grades_model->bse_load_data_second_year($param, $year);
             } elseif($stud['year_level'] == '3rd Year'){
-                $data = $this->Grades_model->bse_load_data_third_year($param);
+                $data = $this->Grades_model->bse_load_data_third_year($param, $year);
             } elseif($stud['year_level'] == '4th Year'){
-                $data = $this->Grades_model->bse_load_data_fourth_year($param);
+                $data = $this->Grades_model->bse_load_data_fourth_year($param, $year);
             }
         endforeach; 
         echo json_encode($data);

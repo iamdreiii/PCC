@@ -625,4 +625,32 @@ class Student_loads_model extends CI_Model
         $this->db->delete('tbl_student_subject_loads');
     }
 
+    public function signatory()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_signatory');
+        $this->db->where('status', 'active');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function sy()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_school_year');
+        $this->db->where('status', 'active');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function countbse()
+    {
+        $query = $this->db->query("SELECT SUM(units) as un FROM tbl_subject WHERE program_id = 1");
+        return $query->result_array();
+    }
+    public function countbpa()
+    {
+        $query = $this->db->query("SELECT SUM(units) as un FROM tbl_subject WHERE program_id = 2");
+        return $query->result_array();
+    }
 }
