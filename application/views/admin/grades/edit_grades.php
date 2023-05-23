@@ -82,7 +82,7 @@ input:checked + .slider:before {
 <ol class="breadcrumb">
 <li><a href="#"  id="backButton"><i class="fa fa-dashboard"></i> Manage Student</a></li>
 <li><a href="#">Subject</a></li>
-<li class="active">Loads</li>
+<li class="active">Grades</li>
 </ol>
 </section>
 
