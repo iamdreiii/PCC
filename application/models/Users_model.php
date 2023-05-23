@@ -29,6 +29,42 @@ class Users_model extends CI_Model
         $result = $query->row();
         return $result->total_students;
     }
+    public function countfirst()
+    {
+        $query = $this->db->select('COUNT(*) as total')
+        ->from('tbl_student')
+        ->where('year_level', '1st Year')
+        ->get();
+        $result = $query->row();
+        return $result->total;
+    }
+    public function countsecond()
+    {
+        $query = $this->db->select('COUNT(*) as total')
+        ->from('tbl_student')
+        ->where('year_level', '2nd Year')
+        ->get();
+        $result = $query->row();
+        return $result->total;
+    }
+    public function countthird()
+    {
+        $query = $this->db->select('COUNT(*) as total')
+        ->from('tbl_student')
+        ->where('year_level', '3rd Year')
+        ->get();
+        $result = $query->row();
+        return $result->total;
+    }
+    public function countfourth()
+    {
+        $query = $this->db->select('COUNT(*) as total')
+        ->from('tbl_student')
+        ->where('year_level', '4th Year')
+        ->get();
+        $result = $query->row();
+        return $result->total;
+    }
     public function get_all_users()
     {
         $this->db->select('*');

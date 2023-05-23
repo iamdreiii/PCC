@@ -51,6 +51,10 @@ class Dashboard extends CI_Controller {
             $data['usercount'] = $this->Users_model->count_all_student();
             $data['usercountbse'] = $this->Users_model->getbsetotal();
             $data['usercountbpa'] = $this->Users_model->getbpatotal();
+            $data['stud1'] = $this->Users_model->countfirst();
+            $data['stud2'] = $this->Users_model->countsecond();
+            $data['stud3'] = $this->Users_model->countthird();
+            $data['stud4'] = $this->Users_model->countfourth();
             $this->load->view('admin/dashboard/'. $page, $data);    
         }else{
             redirect('staff');
