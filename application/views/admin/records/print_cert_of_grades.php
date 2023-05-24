@@ -53,34 +53,14 @@
   </div>
 </div>
 
-
 <?php foreach($student_data as $row) :?>
-<div class="row invoice-info">
-<div class="col-sm-10 invoice-col">
-<address style="white-space: nowrap;">
-  Name : <?= ucfirst($row['lname'])?>, <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?><br>
-  Address : <?= ucfirst($row['address'])?> <?= ucfirst($row['city_municipality'])?> <?= ucfirst($row['province'])?><br>
-  Course : <?php if($row['program'] == 'BSE') {echo 'Bachelor of Science in Entrepreneurship';}elseif($row['program'] == 'BPA'){echo 'Bachelor of Public Administration';}?><br>
-  Date of Admission : <br>
-  Place of Birth :  <?= ucfirst($row['birthplace'])?><br>
-  Elementary  Course Completed :  <?= ucfirst($row['primary_school_last_attended'])?><br>
-  High Shool Course Completed :  <?= ucfirst($row['secondary_school_last_attended'])?><br>
-</address>
-</div>
-
-
-<div class="col-sm-2 invoice-col pull-right">
-<address style="white-space: nowrap;">
-  <!-- Admission Credential: Form 138-A<br> -->
-  Date of Birth: <?= ucfirst($row['birthdate'])?> <br><br><br><br>
-  School Year :  <?= ucfirst($row['primary_school_year_last_attended'])?><br>
-  School Year :  <?= ucfirst($row['secondary_school_year_last_attended'])?><br>
-</address>
-</div>
-
+<div class="col-sm-12" style="margin-bottom: 0px;">
+  <p style="text-align: justify;">
+    This is to certify that <?php if($row['sex'] == 'Male'){echo 'Mr.';}else{echo 'Ms.';}?> <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?>, <?= ucfirst($row['lname'])?> 
+    has attained the following ratings in the various courses taken <div id="label"></div>  </p>
+  
 </div>
 <?php endforeach?>
-
 <label for="" id="filterlabel">Filter Grade </label><br>
 <div style="display: flex; align-items: center;">
 <div style="width: 110px; margin-right: 10px;">
@@ -101,20 +81,16 @@
   </div>
 </div>
 
-
-
-<br>
-<br>
 <div class="row">
 <div class="col-xs-12 table-responsive">
-<table class="table" style="text-align: center;">
+<table class="table" style="text-align: center; padding-top:10px;">
 <thead>
 <tr class="spacing">
-<th style="border: 1px solid black;">COURSE CODE</th>
-<th style="border: 1px solid black;">COURSE DESCRIPTION</th>
-<th style="border: 1px solid black;">CREDITS</th>
-<th style="border: 1px solid black;">CREDIT</th>
-<th style="border: 1px solid black;">REMARKS</th>
+<th style="border: 1px solid black;text-align: center;">COURSE CODE</th>
+<th style="border: 1px solid black;text-align: center;">COURSE DESCRIPTION</th>
+<th style="border: 1px solid black;text-align: center;">CREDITS</th>
+<th style="border: 1px solid black;text-align: center;">CREDIT</th>
+<th style="border: 1px solid black;text-align: center;">REMARKS</th>
 </tr>
 </thead>
 <tbody>
@@ -123,7 +99,9 @@
 </table>
 <?php foreach($student_data as $row) :?>
 <div class="col-sm-12">
-  <p style="text-align: justify;">This certification is being issued to <?php if($row['sex'] == 'Male'){echo 'Mr.';}else{echo 'Ms.';}?> <?= ucfirst($row['lname'])?> this <?php ?>
+  <p style="text-align: justify;">This certification is being issued to <?php if($row['sex'] == 'Male'){echo 'Mr.';}else{echo 'Ms.';}?> <?= ucfirst($row['lname'])?> this 
+  <?php $a = date('d');
+  echo $a.substr(date('jS', mktime(0,0,0,1,($a%10==0?9:($a%100>20?$a%10:$a%100)),2000)),-2);?> day of <?= date('M')?>, <?= date('Y')?>
   for whatever legal purpose this may serve.
   </p>
 </div>
@@ -160,13 +138,24 @@
 <script type="text/javascript" language="javascript" >
  
 $(document).ready(function(){
-  
+  var schoolyearay = '';
   $('#select').change(function() {
     load_data();
   });
   $('#selectsem').change(function() {
-    load_data();
-  });
+  var valueToWord = {
+    '1': 'First Semester',
+    '2': 'Second Semester',
+    'all': 'First and Second Semester'
+  };
+
+  var selectedValue = $(this).val();
+  var ay = ' (A.Y. ' + schoolyearay + ').';
+  var selectedWord = valueToWord[selectedValue];
+  $('#label').text(selectedWord + ay);
+  
+  load_data();
+});
 
   function load_data() {
   var selectedYear = $('#select').val();
@@ -184,10 +173,13 @@ $(document).ready(function(){
         html += '<tr><td colspan="5" style="text-align: center; margin-right:100px;"><strong><u>No Subject/s</u></strong></td></tr>';
       } else {
         if (selectedSem == "2") {
-          html += '<tr class="spaceUnder"><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>Second Sem</u></strong></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td></tr>';
+          html += '<tr class="spaceUnder"><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>Second Sem '+ schoolyearay +'</u></strong></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td></tr>';
           isSecondSemesterShown = true; // Set the flag to true after showing the second semester label row
         }
         $.each(data, function(key, value) {
+          //$('#ay').text(' (A.Y. '+ value.school_year + ').');
+          schoolyearay = value.school_year;
+          schoolyearay = schoolyearay;
           if ((selectedSem == "1" && value.semester == 1) || (selectedSem == "2" && value.semester == 2) || selectedSem == "all") {
             if (value.semester == 1 && isFirstSemester) {
               // if (value.year_level === '1') {
@@ -207,7 +199,7 @@ $(document).ready(function(){
               html += '<tr class="spaceUnder"><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: 1px solid black;"><strong><u>Second Sem '+ value.school_year +'</u></strong></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: 1px solid black;"></td></tr>';
               isFirstSemester = true;
               isSecondSemesterShown = true; // Set the flag to true after showing the second semester label row
-              var ay = value.school_year;
+              ay = value.school_year;
             }
             html += '<tr class="spaceUnder">';
             html += '<td class="table_data" data-row_id="' + value.sl_id + '" data-column_name="coursecode" style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">' + value.coursecode + '</td>';
