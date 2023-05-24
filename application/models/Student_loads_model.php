@@ -653,4 +653,28 @@ class Student_loads_model extends CI_Model
         $query = $this->db->query("SELECT SUM(units) as un FROM tbl_subject WHERE program_id = 2");
         return $query->result_array();
     }
+
+    public function load_student_grades($param, $year, $sem)
+    {
+        $query = $this->db->query("SELECT tbl_subject.subcode as coursecode,  tbl_subject.semester as semester, tbl_student_subject_loads.school_year as school_year,
+                tbl_subject.description as 'description', tbl_student_subject_loads.grade as grade,
+                CONCAT(tbl_student.lname, ' ', tbl_student.fname, ' ', tbl_student.mname, ' ') as fullname, 
+                tbl_subject.units as units, 
+                SUM(tbl_subject.units) as tunits,
+                CASE 
+                    WHEN tbl_subject.prereq = '' OR tbl_subject.prereq IS NULL THEN 'none' 
+                    ELSE tbl_subject.prereq 
+                END as pre_req, 
+                tbl_student_subject_loads.id as sl_id, tbl_subject.year_level as year_level 
+        FROM tbl_student_subject_loads 
+        JOIN tbl_student ON tbl_student.id = tbl_student_subject_loads.student_id 
+        JOIN tbl_subject ON tbl_subject.id = tbl_student_subject_loads.subject_id 
+        WHERE tbl_student_subject_loads.student_id = $param AND
+        tbl_subject.year_level = $year AND
+        tbl_subject.sem = $sem
+        GROUP BY tbl_subject.subcode
+        ORDER BY sl_id ASC
+        ");
+        return $query->result_array();
+    }
 }

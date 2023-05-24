@@ -2,7 +2,15 @@
     #backButton {
         display: none !important; 
     }
-    
+    #select {
+        display: none !important; 
+    }
+    #selectsem {
+        display: none !important; 
+    }
+    #filterlabel {
+        display: none !important; 
+    }
     .table {
         border-collapse: collapse;
         width: 100%;

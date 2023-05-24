@@ -90,7 +90,7 @@
 
 
 
-<div class="container col-sm-12">
+<div class="container col-sm-12 table-responsive">
 
 <!-- <?php
 $total_units1 = 0; 
