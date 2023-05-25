@@ -89,7 +89,7 @@
 <th style="border: 1px solid black;text-align: center;">COURSE CODE</th>
 <th style="border: 1px solid black;text-align: center;">COURSE DESCRIPTION</th>
 <th style="border: 1px solid black;text-align: center;">CREDITS</th>
-<th style="border: 1px solid black;text-align: center;">CREDIT</th>
+<th style="border: 1px solid black;text-align: center;">GRADES</th>
 <th style="border: 1px solid black;text-align: center;">REMARKS</th>
 </tr>
 </thead>
@@ -108,13 +108,13 @@
 <?php endforeach?>
 
 <div style="text-align:left; margin-top:20px;">
-    Not valid without school seal
+   <strong>NOT VALID WITHOUT SEAL</strong>
 </div>
 
 <div style="text-align:right; margin-top:60px;margin-right:60px;">
 <?php foreach($signatory as $row) :?>
-    <?php echo strtoupper($row['fullname'])?> <br>
-    <?php echo ucfirst($row['position'])?> <br>
+    <strong><u><?php echo strtoupper($row['fullname'])?></u></strong><br>
+    <p style="margin-right:30px;"><?php echo ucfirst($row['position'])?> </p><br>
 <?php endforeach?>
 </div>
 </div>
@@ -134,113 +134,7 @@
 
 <link href="<?php echo base_url()?>assets/bootstraptoggle/bootstrap-toggle.min.css" rel="stylesheet">
 <script src="<?php echo base_url()?>assets/bootstraptoggle/bootstrap-toggle.min.js"></script>
-
-<script type="text/javascript" language="javascript" >
- 
-$(document).ready(function(){
-  var schoolyearay = '';
-  $('#select').change(function() {
-    load_data();
-  });
-  $('#selectsem').change(function() {
-  var valueToWord = {
-    '1': 'First Semester',
-    '2': 'Second Semester',
-    'all': 'First and Second Semester'
-  };
-
-  var selectedValue = $(this).val();
-  var ay = ' (A.Y. ' + schoolyearay + ').';
-  var selectedWord = valueToWord[selectedValue];
-  $('#label').text(selectedWord + ay);
-  
-  load_data();
-});
-
-  function load_data() {
-  var selectedYear = $('#select').val();
-  var selectedSem = $('#selectsem').val();
-  $.ajax({
-    url: "<?php echo base_url(); ?>Records/load_data",
-    dataType: "JSON",
-    data: { id: <?=$id?>, year: selectedYear, sem: selectedSem },
-    success: function(data) {
-      var html = '';
-      var isFirstSemester = true;
-      var isSecondSemesterShown = false;
-      var ay = '';
-      if (data == null || data == '') {
-        html += '<tr><td colspan="5" style="text-align: center; margin-right:100px;"><strong><u>No Subject/s</u></strong></td></tr>';
-      } else {
-        if (selectedSem == "2") {
-          html += '<tr class="spaceUnder"><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>Second Sem '+ schoolyearay +'</u></strong></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td></tr>';
-          isSecondSemesterShown = true; // Set the flag to true after showing the second semester label row
-        }
-        $.each(data, function(key, value) {
-          //$('#ay').text(' (A.Y. '+ value.school_year + ').');
-          schoolyearay = value.school_year;
-          schoolyearay = schoolyearay;
-          if ((selectedSem == "1" && value.semester == 1) || (selectedSem == "2" && value.semester == 2) || selectedSem == "all") {
-            if (value.semester == 1 && isFirstSemester) {
-              // if (value.year_level === '1') {
-              //   html += '<tr class="spaceUnder"><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>First Year</u></strong></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td></tr>';
-              // } else if (value.year_level === '2') {
-              //   html += '<tr class="spaceUnder"><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>Second Year</u></strong></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td></tr>';
-              // } else if (value.year_level === '3') {
-              //   html += '<tr class="spaceUnder"><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>Third Year</u></strong></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td></tr>';
-              // } else if (value.year_level === '4') {
-              //   html += '<tr class="spaceUnder"><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>Fourth Year</u></strong></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td></tr>';
-              // }
-
-              html += '<tr class="spaceUnder"><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"><strong><u>First Sem '+ value.school_year +'</u></strong></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: 1px solid black;"></td></tr>';
-              isFirstSemester = false;
-            }
-            if (value.semester == 2 && !isFirstSemester && !isSecondSemesterShown) {
-              html += '<tr class="spaceUnder"><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: 1px solid black;"><strong><u>Second Sem '+ value.school_year +'</u></strong></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: 1px solid black;"></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: 1px solid black;"></td></tr>';
-              isFirstSemester = true;
-              isSecondSemesterShown = true; // Set the flag to true after showing the second semester label row
-              ay = value.school_year;
-            }
-            html += '<tr class="spaceUnder">';
-            html += '<td class="table_data" data-row_id="' + value.sl_id + '" data-column_name="coursecode" style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">' + value.coursecode + '</td>';
-            html += '<td class="table_data" data-row_id="' + value.sl_id + '" data-column_name="description" style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">' + value.description + '</td>';
-            html += '<td class="table_data" data-row_id="' + value.sl_id + '" data-column_name="units" style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">' + value.units + '</td>';
-            html += '<td class="table_data" data-row_id="' + value.sl_id + '" data-column_name="pre_req" style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">' + value.pre_req + '</td>';
-            html += '<td class="table_data" data-row_id="' + value.sl_id + '" data-column_name="grade" style="border-left: 1px solid black;border-right: 1px solid black;border-top-style: hidden;">' + value.grade + '</td>';
-            html += '</tr>';
-          }
-        });
-      }
-      $('tbody').html(html);
-    }
-  });
-}
-
-
-  load_data();
-
- 
-
-  $(document).on('blur', '.table_data', function(){
-    var id = $(this).data('row_id');
-    var table_column = $(this).data('column_name');
-    var value = $(this).text();
-    $.ajax({
-      url:"<?php echo base_url(); ?>Grades/update",
-      method:"POST",
-      data:{id:id, table_column:table_column, value:value},
-      success:function(data)
-      {
-        var stat = 'Updated';
-        success(stat);
-        load_data(true);
-      }
-    })
-  });
-
-  
-});
-</script>
+<?php $this->load->view('admin/records/cert_of_grades_script');?>
 <?php $this->load->view('helpers/toastr');?>
 </body>
 </html>
