@@ -694,8 +694,8 @@ if($has_second_semester4) : ?>
 
 <div style="text-align:right; margin-top:60px;margin-right:60px;">
 <?php foreach($signatory as $row) :?>
-    <?php echo strtoupper($row['fullname'])?> <br>
-    <?php echo ucfirst($row['position'])?> <br>
+  <strong><u><?php echo strtoupper($row['fullname'])?></u></strong><br>
+    <p style="margin-right:30px;"><?php echo ucfirst($row['position'])?> </p><br>
 <?php endforeach?>
 </div>
 

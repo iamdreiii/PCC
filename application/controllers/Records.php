@@ -53,7 +53,7 @@ class Records extends CI_Controller {
             <ul class="dropdown-menu" role="menu">
             <li><a href="'.base_url().'print_student_academic_records/'. $user->id.'">Academic Records</a></li>
             <li><a href="'.base_url().'print_cert_of_enrollment/'. $user->id.'">Cert. of Enrollment</a></li>
-            <li><a href="'.base_url().'print_cert_of_grade/'. $user->id.'">Cert. of Grade</a></li>
+            <li><a href="'.base_url().'print_cert_of_grades/'. $user->id.'">Cert. of Grade</a></li>
             <li><a href="'.base_url().'print_cert_of_transfer/'. $user->id.'">Cert. of Transfer</a></li>
             <li><a href="'.base_url().'print_tentative_evaluation/'. $user->id.'">Tentative Evaluation</a></li>
             <li><a href="'.base_url().'print_transcipt_of_records/'. $user->id.'">Transcript of Records</a></li>
@@ -179,6 +179,49 @@ class Records extends CI_Controller {
         }else{
             redirect('staff');
         }	
+    }
+
+    public function print_cert_of_grades($param)
+    {
+        $lasturl = $this->input->get('lasturl');
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
+        {
+            $page = 'print_cert_of_grades';
+            if(!file_exists(APPPATH.'views/admin/records/'.$page.'.php')){
+                show_404();
+            }
+            
+            $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+            $data['id'] = $param;
+            $data['title'] = "Manage Student Grades";
+            $data['lasturl'] = $lasturl;
+            $data['signatory'] = $this->Student_loads_model->signatory();
+            $data['sy'] = $this->Student_loads_model->sy();
+            $this->load->view('admin/records/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }	
+    }
+
+    public function load_data()
+    {
+        $param = $this->input->get('id');
+        $year = $this->input->get('year');
+        $sem = $this->input->get('year');
+        $getstudent = $this->Student_loads_model->get_student_data($param, $year, $sem);
+        
+        foreach($getstudent as $stud) :
+            if($stud['year_level'] == '1st Year'){
+                $data = $this->Grades_model->bse_load_data_first_year($param, $year, $sem);
+            } elseif($stud['year_level'] == '2nd Year'){
+                $data = $this->Grades_model->bse_load_data_second_year($param, $year, $sem);
+            } elseif($stud['year_level'] == '3rd Year'){
+                $data = $this->Grades_model->bse_load_data_third_year($param, $year, $sem);
+            } elseif($stud['year_level'] == '4th Year'){
+                $data = $this->Grades_model->bse_load_data_fourth_year($param, $year, $sem);
+            }
+        endforeach; 
+        echo json_encode($data);
     }
     // END SECTION CONTROLLER
 }
