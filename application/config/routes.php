@@ -138,3 +138,4 @@ $route['print_student_academic_records/(:num)'] = 'Records/print_student_academi
 $route['print_tentative_evaluation/(:num)'] = 'Records/print_tentative_evaluation/$1';
 $route['print_transcipt_of_records/(:num)'] = 'Records/print_transcipt_of_records/$1';
 $route['print_cert_of_grades/(:num)'] = 'Records/print_cert_of_grades/$1';
+$route['print_cert_of_transfer/(:num)'] = 'Records/print_cert_of_transfer/$1';
