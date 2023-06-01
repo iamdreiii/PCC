@@ -225,12 +225,12 @@ class Records extends CI_Controller {
     }
 
 
-    public function print_cert_of_enrollment($param)
+    public function print_cert_of_enrollment1($param)
     {
         $lasturl = $this->input->get('lasturl');
         if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
-            $page = 'print_cert_of_enrollment';
+            $page = 'print_cert_of_enrollment1';
             if(!file_exists(APPPATH.'views/admin/records/'.$page.'.php')){
                 show_404();
             }
