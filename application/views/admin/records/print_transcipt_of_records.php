@@ -27,7 +27,12 @@
 .table tr.spacing>th {
   margin:0; padding:0;
 }
-
+#label1 {
+    print-color-adjust: exact !important; 
+    color-adjust: exact !important; 
+    color-adjust:exact !important; 
+    color:#925b27 !important; 
+   }
 
 
 </style>
@@ -55,10 +60,10 @@
     </div>
     <h5 style="margin-top: 5px; margin-bottom: 5px;"><b>Zone II, Pola Oriental Mindoro</b></h5>
     <h6 style="margin-top: 5px; margin-bottom: 5px;"><b>Phone: +(63)9560875992 | E-mail: polacommunitycollege2020@gmail.com</b></h6>
-    <hr style="margin-top: 15px; margin-bottom: 2px;">
-    <hr style="margin-top: 2px; margin-bottom: 2px;">
-    <h4 style="color:#907358;"><strong>OFFICE OF THE REGISTRAR</strong></h4>
-    <h4><b>OFFICIAL TRANSCRIPT OF RECORDS</b></h4>
+    <hr style="margin-top: 15px; margin-bottom: 3px; height:1px; background-color:black;">
+    <hr style="margin-top: 2px; margin-bottom: 5px; height:1px; background-color:black;">
+    <h4 style="color:#907358; font-size: 26px;font-weight: bold;" id="label1">OFFICE OF THE REGISTRAR</h4>
+    <h4 font-size: 22px;font-weight: bold;><b>OFFICIAL TRANSCRIPT OF RECORDS</b></h4>
   </div>
 </div>
 
@@ -69,7 +74,7 @@
     Name : <?= ucfirst($row['lname'])?>, <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?><br>
     Address : <?= ucfirst($row['address'])?> <?= ucfirst($row['city_municipality'])?> <?= ucfirst($row['province'])?><br>
     Course : <?php if($row['program'] == 'BSE') {echo 'Bachelor of Science in Entrepreneurship';}else{echo 'Bachelor of Public Administration';}?><br>
-    Date of Admission : <br>
+    Date of Admission : <?= date('F Y', strtotime($row['date_created']))?><br>
     Place of Birth :  <?= ucfirst($row['birthplace'])?><br>
     Elementary Course Completed :  <?= ucfirst($row['primary_school_last_attended'])?><br>
     High School Course Completed :  <?= ucfirst($row['secondary_school_last_attended'])?><br>
@@ -79,7 +84,7 @@
 <div class="col-sm-2 invoice-col pull-right">
     <address style="white-space: nowrap;">
         Admission Credential: Form 138-A<br>
-        Date of Birth: <?= date('M d, Y', strtotime($row['birthdate']))?> <br><br><br><br>
+        Date of Birth: <?= date('F d, Y', strtotime($row['birthdate']))?> <br><br><br><br>
         School Year :  <?= ucfirst($row['primary_school_year_last_attended'])?><br>
         School Year :  <?= ucfirst($row['secondary_school_year_last_attended'])?><br>
     </address>
@@ -694,8 +699,8 @@ if($has_second_semester4) : ?>
 
 <div style="text-align:right; margin-top:60px;margin-right:60px;">
 <?php foreach($signatory as $row) :?>
-  <strong><u><?php echo strtoupper($row['fullname'])?></u></strong><br>
-    <p style="margin-right:30px;"><?php echo ucfirst($row['position'])?> </p><br>
+  <p style="font-weight: 900;margin-bottom:0px;"><u><?php echo strtoupper($row['fullname'])?></u></p>
+    <p style="margin-left:30px;margin-top:0px;"><?php echo ucfirst($row['position'])?> </p><br>
 <?php endforeach?>
 </div>
 

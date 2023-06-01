@@ -162,6 +162,7 @@
                     $('[name="primary_province"]').val(data.primary_province);
 
                     $('[name="program"]').val(data.program);
+                    $('[name="sem"]').val(data.sem);
                     $('[name="year_levels"]').val(data.year_level);
                     $('#modal_form2').modal('show');
                     $('.modal-title').text('Edit Student'); 
@@ -192,7 +193,7 @@
             var formData = new FormData(form);
             if(save_method == 'add') {
             
-            var requiredFields = ['fname', 'mname', 'lname', 'birthdate', 'age', 'sex', 'birthplace', 'citizenship', 'religion', 'civil_status', 'mobile_no', 'email', 'address', 'city_municipality', 'province', 'zip_code'];
+            var requiredFields = ['fname', 'mname', 'lname', 'birthdate', 'age', 'sex', 'birthplace', 'citizenship', 'religion', 'civil_status', 'mobile_no', 'email', 'address', 'city_municipality', 'province', 'zip_code', 'sem'];
             var isValid = true;
             $.each(requiredFields, function(index, field) {
                 if (!$.trim($('[name="' + field + '"]').val())) {

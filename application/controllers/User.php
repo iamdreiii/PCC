@@ -571,6 +571,7 @@ class User extends CI_Controller {
             'primary_province' => $this->input->post('primary_province'),
 
             'program' => $this->input->post('program'),
+            'sem' => $this->input->post('sem'),
             'year_level' => $this->input->post('year_levels'),
             'date_created' => date('Y-m-d H:i:s'),
             // 'updated_at' => date('Y-m-d H:i:s'),
@@ -685,6 +686,7 @@ class User extends CI_Controller {
                 'primary_province' => $this->input->post('primary_province'),
     
                 'program' => $this->input->post('program'),
+                'sem' => $this->input->post('sem'),
                 'year_level' => $this->input->post('year_levels'),
                 // 'date_created' => date('Y-m-d H:i:s'),
                 'date_updated' => date('Y-m-d H:i:s'),
@@ -761,6 +763,7 @@ class User extends CI_Controller {
             'primary_province' => $this->input->post('primary_province'),
 
             'program' => $this->input->post('program'),
+            'sem' => $this->input->post('sem'),
             'year_level' => $this->input->post('year_levels'),
             // 'date_created' => date('Y-m-d H:i:s'),
             'date_updated' => date('Y-m-d H:i:s'),

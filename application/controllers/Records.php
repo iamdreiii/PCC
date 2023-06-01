@@ -223,5 +223,28 @@ class Records extends CI_Controller {
         endforeach; 
         echo json_encode($data);
     }
+
+
+    public function print_cert_of_enrollment($param)
+    {
+        $lasturl = $this->input->get('lasturl');
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
+        {
+            $page = 'print_cert_of_enrollment';
+            if(!file_exists(APPPATH.'views/admin/records/'.$page.'.php')){
+                show_404();
+            }
+            
+            $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+            $data['id'] = $param;
+            $data['title'] = "Manage Student Grades";
+            $data['lasturl'] = $lasturl;
+            $data['signatory'] = $this->Student_loads_model->signatory();
+            $data['sy'] = $this->Student_loads_model->sy();
+            $this->load->view('admin/records/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }	
+    }
     // END SECTION CONTROLLER
 }
