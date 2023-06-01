@@ -500,6 +500,15 @@
                                       </select>
                                       <span class="help-block"></span>
                                   </div>
+                                  <div class="col-xs-6">
+                                      <label for="program">Current Enrolled Semester <b style="color:red;">*</b></label>
+                                      <select name="sem" id="program" class="form-control">
+                                          <option value="">Select a Semester</option>
+                                          <option value="1">First Semester</option>
+                                          <option value="2">Second Semester</option>
+                                      </select>
+                                      <span class="help-block"></span>
+                                  </div>
                                   
                               </div>
                           </div>

@@ -1,4 +1,10 @@
 @media print {
+   #label1 {
+    print-color-adjust: exact !important; 
+    color-adjust: exact !important; 
+    color-adjust:exact !important; 
+    color:#925b27 !important; 
+   }
     #backButton {
         display: none !important; 
     }
@@ -21,5 +27,6 @@
     ::-webkit-scrollbar {
         display: none;
     }
+    
     
 }

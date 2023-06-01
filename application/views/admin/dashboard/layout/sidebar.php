@@ -46,7 +46,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url()?>all_student"><i class="fa fa-circle-o"></i> All Students</a></li>
-            <li li class="treeview">
+            <li class="treeview">
               <a href="#"><i class="fa fa-circle-o"></i> BSE Students Lists
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>

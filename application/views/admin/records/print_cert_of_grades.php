@@ -20,7 +20,22 @@
 .table tr.spacing>th {
   margin:0; padding:0;
 }
-
+#label1 {
+    print-color-adjust: exact !important; 
+    color-adjust: exact !important; 
+    color-adjust:exact !important; 
+    color:#925b27 !important; 
+   }
+  body{
+    font-size: 18px;
+    font-style: justify;
+  }
+  @media print {
+    @page {
+      font-size: 18px;
+      margin:  0.25in; 
+    }
+   }
 </style>
 <link rel="stylesheet" href="<?=base_url()?>assets/record/print.css" media="print">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
@@ -46,17 +61,17 @@
     </div>
     <h5 style="margin-top: 5px; margin-bottom: 5px;"><b>Zone II, Pola Oriental Mindoro</b></h5>
     <h6 style="margin-top: 5px; margin-bottom: 5px;"><b>Phone: +(63)9560875992 | E-mail: polacommunitycollege2020@gmail.com</b></h6>
-    <hr style="margin-top: 15px; margin-bottom: 2px;">
-    <hr style="margin-top: 2px; margin-bottom: 2px;">
-    <h4 style="color:#907358;"><b>OFFICE OF THE REGISTRAR</b></h4>
-    <h4><b>CERTIFICATION OF GRADES</b></h4>
+    <hr style="margin-top: 15px; margin-bottom: 3px; border: 0.5px solid black;">
+    <hr style="margin-top: 2px; margin-bottom: 5px; border: 1px solid black;">
+    <h4 style="color:#907358; font-size: 26px;font-weight: 900;" id="label1">OFFICE OF THE REGISTRAR</h4>
+    <h4 style="font-size: 24px;font-weight: bolder;"><b>CERTIFICATION OF GRADES</b></h4>
   </div>
 </div>
 
 <?php foreach($student_data as $row) :?>
 <div class="col-sm-12" style="margin-bottom: 0px;">
   <p style="text-align: justify;">
-    This is to certify that <?php if($row['sex'] == 'Male'){echo 'Mr.';}else{echo 'Ms.';}?> <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?>, <?= ucfirst($row['lname'])?> 
+    This is to certify that <strong><?php if($row['sex'] == 'Male'){echo 'Mr.';}else{echo 'Ms.';}?> <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?>, <?= ucfirst($row['lname'])?> </strong>
     has attained the following ratings in the various courses taken <div id="label"></div>  </p>
   
 </div>
@@ -113,8 +128,8 @@
 
 <div style="text-align:right; margin-top:60px;margin-right:60px;">
 <?php foreach($signatory as $row) :?>
-    <strong><u><?php echo strtoupper($row['fullname'])?></u></strong><br>
-    <p style="margin-right:30px;"><?php echo ucfirst($row['position'])?> </p><br>
+  <p style="font-weight: 900;margin-bottom:0px;"><u><?php echo strtoupper($row['fullname'])?></u></p>
+    <p style="margin-right:30px;margin-top:0px;"><?php echo ucfirst($row['position'])?> </p><br>
 <?php endforeach?>
 </div>
 </div>
