@@ -140,3 +140,7 @@ $route['print_transcipt_of_records/(:num)'] = 'Records/print_transcipt_of_record
 $route['print_cert_of_grades/(:num)'] = 'Records/print_cert_of_grades/$1';
 $route['print_cert_of_enrollment/(:num)'] = 'Records/print_cert_of_enrollment1/$1';
 $route['print_cert_of_transfer/(:num)'] = 'Records/print_cert_of_transfer/$1';
+
+
+// Student
+$route['students_list'] = 'Student/index';
