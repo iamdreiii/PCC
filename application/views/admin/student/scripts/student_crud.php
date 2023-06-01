@@ -106,7 +106,7 @@
         });
         
     
-        function add_student2()
+        function add_student()
         {
             save_method = 'add';
             $('#form2')[0].reset(); 

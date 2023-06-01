@@ -2,7 +2,9 @@
 
 <!DOCTYPE html>
 <html>
+
 <?php $this->load->view('admin/dashboard/layout/head');?>
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -113,18 +115,11 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
-                <div class="col-md-8">
-                  <p class="text-center">
-                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                  </p>
-
-                  <div class="chart">
-                    <!-- Sales Chart Canvas -->
-                    <canvas id="salesChart" style="height: 180px;"></canvas>
-                  </div>
-                  <!-- /.chart-responsive -->
+              <div class="col-md-8">
+                <div class="box-body chart-responsive">
+                <div class="chart" id="bar-chart" style="height: 300px;"></div>
                 </div>
-                <!-- /.col -->
+              </div>
                 <div class="col-md-4">
                   <p class="text-center">
                     <strong>Students Per Year Level</strong>
@@ -176,14 +171,16 @@
             <!-- /.box-footer -->
           </div>
           <!-- /.box -->
+          
         </div>
         <!-- /.col -->
       </div>
       <!-- /.row -->
-
+      
       <!-- Main row -->
-     
+      
     </section>
+    
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -200,8 +197,88 @@
  
 
 </div>
-<!-- ./wrapper -->
 
 <?php $this->load->view('admin/dashboard/scripts/footer');?>
+<script>
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function getRandomColor2() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function shadeColor(color, percent) {
+    var f = parseInt(color.slice(1), 16),
+        t = percent < 0 ? 0 : 255,
+        p = percent < 0 ? percent * -1 : percent,
+        R = f >> 16,
+        G = f >> 8 & 0x00FF,
+        B = f & 0x0000FF;
+    return (
+        "#" +
+        (0x1000000 +
+            (Math.round((t - R) * p) + R) * 0x10000 +
+            (Math.round((t - G) * p) + G) * 0x100 +
+            (Math.round((t - B) * p) + B))
+            .toString(16)
+            .slice(1)
+    );
+}
+
+$.ajax({
+    url: 'Dashboard/fetchChartData',
+    method: 'GET',
+    dataType: 'json',
+    success: function(response) {
+        var data = response.data;
+        var labels = response.labels;
+        var courseKeys = response.courseKeys;
+        var courseLabels = response.courseLabels;
+
+        var barColors = [];
+        for (var i = 0; i < courseKeys.length; i++) {
+            barColors.push(getRandomColor());
+        }
+
+        var barBorderColors = [];
+        for (var i = 0; i < courseKeys.length; i++) {
+            var color = getRandomColor2();
+            barBorderColors.push(color);
+            // Generate a darker shade for the border color
+            var borderColor = shadeColor(color, -0.2);
+            barBorderColors.push(borderColor);
+        }
+
+        var bar = new Morris.Bar({
+            element: 'bar-chart',
+            resize: true,
+            data: data,
+            xkey: 'y',
+            ykeys: courseKeys,
+            labels: courseLabels,
+            barColors: barColors,
+            barBorderColor: barBorderColors,
+            hideHover: 'auto',
+            xLabelAngle: 45, // Rotate x-axis labels if needed
+            xLabelMargin: 10 // Adjust the margin between x-axis labels if needed
+        });
+    },
+    error: function(xhr, status, error) {
+        console.error('Error fetching chart data:', error);
+    }
+});
+
+</script>
 </body>
 </html>

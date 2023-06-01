@@ -25,7 +25,7 @@
 
           <div class="box">
             <div class="btn float-right">
-            <button class="btn btn-sm btn-success" onclick="add_user2()"><i class="glyphicon glyphicon-plus"></i> Add Student</button>
+            <button class="btn btn-sm btn-success" onclick="add_student()"><i class="glyphicon glyphicon-plus"></i> Add Student</button>
             <button id="delete-selected" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete Selected</button>
             <button id="update_btn" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-pencil"></i> Add/Update Class ID</button>
             
