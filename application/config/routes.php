@@ -67,6 +67,7 @@ $route['staff'] = 'Login/index';
 $route['dashboard'] = 'Dashboard/index';
 $route['all_student'] = 'User/index';
 $route['school-year'] = 'School_year/index';
+$route['programs'] = 'Program/index';
 $route['blog-admin'] = 'Blog/index';
 // BLOG
 $route['blog/(:any)'] = 'Blog/bloghome/$1';

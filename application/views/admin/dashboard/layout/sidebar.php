@@ -219,6 +219,11 @@
             <i class="fa fa-calendar-o"></i> <span> School Year</span>
           </a>
         </li>
+        <li>
+          <a href="<?php echo base_url()?>programs">
+            <i class="fa fa-book"></i> <span> Programs</span>
+          </a>
+        </li>
         <!-- START MANAGE SETTINGS -->
         <li class="treeview">
           <a href="#">

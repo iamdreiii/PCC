@@ -64,16 +64,16 @@
             checkboxes.trigger('change');
         });
         $('#filter_year_level').change(function() {
-    var selectedValue = $(this).val();
-    console.log(selectedValue);
+    // var selectedValue = $(this).val();
+    // console.log(selectedValue);
     table.draw(); // Reload the table
 });
 
 
         // Event handler for course filter
         $('#filter_program').change(function() {
-            var selectedValue = $(this).val();
-    console.log(selectedValue);
+    //         var selectedValue = $(this).val();
+    // console.log(selectedValue);
             table.draw(); // Reload the table
         });
         });
