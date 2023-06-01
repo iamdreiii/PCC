@@ -225,16 +225,33 @@ class Records extends CI_Controller {
     }
 
 
-    public function print_cert_of_enrollment1($param)
+    public function print_cert_of_enrollment($param)
     {
-        
+        $lasturl = $this->input->get('lasturl');
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
+        {
+            $page = 'print_cert_of_enrollment';
+            $page = 'print_cert_of_transfer';
+            if(!file_exists(APPPATH.'views/admin/records/'.$page.'.php')){
+                show_404();
+            }
+            
+            $data['student_data'] = $this->Student_loads_model->get_student_data($param);
+            $data['id'] = $param;
+            $data['title'] = "Manage Student Grades";
+            $data['lasturl'] = $lasturl;
+            $data['signatory'] = $this->Student_loads_model->signatory();
+            $data['sy'] = $this->Student_loads_model->sy();
+            $this->load->view('admin/records/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }	
     }
     public function print_cert_of_transfer($param)
     {
         $lasturl = $this->input->get('lasturl');
         if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
         {
-            $page = 'print_cert_of_enrollment1';
             $page = 'print_cert_of_transfer';
             if(!file_exists(APPPATH.'views/admin/records/'.$page.'.php')){
                 show_404();
