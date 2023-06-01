@@ -30,11 +30,13 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
+        <?php if($this->session->userdata('user')['type'] == 'admin') : ?>
         <li>
           <a href="<?php echo base_url()?>blog-admin">
             <i class="fa fa-users"></i> <span>Announcements</span>
           </a>
         </li>
+        <?php endif?>
         <!-- START MANAGE STUDENTS -->
         <li class="treeview">
           <a href="#">
@@ -45,14 +47,14 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>all_student"><i class="fa fa-circle-o"></i> All Students</a></li>
-            <li class="treeview">
+            <!-- <li><a href="<?php echo base_url()?>all_student"><i class="fa fa-circle-o"></i> All Students</a></li> -->
+            <li><a href="<?php echo base_url()?>students_list"><i class="fa fa-circle-o"></i> Students List</a></li>
+            <!-- <li class="treeview">
               <a href="#"><i class="fa fa-circle-o"></i> BSE Students Lists
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
-              <!-- YEAR LEVEL -->
               <ul class="treeview-menu">
                 <li><a href="<?=base_url()?>bse_student_list_first_year"><i class="fa fa-circle-o"></i> First Year</a></li>
                 <li><a href="<?=base_url()?>bse_student_list_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
@@ -66,14 +68,13 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
-              <!-- YEAR LEVEL -->
               <ul class="treeview-menu">
                 <li><a href="<?=base_url()?>bpa_student_list_first_year"><i class="fa fa-circle-o"></i> First Year</a></li>
                 <li><a href="<?=base_url()?>bpa_student_list_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
                 <li><a href="<?=base_url()?>bpa_student_list_third_year"><i class="fa fa-circle-o"></i> Third Year</a></li>
                 <li><a href="<?=base_url()?>bpa_student_list_fourth_year"><i class="fa fa-circle-o"></i> Fourth Year</a></li>
               </ul>
-            </li>
+            </li> -->
             
           </ul>
         </li>
@@ -216,6 +217,11 @@
         <li>
           <a href="<?php echo base_url()?>school-year">
             <i class="fa fa-calendar-o"></i> <span> School Year</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo base_url()?>programs">
+            <i class="fa fa-book"></i> <span> Programs</span>
           </a>
         </li>
         <!-- START MANAGE SETTINGS -->
