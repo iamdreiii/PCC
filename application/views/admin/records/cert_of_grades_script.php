@@ -49,8 +49,6 @@ $(document).ready(function(){
           schoolyearay = value.school_year;
           schoolyearay = schoolyearay;
           var gradesvalue = value.grade;
-          // const numericValue = Number(gradesvalue);
-          // const grade = numericValue.toFixed(2).replace(/\.00$/, "");
           let grade  = '';
           if (gradesvalue >= 98 && gradesvalue <= 100) {
             grade = '1.0';
@@ -116,98 +114,98 @@ $(document).ready(function(){
         const allcount = firstSemesterCount + secondSemesterCount;
         const allgrades = firstSemesterSum + secondSemesterSum;
         const allga = allgrades / allcount;
-        const formatted_value_all = allga.toFixed(2).replace(/\.00$/, "");
+
+        const formatted_value_all = allga.toFixed(0).replace(/\.00$/, "");
         const firstSemesterAverage = firstSemesterSum / firstSemesterCount;
         const secondSemesterAverage = secondSemesterSum / secondSemesterCount;
-        const formatted_value_first = firstSemesterAverage.toFixed(2).replace(/\.00$/, "");
-        const formatted_value_second = secondSemesterAverage.toFixed(2).replace(/\.00$/, "");
-        let formatted_value_second_output = ''; // Declare as a regular variable instead of constant
+
+        const formatted_value_first = firstSemesterAverage.toFixed(0).replace(/\.00$/, "");
+        const formatted_value_second = secondSemesterAverage.toFixed(0).replace(/\.00$/, "");
+
+
+        let formatted_value_all_output = '';
         let formatted_value_first_output = ''; 
-        let formatted_value_all_output = ''; 
-          if (allga >= 98 && allga <= 100) {
-            formatted_value_all_output = '1.0';
-          } else if (allga >= 95 && allga <= 97) {
-            formatted_value_all_output = '1.25';
-          } else if (allga >= 92 && allga <= 94) {
-            formatted_value_all_output = '1.5';
-          } else if (allga >= 89 && allga <= 91) {
-            formatted_value_all_output = '1.75';
-          } else if (allga >= 86 && allga <= 88) {
-            formatted_value_all_output = '2.0';
-          } else if (allga >= 83 && allga <= 85) {
-            formatted_value_all_output = '2.25';
-          } else if (allga >= 80 && allga <= 82) {
-            formatted_value_all_output = '2.5';
-          } else if (allga >= 77 && allga <= 79) {
-            formatted_value_all_output = '2.75';
-          } else if (allga >= 75 && allga <= 76) {
-            formatted_value_all_output = '3.0';
-          } else if (allga < 75 && allga >= 1) {
-            formatted_value_all_output = '5';
-          } else if (allga === '' || allga == 0.00 || allga == null) {
-            formatted_value_all_output = allga;
-          }
-          if (formatted_value_second >= 98 && formatted_value_second <= 100) {
-            formatted_value_second_output = '1.0';
-          } else if (formatted_value_second >= 95 && formatted_value_second <= 97) {
-            formatted_value_second_output = '1.25';
-          } else if (formatted_value_second >= 92 && formatted_value_second <= 94) {
-            formatted_value_second_output = '1.5';
-          } else if (formatted_value_second >= 89 && formatted_value_second <= 91) {
-            formatted_value_second_output = '1.75';
-          } else if (formatted_value_second >= 86 && formatted_value_second <= 88) {
-            formatted_value_second_output = '2.0';
-          } else if (formatted_value_second >= 83 && formatted_value_second <= 85) {
-            formatted_value_second_output = '2.25';
-          } else if (formatted_value_second >= 80 && formatted_value_second <= 82) {
-            formatted_value_second_output = '2.5';
-          } else if (formatted_value_second >= 77 && formatted_value_second <= 79) {
-            formatted_value_second_output = '2.75';
-          } else if (formatted_value_second >= 75 && formatted_value_second <= 76) {
-            formatted_value_second_output = '3.0';
-          } else if (formatted_value_second < 75 && formatted_value_second >= 1) {
-            formatted_value_second_output = '5';
-          } else if (formatted_value_second === '' || formatted_value_second == 0.00 || formatted_value_second == null) {
-            formatted_value_second_output = formatted_value_second;
-          }
-          if (formatted_value_first >= 98 && formatted_value_first <= 100) {
-            formatted_value_first_output = '1.0';
-          } else if (formatted_value_first >= 95 && formatted_value_first <= 97) {
-            formatted_value_first_output = '1.25';
-          } else if (formatted_value_first >= 92 && formatted_value_first <= 94) {
-            formatted_value_first_output = '1.5';
-          } else if (formatted_value_first >= 89 && formatted_value_first <= 91) {
-            formatted_value_first_output = '1.75';
-          } else if (formatted_value_first >= 86 && formatted_value_first <= 88) {
-            formatted_value_first_output = '2.0';
-          } else if (formatted_value_first >= 83 && formatted_value_first <= 85) {
-            formatted_value_first_output = '2.25';
-          } else if (formatted_value_first >= 80 && formatted_value_first <= 82) {
-            formatted_value_first_output = '2.5';
-          } else if (formatted_value_first >= 77 && formatted_value_first <= 79) {
-            formatted_value_first_output = '2.75';
-          } else if (formatted_value_first >= 75 && formatted_value_first <= 76) {
-            formatted_value_first_output = '3.0';
-          } else if (formatted_value_first < 75 && formatted_value_first >= 1) {
-            formatted_value_first_output = '5';
-          } else if (formatted_value_first === '' || formatted_value_first == 0.00 || formatted_value_first == null) {
-            formatted_value_first_output = formatted_value_first;
-          }
+        let formatted_value_second_output = ''; 
 
+        if (allga >= 98 && allga <= 100) {
+          formatted_value_all_output = '1.0';
+        } else if (allga >= 95 && allga <= 97) {
+          formatted_value_all_output = '1.25';
+        } else if (allga >= 92 && allga <= 94) {
+          formatted_value_all_output = '1.5';
+        } else if (allga >= 89 && allga <= 91) {
+          formatted_value_all_output = '1.75';
+        } else if (allga >= 86 && allga <= 88) {
+          formatted_value_all_output = '2.0';
+        } else if (allga >= 83 && allga <= 85) {
+          formatted_value_all_output = '2.25';
+        } else if (allga >= 80 && allga <= 82) {
+          formatted_value_all_output = '2.5';
+        } else if (allga >= 77 && allga <= 79) {
+          formatted_value_all_output = '2.75';
+        } else if (allga >= 75 && allga <= 76) {
+          formatted_value_all_output = '3.0';
+        } else if (allga < 75 && allga >= 1) {
+          formatted_value_all_output = '5';
+        } else if (allga == '' || allga == 0.00 || allga == null) {
+          formatted_value_all_output = allga;
+        }
 
+        if (formatted_value_first >= 98 && formatted_value_first <= 100) {
+          formatted_value_first_output = '1.0';
+        } else if (formatted_value_first >= 95 && formatted_value_first <= 97) {
+          formatted_value_first_output = '1.25';
+        } else if (formatted_value_first >= 92 && formatted_value_first <= 94) {
+          formatted_value_first_output = '1.5';
+        } else if (formatted_value_first >= 89 && formatted_value_first <= 91) {
+          formatted_value_first_output = '1.75';
+        } else if (formatted_value_first >= 86 && formatted_value_first <= 88) {
+          formatted_value_first_output = '2.0';
+        } else if (formatted_value_first >= 83 && formatted_value_first <= 85) {
+          formatted_value_first_output = '2.25';
+        } else if (formatted_value_first >= 80 && formatted_value_first <= 82) {
+          formatted_value_first_output = '2.5';
+        } else if (formatted_value_first >= 77 && formatted_value_first <= 79) {
+          formatted_value_first_output = '2.75';
+        } else if (formatted_value_first >= 75 && formatted_value_first <= 76) {
+          formatted_value_first_output = '3.0';
+        } else if (formatted_value_first < 75 && formatted_value_first >= 1) {
+          formatted_value_first_output = '5';
+        } else if (formatted_value_first == '' || formatted_value_first == 0.00 || formatted_value_first == null) {
+          formatted_value_first_output = formatted_value_first;
+        }
 
-
-        // Output the general averages based on selectedSem value
+        if (formatted_value_second >= 98 && formatted_value_second <= 100) {
+          formatted_value_second_output = '1.0';
+        } else if (formatted_value_second >= 95 && formatted_value_second <= 97) {
+          formatted_value_second_output = '1.25';
+        } else if (formatted_value_second >= 92 && formatted_value_second <= 94) {
+          formatted_value_second_output = '1.5';
+        } else if (formatted_value_second >= 89 && formatted_value_second <= 91) {
+          formatted_value_second_output = '1.75';
+        } else if (formatted_value_second >= 86 && formatted_value_second <= 88) {
+          formatted_value_second_output = '2.0';
+        } else if (formatted_value_second >= 83 && formatted_value_second <= 85) {
+          formatted_value_second_output = '2.25';
+        } else if (formatted_value_second >= 80 && formatted_value_second <= 82) {
+          formatted_value_second_output = '2.5';
+        } else if (formatted_value_second >= 77 && formatted_value_second <= 79) {
+          formatted_value_second_output = '2.75';
+        } else if (formatted_value_second >= 75 && formatted_value_second <= 76) {
+          formatted_value_second_output = '3.0';
+        } else if (formatted_value_second < 75 && formatted_value_second >= 1) {
+          formatted_value_second_output = '5';
+        } else if (formatted_value_second == '' || formatted_value_second == 0.00 || formatted_value_second == null) {
+          formatted_value_second_output = formatted_value_second;
+        }
+          
         if (selectedSem == "all") {
-          // Output both first and second semester general averages
           html += '<tr class="spaceUnder"><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: hidden;"></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: hidden;"><strong><u>GENERAL AVERAGE </u></strong></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: hidden;"></td><td style="border-top: 1px solid black;border-left: hidden;border-right: hidden;">' + formatted_value_all_output +'</td><td style="border-top: 1px solid black;border-left:hidden;border-right: 1px solid black;"></td></tr>';
-          //html += '<tr class="spaceUnder"><td style="border-left: 1px solid black;border-right: hidden;border-top: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: hidden;border-top: 1px solid black;"><strong><u>GENERAL AVERAGE (Second Sem)</u></strong></td><td style="border-left: 1px solid black;border-right: hidden;border-top: 1px solid black;"></td><td style="border-top: 1px solid black;border-left: hidden;border-right: hidden;">' + secondSemesterAverage + '</td><td style="border-top: 1px solid black;border-left:hidden;border-right: 1px solid black;"></td></tr>';
+          //html += '<tr class="spaceUnder"><td style="border-left: 1px solid black;border-right: hidden;border-top: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: hidden;border-top: 1px solid black;"><strong><u>GENERAL AVERAGE (Second Sem)</u></strong></td><td style="border-left: 1px solid black;border-right: hidden;border-top: 1px solid black;"></td><td style="border-top: 1px solid black;border-left: hidden;border-right: hidden;">' + formatted_value_second_output + '</td><td style="border-top: 1px solid black;border-left:hidden;border-right: 1px solid black;"></td></tr>';
         } else if (selectedSem == "1") {
-          // Output first semester general average
           html += '<tr class="spaceUnder"><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: hidden;"></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: hidden;"><strong><u>GENERAL AVERAGE </u></strong></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: hidden;"></td><td style="border-top: 1px solid black;border-left: hidden;border-right: hidden;">' + formatted_value_first_output + '</td><td style="border-top: 1px solid black;border-left:hidden;border-right: 1px solid black;"></td></tr>';
         } else if (selectedSem == "2") {
-          // Output second semester general average
-          html += '<tr class="spaceUnder"><td style="border-left: 1px solid black;border-right: hidden;border-top: 1px solid black;"></td><td style="border-left: 1px solid black;border-right: hidden;border-top: 1px solid black;"><strong><u>GENERAL AVERAGE </u></strong></td><td style="border-left: 1px solid black;border-right: hidden;border-top: 1px solid black;"></td><td style="border-top: 1px solid black;border-left: hidden;border-right: hidden;">' + formatted_value_second_output + '</td><td style="border-top: 1px solid black;border-left:hidden;border-right: 1px solid black;"></td></tr>';
+          html += '<tr class="spaceUnder"><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: hidden;"></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: hidden;"><strong><u>GENERAL AVERAGE </u></strong></td><td style="border-top: 1px solid black;border-left: 1px solid black;border-right: hidden;"></td><td style="border-top: 1px solid black;border-left: hidden;border-right: hidden;">' + formatted_value_second_output + '</td><td style="border-top: 1px solid black;border-left:hidden;border-right: 1px solid black;"></td></tr>';
         }
       }
       $('tbody').html(html);

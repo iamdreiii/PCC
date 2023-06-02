@@ -142,6 +142,7 @@ $route['print_cert_of_grades/(:num)'] = 'Records/print_cert_of_grades/$1';
 $route['print_cert_of_enrollment/(:num)'] = 'Records/print_cert_of_enrollment/$1';
 $route['print_cert_of_transfer/(:num)'] = 'Records/print_cert_of_transfer/$1';
 
-
-// Student
+// NEW UPDATE
+// MANAGE Student 
 $route['students_list'] = 'Student/index';
+$route['student_subjects'] = 'student_subjects/index';
