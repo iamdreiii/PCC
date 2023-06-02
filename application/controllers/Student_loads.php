@@ -625,6 +625,7 @@ class Student_loads extends CI_Controller {
             }
             endforeach;
             $data['id'] = $param;
+            $data['signatory'] = $this->Student_loads_model->signatory();
             $this->load->view('admin/student_loads/'. $page, $data);    
         }else{
             redirect('staff');

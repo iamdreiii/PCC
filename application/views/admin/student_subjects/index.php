@@ -88,7 +88,7 @@
 
 <?php $this->load->view('admin/dashboard/layout/control_sidebar');?>
 </div>
-<?php //$this->load->view('admin/student_subjects/modals/modals');?>
+<?php $this->load->view('admin/student_subjects/modals');?>
 <?php $this->load->view('admin/student_subjects/scripts/crud');?>
 <?php $this->load->view('admin/user/scripts/footer');?>
 </body>
