@@ -25,36 +25,30 @@
 
           <div class="box">
             <div class="btn float-right">
-            <button class="btn btn-sm btn-success" onclick="add_user2()"><i class="glyphicon glyphicon-plus"></i> Add Student</button>
+            <button class="btn btn-sm btn-success" onclick="add_student()"><i class="glyphicon glyphicon-plus"></i> Add Student</button>
             <button id="delete-selected" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete Selected</button>
             <button id="update_btn" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-pencil"></i> Add/Update Class ID</button>
             
             </div>
-            <!-- <div class="row" style="padding-left: 20px;">
+            <div class="row" style="padding-left: 20px;">
               <div class="col-xs-2">
                 <label>Program:</label>
                 <select class="form-control" id="filter_program" name="filter_program">
-                  <option >All</option>
                 </select>
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-2">
                 <label>Year Level:</label>
                 <select class="form-control" id="filter_year_level" name="filter_year_level">
-                  <option value="1st Year">First Year</option>
-                  <option value="2nd Year">Second Year</option>
-                  <option value="3rd Year">Third Year</option>
-                  <option value="4th Year">Fourth Year</option>
                 </select>
               </div>
-            </div> -->
+            </div>
 
             <div class="box-body">
               <table id="table" class="table table-bordered table-striped" style="width:100%">
                 <thead>
                 <tr>
                     <th><input type="checkbox" id="select-all"></th>
-                    <th>Image</th>
-                    <th>Student ID</th>
+                    <th>SID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
@@ -69,8 +63,7 @@
                 <tfoot>
                 <tr>
                     <th></th>
-                    <th>Image</th>
-                    <th>Student ID</th>
+                    <th>SID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
@@ -97,8 +90,8 @@
 
 <?php $this->load->view('admin/dashboard/layout/control_sidebar');?>
 </div>
-<?php $this->load->view('admin/user/modals');?>
-<?php $this->load->view('admin/user/scripts/student_crud');?>
-<?php $this->load->view('admin/user/scripts/footer');?>
+<?php $this->load->view('admin/student/modals');?>
+<?php $this->load->view('admin/student/scripts/student_crud');?>
+<?php $this->load->view('admin/student/scripts/footer');?>
 </body>
 </html>
