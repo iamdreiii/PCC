@@ -98,29 +98,38 @@
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-wrench"></i></button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                  </ul>
-                </div>
-                <!-- <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button> -->
               </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-12">
                 <div class="box-body chart-responsive">
                 <div class="chart" id="bar-chart" style="height: 300px;"></div>
                 </div>
               </div>
-                <div class="col-md-4">
+               
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Visualization</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
                   <p class="text-center">
                     <strong>Students Per Year Level</strong>
                   </p>
@@ -160,25 +169,13 @@
                       <div class="progress-bar progress-bar-yellow" style="width: <?php echo $stud4?>%"></div>
                     </div>
                   </div>
-                  <!-- /.progress-group -->
                 </div>
-                <!-- /.col -->
               </div>
-              <!-- /.row -->
             </div>
-            <!-- ./box-body -->
-            
-            <!-- /.box-footer -->
           </div>
-          <!-- /.box -->
           
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
-      
-      <!-- Main row -->
-      
     </section>
     
     <!-- /.content -->
@@ -225,16 +222,16 @@ function shadeColor(color, percent) {
         R = f >> 16,
         G = f >> 8 & 0x00FF,
         B = f & 0x0000FF;
-    return (
-        "#" +
-        (0x1000000 +
-            (Math.round((t - R) * p) + R) * 0x10000 +
-            (Math.round((t - G) * p) + G) * 0x100 +
-            (Math.round((t - B) * p) + B))
-            .toString(16)
-            .slice(1)
-    );
+        
+    R = Math.round((t - R) * p) + R;
+    G = Math.round((t - G) * p) + G;
+    B = Math.round((t - B) * p) + B;
+    
+    var finalColor = "#" + ((R << 16) | (G << 8) | B).toString(16).padStart(6, '0');
+    
+    return finalColor;
 }
+
 
 $.ajax({
     url: 'Dashboard/fetchChartData',
