@@ -82,9 +82,10 @@ function loadSubjectsByYearLevel(yearLevel) {
             alert('No subjects selected.'); 
             return;
           }
-          var subjectData = []; 
 
-          
+
+
+          var subjectData = []; 
           selectedSubjects.each(function() {
             var subjectId = $(this).val();
             var subjectCode = $(this).closest('tr').find('td:nth-child(2)').text();
