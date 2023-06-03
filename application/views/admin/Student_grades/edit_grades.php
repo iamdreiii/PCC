@@ -214,7 +214,7 @@ $(document).ready(function(){
   function load_data(edit_cells) {
   var selectedYear = $('#select').val();
   $.ajax({
-    url:"<?php echo base_url(); ?>Grades/load_data",
+    url:"<?php echo base_url(); ?>Student_grades/load_data",
     dataType:"JSON",
     data: {id: <?=$id?>,year: selectedYear},
     success:function(data){
