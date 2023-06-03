@@ -613,11 +613,14 @@ class Student_loads_model extends CI_Model
     }
     public function get_student_data($param)
     {
-        $this->db->select('*');
+        $this->db->select('*, tbl_course.description as cd');
         $this->db->from('tbl_student');
-        $this->db->where('id', $param);
+        $this->db->where('tbl_student.id', $param);
+        $this->db->join('tbl_course', 'tbl_course.course = tbl_student.program', 'left');
+
         $query = $this->db->get();
         return $query->result_array();
+
     }
     public function delete_subject_loads($id) {
         // Delete the subject by ID from the database

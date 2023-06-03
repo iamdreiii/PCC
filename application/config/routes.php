@@ -93,9 +93,9 @@ $route['bpa_student_list_third_year'] = 'User/bpa_third_year';
 $route['bpa_student_list_fourth_year'] = 'User/bpa_fourth_year';
 
 // BSE Student_LOADS
-$route['view_student_loads/(:num)'] = 'Student_loads/view_student_loads/$1';
-$route['edit_student_loads/(:num)'] = 'Student_loads/edit_student_loads/$1';
-$route['print_student_loads/(:num)'] = 'Student_loads/print_student_loads/$1';
+// $route['view_student_loads/(:num)'] = 'Student_loads/view_student_loads/$1';
+// $route['edit_student_loads/(:num)'] = 'Student_loads/edit_student_loads/$1';
+// $route['print_student_loads/(:num)'] = 'Student_loads/print_student_loads/$1';
 $route['bse_student_loads_first_year'] = 'Student_loads/bse_first_year';
 $route['bse_student_loads_second_year'] = 'Student_loads/bse_second_year';
 $route['bse_student_loads_third_year'] = 'Student_loads/bse_third_year';
@@ -142,6 +142,13 @@ $route['print_cert_of_grades/(:num)'] = 'Records/print_cert_of_grades/$1';
 $route['print_cert_of_enrollment/(:num)'] = 'Records/print_cert_of_enrollment/$1';
 $route['print_cert_of_transfer/(:num)'] = 'Records/print_cert_of_transfer/$1';
 
-
-// Student
+// NEW UPDATE
+// MANAGE Student 
 $route['students_list'] = 'Student/index';
+// MANAGE STUDENT SUBJECTS
+$route['student_subjects'] = 'Student_subjects/index';
+$route['view_student_loads/(:num)'] = 'Student_subjects/view_student_loads/$1';
+$route['edit_student_loads/(:num)'] = 'Student_subjects/edit_student_loads/$1';
+$route['print_student_loads/(:num)'] = 'Student_subjects/print_student_loads/$1';
+$route['add_student_loads/(:num)'] = 'Student_subjects/add_student_loads/$1';
+
