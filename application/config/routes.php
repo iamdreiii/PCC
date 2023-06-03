@@ -106,11 +106,7 @@ $route['bpa_student_loads_second_year'] = 'Student_loads/bpa_second_year';
 $route['bpa_student_loads_third_year'] = 'Student_loads/bpa_third_year';
 $route['bpa_student_loads_fourth_year'] = 'Student_loads/bpa_fourth_year';
 
-// STUDENTS GRADESs
-$route['grades'] = 'Grades/getgrade';
-// edit GRADE
-$route['edit_grades/(:num)'] = 'Grades/edit_grades/$1';
-$route['load_data/(:num)'] = 'Grades/load_data/$1';
+
 // BSE STUDENT GRADES
 $route['bse_student_grades_first_year'] = 'Grades/bse_first_year';
 $route['bse_student_grades_second_year'] = 'Grades/bse_second_year';
@@ -152,3 +148,11 @@ $route['edit_student_loads/(:num)'] = 'Student_subjects/edit_student_loads/$1';
 $route['print_student_loads/(:num)'] = 'Student_subjects/print_student_loads/$1';
 $route['add_student_loads/(:num)'] = 'Student_subjects/add_student_loads/$1';
 
+// MANAGE STUDENT GRADES
+$route['manage_student_grades'] = 'Student_grades/index';
+
+// STUDENTS GRADESs
+$route['grades'] = 'Grades/getgrade';
+// edit GRADE
+$route['edit_grades/(:num)'] = 'Student_grades/edit_grades/$1';
+$route['load_data/(:num)'] = 'Student_grades/load_data/$1';

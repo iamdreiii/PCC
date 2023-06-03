@@ -98,19 +98,19 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li li class="treeview">
+          <li><a href="<?php echo base_url()?>manage_student_grades"><i class="fa fa-circle-o"></i> Students List</a></li>
+            <!-- <li li class="treeview">
               <a href="#"><i class="fa fa-circle-o"></i> BSE Students
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
-              <!-- YEAR LEVEL -->
               <ul class="treeview-menu">
                 <li><a href="<?=base_url()?>bse_student_grades_first_year"><i class="fa fa-circle-o"></i> First Year</a></li>
                 <li><a href="<?=base_url()?>bse_student_grades_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
                 <li><a href="<?=base_url()?>bse_student_grades_third_year"><i class="fa fa-circle-o"></i> Third Year</a></li>
                 <li><a href="<?=base_url()?>bse_student_grades_fourth_year"><i class="fa fa-circle-o"></i> Fourth Year</a></li>
-                <!-- <li><a href="<?=base_url()?>bse_student_grades_graduates"><i class="fa fa-circle-o"></i> Graduates</a></li> -->
+                
               </ul>
             </li>
             <li li class="treeview">
@@ -119,15 +119,13 @@
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
-              <!-- YEAR LEVEL -->
               <ul class="treeview-menu">
                 <li><a href="<?=base_url()?>bpa_student_grades_first_year"><i class="fa fa-circle-o"></i> First Year</a></li>
                 <li><a href="<?=base_url()?>bpa_student_grades_second_year"><i class="fa fa-circle-o"></i> Second Year</a></li>
                 <li><a href="<?=base_url()?>bpa_student_grades_third_year"><i class="fa fa-circle-o"></i> Third Year</a></li>
                 <li><a href="<?=base_url()?>bpa_student_grades_fourth_year"><i class="fa fa-circle-o"></i> Fourth Year</a></li>
-                <!-- <li><a href="<?=base_url()?>bse_student_grades_graduates"><i class="fa fa-circle-o"></i> Graduates</a></li> -->
               </ul>
-            </li>
+            </li> -->
           </ul>
         </li>
         <!-- END MANAGE STUDENTS -->
