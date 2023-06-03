@@ -13,8 +13,6 @@
 <script src="<?php echo base_url()?>assets/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url()?>assets/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url()?>assets/dist/js/demo.js"></script>
 <!-- TOASTR -->
 <script src="<?php echo base_url()?>assets/toastr/toastr.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/iCheck/icheck.min.js"></script>

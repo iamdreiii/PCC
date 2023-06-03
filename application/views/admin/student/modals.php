@@ -498,7 +498,20 @@
                                       </select>
                                       <span class="help-block"></span>
                                   </div>
-                                  
+                                  <div class="col-xs-6">
+                                      <label for="program">Status <b style="color:red;">*</b></label>
+                                      <select name="status" id="status" class="form-control">
+                                          <option value="">Select Status</option>
+                                          <option value="regular">Regular</option>
+                                          <option value="irregular">Irregular</option>
+                                      </select>
+                                      <span class="help-block"></span>
+                                  </div>
+                                  <div class="col-xs-6">
+                                      <label for="date_enrolled">Enrollment Date</label>
+                                      <input name="date_enrolled" class="form-control" type="date" id="date_enrolled">
+                                      <span class="help-block"></span>
+                                  </div>
                               </div>
                           </div>
                       </div>

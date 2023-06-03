@@ -150,4 +150,5 @@ $route['student_subjects'] = 'Student_subjects/index';
 $route['view_student_loads/(:num)'] = 'Student_subjects/view_student_loads/$1';
 $route['edit_student_loads/(:num)'] = 'Student_subjects/edit_student_loads/$1';
 $route['print_student_loads/(:num)'] = 'Student_subjects/print_student_loads/$1';
+$route['add_student_loads/(:num)'] = 'Student_subjects/add_student_loads/$1';
 

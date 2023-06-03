@@ -55,7 +55,7 @@ class Student_subjects extends CI_Controller {
         foreach ($list as $user) {
             $no++;
             $row = array();
-            $row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
+            //$row[] = '<td><input type="checkbox" name="selected[]" value='."'".$user->id."'".'"></td>';
             $row[] = $user->student_id;
             $row[] = $user->fname .' '. $user->mname .'. '. $user->lname .' '. $user->extension;
             $row[] = $user->email;
@@ -63,7 +63,8 @@ class Student_subjects extends CI_Controller {
             $row[] = $user->program;
             $row[] = $user->class_id;
             $row[] = $user->year_level;
-            $row[] = '<a class="btn btn-sm btn-primary" href='.base_url().'view_student_loads/'.$user->id.'><i class="glyphicon glyphicon-book"></i> Loads</a>
+            $row[] = '<a class="btn btn-sm btn-success" href='.base_url().'add_student_loads/'.$user->id.'><i class="glyphicon glyphicon-plus"></i> Loads</a>
+            <a class="btn btn-sm btn-primary" href='.base_url().'view_student_loads/'.$user->id.'><i class="glyphicon glyphicon-eye-open"></i> Loads</a>
                   <a class="btn btn-sm btn-warning" href="'.base_url().'edit_student_loads/'.$user->id.'" title="" ><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
             $data[] = $row;
         }
@@ -142,7 +143,7 @@ class Student_subjects extends CI_Controller {
             foreach ($student_data as $row) {
                 if ($row['year_level'] == '1st Year') {
                     $param2 = 1;
-                    break; // Break the loop once the condition is met
+                    break; 
                 } elseif ($row['year_level'] == '2nd Year') {
                     $param2 = 2;
                     break;
@@ -219,6 +220,84 @@ class Student_subjects extends CI_Controller {
             redirect('staff');
         }	
     }
+    public function add_student_loads($param)
+    {
+        $lasturl = $this->input->get('lasturl');
+        if ($this->session->userdata('user') && $this->session->userdata('user')['type'] == 'admin' || $this->session->userdata('user')['type'] == 'staff')
+        {
+            $page = 'add_student_loads';
+            if(!file_exists(APPPATH.'views/admin/student_subjects/'.$page.'.php')){
+                show_404();
+            }
+            
+            $student_data = $this->Student_subjects_model->get_student_data($param);
+            $year = ''; 
+            $program = '';
+            foreach ($student_data as $row) :
+                $program =  $row['pid'];
+
+                if ($row['year_level'] == '1st Year') {
+                    $year = 1;
+                    break; // Break the loop once the condition is met
+                } elseif ($row['year_level'] == '2nd Year') {
+                    $year = 2;
+                    break;
+                } elseif ($row['year_level'] == '3rd Year') {
+                    $year = 3;
+                    break;
+                } elseif ($row['year_level'] == '4th Year') {
+                    $year = 4;
+                    break;
+                }
+                
+            endforeach;
+            $data['subjects_list'] = $this->Student_subjects_model->get_subjects($year, $program);
+            $data['student_data'] = $this->Student_subjects_model->get_student_data($param);
+            $data['id'] = $param;
+            $data['year'] = $year;
+            $data['title'] = "Add Student Loads";
+            $data['lasturl'] = $lasturl;
+            $this->load->view('admin/student_subjects/'. $page, $data);    
+        }else{
+            redirect('staff');
+        }	
+    }
     
+    public function getSubjectsData() 
+    {
+        $yearLevel = $this->input->get('yearLevel');
+        $param = $this->input->get('id');
+        $student_data = $this->Student_subjects_model->get_student_data($param);
+        $st_year = '';
+        $program = '';
+        foreach ($student_data as $row) :
+            $program =  $row['pid'];
+            if ($row['year_level'] == '1st Year') {
+                $ $st_year = 1;
+                break; // Break the loop once the condition is met
+            } elseif ($row['year_level'] == '2nd Year') {
+                $ $st_year = 2;
+                break;
+            } elseif ($row['year_level'] == '3rd Year') {
+                $ $st_year = 3;
+                break;
+            } elseif ($row['year_level'] == '4th Year') {
+                $ $st_year = 4;
+                break;
+            }
+        endforeach;
+        $subjectsData = $this->Student_subjects_model->getSubjectsByYearLevel($st_year, $yearLevel, $program);
+        $response = array(
+            'subjectsData' => $subjectsData,
+            'totalUnits' => $this->Student_subjects_model->getTotalUnits( $st_year, $yearLevel, $program)
+        );
+
+        // Send the JSON response
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($response));
+    }
+
+   
 
 }

@@ -105,6 +105,7 @@
             }
         });
         
+        
     
         function add_student()
         {
@@ -205,6 +206,8 @@
                     $('[name="program"]').val(data.program);
                     $('[name="year_levels"]').val(data.year_level);
                     $('[name="sem"]').val(data.sem);
+                    $('[name="status"]').val(data.status);
+                    $('[name="date_enrolled"]').val(data.date_enrolled);
                     $('#modal_form2').modal('show');
                     $('.modal-title').text('Edit Student'); 
                     
@@ -354,7 +357,7 @@
                 }
             });
         }
-        //LOAD COURSES 
+        //LOAD COURSES MODAL
         $.ajax({
             url: '<?php echo base_url("Student/get_courses"); ?>',
             dataType: 'json',

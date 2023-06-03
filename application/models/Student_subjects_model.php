@@ -87,11 +87,54 @@ class Student_subjects_model extends CI_Model
 
     public function get_student_data($param)
     {
-        $this->db->select('*');
+        $this->db->select('tbl_student.*, tbl_course.id as pid');
         $this->db->from('tbl_student');
-        $this->db->where('id', $param);
+        $this->db->join('tbl_course', 'tbl_course.course = tbl_student.program'); 
+        $this->db->where('tbl_student.id', $param);
         $query = $this->db->get();
         return $query->result_array();
+    }
+
+
+    // GET SUBJECTS
+    public function get_subjects($year, $program)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_subject');
+        $this->db->where('year_level', $year);
+        $this->db->where('program_id', $program);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+
+
+    public function getSubjectsByYearLevel( $st_year, $yearLevel, $program) 
+    {
+        if ($yearLevel === 'All') {
+            $this->db->where('year_level', $st_year);
+            $this->db->where('program_id', $program);
+            $query = $this->db->get('tbl_subject');
+        } else {
+            $this->db->where('year_level', $yearLevel);
+            $this->db->where('program_id', $program);
+            $query = $this->db->get('tbl_subject');
+        }
+        return $query->result_array();
+    }
+    
+    public function getTotalUnits( $st_year, $yearLevel, $program) 
+    {
+        if ($yearLevel === 'All') {
+            $this->db->where('year_level', $st_year);
+            $this->db->where('program_id', $program);
+            return $this->db->select_sum('units')->get('tbl_subject')->row()->units;
+        } else {
+            $this->db->where('year_level', $yearLevel);
+            $this->db->where('year_level', $yearLevel);
+            $this->db->where('program_id', $program);
+            return $this->db->select_sum('units')->get('tbl_subject')->row()->units;
+        }
     }
     
 }

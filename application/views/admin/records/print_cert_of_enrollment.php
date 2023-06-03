@@ -62,7 +62,8 @@
     This is to certify that <strong><?php if($row['sex'] == 'Male'){echo 'Mr.';}else{echo 'Ms.';}?> <?= ucfirst($row['fname'])?> <?= ucfirst($row['mname'])?>, <?= ucfirst($row['lname'])?></strong> 
     is a bonafide student of Pola Community College and is currently enrolled as a <?php if($row['year_level'] == '1st Year'){echo 'First Year';}elseif($row['year_level'] == '2nd Year'){echo 'Second Year';}elseif($row['year_level'] == '3rd Year'){echo 'Third Year';}elseif($row['year_level'] == '4th Year'){echo 'Fourth Year';}?> 
     (<?php if($row['sem'] == 1){echo  'First Semester';}elseif($row['sem'] == 2){echo  'Second Semester';}?> A.Y. <?php foreach($sy as $sy) {if($sy['status'] == 'active'){echo $sy['school_year'];}} ?> )
-    student under <?php if($row['program'] == 'BSE'){echo 'Bachelor of Science in Entrepreneurship';}elseif($row['program'] == 'BPA'){echo 'Bachelor of Public Administration';}?>.
+    student under <?= $row['cd']?>.
+    
   </p>
   
 </div>

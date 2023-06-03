@@ -24,12 +24,9 @@
          
 
           <div class="box">
-            <div class="btn float-right">
-            <button id="update_btn" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i> Subject Loads</button>
-            </div>
-
+            
             <div class="row" style="padding-left: 20px;">
-              <div class="col-xs-2">
+              <div class="col-xs-3">
                 <label>Program:</label>
                 <select class="form-control" id="filter_program" name="filter_program">
                 </select>
@@ -45,30 +42,30 @@
               <table id="table" class="table table-bordered table-striped" style="width:100%">
                 <thead>
                 <tr>
-                    <th width="2%"><input type="checkbox" id="select-all"></th>
-                    <th>SID</th>
+                    <!-- <th width="2%"><input type="checkbox" id="select-all"></th> -->
+                    <th width="3%">SID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
                     <th>Course</th>
                     <th>Class</th>
                     <th>Year Lvl</th>
-                    <th width="10%">Action</th>
+                    <th width="20%">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th width="2%"></th>
-                    <th>SID</th>
+                    <!-- <th width="2%"></th> -->
+                    <th width="3%">SID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
                     <th>Course</th>
                     <th>Class</th>
                     <th>Year Lvl</th>
-                    <th width="10%">Action</th>
+                    <th width="20%">Action</th>
                 </tr>
                 </tfoot>
               </table>
@@ -89,7 +86,8 @@
 <?php $this->load->view('admin/dashboard/layout/control_sidebar');?>
 </div>
 <?php $this->load->view('admin/student_subjects/modals');?>
-<?php $this->load->view('admin/student_subjects/scripts/crud');?>
+
 <?php $this->load->view('admin/user/scripts/footer');?>
+<?php $this->load->view('admin/student_subjects/scripts/crud');?>
 </body>
 </html>
