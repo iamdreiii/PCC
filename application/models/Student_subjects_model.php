@@ -136,5 +136,20 @@ class Student_subjects_model extends CI_Model
             return $this->db->select_sum('units')->get('tbl_subject')->row()->units;
         }
     }
+
+    // ADD STUDENT SUBJECTS
+    public function addSubjectLoad($data) {
+        // Insert the data into the tbl_student_subject_loads table
+        $this->db->insert('tbl_student_subject_loads', $data);
+    }
+
+    public function checkExistingSubject($subjectId, $studentId, $schoolYear) {
+        $this->db->where('subject_id', $subjectId);
+        $this->db->where('student_id', $studentId);
+        $this->db->where('school_year', $schoolYear);
+        $query = $this->db->get('tbl_student_subject_loads');
+        
+        return $query->num_rows() > 0;
+    }
     
 }

@@ -298,6 +298,143 @@ class Student_subjects extends CI_Controller {
             ->set_output(json_encode($response));
     }
 
+    // ADD SUBJECTS LOADS
+    // public function addLoads() {
+    //     //$subjectIds = $this->input->post('subjectIds');
+    //     $subjectData = $this->input->post('subjectData'); 
+    //     $studentId = $this->input->post('id');
+    //     $query = $this->db->where('status', 'active')->get('tbl_school_year');
+    //     $sy = $query->result_array();
+    //     $s_y = '';
+    //     foreach ($sy as $school_year) {
+    //         $s_y = $school_year['school_year'];
+    //     }
+    //     foreach ($subjectData as $subject) {
+    //         $subjectId = $subject['id'];
+    //         $subjectCode = $subject['code'];
+    
+    //         // Prepare the data to be inserted into the tbl_student_subject_loads table
+    //         $data = array(
+    //             'subject_id' => $subjectId,
+    //             'subject_code' => $subjectCode,
+    //             'student_id' => $studentId,
+    //             'school_year' => $s_y
+    //         );
+    
+    //         // Insert the data into the tbl_student_subject_loads table
+    //         $this->Student_subjects_model->addSubjectLoad($data);
+    //     }
+
+    //     $response = array('success' => true);
+    //     echo json_encode($response);
+    // }
+    // public function addLoads() 
+    // {
+    //     $subjectData = $this->input->post('subjectData');
+    //     $studentId = $this->input->post('id');
+    //     $query = $this->db->where('status', 'active')->get('tbl_school_year');
+    //     $sy = $query->result_array();
+    //     $s_y = '';
+    //     foreach ($sy as $school_year) {
+    //         $s_y = $school_year['school_year'];
+    //     }
+        
+    //     $existingSubjects = array(); // Array to store existing subjects
+    
+    //     foreach ($subjectData as $subject) {
+    //         $subjectId = $subject['id'];
+    //         $subjectCode = $subject['code'];
+    
+    //         // Check if the subject already exists for the student
+    //         $existingSubject = $this->Student_subjects_model->checkExistingSubject($subjectId, $studentId, $s_y);
+    
+    //         if ($existingSubject) {
+    //             $existingSubjects[] = $subjectCode;
+    //         } else {
+    //             // Prepare the data to be inserted into the tbl_student_subject_loads table
+    //             $data = array(
+    //                 'subject_id' => $subjectId,
+    //                 'subject_code' => $subjectCode,
+    //                 'student_id' => $studentId,
+    //                 'school_year' => $s_y
+    //             );
+    
+    //             // Insert the data into the tbl_student_subject_loads table
+    //             $this->Student_subjects_model->addSubjectLoad($data);
+    //         }
+    //     }
+    
+    //     // Check if any existing subjects were found
+    //     if (!empty($existingSubjects)) {
+    //         $errorMessage = "The following subjects already exist in the student subjects: " . implode(", ", $existingSubjects);
+    //         // Return a JSON response with the error message and existing subjects
+    //         $response = array('success' => false, 'message' => $errorMessage, 'existingSubjects' => $existingSubjects);
+    //         echo json_encode($response);
+    //     } else {
+    //         // Return a JSON response indicating success
+    //         $response = array('success' => true);
+    //         echo json_encode($response);
+    //     }
+    // }
+    public function addLoads() {
+        $subjectData = $this->input->post('subjectData');
+        $studentId = $this->input->post('id');
+        $query = $this->db->where('status', 'active')->get('tbl_school_year');
+        $sy = $query->result_array();
+        $s_y = '';
+        foreach ($sy as $school_year) {
+            $s_y = $school_year['school_year'];
+        }
+        
+        $existingSubjects = array(); // Array to store existing subjects
+    
+        foreach ($subjectData as $subject) {
+            $subjectId = $subject['id'];
+            $subjectCode = $subject['code'];
+    
+            // Check if the subject already exists for the student
+            $existingSubject = $this->Student_subjects_model->checkExistingSubject($subjectId, $studentId, $s_y);
+    
+            if ($existingSubject) {
+                $existingSubjects[] = $subjectCode;
+            } else {
+                // Prepare the data to be inserted into the tbl_student_subject_loads table
+                $data = array(
+                    'subject_id' => $subjectId,
+                    'subject_code' => $subjectCode,
+                    'student_id' => $studentId,
+                    'school_year' => $s_y
+                );
+    
+                // Insert the data into the tbl_student_subject_loads table
+                $this->Student_subjects_model->addSubjectLoad($data);
+            }
+        }
+    
+        // Check if any existing subjects were found
+        // if (!empty($existingSubjects)) {
+        //     $errorMessage = "The following subjects already exist in the student subjects: " . implode(", ", $existingSubjects);
+        //     // Display the error message with existing subjects
+        //     echo '<script>alert("' . $errorMessage . '");</script>';
+        // } else {
+        //     // Display success message
+        //     echo '<script>alert("Subjects added to the student_subject_loads table successfully!");</script>';
+        // }
+        if (!empty($existingSubjects)) {
+            $response = array('success' => false, 'existingSubjects' => $existingSubjects);
+            echo json_encode($response);
+          } else {
+            $response = array('success' => true);
+            echo json_encode($response);
+          }
+          
+    }
+    
+}
+    
+   
+    
+
    
 
-}
+
