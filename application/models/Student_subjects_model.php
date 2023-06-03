@@ -139,7 +139,6 @@ class Student_subjects_model extends CI_Model
 
     // ADD STUDENT SUBJECTS
     public function addSubjectLoad($data) {
-        // Insert the data into the tbl_student_subject_loads table
         $this->db->insert('tbl_student_subject_loads', $data);
     }
 
