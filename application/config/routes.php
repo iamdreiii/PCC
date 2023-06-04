@@ -156,3 +156,6 @@ $route['grades'] = 'Grades/getgrade';
 // edit GRADE
 $route['edit_grades/(:num)'] = 'Student_grades/edit_grades/$1';
 $route['load_data/(:num)'] = 'Student_grades/load_data/$1';
+
+// MANAGE PREREQ
+$route['Prerequisite'] = 'Prerequisite/index';

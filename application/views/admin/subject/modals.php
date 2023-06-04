@@ -47,10 +47,7 @@
                                     <span class="help-block"></span>
                                 </div>
                                 <div class="col-xs-6">
-                                    <select name="program_id" class="form-control" id="">
-                                        <option>Select Program</option>
-                                        <option value="1">BSE</option>
-                                        <option value="2">BPA</option>
+                                    <select name="program_id" class="form-control" id="program">
                                     </select>
                                     <span class="help-block"></span>
                                 </div>

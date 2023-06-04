@@ -282,7 +282,19 @@
         });
         });
 
-
+        $.ajax({
+            url: '<?php echo base_url("Prerequisite/get_program"); ?>',
+            dataType: 'json',
+            success: function(program) {
+                var options = '';
+                options += '<option value="">Select Program/Course</option>';
+                $.each(program, function(index, program) {
+                    options += '<option value="' + program.id + '">' + program.course + '</option>';
+                });
+                $('#program').html(options);
+                
+            }
+        });
 
 
         
