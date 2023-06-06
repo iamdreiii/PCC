@@ -29,14 +29,14 @@ extract($user);
         <div class="box box-primary">
             <div class="box-body box-profile">
             <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>assets/dist/img/avatar3.png" alt="User profile picture">
-            <h3 class="profile-username text-center"><?php echo strtoupper($username)?></h3>
+            <h3 class="profile-username text-center" id="username"></h3>
             <p class="text-muted text-center"></p>
             <ul class="list-group list-group-unbordered">
             <li class="list-group-item">
-            <b>created_at: </b> <a class="pull-right"><?php echo date('F d, Y - h : i a', strtotime($created_at))?></a>
+            <b>created_at: </b> <a class="pull-right" id="created"></a>
             </li>
             <li class="list-group-item">
-            <b>updated_at:</b> <a class="pull-right"><?php echo date('F d, Y - h : i a', strtotime($updated_at))?></a>
+            <b>updated_at:</b> <a class="pull-right" id="updated"></a>
             </li>
             </ul>
             <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
@@ -47,42 +47,37 @@ extract($user);
         </div>
 
         <div class="col-md-9">
-        <div class="nav-tabs-custom" >
-        <ul class="nav nav-tabs">
-        <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
-        </ul>
-        <div class="tab-content">
-       
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
+                </ul>
 
-        <div class="tab-pane active" id="settings">
-        <form class="form-horizontal">
-        <div class="form-group">
-            <label for="inputName" class="col-sm-2 control-label">Username</label>
-            <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                <div class="tab-content">
+                <div class="tab-pane active" id="settings">
+                    <form class="form-horizontal" id="settingsForm">
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Username</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-danger">Save</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="inputEmail" class="col-sm-2 control-label">Password</label>
-            <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-danger">Save</button>
-            </div>
-        </div>
-        </form>
-        </div>
-
-        </div>
-
-        </div>
-
-        </div>
-
-        </div>
+    </div>
 
     </section>
 
@@ -97,7 +92,8 @@ extract($user);
 
 <?php $this->load->view('admin/dashboard/layout/control_sidebar');?>
 </div>
-
 <?php $this->load->view('admin/user/scripts/footer');?>
+<?php $this->load->view('admin/profile/script');?>
+
 </body>
 </html>
