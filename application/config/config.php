@@ -326,7 +326,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/userguide3/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'RgUkXp2r5u8x/A?D';
 
 /*
 |--------------------------------------------------------------------------
@@ -506,7 +506,8 @@ $config['compress_output'] = FALSE;
 | helper' page of the user guide for information regarding date handling.
 |
 */
-$config['time_reference'] = 'local';
+// $config['time_reference'] = 'local';
+$config['timezone'] = 'Asia/Manila';
 
 /*
 |--------------------------------------------------------------------------

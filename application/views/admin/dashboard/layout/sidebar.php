@@ -192,6 +192,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="<?=base_url()?>user_profile"><i class="fa fa-user"></i> Profile</a></li>
             <li><a href="<?=base_url()?>manage_staff"><i class="fa fa-users"></i> Staff</a></li>
             <li><a href="<?=base_url()?>Signatory"><i class="fa fa-pencil"></i> Signatory</a></li>
             <li class="treeview">

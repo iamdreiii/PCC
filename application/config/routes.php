@@ -159,3 +159,4 @@ $route['load_data/(:num)'] = 'Student_grades/load_data/$1';
 
 // MANAGE PREREQ
 $route['Prerequisite'] = 'Prerequisite/index';
+$route['user_profile'] = 'Profile/index';
