@@ -54,10 +54,6 @@ class Student extends CI_Controller {
 
     public function student_delete($id)
     {
-        $old_image_path =  'uploads/useruploads/'.$this->db->select('img')->where('id', $id)->get('tbl_student')->row('img');
-        if (file_exists($old_image_path)) {
-            unlink($old_image_path);
-        }
         $this->Student_model->delete_student($id);
         echo json_encode(array("status" => TRUE));
     }

@@ -24,9 +24,9 @@ class Profile_model extends CI_Model {
     return $this->db->affected_rows();
   }
 
-  public function updateStaff($id, $data)
+  public function updateStaff($userid, $data)
     {
-        $this->db->where('id', $id);
+        $this->db->where('id', $userid);
         return $this->db->update('tbl_staff', $data);
     }
 }

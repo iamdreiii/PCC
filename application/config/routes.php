@@ -160,3 +160,7 @@ $route['load_data/(:num)'] = 'Student_grades/load_data/$1';
 // MANAGE PREREQ
 $route['Prerequisite'] = 'Prerequisite/index';
 $route['user_profile'] = 'Profile/index';
+
+// MANAGE DATABASE BACKUP
+$route['manage_backup'] = 'Backup/index';
+$route['download_backup/(:any)'] = 'Backup/downloadBackup/$1';

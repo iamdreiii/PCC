@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    
 <?php $this->load->view('admin/user/layout/head');?>
 
 <body class="hold-transition skin-blue sidebar-mini">
