@@ -25,23 +25,23 @@ window.addEventListener('load', loadData);
 
 $(document).ready(function() {
   $('#settingsForm').submit(function(event) {
-    event.preventDefault(); 
-
-    var id = <?= $id?>;
+    event.preventDefault();
+    
+    var id = <?= $id ?>;
     var username = $('#inputUsername').val();
     var password = $('#inputPassword').val();
-  
-    var encryptedData = opensslEncrypt(JSON.stringify({ id: id, username: username, password: password }));
-  
-    var data = {
-      encryptedData: encryptedData
-    };
-  
+    
+    var data = { id: id, username: username, password: password };
+    var encryptedData = encryptData(data);
+    
     $.ajax({
-      url: '<?=base_url()?>Profile/updateStaff',
+      url: '<?= base_url() ?>Profile/updateStaff',
       method: 'POST',
-      data: data,
+      data: { encryptedData: encryptedData }, 
       success: function(response) {
+        $('#inputUsername').val('');
+        $('#inputPassword').val('');
+
         var successMessage = $('<div class="alert alert-success">Settings saved successfully!</div>');
         $('#settings').append(successMessage);
 
@@ -64,20 +64,16 @@ $(document).ready(function() {
       }
     });
   });
-});
-function opensslEncrypt(data) {
-  var encryptedData = '';
-  $.ajax({
-    url: '<?=base_url()?>Profile/opensslEncrypt',
-    method: 'POST',
-    data: { data: data },
-    async: false, 
-    success: function(response) {
-      encryptedData = response;
-    }
-  });
-  
-  return encryptedData;
-}
 
+  function encryptData(data) {
+    var encryptionKey = 'fef8cd2c5ef8f7af9f2ad665c5585388';
+    var iv = '243ea241d148399c243ea241d148399c';
+
+    var encryptedData = CryptoJS.AES.encrypt(JSON.stringify(data), CryptoJS.enc.Hex.parse(encryptionKey), { iv: CryptoJS.enc.Hex.parse(iv) });
+    return encryptedData.toString();
+  }
+});
+
+
+    
 </script>
