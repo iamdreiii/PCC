@@ -33,7 +33,7 @@
                 <div class="box-header with-border">
                 <h3 class="box-title">First Semester</h3>
                 </div>
-                <div class="box-body">
+                <div class="box-body table-responsive">
                 <table id="table1" class="table table-bordered text-center" >
                 <thead>
                     <tr>
@@ -55,7 +55,7 @@
                 <div class="box-header with-border">
                 <h3 class="box-title">Second Semester</h3>
                 </div>
-                <div class="box-body">
+                <div class="box-body table-responsive">
                 <table id="table2" class="table table-bordered text-center">
                 <thead>
                     <tr>
@@ -81,7 +81,7 @@
                 <div class="box-header with-border">
                 <h3 class="box-title">First Semester</h3>
                 </div>
-                <div class="box-body">
+                <div class="box-body table-responsive">
                 <table id="table3" class="table table-bordered text-center" >
                 <thead>
                     <tr>
@@ -103,7 +103,7 @@
                 <div class="box-header with-border">
                 <h3 class="box-title">Second Semester</h3>
                 </div>
-                <div class="box-body">
+                <div class="box-body table-responsive">
                 <table id="table4" class="table table-bordered text-center">
                 <thead>
                     <tr>
@@ -129,7 +129,7 @@
                 <div class="box-header with-border">
                 <h3 class="box-title">First Semester</h3>
                 </div>
-                <div class="box-body">
+                <div class="box-body table-responsive">
                 <table id="table5" class="table table-bordered text-center" >
                 <thead>
                     <tr>
@@ -151,7 +151,7 @@
                 <div class="box-header with-border">
                 <h3 class="box-title">Second Semester</h3>
                 </div>
-                <div class="box-body">
+                <div class="box-body table-responsive">
                 <table id="table6" class="table table-bordered text-center">
                 <thead>
                     <tr>
@@ -177,7 +177,7 @@
                 <div class="box-header with-border">
                 <h3 class="box-title">First Semester</h3>
                 </div>
-                <div class="box-body">
+                <div class="box-body table-responsive">
                 <table id="table7" class="table table-bordered text-center" >
                 <thead>
                     <tr>
@@ -199,7 +199,7 @@
                 <div class="box-header with-border">
                 <h3 class="box-title">Second Semester</h3>
                 </div>
-                <div class="box-body">
+                <div class="box-body table-responsive">
                 <table id="table8" class="table table-bordered text-center">
                 <thead>
                     <tr>

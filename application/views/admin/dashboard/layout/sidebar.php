@@ -30,13 +30,13 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <?php if($this->session->userdata('user')['type'] == 'admin') : ?>
+        <!-- <?php if($this->session->userdata('user')['type'] == 'admin') : ?>
         <li>
           <a href="<?php echo base_url()?>blog-admin">
             <i class="fa fa-users"></i> <span>Announcements</span>
           </a>
         </li>
-        <?php endif?>
+        <?php endif?> -->
         <!-- START MANAGE STUDENTS -->
         <li class="treeview">
           <a href="#">
@@ -170,6 +170,13 @@
             <i class="fa fa-files-o"></i> <span>Records</span>
           </a>
         </li>
+        <?php if($this->session->userdata('user')['type'] == 'staff') : ?>
+        <li>
+          <a href="<?php echo base_url()?>user_profile">
+            <i class="fa fa-user"></i> <span> Profile</span>
+          </a>
+        </li>
+        <?php endif?>
         <!-- END MANAGE SUBJECTS -->
         <li class="header"></li>
         <?php if($this->session->userdata('user')['type'] == 'admin') : ?>
@@ -196,18 +203,17 @@
             <li><a href="<?=base_url()?>user_profile"><i class="fa fa-user"></i> Profile</a></li>
             <li><a href="<?=base_url()?>manage_staff"><i class="fa fa-users"></i> Staff</a></li>
             <li><a href="<?=base_url()?>Signatory"><i class="fa fa-pencil"></i> Signatory</a></li>
-            <li class="treeview">
+            <!-- <li class="treeview">
               <a href="#"><i class="fa fa-laptop"></i> Website
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
-                <!-- <li><a href=""><i class="fa fa-info"></i> About Us</a></li> -->
                 <li><a href="<?=base_url()?>manage_links"><i class="fa fa-external-link"></i> Links</a></li>
                 <li><a href="<?=base_url()?>blog-setting"><i class="fa fa-gear"></i> Blog Settings</a></li>
               </ul>
-            </li>
+            </li> -->
             
           </ul>
         </li>
