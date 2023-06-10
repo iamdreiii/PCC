@@ -29,7 +29,7 @@
             
             </div>
 
-            <div class="box-body">
+            <div class="box-body table-responsive">
               <table id="table" class="table table-bordered table-striped" style="width:100%">
                 <thead>
                 <tr>

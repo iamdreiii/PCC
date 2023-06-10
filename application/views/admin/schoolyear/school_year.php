@@ -26,7 +26,7 @@
             <div class="btn float-right">
             <button class="btn btn-success" onclick="add_sy()"><i class="glyphicon glyphicon-plus"></i> School-Year</button>
             </div>
-            <div class="box-body">
+            <div class="box-body table-responsive">
               <table id="table" class="table table-bordered table-striped" style="width:100%">
                 <thead>
                 <tr>

@@ -91,10 +91,16 @@ class Profile extends CI_Controller {
         if (isset($datajson['id'])) {
             $id = $datajson['id'];
     
-            $data = array(
-                'username' => $datajson['username'],
-                'password' => md5($datajson['password'])
-            );
+            if($datajson['password'] == ''){
+                $data = array(
+                    'username' => $datajson['username']
+                );
+            }else {
+                $data = array(
+                    'username' => $datajson['username'],
+                    'password' => md5($datajson['password'])
+                );
+            }
     
             $result = $this->Profile_model->updateStaff($id, $data);
             if ($result) {
