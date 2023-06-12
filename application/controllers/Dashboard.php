@@ -51,6 +51,7 @@ class Dashboard extends CI_Controller {
             $data['usercount'] = $this->Users_model->count_all_student();
             $data['usercountbse'] = $this->Users_model->getbsetotal();
             $data['usercountbpa'] = $this->Users_model->getbpatotal();
+            $data['courses'] = $this->Users_model->getcourses();
             $data['stud1'] = $this->Users_model->countfirst();
             $data['stud2'] = $this->Users_model->countsecond();
             $data['stud3'] = $this->Users_model->countthird();
@@ -60,72 +61,6 @@ class Dashboard extends CI_Controller {
             redirect('staff');
         }	
 	}
-    // public function fetchChartData()
-    // {
-    //     // Fetch data from the database
-    //     $courses = $this->Dashboard_model->get_all_courses();
-    //     $students = $this->Dashboard_model->get_student_count_by_course();
-
-    //     // Prepare data for the Morris chart
-    //     $chartData = [];
-    //     foreach ($courses as $course) {
-    //         $chartData[] = [
-    //             'y' => $course->course,
-    //             'a' => isset($students[$course->course]) ? $students[$course->course] : 0,
-    //         ];
-    //     }
-
-    //     // Send the JSON response
-    //     $this->output->set_content_type('application/json')->set_output(json_encode($chartData));
-    // }
-//     public function fetchChartData()
-// {
-//     // Fetch data from the database
-//     $years = $this->Dashboard_model->get_all_years();
-//     $courses = $this->Dashboard_model->get_all_courses();
-//     $studentCounts = $this->Dashboard_model->get_student_count_by_course_and_year();
-
-//     // Prepare data for the Morris chart
-//     $chartData = [];
-//     foreach ($courses as $course) {
-//         $data = ['y' => $course->course];
-//         foreach ($years as $year) {
-//             $count = isset($studentCounts[$course->course][$year]) ? $studentCounts[$course->course][$year] : 0;
-//             $data['a'.$year] = $count;
-//         }
-//         $chartData[] = $data;
-//     }
-
-//     // Send the JSON response
-//     $this->output->set_content_type('application/json')->set_output(json_encode($chartData));
-// }
-// public function fetchChartData()
-//     {
-//         $this->load->model('Dashboard_model');
-//         $chartData = $this->Dashboard_model->get_student_count_by_year();
-
-//         $this->output->set_content_type('application/json')->set_output(json_encode($chartData));
-//     }
-// public function fetchChartData()
-//     {
-//         $this->load->model('Dashboard_model');
-//         $courses = $this->Dashboard_model->get_all_courses();
-//         $studentCounts = $this->Dashboard_model->get_student_count_by_course_and_year();
-
-//         $chartData = [];
-//         $labels = [];
-//         foreach ($studentCounts as $year => $courseData) {
-//             $yearData = ['y' => $year];
-//             $labels[] = $year;
-//             foreach ($courses as $course) {
-//                 $count = isset($courseData[$course->course]) ? $courseData[$course->course] : 0;
-//                 $yearData['a_' . $course->course] = $count;
-//             }
-//             $chartData[] = $yearData;
-//         }
-
-//         $this->output->set_content_type('application/json')->set_output(json_encode(['data' => $chartData, 'labels' => $labels]));
-//     }
 public function fetchChartData()
     {
         $this->load->model('Dashboard_model');
