@@ -8,6 +8,18 @@ class Users_model extends CI_Model
     {
         parent::__construct();
     }
+    public function getcourses()
+{
+    $query = $this->db->select('tbl_course.course, COUNT(tbl_student.id) as total_students')
+        ->from('tbl_student')
+        ->join('tbl_course', 'tbl_course.course = tbl_student.program')
+        ->group_by('tbl_course.course')
+        ->get();
+    
+    $result = $query->result_array();
+    return $result;
+}
+
 
     // COUNT BSE TOTAL
     public function getbsetotal()

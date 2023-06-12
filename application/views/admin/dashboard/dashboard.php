@@ -18,7 +18,7 @@
     <section class="content-header">
       <h1>
         Dashboard <?php echo $school_year['school_year']?>
-        <small>pcc.edu.ph</small>
+        <small>pcc</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -30,31 +30,23 @@
     <section class="content">
       <!-- Info boxes -->
       <div class="row">
+      <?php foreach($courses as $row) :?>
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="ion ion-university"></i></span>
+            <div class="info-box">
+                <?php
+                $colors = ['bg-red', 'bg-blue', 'bg-green', 'bg-yellow']; // Array of available colors
+                $randomColor = $colors[array_rand($colors)]; // Randomly select a color from the array
+                ?>
+                <span class="info-box-icon <?php echo $randomColor; ?>"><i class="ion ion-university"></i></span>
 
-            <div class="info-box-content">
-              <span class="info-box-text">BSE STUDENTS</span>
-              <span class="info-box-number"><?php echo $usercountbse?></span>
+                <div class="info-box-content">
+                    <span class="info-box-text"><?= $row['course']?> STUDENTS</span>
+                    <span class="info-box-number"><?php echo $row['total_students']?></span>
+                </div>
             </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
         </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="ion ion-university"></i></span>
+    <?php endforeach?>
 
-            <div class="info-box-content">
-              <span class="info-box-text">BPA STUDENTS</span>
-              <span class="info-box-number"><?php echo $usercountbpa?></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
         <!-- /.col -->
 
         <!-- fix for small devices only -->
@@ -78,7 +70,7 @@
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Students</span>
+              <span class="info-box-text">Total Students</span>
               <span class="info-box-number"><?php echo $usercount?></span>
             </div>
             <!-- /.info-box-content -->
