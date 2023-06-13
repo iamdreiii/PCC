@@ -5,7 +5,7 @@
 @media print {
   @page {
     size: folio;
-    margin: 0.5in;
+    margin: 0.25in;
     margin-top: 0.25in;
     margin-right: 0.25in;
     margin-left: 0.25in;
