@@ -115,8 +115,8 @@ class Student extends CI_Controller {
             $row[] = $user->program;
             $row[] = $user->class_id;
             $row[] = $user->year_level;
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_student('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_student('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_student('."'".$user->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>';
+            //<a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_student('."'".$user->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>
             $data[] = $row;
         }
         $filteredCount = $this->Student_model->count_filtered();

@@ -43,7 +43,7 @@
                 <thead>
                 <tr>
                     <!-- <th width="2%"><input type="checkbox" id="select-all"></th> -->
-                    <th width="3%">SID</th>
+                    <th>SID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
@@ -58,7 +58,7 @@
                 <tfoot>
                 <tr>
                     <!-- <th width="2%"></th> -->
-                    <th width="3%">SID</th>
+                    <th>SID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Gender</th>
