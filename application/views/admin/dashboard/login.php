@@ -24,7 +24,8 @@
   <link href="<?php echo base_url()?>assets/toastr/toastr.css" rel="stylesheet"/>
   
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url('<?=base_url()?>assets/img/bg.png'); background-size: cover;">
+
 <div class="login-box">
   <div class="login-logo">
     <a href="<?php echo base_url()?>staff"><b>P&emsp;C&emsp;C</b></a>
@@ -42,13 +43,6 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <!-- <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
-        </div> -->
         <div class="col-xs-12">
           <button type="submit" class="btn btn-primary btn-block btn-flat"><span id="logText"></span></button>
         </div>

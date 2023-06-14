@@ -323,7 +323,7 @@
                         }else{
                             $('#modal_form2').modal('hide');
                             reload_table();
-                            var stat = 'Student Updated';
+                            var stat = 'Failed to add student';
                             success(stat);
                         }
                     }
@@ -348,7 +348,7 @@
                     if (jqXHR.responseText.includes('Duplicate entry')) {
                         var stat = 'Duplicate Student ID';
                     } else {
-                        var stat = 'Updated';
+                        var stat = 'Error Adding';
                     }
                     error(stat);
                     $('#btnSave').text('save'); 

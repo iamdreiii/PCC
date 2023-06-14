@@ -85,7 +85,7 @@ class Dashboard_model extends CI_Model
 
     public function get_student_count_by_course_and_year()
     {
-        $this->db->select('YEAR(date_created) AS year, program, COUNT(*) as count');
+        $this->db->select('YEAR(date_enrolled) AS year, program, COUNT(*) as count');
         $this->db->from('tbl_student');
         $this->db->join('tbl_course', 'tbl_course.course = tbl_student.program');
         $this->db->group_by('year, program');
