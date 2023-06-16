@@ -139,4 +139,12 @@ reserved.
 <?php $this->load->view('admin/user/scripts/footer');?>
 <?php $this->load->view('admin/student_subjects/scripts/add_student_loads');?>
 </body>
+<script>
+document.getElementById('backButton').addEventListener('click', function() {
+  window.history.back();
+});
+document.getElementById('backButton1').addEventListener('click', function() {
+  window.history.back();
+});
+</script>
 </html>
