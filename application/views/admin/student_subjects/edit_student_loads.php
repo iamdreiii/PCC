@@ -249,5 +249,13 @@ document.getElementById('backButton1').addEventListener('click', function() {
 });
 
 </script>
+<script>
+document.getElementById('backButton').addEventListener('click', function() {
+  window.history.back();
+});
+document.getElementById('backButton1').addEventListener('click', function() {
+  window.history.back();
+});
+</script>
 </body>
 </html>
