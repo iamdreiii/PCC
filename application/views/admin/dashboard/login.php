@@ -22,14 +22,59 @@
   <script src="<?php echo base_url(); ?>assets/staff/jquery/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/staff/bootstrap/js/bootstrap.min.js"></script>
   <link href="<?php echo base_url()?>assets/toastr/toastr.css" rel="stylesheet"/>
-  
+  <style>
+      .login-logo h1 a span {
+    position: relative;
+    display: inline-block;
+  }
+
+  .login-logo h1 a span:before {
+    content: attr(data-title);
+    border-radius: 15px;
+    position: absolute;
+    top: -1.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.2em 0.5em;
+    background-color: #7B3F00;
+    color: #fff;
+    font-size: 18px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+    z-index: 1;
+  }
+
+  .login-logo h1 a span:hover {
+    color: #7B3F00;
+  }
+
+  .login-logo h1 a span:hover:before {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+  .login-logo h1 {
+    font-size: 50px;
+    font-weight: bold;
+  }
+</style>
+
 </head>
 <body class="hold-transition login-page" style="background-image: url('<?=base_url()?>assets/img/bg.png'); background-size: cover;">
 
 <div class="login-box">
-  <div class="login-logo">
-    <a href="<?php echo base_url()?>staff"><b>P&emsp;C&emsp;C</b></a>
-  </div>
+<div class="login-logo">
+  <h1><a href="<?php echo base_url()?>staff">
+    <b>
+      <span data-title="Pola">P</span>&emsp;
+      <span data-title="Community">C</span>&emsp;
+      <span data-title="College">C</span>
+    </b>
+  </a></h1>
+</div>
+
+
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to login to Dashboard</p>
     

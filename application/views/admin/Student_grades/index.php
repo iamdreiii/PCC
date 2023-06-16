@@ -14,7 +14,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Students</a></li>
+        <li><a href="#">Grades</a></li>
         <li class="active">lists</li>
       </ol>
     </section>
@@ -76,7 +76,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1
     </div>
-    <strong>Copyright &copy; 2023 <a href="#">Pola Community College</a>.</strong> All rights
+    <strong>Copyright &copy; 2023-2024 <a href="<?=base_url()?>dashboard">Pola Community College</a>.</strong> All rights
     reserved.
   </footer>
 
