@@ -94,7 +94,29 @@
 
 </style>
 <script type="text/javascript" src="<?=base_url()?>assets/script/jquery-3.2.1.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var birthdateInput = document.getElementById('birthdate');
+var ageInput = document.getElementById('age');
 
+// Add an event listener to the birthdate input field
+birthdateInput.addEventListener('change', calculateAge);
+
+// Function to calculate the age based on the birthdate
+function calculateAge() {
+  // Get the entered birthdate value
+  var birthdate = new Date(birthdateInput.value);
+
+  // Calculate the age
+  var ageDiffMilliseconds = Date.now() - birthdate.getTime();
+  var ageDate = new Date(ageDiffMilliseconds);
+  var calculatedAge = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+  // Set the calculated age in the age input field
+  ageInput.value = calculatedAge;
+}
+    });
+  </script>
 <div class="modal fade" id="modal_form2" role="dialog">
       <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -146,12 +168,12 @@
                               <div class="row panel-body">
                                   <div class="col-xs-3">
                                       <label for="birthdate">Birthdate</label>
-                                      <input name="birthdate" class="form-control" type="date">
+                                      <input name="birthdate" id="birthdate" class="form-control" type="date">
                                       <span class="help-block"></span>
                                   </div>
                                   <div class="col-xs-2">
                                   <label for="age">Age</label>
-                                      <input name="age" placeholder="Age" class="form-control" type="text">
+                                      <input name="age" id="age" placeholder="Age" class="form-control" type="text">
                                       <span class="help-block"></span>
                                   </div>
                                   <div class="col-xs-3">
@@ -598,4 +620,4 @@
     }
 
 </script>
-    
+
