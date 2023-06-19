@@ -26,6 +26,7 @@ class Records_model extends CI_Model
         $this->db->or_like('sex', $search);
         $this->db->or_like('program', $search);
         $this->db->or_like('address', $search);
+        $this->db->or_like('transferee', $search);
         $this->db->or_like('city_municipality', $search);
         $this->db->or_like('zip_code', $search);
         $this->db->group_end();

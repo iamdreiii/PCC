@@ -16,7 +16,8 @@ $.ajax({
 
 // Function to load subjects based on selected year level
 // JavaScript - loadSubjectsByYearLevel function
-var year = <?=$year?>;
+// var year = <?=$year?>;
+var year = null;
 loadSubjectsByYearLevel(year);
 function loadSubjectsByYearLevel(yearLevel) {
     var id = <?=$id?>;
@@ -97,46 +98,59 @@ function loadSubjectsByYearLevel(yearLevel) {
           });
           // Send the selected subject IDs to the server to add to the student_subject_loads table
           var id = <?=$id?>;
-          $.ajax({
+          // $.ajax({
            
+          //   url: '<?php echo base_url(); ?>Student_subjects/addLoads',
+          //   type: 'POST',
+          //   data: { id:id, subjectData: subjectData },
+          //   dataType: 'json',
+          //   success: function(response) {
+          //     if (response.success) {
+          //       // Success message
+          //       var stat =  'Subjects added to the student_subject_loads table successfully!';;
+          //       success(stat);
+          //       // Refresh the page or perform any other action as needed
+          //     } 
+          //     else {
+          //       // Error message
+          //       if (response.existingSubjects && response.existingSubjects.length > 0) {
+          //         var scriptElement = document.createElement('div');
+          //         scriptElement.innerHTML = response.existingSubjects;
+          //         var errorMessage = scriptElement.textContent || scriptElement.innerText || '';
+          //         var stat = 'The following subjects already exist in the student subjects: ' + errorMessage.trim();
+          //         info(stat);
+          //       } else {
+          //         var stat = 'Error occurred while adding loads.';
+          //         error(stat);
+          //       }
+          //     }
+          //   },
+
+          // });
+          $.ajax({
             url: '<?php echo base_url(); ?>Student_subjects/addLoads',
             type: 'POST',
             data: { id:id, subjectData: subjectData },
             dataType: 'json',
             success: function(response) {
-              if (response.success) {
-                // Success message
-                var stat =  'Subjects added to the student_subject_loads table successfully!';;
-                success(stat);
-                // Refresh the page or perform any other action as needed
-              } 
-              else {
-                // Error message
-                if (response.existingSubjects && response.existingSubjects.length > 0) {
-                  var scriptElement = document.createElement('div');
-                  scriptElement.innerHTML = response.existingSubjects;
-                  var errorMessage = scriptElement.textContent || scriptElement.innerText || '';
-                  var stat = 'The following subjects already exist in the student subjects: ' + errorMessage.trim();
-                  error(stat);
+                if (response.success) {
+                    // Success message
+                    var stat = 'Subjects added to the student_subject_loads table successfully!';
+                    success(stat);
+                    // Refresh the page or perform any other action as needed
                 } else {
-                  var stat = 'Error occurred while adding loads.';
-                  error(stat);
+                    // Error message
+                    if (response.existingSubjects && response.existingSubjects.length > 0) {
+                        var errorMessage = 'The following subjects already exist in the student subjects: ' + response.existingSubjects.join(', ');
+                        info(errorMessage);
+                    } else {
+                        var stat = 'Error occurred while adding loads.';
+                        error(stat);
+                    }
                 }
-              }
             },
-            // error: function(xhr, status, error) {
-            //   var existingSubjects = xhr.responseJSON && xhr.responseJSON.existingSubjects;
-            //   if (existingSubjects && existingSubjects.length > 0) {
-            //     var scriptElement = document.createElement('div');
-            //     scriptElement.innerHTML = existingSubjects;
-            //     var errorMessage = scriptElement.textContent || scriptElement.innerText || '';
-            //     alert('The following subjects already exist in the student subjects: ' + errorMessage.trim());
-            //   } else {
-            //     alert('Error occurred while adding loads.');
-            //   }
-            // }
+        });
 
-          });
         });
 
 
@@ -151,7 +165,7 @@ function loadSubjectsByYearLevel(yearLevel) {
 // Event listener for year level selection change
 $(document).on("change", "#filter_year_level", function() {
   var selectedYearLevel = $(this).val();
-  console.log(selectedYearLevel);
+  //console.log(selectedYearLevel);
   loadSubjectsByYearLevel(selectedYearLevel);
 });
 

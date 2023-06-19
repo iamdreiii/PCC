@@ -207,6 +207,7 @@
                     $('[name="year_levels"]').val(data.year_level);
                     $('[name="sem"]').val(data.sem);
                     $('[name="status"]').val(data.status);
+                    $('[name="transferee"]').val(data.transferee);
                     $('[name="date_enrolled"]').val(data.date_enrolled);
                     $('#modal_form2').modal('show');
                     $('.modal-title').text('Edit Student'); 
@@ -235,7 +236,8 @@
             var formData = new FormData(form);
             if(save_method == 'add') {
             
-                var requiredFields = ['student_id', 'fname', 'lname', 'birthdate', 'age', 'sex', 'birthplace', 'citizenship', 'religion', 'civil_status', 'mobile_no', 'email', 'address', 'city_municipality', 'province', 'zip_code', 'sem'];
+                //var requiredFields = ['student_id', 'fname', 'lname', 'birthdate', 'age', 'sex', 'birthplace', 'citizenship', 'religion', 'civil_status', 'mobile_no', 'email', 'address', 'city_municipality', 'province', 'zip_code', 'sem'];
+                var requiredFields = ['student_id', 'fname', 'lname', 'birthdate', 'age', 'sex', 'birthplace', 'citizenship', 'city_municipality', 'province', 'zip_code', 'program'];
                 var isValid = true;
 
                 // $.each(requiredFields, function(index, field) {
@@ -268,27 +270,27 @@
 
 
 
-            var email = $('[name="email"]').val();
-            $.ajax({
-                url : "<?php echo site_url('Student/validate_email')?>",
-                type: "POST",
-                data: {email: email},
-                dataType: "JSON",
-                success: function(data) {
-                    if (data.status == false) {
-                        $('[name="email"]').parent().parent().addClass('has-error');
-                        $('[name="email"]').next().text('This email already exists.');
-                        isValid = false;
+            // var email = $('[name="email"]').val();
+            // $.ajax({
+            //     url : "<?php echo site_url('Student/validate_email')?>",
+            //     type: "POST",
+            //     data: {email: email},
+            //     dataType: "JSON",
+            //     success: function(data) {
+            //         if (data.status == false) {
+            //             $('[name="email"]').parent().parent().addClass('has-error');
+            //             $('[name="email"]').next().text('This email already exists.');
+            //             isValid = false;
 
                         
-                        // Scroll to the error part in the modal
-                        var errorElement = $('[name="email"]').parent().parent();
-                        var modalContent = $('#modal_form2');
-                        modalContent.scrollTop(errorElement.offset().top - modalContent.offset().top + modalContent.scrollTop());
-                    }
-                },
-                async: false 
-            });
+            //             // Scroll to the error part in the modal
+            //             var errorElement = $('[name="email"]').parent().parent();
+            //             var modalContent = $('#modal_form2');
+            //             modalContent.scrollTop(errorElement.offset().top - modalContent.offset().top + modalContent.scrollTop());
+            //         }
+            //     },
+            //     async: false 
+            // });
             if (!isValid) {
                 return false;
             }
@@ -323,7 +325,7 @@
                         }else{
                             $('#modal_form2').modal('hide');
                             reload_table();
-                            var stat = 'Failed to add student';
+                            var stat = 'Updated Student';
                             success(stat);
                         }
                     }
@@ -363,7 +365,7 @@
             dataType: 'json',
             success: function(courses) {
                 var options = '';
-                options += '<option>Select Course/Program</option>';
+                options += '<option value"null">Select Course/Program</option>';
                 $.each(courses, function(index, course) {
                     options += '<option value="' + course.course + '">' + course.course + '</option>';
                 });
@@ -376,7 +378,7 @@
             dataType: 'json',
             success: function(classes) {
                 var options = '';
-                options += '<option value="none">NONE</option>';
+                options += '<option value="null">NONE</option>';
                 $.each(classes, function(index, classes) {
                     var yearLevel = '';
                     switch (classes.year_level) {
@@ -406,7 +408,7 @@
             dataType: 'json',
             success: function(year_level) {
                 var options = '';
-                options += '<option>Select Year Level</option>';
+                options += '<option value"">Select Year Level</option>';
                 $.each(year_level, function(index, year_level) {
                     options += '<option value="' + year_level.year + '">' + year_level.year + '</option>';
                 });

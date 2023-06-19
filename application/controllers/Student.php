@@ -208,6 +208,7 @@ class Student extends CI_Controller {
             'program' => $this->input->post('program'),
             'sem' => $this->input->post('sem'),
             'status' => $this->input->post('status'),
+            'transferee' => $this->input->post('transferee'),
             'date_enrolled' =>  $this->input->post('date_enrolled'),
             'year_level' => $this->input->post('year_levels'),
             'date_created' => date('Y-m-d H:i:s'),
@@ -296,6 +297,7 @@ class Student extends CI_Controller {
 
             'program' => $this->input->post('program'),
             'status' => $this->input->post('status'),
+            'transferee' => $this->input->post('transferee'),
             'date_enrolled' =>  $this->input->post('date_enrolled'),
             'sem' => $this->input->post('sem'),
             'year_level' => $this->input->post('year_levels'),

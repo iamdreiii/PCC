@@ -514,6 +514,20 @@
                                   </div>
                               </div>
                           </div>
+                          <div class="panel panel-primary">
+                              <div class="row panel-body">
+                              <h4 class="text-on-pannel text-primary">Transferee</h4>
+                              <!-- father -->
+                                  <div class="col-xs-6">
+                                      <label for="transferee">for transferee</label>
+                                      <select name="transferee" id="transferee" class="form-control">
+                                            <option selected>Select Option</option>
+                                            <option value="transferee">Transferee</option>
+                                      </select>
+                                      <span class="help-block"></span>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
               </form>
               <div class="modal-footer">
