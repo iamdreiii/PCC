@@ -237,7 +237,7 @@
             if(save_method == 'add') {
             
                 //var requiredFields = ['student_id', 'fname', 'lname', 'birthdate', 'age', 'sex', 'birthplace', 'citizenship', 'religion', 'civil_status', 'mobile_no', 'email', 'address', 'city_municipality', 'province', 'zip_code', 'sem'];
-                var requiredFields = ['student_id', 'fname', 'lname', 'birthdate', 'age', 'sex', 'birthplace', 'citizenship', 'city_municipality', 'province', 'zip_code', 'program'];
+                var requiredFields = ['student_id', 'fname', 'lname', 'birthdate', 'age', 'sex', 'birthplace', 'citizenship', 'city_municipality', 'province', 'program'];
                 var isValid = true;
 
                 // $.each(requiredFields, function(index, field) {
