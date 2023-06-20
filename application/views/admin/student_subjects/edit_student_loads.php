@@ -68,7 +68,7 @@
   Date of Admission : <br>
   Place of Birth :  <?= ucfirst($row['birthplace'])?><br>
   Elementary  Course Completed :  <?= ucfirst($row['primary_school_last_attended'])?><br>
-  High Shool Course Completed :  <?= ucfirst($row['secondary_school_last_attended'])?><br>
+  High Shool Course Completed :  <?= ucfirst($row['secondary_junior_school_last_attended'])?><br>
 </address>
 </div>
 
@@ -78,7 +78,7 @@
   Admission Credential: Form 138-A<br>
   Date of Birth: <?= ucfirst($row['birthdate'])?> <br><br><br><br>
   School Year :  <?= ucfirst($row['primary_school_year_last_attended'])?><br>
-  School Year :  <?= ucfirst($row['secondary_school_year_last_attended'])?><br>
+  School Year :  <?= ucfirst($row['secondary_junior_school_year_last_attended'])?><br>
 </address>
 </div>
 
@@ -108,16 +108,31 @@ foreach($student_loads as $row) {
 </tr>
 </thead>
 <tbody>
-<?php if(empty($student_loads)) : ?>
+
+
+<!-- START -->
+ 
+<?php if (empty($student_loads)) : ?>
 <tr>
-<td colspan="5" style="text-align: center;">No Matching Records</td>
+  <td colspan="4" style="text-align: center;">No Matching Records</td>
 </tr>
 <?php else : ?>
+<?php $year_levels = []; ?>
+<?php foreach ($student_loads as $row) : ?>
+<?php $year_levels[$row['year_level']][] = $row; ?>
+<?php endforeach; ?>
+<?php foreach ($year_levels as $year_level => $subjects) : ?>
 <tr>
-  <td colspan="5" style="text-align: center;"><strong><u>First Semester : <?= $sy?></u></strong></td>
+  <td colspan="5" style="text-align: center; font-size:15px;"><strong><u><?php if($year_level == 1){echo '1st Year';}elseif($year_level == 2){echo '2nd Year';}elseif($year_level == 3){echo '3rd Year';}elseif($year_level == 4){echo '4th Year';} ?></u></strong></td>
 </tr>
-<?php foreach($student_loads as $row) :?>
-<?php if($row['semester'] == 1) {?>
+<tr>
+  <td colspan="45" style="text-align: center;"><strong><u>First Semester</u></strong></td>
+</tr>
+<?php $has_first_semester = false; ?>
+<?php foreach ($subjects as $row) : ?>
+<?php if ($row['semester'] == 1) {
+      $has_first_semester = true;
+?>
 <tr>
   <td><input type="checkbox" name="selected[]" id="selected" value="<?php echo $row['sl_id'];?>"></td>
   <td><?php echo $row['coursecode']?></td>
@@ -125,33 +140,38 @@ foreach($student_loads as $row) {
   <td><?php echo $row['units']?></td>
   <td><?php echo $row['pre_req']?></td>
 </tr>
-<?php }?>
-<?php endforeach?>
-<?php 
-$has_second_semester = false;
-foreach($student_loads as $row) {
-  if($row['semester'] == 2) {
-    $has_second_semester = true;
-    break;
-  }
-}
-if($has_second_semester) : ?>
+<?php }
+  endforeach; ?>
+<?php if (!$has_first_semester) : ?>
 <tr>
-  <td colspan="4" style="text-align: center;"><strong><u>Second Semester <?php if(empty($sy)){}else{echo $sy;}?></u></strong></td>
+  <td colspan="5" style="text-align: center;">No subjects in the first semester</td>
 </tr>
-<?php foreach($student_loads as $row) :?>
-<?php if($row['semester'] == 2) {?>
+<?php endif; ?>
 <tr>
-<td><input type="checkbox" name="selected[]" id="selected" value="<?php echo $row['sl_id'];?>"></td>
+  <td colspan="5" style="text-align: center;"><strong><u>Second Semester</u></strong></td>
+</tr>
+<?php $has_second_semester = false; ?>
+<?php foreach ($subjects as $row) : ?>
+<?php if ($row['semester'] == 2) {
+      $has_second_semester = true;
+?>
+<tr>
+  <td><input type="checkbox" name="selected[]" id="selected" value="<?php echo $row['sl_id'];?>"></td>
   <td><?php echo $row['coursecode']?></td>
   <td><?php echo $row['description']?></td>
   <td><?php echo $row['units']?></td>
   <td><?php echo $row['pre_req']?></td>
 </tr>
-<?php }?>
-<?php endforeach?>
+<?php }
+  endforeach; ?>
+<?php if (!$has_second_semester) : ?>
+<tr>
+  <td colspan="4" style="text-align: center;">No subjects in the second semester</td>
+</tr>
 <?php endif; ?>
+<?php endforeach; ?>
 <?php endif; ?>
+<!-- END -->
 </tbody>
 
 <tr>
@@ -160,7 +180,7 @@ if($has_second_semester) : ?>
       <td></td>
       <td><?php echo $total_units?></td>
       <td></td>
-  </tr>
+</tr>
 </table>
 
 </div>

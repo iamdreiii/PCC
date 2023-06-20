@@ -94,7 +94,7 @@
     Date of Admission : <br>
     Place of Birth :  <?= ucfirst($row['birthplace'])?><br>
     Elementary Course Completed :  <?= ucfirst($row['primary_school_last_attended'])?><br>
-    High School Course Completed :  <?= ucfirst($row['secondary_school_last_attended'])?><br>
+    High School Course Completed :  <?= ucfirst($row['secondary_junior_school_last_attended'])?><br>
   </address>
 </div>
 
@@ -104,7 +104,7 @@
         Admission Credential: Form 138-A<br>
         Date of Birth: <?= ucfirst($row['birthdate'])?> <br><br><br><br>
         School Year :  <?= ucfirst($row['primary_school_year_last_attended'])?><br>
-        School Year :  <?= ucfirst($row['secondary_school_year_last_attended'])?><br>
+        School Year :  <?= ucfirst($row['secondary_junior_school_year_last_attended'])?><br>
     </address>
 </div>
 

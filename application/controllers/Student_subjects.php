@@ -111,7 +111,11 @@ class Student_subjects extends CI_Controller {
             }
             foreach($student_data as $row) :
                 
-                $data['student_loads'] = $this->Student_subjects_model->fetch_student_loads($param, $param2);
+                if($param2){
+                    $data['student_loads'] = $this->Student_subjects_model->fetch_student_loads1($param, $param2);
+                }else{
+                    $data['student_loads'] = $this->Student_subjects_model->fetch_student_loads($param);
+                }
                 $data['student_data'] = $this->Student_subjects_model->get_student_data($param);
                 if (isset($data['student_loads'][0]['school_year'])) {
                 $data['sy'] = $data['student_loads'][0]['school_year'];
@@ -157,7 +161,11 @@ class Student_subjects extends CI_Controller {
             }
             foreach($student_data as $row) :
                 
-                $data['student_loads'] = $this->Student_subjects_model->fetch_student_loads($param, $param2);
+                if($param2){
+                    $data['student_loads'] = $this->Student_subjects_model->fetch_student_loads1($param, $param2);
+                }else{
+                    $data['student_loads'] = $this->Student_subjects_model->fetch_student_loads($param);
+                }
                 $data['student_data'] = $this->Student_subjects_model->get_student_data($param);
                 if (isset($data['student_loads'][0]['school_year'])) {
                 $data['sy'] = $data['student_loads'][0]['school_year'];
@@ -300,7 +308,48 @@ class Student_subjects extends CI_Controller {
 
     // ADD SUBJECTS LOADS
     
-    public function addLoads() {
+    // public function addLoads() {
+    //     $subjectData = $this->input->post('subjectData');
+    //     $studentId = $this->input->post('id');
+    //     $query = $this->db->where('status', 'active')->get('tbl_school_year');
+    //     $sy = $query->result_array();
+    //     $s_y = '';
+    //     foreach ($sy as $school_year) {
+    //         $s_y = $school_year['school_year'];
+    //     }
+        
+    //     $existingSubjects = array();
+    
+    //     foreach ($subjectData as $subject) {
+    //         $subjectId = $subject['id'];
+    //         $subjectCode = $subject['code'];
+    
+    //         $existingSubject = $this->Student_subjects_model->checkExistingSubject($subjectId, $studentId, $s_y);
+    
+    //         if ($existingSubject) {
+    //             $existingSubjects[] = $subjectCode;
+    //         } else {
+    //             $data = array(
+    //                 'subject_id' => $subjectId,
+    //                 'subject_code' => $subjectCode,
+    //                 'student_id' => $studentId,
+    //                 'school_year' => $s_y
+    //             );
+    //             $this->Student_subjects_model->addSubjectLoad($data);
+    //         }
+    //     }
+    
+    //     if (!empty($existingSubjects)) {
+    //         $response = array('success' => false, 'existingSubjects' => $existingSubjects);
+    //         echo json_encode($response);
+    //       } else {
+    //         $response = array('success' => true);
+    //         echo json_encode($response);
+    //       }
+          
+    // }
+    public function addLoads()
+    {
         $subjectData = $this->input->post('subjectData');
         $studentId = $this->input->post('id');
         $query = $this->db->where('status', 'active')->get('tbl_school_year');
@@ -309,37 +358,42 @@ class Student_subjects extends CI_Controller {
         foreach ($sy as $school_year) {
             $s_y = $school_year['school_year'];
         }
-        
+
         $existingSubjects = array();
-    
+        $newSubjects = array();
+
         foreach ($subjectData as $subject) {
             $subjectId = $subject['id'];
             $subjectCode = $subject['code'];
-    
+
             $existingSubject = $this->Student_subjects_model->checkExistingSubject($subjectId, $studentId, $s_y);
-    
+
             if ($existingSubject) {
                 $existingSubjects[] = $subjectCode;
             } else {
-                $data = array(
+                $newSubjects[] = array(
                     'subject_id' => $subjectId,
                     'subject_code' => $subjectCode,
                     'student_id' => $studentId,
                     'school_year' => $s_y
                 );
-                $this->Student_subjects_model->addSubjectLoad($data);
             }
         }
-    
+
         if (!empty($existingSubjects)) {
             $response = array('success' => false, 'existingSubjects' => $existingSubjects);
             echo json_encode($response);
-          } else {
+        } else {
+            // Add the new subjects
+            foreach ($newSubjects as $data) {
+                $this->Student_subjects_model->addSubjectLoad($data);
+            }
+
             $response = array('success' => true);
             echo json_encode($response);
-          }
-          
+        }
     }
+
     
 }
     

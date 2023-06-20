@@ -134,6 +134,8 @@ class Student extends CI_Controller {
 
     public function student_add()
     {
+        $inputData = $this->input->post('input');
+
         // $school_id = 'PCC'.date('y').'-'.rand(0,10000);
         $data = array(
             // PERSONAL INFO
@@ -208,6 +210,8 @@ class Student extends CI_Controller {
             'program' => $this->input->post('program'),
             'sem' => $this->input->post('sem'),
             'status' => $this->input->post('status'),
+            'transferee' => $this->input->post('transferee'),
+            'remarks' => $inputData,
             'date_enrolled' =>  $this->input->post('date_enrolled'),
             'year_level' => $this->input->post('year_levels'),
             'date_created' => date('Y-m-d H:i:s'),
@@ -225,6 +229,16 @@ class Student extends CI_Controller {
 
     public function student_update()
     {
+        $inputData = $this->input->post('input');
+// Check if the input data is empty
+if (empty($inputData)) {
+    // If the input data is empty, return a JSON response with status = false
+    $response = array('status' => FALSE);
+    $this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($response));
+    return;
+}
         $data = array(
             'student_id' => $this->input->post('student_id'),
             'fname' => $this->input->post('fname'),
@@ -296,6 +310,8 @@ class Student extends CI_Controller {
 
             'program' => $this->input->post('program'),
             'status' => $this->input->post('status'),
+            'transferee' => $this->input->post('transferee'),
+            'remarks' => $inputData,
             'date_enrolled' =>  $this->input->post('date_enrolled'),
             'sem' => $this->input->post('sem'),
             'year_level' => $this->input->post('year_levels'),
