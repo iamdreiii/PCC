@@ -1,5 +1,4 @@
 
-<script type="text/javascript" src="<?=base_url()?>assets/script/jquery-3.6.0.min.js"></script>
 
 <!-- ADD/UPDATE CLASS MODAL -->
 <div class="modal fade" id="class_modal" tabindex="-1" role="dialog" aria-labelledby="class_modal_label" aria-hidden="true">
@@ -48,52 +47,8 @@
 .panel-body {
   padding-top: 30px !important;
 }
-
-#dropzone {
-  position: relative;
-  border: 2px dotted #444;
-  color: #444;
-  height: 100px;
-  margin: 0 auto;
-  text-align: center;
-  width: 100px;
-}
-
-#dropzone.hover {
-  border: 2px solid green;
-  color: green;
-}
-
-#dropzone.dropped {
-  background: #fff;
-  border: 5px solid #444;
-}
-
-#dropzone div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#dropzone.dropped img {
-  padding: 20px auto;
-  max-width: 90px;
-  max-height: 90px;
-}
-#dropzone [type="file"] {
-  cursor: pointer;
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-
 </style>
-<script type="text/javascript" src="<?=base_url()?>assets/script/jquery-3.2.1.min.js"></script>
+<!-- <script type="text/javascript" src="<?=base_url()?>assets/script/jquery-3.2.1.min.js"></script> -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var birthdateInput = document.getElementById('birthdate');
@@ -550,6 +505,19 @@ function calculateAge() {
                                   </div>
                               </div>
                           </div>
+                          <div class="panel panel-primary">
+                              <div class="row panel-body">
+                              <h4 class="text-on-pannel text-primary">REMARKS</h4>
+                              <!-- father -->
+                              <div class="col-xs-12">
+                                <input type="text" name="input" id="input" class="form-control" placeholder="Enter multiple values" data-role="tagsinput">
+                                <small class="form-text text-muted">Separate keywords with a comma, space bar, or enter key</small>
+                                <span class="help-block"></span>
+                                </div>
+
+
+                              </div>
+                          </div>
                       </div>
               </form>
               <div class="modal-footer">
@@ -560,7 +528,8 @@ function calculateAge() {
           </div>
       </div>
 </div>
-  <script type="text/javascript">
+
+  <!-- <script type="text/javascript">
     const yearDropdownField = $("#tertiary_year_last_attended");
     const yearDropdownField1 = $("#secondary_year_last_attended");
     const yearDropdownField2 = $("#secondary_junior_year_last_attended");
@@ -620,4 +589,4 @@ function calculateAge() {
     }
 
 </script>
-
+ -->

@@ -2,6 +2,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>PCC</title>
+  
   <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url()?>assets/home/images/PCC.png" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -39,9 +40,7 @@
 <link href="<?php echo base_url()?>assets/summernote/css/summernote.min.css" rel="stylesheet">
 <script src="<?php echo base_url()?>assets/summernote/js/summernote.min.js"></script>
 <script src="<?php echo base_url()?>assets/summernote/lang/summernote-ko-KR.min.js"></script>
-
   <style>
-
     #loading-overlay {
       position: fixed;
       top: 0;
@@ -54,7 +53,6 @@
       justify-content: center;
       align-items: center;
     }
-
     #loading-spinner {
       width: 50px;
       height: 50px;
@@ -63,7 +61,6 @@
       border-top-color: #007bff; /* change color here */
       animation: rotate 1s linear infinite;
     }
-
     @keyframes rotate {
       0% {
         transform: rotate(0deg);
@@ -72,8 +69,7 @@
         transform: rotate(360deg);
       }
     }
-
   </style>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
 </head>

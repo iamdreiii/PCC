@@ -45,6 +45,7 @@ class Student_model extends CI_Model
         if (!empty($year_level)) {
             $this->db->where('year_level', $year_level);
         }
+        $this->db->order_by('student_id', 'DESC');
         $this->db->limit($length, $start);
         $query = $this->db->get();
         return $query->result();
