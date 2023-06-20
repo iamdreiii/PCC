@@ -265,3 +265,17 @@ window.addEventListener('load', function() {
 
 </body>
 </html>
+sodium_crypto_generichash_update$(document).ready(function() {
+  const $input = $('#input');
+
+  $input.tagsinput({
+    trimValue: true,
+    confirmKeys: [13, 44, 32],
+    focusClass: 'my-focus-class'
+  });
+
+  $input.on('itemAdded itemRemoved', function() {
+    const inputData = $input.tagsinput('items');
+    console.log(inputData); // Display the input data in the browser console
+  });
+});
