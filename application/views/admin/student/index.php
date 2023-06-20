@@ -46,86 +46,18 @@
         transform: rotate(360deg);
       }
     }
+    .remark-tag {
+      display: inline-block;
+      background-color: #ffc107;
+      color: #333;
+      padding: 6px 12px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+    }
 
-    .bootstrap-tagsinput {
-  margin: 0;
-  width: 100%;
-  padding: 0.5rem 0.75rem 0;
-  font-size: 2rem;
-  line-height: 1.25;
-  transition: border-color 0.15s ease-in-out;
-}
-
-.bootstrap-tagsinput.has-focus {
-  background-color: #fff;
-  border-color: #5cb3fd;
-}
-
-.bootstrap-tagsinput .label-info {
-  display: inline-block;
-  font-size: 2.8rem; /* Adjust the font size as needed */
-  background-color: gray !important;
-  padding: 0 .4em .15em;
-  border-radius: .25rem;
-  margin-bottom: 0.4em;
-}
-
-
-.bootstrap-tagsinput input {
-  margin-bottom: 0.5em;
-}
-
-.bootstrap-tagsinput .tag [data-role="remove"]:after {
-  content: '\00d7';
-}
-
-
-.bootstrap-tagsinput {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  display: inline-block;
-  padding: 4px 6px;
-  margin-bottom: 10px;
-  color: #555;
-  vertical-align: middle;
-  border-radius: 4px;
-  max-width: 100%;
-  line-height: 22px;
-  cursor: text;
-}
-.bootstrap-tagsinput input {
-  border: none;
-  box-shadow: none;
-  outline: none;
-  background-color: transparent;
-  padding: 0;
-  margin: 0;
-  width: auto !important;
-  max-width: inherit;
-}
-.bootstrap-tagsinput input:focus {
-  border: none;
-  box-shadow: none;
-}
-.bootstrap-tagsinput .tag {
-  margin-right: 2px;
-  color: white;
-}
-.bootstrap-tagsinput .tag [data-role="remove"] {
-  margin-left: 8px;
-  cursor: pointer;
-}
-.bootstrap-tagsinput .tag [data-role="remove"]:after {
-  content: "x";
-  padding: 0px 2px;
-}
-.bootstrap-tagsinput .tag [data-role="remove"]:hover {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-.bootstrap-tagsinput .tag [data-role="remove"]:hover:active {
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
   </style>
 
 
@@ -223,23 +155,8 @@
 <?php $this->load->view('admin/student/modals');?>
 <?php $this->load->view('admin/student/scripts/student_crud');?>
 
-<script src="<?=base_url()?>assets/dist/js/modals/js/bootstrap-tagsinput.min.js"></script>
-<script>
-  $(document).ready(function() {
-    const $tagsInput = $('.bootstrap-tagsinput');
-    const $input = $tagsInput.find('input');
 
-    $input.tagsinput({
-      trimValue: true,
-      confirmKeys: [13, 44, 32],
-      focusClass: 'my-focus-class'
-    });
 
-    $input.on('focus blur', function() {
-      $tagsInput.toggleClass('has-focus', $(this).is(':focus'));
-    });
-  });
-</script>
 
 
 
@@ -265,17 +182,3 @@ window.addEventListener('load', function() {
 
 </body>
 </html>
-sodium_crypto_generichash_update$(document).ready(function() {
-  const $input = $('#input');
-
-  $input.tagsinput({
-    trimValue: true,
-    confirmKeys: [13, 44, 32],
-    focusClass: 'my-focus-class'
-  });
-
-  $input.on('itemAdded itemRemoved', function() {
-    const inputData = $input.tagsinput('items');
-    console.log(inputData); // Display the input data in the browser console
-  });
-});

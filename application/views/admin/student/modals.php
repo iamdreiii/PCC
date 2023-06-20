@@ -510,8 +510,9 @@ function calculateAge() {
                               <h4 class="text-on-pannel text-primary">REMARKS</h4>
                               <!-- father -->
                               <div class="col-xs-12">
-                                <input type="text" name="input" id="input" class="form-control" placeholder="Enter Remarks" data-role="tagsinput">
-                                <small class="form-text text-muted">Separate keywords with a comma, space bar, or enter key</small>
+                              <div id="remarksTags"></div>
+                                <input type="text" name="remarks" class="form-control" placeholder="Enter Remarks" >
+                                <small class="form-text text-muted">Separate keywords with a comma,</small>
                                 <span class="help-block"></span>
                                 </div>
 
@@ -529,7 +530,7 @@ function calculateAge() {
       </div>
 </div>
 
-  <!-- <script type="text/javascript">
+  <script type="text/javascript">
     const yearDropdownField = $("#tertiary_year_last_attended");
     const yearDropdownField1 = $("#secondary_year_last_attended");
     const yearDropdownField2 = $("#secondary_junior_year_last_attended");
@@ -589,4 +590,4 @@ function calculateAge() {
     }
 
 </script>
- -->
+
