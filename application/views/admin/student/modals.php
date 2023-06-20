@@ -510,7 +510,7 @@ function calculateAge() {
                               <h4 class="text-on-pannel text-primary">REMARKS</h4>
                               <!-- father -->
                               <div class="col-xs-12">
-                                <input type="text" name="input" id="input" class="form-control" placeholder="Enter multiple values" data-role="tagsinput">
+                                <input type="text" name="input" id="input" class="form-control" placeholder="Enter Remarks" data-role="tagsinput">
                                 <small class="form-text text-muted">Separate keywords with a comma, space bar, or enter key</small>
                                 <span class="help-block"></span>
                                 </div>
