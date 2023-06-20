@@ -208,6 +208,7 @@
                     $('[name="sem"]').val(data.sem);
                     $('[name="status"]').val(data.status);
                     $('[name="transferee"]').val(data.transferee);
+                    $('[name="remarks"]').val(data.remarks);
                     $('[name="date_enrolled"]').val(data.date_enrolled);
                     $('#modal_form2').modal('show');
                     $('.modal-title').text('Edit Student'); 
@@ -239,18 +240,6 @@
                 //var requiredFields = ['student_id', 'fname', 'lname', 'birthdate', 'age', 'sex', 'birthplace', 'citizenship', 'religion', 'civil_status', 'mobile_no', 'email', 'address', 'city_municipality', 'province', 'zip_code', 'sem'];
                 var requiredFields = ['student_id', 'fname', 'lname', 'birthdate', 'age', 'sex', 'birthplace', 'citizenship', 'city_municipality', 'province', 'program'];
                 var isValid = true;
-
-                // $.each(requiredFields, function(index, field) {
-                //     if (!$.trim($('[name="' + field + '"]').val())) {
-                //         $('[name="' + field + '"]').parent().parent().addClass('has-error');
-                //         $('[name="' + field + '"]').next().text('required.');
-                //         isValid = false;
-
-                //         var errorElement = $('[name="' + field + '"]').parent().parent();
-                //         var modalContent = $('.modal-content');
-                //         modalContent.scrollTop(errorElement.offset().top - modalContent.offset().top + modalContent.scrollTop());
-                //     }
-                // });
                 requiredFields.forEach(field => {
                 const fieldValue = $('[name="' + field + '"]').val().trim();
                 if (!fieldValue) {
