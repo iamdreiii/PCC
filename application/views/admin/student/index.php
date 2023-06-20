@@ -224,7 +224,7 @@
 <?php $this->load->view('admin/student/scripts/student_crud');?>
 
 <script src="<?=base_url()?>assets/dist/js/modals/js/bootstrap-tagsinput.min.js"></script>
-<script>
+<!-- <script>
   $(document).ready(function() {
     $('input[name="input"]').tagsinput({
       trimValue: true,
@@ -238,7 +238,24 @@
       $(this).closest('.bootstrap-tagsinput').removeClass('has-focus');
     });
   });
+</script> -->
+<script>
+  $(document).ready(function() {
+    const $tagsInput = $('.bootstrap-tagsinput');
+    const $input = $tagsInput.find('input');
+
+    $input.tagsinput({
+      trimValue: true,
+      confirmKeys: [13, 44, 32],
+      focusClass: 'my-focus-class'
+    });
+
+    $input.on('focus blur', function() {
+      $tagsInput.toggleClass('has-focus', $(this).is(':focus'));
+    });
+  });
 </script>
+
 
 
 <!-- <script src="<?php echo base_url()?>assets/bower_components/jquery/dist/jquery.min.js"></script> -->
