@@ -223,19 +223,6 @@
 <?php $this->load->view('admin/student/modals');?>
 <?php $this->load->view('admin/student/scripts/student_crud');?>
 
-
-
-
-<!-- <script src="<?php echo base_url()?>assets/bower_components/jquery/dist/jquery.min.js"></script> -->
-<script src="<?php echo base_url()?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-<script src="<?php echo base_url()?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-
-<script src="<?php echo base_url()?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
-<script src="<?php echo base_url()?>assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-
-<script src="<?php echo base_url()?>assets/bower_components/fastclick/lib/fastclick.js"></script>
 <script src="<?=base_url()?>assets/dist/js/modals/js/bootstrap-tagsinput.min.js"></script>
 <script>
   $(document).ready(function() {
@@ -252,6 +239,19 @@
     });
   });
 </script>
+
+
+<!-- <script src="<?php echo base_url()?>assets/bower_components/jquery/dist/jquery.min.js"></script> -->
+<script src="<?php echo base_url()?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="<?php echo base_url()?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+
+<script src="<?php echo base_url()?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<script src="<?php echo base_url()?>assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="<?php echo base_url()?>assets/bower_components/fastclick/lib/fastclick.js"></script>
+
 <script>
 window.addEventListener('load', function() {
   var loadingOverlay = document.getElementById('loading-overlay');
