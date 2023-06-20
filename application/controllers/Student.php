@@ -134,6 +134,8 @@ class Student extends CI_Controller {
 
     public function student_add()
     {
+        $inputData = $this->input->post('input');
+
         // $school_id = 'PCC'.date('y').'-'.rand(0,10000);
         $data = array(
             // PERSONAL INFO
@@ -209,6 +211,7 @@ class Student extends CI_Controller {
             'sem' => $this->input->post('sem'),
             'status' => $this->input->post('status'),
             'transferee' => $this->input->post('transferee'),
+            'remarks' => $inputData,
             'date_enrolled' =>  $this->input->post('date_enrolled'),
             'year_level' => $this->input->post('year_levels'),
             'date_created' => date('Y-m-d H:i:s'),
@@ -226,6 +229,8 @@ class Student extends CI_Controller {
 
     public function student_update()
     {
+        $inputData = $this->input->post('input');
+
         $data = array(
             'student_id' => $this->input->post('student_id'),
             'fname' => $this->input->post('fname'),
@@ -298,6 +303,7 @@ class Student extends CI_Controller {
             'program' => $this->input->post('program'),
             'status' => $this->input->post('status'),
             'transferee' => $this->input->post('transferee'),
+            'remarks' => $inputData,
             'date_enrolled' =>  $this->input->post('date_enrolled'),
             'sem' => $this->input->post('sem'),
             'year_level' => $this->input->post('year_levels'),
