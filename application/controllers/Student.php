@@ -229,16 +229,7 @@ class Student extends CI_Controller {
 
     public function student_update()
     {
-        $inputData = $this->input->post('input');
-// Check if the input data is empty
-if (empty($inputData)) {
-    // If the input data is empty, return a JSON response with status = false
-    $response = array('status' => FALSE);
-    $this->output
-        ->set_content_type('application/json')
-        ->set_output(json_encode($response));
-    return;
-}
+        $inputData = $this->input->post('remarks');
         $data = array(
             'student_id' => $this->input->post('student_id'),
             'fname' => $this->input->post('fname'),

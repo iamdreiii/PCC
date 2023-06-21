@@ -209,6 +209,16 @@
                     $('[name="status"]').val(data.status);
                     $('[name="transferee"]').val(data.transferee);
                     $('[name="remarks"]').val(data.remarks);
+                    
+
+                    var remarks = data.remarks.split(','); // Assuming remarks are separated by commas
+                    var remarksTags = '';
+                    for (var i = 0; i < remarks.length; i++) {
+                        remarksTags += '<span class="remark-tag">' + remarks[i].trim() + '</span> ';
+                    }
+                    $('#remarksTags').html(remarksTags);
+
+
                     $('[name="date_enrolled"]').val(data.date_enrolled);
                     $('#modal_form2').modal('show');
                     $('.modal-title').text('Edit Student'); 
@@ -235,6 +245,7 @@
             $('.help-block').empty();
             var form = $('#form2')[0];
             var formData = new FormData(form);
+            
             if(save_method == 'add') {
             
                 //var requiredFields = ['student_id', 'fname', 'lname', 'birthdate', 'age', 'sex', 'birthplace', 'citizenship', 'religion', 'civil_status', 'mobile_no', 'email', 'address', 'city_municipality', 'province', 'zip_code', 'sem'];
