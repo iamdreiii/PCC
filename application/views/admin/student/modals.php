@@ -326,7 +326,7 @@ function calculateAge() {
                           <h4>Educational Information</h4>
                           <div class="panel panel-primary">
                               <div class="row panel-body">
-                              <h4 class="text-on-pannel text-primary">Tertiary</h4>
+                              <h4 class="text-on-pannel text-primary">Tertiary / College</h4>
                                   <div class="col-xs-8">
                                       <label for="">School Last Attended</label>
                                       <input name="tertiary_school_last_attended" placeholder="School Last Attended" class="form-control" type="text">
@@ -357,7 +357,7 @@ function calculateAge() {
                           </div>
                           <div class="panel panel-primary">
                               <div class="row panel-body">
-                              <h4 class="text-on-pannel text-primary">Secondary Senior High School</h4>
+                              <h4 class="text-on-pannel text-primary">Secondary / High School</h4>
                                   <div class="col-xs-8">
                                       <label for="">School Last Attended</label>
                                       <input name="secondary_school_last_attended" placeholder="School Last Attended" class="form-control" type="text">
@@ -386,7 +386,7 @@ function calculateAge() {
                                   </div>
                               </div>
                           </div>
-                          <div class="panel panel-primary">
+                          <!-- <div class="panel panel-primary">
                               <div class="row panel-body">
                               <h4 class="text-on-pannel text-primary">Secondary - Junior High School</h4>
                                   <div class="col-xs-8">
@@ -416,10 +416,10 @@ function calculateAge() {
                                       <span class="help-block"></span>
                                   </div>
                               </div>
-                          </div>
+                          </div> -->
                           <div class="panel panel-primary">
                               <div class="row panel-body">
-                              <h4 class="text-on-pannel text-primary">Primary</h4>
+                              <h4 class="text-on-pannel text-primary">Primary / Elementary</h4>
                                   <div class="col-xs-8">
                                       <label for="">School Last Attended</label>
                                       <input name="primary_school_last_attended" placeholder="School Last Attended" class="form-control" type="text">
